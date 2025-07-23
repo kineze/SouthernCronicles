@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GenaralController;
+use App\Http\Controllers\FestivalController;
 use App\Http\Controllers\DashboardController;
 
 Route::controller(GenaralController::class)->group( function (){
@@ -31,6 +32,18 @@ Route::prefix('admin')->middleware(['auth:sanctum','permission:Access Admin Dash
     });
 
 });
+
+
+Route::middleware(['permission:Manage Festivals', config('jetstream.auth_session'), 'verified',])->group( function (){
+
+    Route::controller(FestivalController::class)->group(function () {
+
+        Route::get('/all-festivals','allFestivals')->name('allFestivals');
+
+    });
+
+});
+
 
 Route::middleware(['permission:Manage Users', config('jetstream.auth_session'), 'verified',])->group(function () {
 

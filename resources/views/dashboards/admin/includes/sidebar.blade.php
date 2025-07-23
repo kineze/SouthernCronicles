@@ -1,32 +1,13 @@
-<aside id="sidebar"
-       class="fixed top-0 left-0 h-full w-60 bg-white dark:bg-slate-900 shadow-xl
-              transition-all duration-300 z-[100] overflow-hidden
-              transform -translate-x-full lg:translate-x-0">
+<aside id="sidebar" class="fixed top-0 left-0 h-full w-60 bg-white dark:bg-slate-900 shadow-xl transition-all duration-300 z-50 overflow-hidden transform -translate-x-full lg:translate-x-0">
 
-  <!-- Top Brand -->
   <div class="flex items-center justify-center px-3 h-20 border-b border-gray-500 dark:border-gray-700">
     <a href="{{ url('/') }}" class="relative flex items-center">
-      <!-- Expanded: Light Logo -->
-      <img
-        src="/assets/img/logo.webp"
-        alt="logo"
-        class="sidebar-logo sidebar-logo-full block h-12 w-auto dark:hidden transition-opacity duration-200"
-        loading="lazy"
-      />
-      <!-- Expanded: Dark Logo -->
-      <img
-        src="/assets/img/logo.webp"
-        alt="logo"
-        class="sidebar-logo sidebar-logo-full hidden dark:block h-16 w-auto transition-opacity duration-200"
-        loading="lazy"
-      />
-      <!-- Mini: Icon -->
-      <img
-        src="/assets/img/logo.webp"
-        alt="logo Icon"
-        class="sidebar-logo sidebar-logo-icon hidden h-14 w-14 transition-opacity duration-200"
-        loading="lazy"
-      />
+
+      <img src="/assets/img/logo.webp" alt="logo" class="sidebar-logo sidebar-logo-full block h-12 w-auto dark:hidden transition-opacity duration-200" loading="lazy" />
+
+      <img src="/assets/img/logo.webp" alt="logo" class="sidebar-logo sidebar-logo-full hidden dark:block h-16 w-auto transition-opacity duration-200" loading="lazy" />
+
+      <img src="/assets/img/logo.webp" alt="logo Icon" class="sidebar-logo sidebar-logo-icon hidden h-14 w-14 transition-opacity duration-200" loading="lazy" />
 
       <h1 class="sidebar-logo sidebar-logo-full font-semibold text-black dark:text-white">The Asian Literary Festival</h1>
     </a>
@@ -35,40 +16,62 @@
   <!-- Nav -->
   <nav class="mt-4 space-y-1 px-3">
 
+    @can('Manage Festivals')
+      <div class="relative sidebar-dropdown"
+          data-subtitle="Festivals"
+          data-links='[
+            {"label":"Roles & Permissions","href":"{{ url('/all-festivals') }}"}
+          ]'>
+
+        <button class="dropdown-toggle w-full flex items-center gap-3 p-2 rounded-lg dark:hover:bg-slate-800 transition-all">
+          <div class="sidebar-icon-box">
+            <i class="fa-solid fa-pen-fancy"></i>
+            <span class="sr-only test-black">Festivals</span>
+          </div>
+          <span class="sidebar-label flex-1 text-sm font-medium text-black dark:text-white text-left">
+            Festivals
+          </span>
+          <i class="fas fa-chevron-down text-xs text-black sidebar-label"></i>
+        </button>
+
+        <div class="expanded-only hidden py-1 space-y-1">
+          <a href="{{ url('/all-festivals') }}" class="block px-4 py-2 text-xs font-semibold text-black dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-md">
+            All Festivals
+          </a>
+
+        </div>
+      </div>
+    @endcan
 
     @can('Manage Users')
-    <!-- Users -->
-    <div class="relative sidebar-dropdown"
-         data-subtitle="Users"
-         data-links='[
-           {"label":"Roles & Permissions","href":"{{ url('role-management') }}"},
-           {"label":"Teams & Groups","href":"{{ url('teams') }}"},
-           {"label":"System Managers","href":"{{ url('system-users') }}"}
-         ]'>
+      <div class="relative sidebar-dropdown"
+          data-subtitle="Users"
+          data-links='[
+            {"label":"Roles & Permissions","href":"{{ url('role-management') }}"},
+            {"label":"System Managers","href":"{{ url('system-users') }}"}
+          ]'>
 
-      <button class="dropdown-toggle w-full flex items-center gap-3 p-2 rounded-lg dark:hover:bg-slate-800 transition-all">
-        <div class="sidebar-icon-box">
-          <i class="fas fa-cog" aria-hidden="true"></i>
-          <span class="sr-only">Users</span>
+        <button class="dropdown-toggle w-full flex items-center gap-3 p-2 rounded-lg dark:hover:bg-slate-800 transition-all">
+          <div class="sidebar-icon-box">
+            <i class="fas fa-users text-black dark:text-white" aria-hidden="true"></i>
+            <span class="sr-only">Users</span>
+          </div>
+          <span class="sidebar-label flex-1 text-sm font-medium text-black dark:text-white text-left">
+            Users
+          </span>
+          <i class="fas fa-chevron-down text-xs text-gray-500 sidebar-label"></i>
+        </button>
+
+        <div class="expanded-only hidden py-1 space-y-1">
+          <a href="{{ url('role-management') }}" class="block px-4 py-2 text-xs font-semibold text-black dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-md">
+            Roles & Permissions
+          </a>
+
+          <a href="{{ url('system-users') }}" class="block px-4 py-2 text-xs font-semibold text-black dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-md">
+            System Managers
+          </a>
         </div>
-        <span class="sidebar-label flex-1 text-sm font-medium text-gray-700 dark:text-white text-left">
-          Users
-        </span>
-        <i class="fas fa-chevron-down text-xs text-gray-500 sidebar-label"></i>
-      </button>
-
-      <div class="expanded-only hidden py-1 space-y-1">
-        <a href="{{ url('role-management') }}" class="block px-4 py-2 text-xs font-semibold text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-md">
-          Roles & Permissions
-        </a>
-        <a href="{{ url('teams') }}" class="block px-4 py-2 text-xs font-semibold text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-md">
-          Teams & Groups
-        </a>
-        <a href="{{ url('system-users') }}" class="block px-4 py-2 text-xs font-semibold text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-md">
-          System Managers
-        </a>
       </div>
-    </div>
     @endcan
 
   </nav>
@@ -79,7 +82,7 @@
      class="fixed left-20 w-56 bg-white dark:bg-slate-800 shadow-xl border border-gray-200 dark:border-slate-700
             hidden flex-col z-[200] overflow-y-auto rounded-lg transition-all duration-200">
   <div class="px-4 py-3 border-b border-gray-200 dark:border-slate-700 flex items-center justify-between">
-    <h3 id="subSidebarTitle" class="text-sm font-semibold text-gray-700 dark:text-white"></h3>
+    <h3 id="subSidebarTitle" class="text-sm font-semibold text-black dark:text-white"></h3>
     <button id="closeSubSidebar" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-xs">
       <i class="fas fa-times"></i>
     </button>

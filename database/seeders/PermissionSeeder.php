@@ -14,6 +14,7 @@ class PermissionSeeder extends Seeder
         $permissions = [
             'Manage Users',
             'Access Admin Dashboard',
+            'Manage Festivals',
         ];
 
         foreach ($permissions as $permissionName) {
