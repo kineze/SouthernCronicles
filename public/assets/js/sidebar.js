@@ -1,4 +1,3 @@
-{{-- <script>
   document.addEventListener('DOMContentLoaded', () => {
     /* ------------------ Element Refs ------------------ */
     const sidebar          = document.getElementById('sidebar');
@@ -568,7 +567,3 @@
     // });
     
   });
-
-</script> --}}
-
-<script src="{{asset('assets/js/sidebar.js')}}"></script>

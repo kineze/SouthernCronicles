@@ -7,12 +7,6 @@
 
 <body class="m-0 font-sans antialiased font-normal text-left  dark:bg-slate-950 bg-gray-50 text-slate-500 dark:text-white">
 
-     @auth
-        <script>
-            window.userId = {{ auth()->id() }};
-        </script>
-    @endauth
-
     @role('Admin')
         @include('dashboards.admin.includes.sidebar')
     @endrole

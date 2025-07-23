@@ -8,22 +8,22 @@
     <a href="{{ url('/') }}" class="relative flex items-center">
       <!-- Expanded: Light Logo -->
       <img
-        src="/assets/img/nextep-logo.webp"
-        alt="Nextep"
+        src="/assets/img/logo.webp"
+        alt="logo"
         class="sidebar-logo sidebar-logo-full block h-12 w-auto dark:hidden transition-opacity duration-200"
         loading="lazy"
       />
       <!-- Expanded: Dark Logo -->
       <img
-        src="/assets/img/nextep-logo-dark.webp"
-        alt="Nextep"
-        class="sidebar-logo sidebar-logo-full hidden dark:block h-12 w-auto transition-opacity duration-200"
+        src="/assets/img/logo.webp"
+        alt="logo"
+        class="sidebar-logo sidebar-logo-full hidden dark:block h-16 w-auto transition-opacity duration-200"
         loading="lazy"
       />
       <!-- Mini: Icon -->
       <img
-        src="/assets/img/nextep-icon.webp"
-        alt="Nextep Icon"
+        src="/assets/img/logo.webp"
+        alt="logo Icon"
         class="sidebar-logo sidebar-logo-icon hidden h-9 w-9 transition-opacity duration-200"
         loading="lazy"
       />

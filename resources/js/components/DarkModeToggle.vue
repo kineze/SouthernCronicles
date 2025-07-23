@@ -1,5 +1,5 @@
 <template>
-    <button @click="toggleDarkMode" class="px-4">
+    <button @click="toggleDarkMode" class="pr-4">
     <i v-if="!isDarkMode" class=" text-lg fas fa-sun text-yellow-500"></i>
     <i v-else class="text-lg fas fa-moon text-blue-400"></i>
     </button>

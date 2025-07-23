@@ -21,13 +21,13 @@
       </div>
       <ul class="flex flex-row items-center justify-end pl-0 mb-0 list-none md-max:w-full">
 
-        <li class="relative p-2">
+        <li class="relative">
           <button id="themeMenuBtn"
                   aria-haspopup="true"
                   aria-expanded="false"
-                  class="px-2"
+                  class="pr-2"
                   title="Change Sidebar Theme">
-            <i class="fas fa-adjust"></i>
+            <i class="fas fa-adjust text-lg"></i>
           </button>
 
           <!-- Dropdown -->
@@ -71,7 +71,6 @@
         </li>
 
         <li class="flex items-center">
-                <notification-bell></notification-bell>
                 <dark-mode-toggle></dark-mode-toggle>
         </li>
       <li class="flex items-center">
