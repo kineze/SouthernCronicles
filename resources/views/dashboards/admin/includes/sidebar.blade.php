@@ -40,6 +40,10 @@
             All Festivals
           </a>
 
+          <a href="{{ url('/all-speakers') }}" class="block px-4 py-2 text-xs font-semibold text-black dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-md">
+            All Speakers
+          </a>
+
         </div>
       </div>
     @endcan
