@@ -5,6 +5,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GenaralController;
 use App\Http\Controllers\FestivalController;
+use App\Http\Controllers\SpeakersController;
 use App\Http\Controllers\DashboardController;
 
 Route::controller(GenaralController::class)->group( function (){
@@ -39,6 +40,13 @@ Route::middleware(['permission:Manage Festivals', config('jetstream.auth_session
     Route::controller(FestivalController::class)->group(function () {
 
         Route::get('/all-festivals','allFestivals')->name('allFestivals');
+        Route::get('/all-speakers', 'allSpeakers')->name('allSpeakers');
+
+    });
+
+    Route::controller(SpeakersController::class)->group(function () {
+
+        Route::get('/all-speakers', 'allSpeakers')->name('allSpeakers');
 
     });
 

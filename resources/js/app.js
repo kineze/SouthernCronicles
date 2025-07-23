@@ -8,8 +8,9 @@ import { POSITION } from 'vue-toastification';
 
 import { createApp } from 'vue'
 import DarkModeToggle from './components/DarkModeToggle.vue';
-
 import Festivals from './components/Festivals.vue';
+import Speakers from './components/Speakers.vue';
+import Speakers from './components/Speakers.vue';
 
 
 
@@ -32,9 +33,8 @@ app
   })
 
     .component('dark-mode-toggle', DarkModeToggle)
-
     .component('festivals', Festivals)
-
+    .component('speakers',Speakers)
 
 
     .mount('#app')

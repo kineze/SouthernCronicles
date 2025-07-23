@@ -20,7 +20,8 @@
       <div class="relative sidebar-dropdown"
           data-subtitle="Festivals"
           data-links='[
-            {"label":"Roles & Permissions","href":"{{ url('/all-festivals') }}"}
+            {"label":"All Festivals","href":"{{ url('/all-festivals') }}"},
+            {"label":"Speakers","href":"{{ url('/all-speakers') }}"}
           ]'>
 
         <button class="dropdown-toggle w-full flex items-center gap-3 p-2 rounded-lg dark:hover:bg-slate-800 transition-all">
