@@ -24,9 +24,11 @@
       <img
         src="/assets/img/logo.webp"
         alt="logo Icon"
-        class="sidebar-logo sidebar-logo-icon hidden h-9 w-9 transition-opacity duration-200"
+        class="sidebar-logo sidebar-logo-icon hidden h-14 w-14 transition-opacity duration-200"
         loading="lazy"
       />
+
+      <h1 class="sidebar-logo sidebar-logo-full font-semibold text-black dark:text-white">The Asian Literary Festival</h1>
     </a>
   </div>
 
