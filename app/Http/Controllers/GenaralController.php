@@ -13,7 +13,7 @@ class GenaralController extends Controller
     {
         
     
-        return view('dashboards.web.homepage');
+        return view('web.homepage');
     }
 
     public function home()
