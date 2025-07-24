@@ -1,7 +1,3 @@
-<script src="{{asset('/assets/js/plugins/perfect-scrollbar.min.js')}}"></script>
-
-{{-- start toggle password visibility --}}
-
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const passwordInput = document.getElementById("password");

@@ -1,15 +1,13 @@
 <aside id="sidebar" class="fixed top-0 left-0 h-full w-60 bg-white dark:bg-slate-900 shadow-xl transition-all duration-300 z-50 overflow-hidden transform -translate-x-full lg:translate-x-0">
 
-  <div class="flex items-center justify-center px-3 h-20 border-b border-gray-500 dark:border-gray-700">
-    <a href="{{ url('/') }}" class="relative flex items-center">
+  <div class="flex items-center justify-center px-3 h-24 border-b border-gray-500 dark:border-gray-700">
+    <a href="{{ url('/') }}" class="relative flex justify-center w-full items-center">
 
-      <img src="/assets/img/logo.webp" alt="logo" class="sidebar-logo sidebar-logo-full block h-12 w-auto dark:hidden transition-opacity duration-200" loading="lazy" />
+      <img src="/assets/img/logo.webp" alt="logo" class="sidebar-logo sidebar-logo-full block h-24 w-auto dark:hidden transition-opacity duration-200" loading="lazy" />
 
       <img src="/assets/img/logo.webp" alt="logo" class="sidebar-logo sidebar-logo-full hidden dark:block h-16 w-auto transition-opacity duration-200" loading="lazy" />
 
       <img src="/assets/img/logo.webp" alt="logo Icon" class="sidebar-logo sidebar-logo-icon hidden h-14 w-14 transition-opacity duration-200" loading="lazy" />
-
-      <h1 class="sidebar-logo sidebar-logo-full font-semibold text-black dark:text-white">The Asian Literary Festival</h1>
     </a>
   </div>
 
@@ -58,7 +56,7 @@
 
         <button class="dropdown-toggle w-full flex items-center gap-3 p-2 rounded-lg dark:hover:bg-slate-800 transition-all">
           <div class="sidebar-icon-box">
-            <i class="fas fa-users text-black dark:text-white" aria-hidden="true"></i>
+            <i class="fas fa-users " aria-hidden="true"></i>
             <span class="sr-only">Users</span>
           </div>
           <span class="sidebar-label flex-1 text-sm font-medium text-black dark:text-white text-left">

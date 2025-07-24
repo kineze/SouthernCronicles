@@ -1,53 +1,3 @@
-{{-- <x-guest-layout>
-    <x-authentication-card>
-        <x-slot name="logo">
-            <x-authentication-card-logo />
-        </x-slot>
-
-        <x-validation-errors class="mb-4" />
-
-        @session('status')
-            <div class="mb-4 font-medium text-sm text-green-600 dark:text-green-400">
-                {{ $value }}
-            </div>
-        @endsession
-
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-
-            <div>
-                <x-label for="email" value="{{ __('Email') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            </div>
-
-            <div class="mt-4">
-                <x-label for="password" value="{{ __('Password') }}" />
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
-            </div>
-
-            <div class="block mt-4">
-                <label for="remember_me" class="flex items-center">
-                    <x-checkbox id="remember_me" name="remember" />
-                    <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
-                <x-button class="ms-4">
-                    {{ __('Log in') }}
-                </x-button>
-            </div>
-        </form>
-    </x-authentication-card>
-</x-guest-layout> --}}
-
-
 @extends('auth.layouts.app')
 
 @section('content')
@@ -55,10 +5,10 @@
 
     <div class="lg:w-4/12 md:w-7/12 bg-white dark:border-neutral-700 dark:border w-full rounded-lg md:shadow-xl dark:shadow-none p-6 shadow-gray-300 dark:shadow-neutral-800">
 
-        <div class="w-full flex p-6 items-center justify-center">
-        {{-- <img src="{{asset('assets/img/logo.webp')}}" class="inline-block  max-w-full transition-all duration-200 ease-soft-in-out h-24 dark:hidden" alt="main_logo" /> --}}
-        {{-- <img src="{{asset('assets/img/logo.webp')}}" class="hidden  max-w-full transition-all duration-200 ease-soft-in-out h-20 dark:inline-block" alt="main_logo" /> --}}
-        <h4 class="font-bold inline-flex flex-col space-y-2 leading-3 text-3xl dark:text-white text-center text-black mb-0">The Asian <br> <span class=" text-3xl">Literary Festival</span></h4>
+        <div class="w-full flex flex-col p-6 items-center justify-center">
+        <img src="{{asset('assets/img/logo.webp')}}" class="inline-block  max-w-full transition-all duration-200 ease-soft-in-out h-24 dark:hidden" alt="main_logo" />
+        <img src="{{asset('assets/img/logo.webp')}}" class="hidden  max-w-full transition-all duration-200 ease-soft-in-out h-20 dark:inline-block" alt="main_logo" />
+        <h4 class="font-bold inline-flex flex-col space-y-2 leading-3 text-xl dark:text-white text-center uppercase text-black mb-0">The Asian <br> <span class=" text-xl">Literary Festival - Brussels</span></h4>
 
         </div>
 

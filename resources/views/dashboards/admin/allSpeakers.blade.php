@@ -6,7 +6,6 @@
 
     <speakers></speakers>
 
-
 </div>
 
 @endsection
