@@ -21,6 +21,7 @@ import SpeakersCarousel from './components/SpeakersCarousel.vue';
 import SpeakersList from './components/Speakers List.vue';
 import OurPartners from './components/OurPartners.vue';
 import UsefullLinks from './components/UsefullLinks.vue';
+import ContactUs from './components/ContactUs.vue';
 
 
 const app = createApp({});
@@ -54,5 +55,6 @@ app
     .component('speakers-list', SpeakersList)
     .component('our-partners',OurPartners)
     .component('usefull-links', UsefullLinks)
+    .component('contact-us',ContactUs)
 
     .mount('#app')
