@@ -100,7 +100,7 @@
                             @endif
 
                             <div class="flex justify-center items-center">
-                                <a href="{{url('schoolRegister')}}" class="bg-black  text-center text-lg text-white font-semibold flex items-center justify-center py-3 px-3 rounded-lg hover:bg-gray-200 transition duration-300">
+                                <a href="{{url('schoolRegister')}}" class="bg-black  text-center text-lg text-white font-semibold flex items-center justify-center py-3 px-3 rounded-lg hover:bg-gray-900 transition duration-300">
                                 Register For Free
                                 </a>
                             </div>
