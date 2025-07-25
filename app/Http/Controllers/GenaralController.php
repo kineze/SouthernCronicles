@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Festival;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -12,8 +14,11 @@ class GenaralController extends Controller
     public function index()
     {
         
+         $nextFestival = Festival::where('start_at', '>=', Carbon::now())
+            ->orderBy('end_at', 'asc')
+            ->first();
     
-        return view('web.homepage');
+        return view('web.homepage', compact('nextFestival'));
     }
 
     public function home()
