@@ -23,3 +23,4 @@ Route::get('/speakers/by-type/{typeId}', [SpeakersController::class, 'byType']);
 
 
 Route::apiResource('partners', PartnerController::class);
+Route::get('/our-partners', [PartnerController::class, 'partnersList']);

@@ -51,4 +51,11 @@ class PartnerController extends Controller
         $partner->delete();
         return response()->noContent();
     }
+
+
+    public function partnersList(Request $request)
+    {
+        $limit = $request->get('limit', 12); // 4 cols * 5 rows = 20 images
+        return Partner::select('id', 'image')->take($limit)->get();
+    }
 }
