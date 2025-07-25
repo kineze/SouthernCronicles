@@ -125,7 +125,7 @@
 
                     <button
                     type="submit"
-                    class="bg-blue-600 text-blac px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
+                    class="bg-black text-blac px-6 py-3 rounded-lg font-semibold text-white mx-auto flex"
                     >
                     Send Message
                     </button>
