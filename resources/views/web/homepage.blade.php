@@ -41,6 +41,10 @@
 </section>
 
 
+<section class="w-full max-w-screen-2xl  -mt-6 mx-auto p-3">
 
+    <speakers-carousel></speakers-carousel>
+
+</section>
 
 @endsection

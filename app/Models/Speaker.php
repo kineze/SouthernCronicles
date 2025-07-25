@@ -1,0 +1,27 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+class Speaker extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'facebook',
+        'instagram',
+        'linkedin',
+        'speaker_type_id',
+        'description',
+        'show_on_home',
+        'image'
+    ];
+
+    public function type()
+    {
+        return $this->belongsTo(SpeakerType::class, 'speaker_type_id');
+    }
+}

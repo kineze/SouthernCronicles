@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PagesController;
 use App\Http\Controllers\GenaralController;
+use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\FestivalController;
 use App\Http\Controllers\SpeakersController;
 use App\Http\Controllers\DashboardController;
@@ -21,6 +23,13 @@ Route::controller(GenaralController::class)->group( function (){
     Route::post('/register', 'registerUser')->name('registerUser');
     // Route::get('/login', 'userLogin')->name('login');
     // Route::post('/login', 'loginUser')->name('loginUser');
+
+});
+
+Route::controller(PagesController::class)->group( function (){
+
+    Route::get('/speakers-list','speakersList')->name('speakersList');
+    Route::get('/our-partners','ourPartners')->name('ourPartners');
 
 });
 
@@ -46,11 +55,26 @@ Route::middleware(['permission:Manage Festivals', config('jetstream.auth_session
 
     Route::controller(SpeakersController::class)->group(function () {
 
+        Route::get('/speaker-types','speakerTypes')->name('speakerTypes');
         Route::get('/all-speakers', 'allSpeakers')->name('allSpeakers');
 
     });
 
 });
+
+Route::middleware(['permission:Manage Partners', config('jetstream.auth_session'), 'verified',])->group( function (){
+
+    Route::controller(PartnerController::class)->group(function () {
+
+        Route::get('/partners','Partners')->name('Partners');
+
+    });
+
+});
+
+
+
+
 
 
 Route::middleware(['permission:Manage Users', config('jetstream.auth_session'), 'verified',])->group(function () {

@@ -7,11 +7,19 @@ import { POSITION } from 'vue-toastification';
 
 
 import { createApp } from 'vue'
+// for admin view 
+
 import DarkModeToggle from './components/DarkModeToggle.vue';
 import Festivals from './components/Festivals.vue';
+import SpeakerTypes from './components/SpeakerTypes.vue';
 import Speakers from './components/Speakers.vue';
-import WebNav from './components/webNav.vue';
+import Partners from './components/Partners.vue';
 
+// for web view 
+import WebNav from './components/webNav.vue';
+import SpeakersCarousel from './components/SpeakersCarousel.vue';
+import SpeakersList from './components/Speakers List.vue';
+import OurPartners from './components/OurPartners.vue';
 
 
 const app = createApp({});
@@ -32,9 +40,17 @@ app
     rtl: false
   })
 
+    //for admin view
     .component('dark-mode-toggle', DarkModeToggle)
     .component('festivals', Festivals)
+    .component('speaker-types',SpeakerTypes)
     .component('speakers',Speakers)
+    .component('partners',Partners)
+
+    // for web view
     .component('web-nav',WebNav)
+    .component('speakers-carousel',SpeakersCarousel)
+    .component('speakers-list', SpeakersList)
+    .component('our-partners',OurPartners)
 
     .mount('#app')
