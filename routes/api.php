@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\FestivalController;
 use App\Http\Controllers\SpeakersController;
@@ -24,3 +25,5 @@ Route::get('/speakers/by-type/{typeId}', [SpeakersController::class, 'byType']);
 
 Route::apiResource('partners', PartnerController::class);
 Route::get('/our-partners', [PartnerController::class, 'partnersList']);
+
+Route::post('/contact', [ContactController::class, 'sendContactEmail']);

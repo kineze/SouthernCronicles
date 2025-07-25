@@ -15,4 +15,9 @@ class PagesController extends Controller
 
         return view('web.ourPartners');
     }
+
+    public function contactus(){
+
+        return view('web.contactus');
+    }
 }
