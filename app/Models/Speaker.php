@@ -9,5 +9,19 @@ class Speaker extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'facebook', 'instagram', 'linkedin', 'image'];
+    protected $fillable = [
+        'name',
+        'facebook',
+        'instagram',
+        'linkedin',
+        'speaker_type_id',
+        'description',
+        'show_on_home',
+        'image'
+    ];
+
+    public function type()
+    {
+        return $this->belongsTo(SpeakerType::class, 'speaker_type_id');
+    }
 }
