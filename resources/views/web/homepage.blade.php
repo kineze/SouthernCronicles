@@ -3,7 +3,7 @@
 @section('content')
 <section class="w-full max-w-screen-2xl  -mt-6 mx-auto p-3 relative">
     <!-- Container for layers -->
-    <div class="relative w-full z-0 rounded-3  min-h-[120vh]">
+    <div class="relative w-full z-0 rounded-3 overflow-hidden  min-h-[120vh]">
 
         <!-- Layer 1: Background Skyline -->
         <div class="parallax-layer absolute z-10 w-full bottom-32" data-speed="0.6">
@@ -29,7 +29,7 @@
         
     </div>
 
-      <div class="h-screen bg-transparent">
+      <div class="h-[50vh] bg-transparent">
          <div class="relative z-30 flex flex-col bg-transparent items-start justify-end px-6 lg:mx-12 mt-28">
             <h2 class="font-semibold text-black uppercase text-end text-8xl">About</h2>
             <h1 class="tracking-[10px] text-5xl uppercase font-bold text-black leading-tight">
