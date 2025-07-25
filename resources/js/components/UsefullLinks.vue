@@ -17,7 +17,7 @@
         class="bg-white dark:bg-gray-800 overflow-hidden "
       >
         <a :href="link.url" target="_blank" rel="noopener noreferrer">
-          <img :src="link.image" :alt="link.title" class="w-full h-full object-contain" />
+          <img :src="link.image" :alt="link.title" class="w-full h-40 object-contain" />
           <div class="p-4 text-center">
             <h3 class="text-lg font-semibold text-gray-800 dark:text-white">
               {{ link.title }}
