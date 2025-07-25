@@ -1,12 +1,26 @@
 <script>
-    window.addEventListener('scroll', () => {
+    document.addEventListener('DOMContentLoaded', () => {
         const layers = document.querySelectorAll('.parallax-layer');
-        const scrollY = window.scrollY;
+        let latestScrollY = window.scrollY;
+        let ticking = false;
 
-        layers.forEach(layer => {
-            const speed = layer.dataset.speed;
-            layer.style.transform = `translateY(${scrollY * speed}px)`;
-        });
+        function updateParallax() {
+            layers.forEach(layer => {
+                const speed = parseFloat(layer.dataset.speed || 0.3);
+                const yOffset = latestScrollY * speed;
+                layer.style.transform = `translate3d(0, ${yOffset}px, 0)`;
+            });
+            ticking = false;
+        }
+
+        function onScroll() {
+            latestScrollY = window.scrollY;
+            if (!ticking) {
+                requestAnimationFrame(updateParallax);
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
     });
 </script>
-
