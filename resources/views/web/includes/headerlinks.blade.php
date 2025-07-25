@@ -16,6 +16,19 @@
         pointer-events: none;
     }
 
+  @keyframes loop-x {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+.animate-loop-x {
+  animation: loop-x 60s linear infinite;
+}
+
+.parallax-layer img {
+    pointer-events: none;
+    flex-shrink: 0;
+}
 </style>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
