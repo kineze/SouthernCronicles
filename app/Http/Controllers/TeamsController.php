@@ -75,4 +75,11 @@ class TeamsController extends Controller
 
         return response()->json(['status' => 'success', 'show_on_home' => $team->show_on_home]);
     }
+
+
+    public function getTeams(){
+
+        return Team::where('show_on_home', 1)->get();
+
+    }
 }
