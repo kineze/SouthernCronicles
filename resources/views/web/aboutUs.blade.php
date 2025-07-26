@@ -21,8 +21,8 @@
 
  
      <div class="hidden md:block">
-         <div  class=" relative flex pb-24 flex-wrap bg-white z-[1000] bg-opacity-30 backdrop-blur-xl rounded-3xl  bg-transparent items-start justify-end px-6 lg:px-12 pt-36">
-           <div class="w-full lg:w-6/12">
+         <div  class=" relative flex pb-24 flex-wrap  z-[1000] bg-opacity-30 backdrop-blur-xl rounded-3xl  bg-transparent items-start justify-end px-6 lg:px-12 pt-36">
+           <div class="w-full bg-black lg:w-6/12">
                <div class="">
                     <div class=" mx-auto px-4 text-center py-6">
                             @if($nextFestival)

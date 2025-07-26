@@ -89,4 +89,11 @@ class GenaralController extends Controller
 
         return view('web.aboutUs', compact('nextFestival'));
     }
+
+    public function writingLab(){
+
+
+
+        return view('web.writingLab');
+    }
 }
