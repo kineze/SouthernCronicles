@@ -2,7 +2,7 @@
   <div class="max-w-screen-2xl mx-auto px-6 flex flex-col items-start text-center md:text-left">
 
     <div class="flex flex-col mx-auto justify-center items-center"> 
-      <h2 class="lg:text-6xl text-3xl font-serif text-center">Asian Literary Festival</h2>
+      <h2 class="lg:text-6xl trscking-[5px] text-3xl font-serif text-center">The Asian Literary Festival</h2>
       <p class="text-sm mt-2 tracking-widest uppercase">Brussels <span class="font-semibold">2025</span></p>
     </div>
 

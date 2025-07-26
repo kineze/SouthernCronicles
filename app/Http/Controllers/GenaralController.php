@@ -80,4 +80,13 @@ class GenaralController extends Controller
 
         return redirect()->route('index')->with('success', 'Registration successful!');
     }
+
+    public function aboutUs(){
+
+          $nextFestival = Festival::where('start_at', '>=', Carbon::now())
+            ->orderBy('end_at', 'asc')
+            ->first();
+
+        return view('web.aboutUs', compact('nextFestival'));
+    }
 }
