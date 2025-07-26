@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="flex justify-between p-4 bg-white dark:bg-gray-800 shadow rounded-xl">
+    <div class="flex justify-between p-4 bg-white dark:bg-gray-800 dark:shadow-soft-dark-xl shadow rounded-xl">
       <h4 class="text-lg font-semibold dark:text-white">Partners</h4>
       <button @click="openDrawer"  class="px-4 py-1.5 bg-gray-800 text-white dark:bg-green-500 rounded-full text-sm font-semibold">Add Partner</button>
     </div>

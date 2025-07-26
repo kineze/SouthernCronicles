@@ -1,4 +1,4 @@
-<nav navbar-main class=" flex bg-green dark:bg-black flex-wrap items-center justify-between px-0   duration-250 ease-soft-in border-none backdrop-blur-xl   lg:flex-nowrap lg:justify-start sticky top-0 z-[990] " navbar-scroll="true">
+<nav navbar-main class=" flex bg-green dark:bg-slate-900 flex-wrap items-center justify-between px-0 shadow-lg  duration-250 ease-soft-in border-none backdrop-blur-xl   lg:flex-nowrap lg:justify-start sticky top-0 z-[990] " navbar-scroll="true">
   <div class="flex items-center justify-between w-full px-4 py-3  flex-wrap-inherit">
 
   <div class="flex pr-4 items-center">

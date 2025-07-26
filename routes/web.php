@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\TeamsController;
+use App\Http\Controllers\EventsController;
 use App\Http\Controllers\GenaralController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\FestivalController;
@@ -69,6 +71,26 @@ Route::middleware(['permission:Manage Partners', config('jetstream.auth_session'
     Route::controller(PartnerController::class)->group(function () {
 
         Route::get('/partners','Partners')->name('Partners');
+
+    });
+
+});
+
+Route::middleware(['permission:Manage Events', config('jetstream.auth_session'), 'verified',])->group( function (){
+
+    Route::controller(EventsController::class)->group(function () {
+
+        Route::get('/manage-events','manageEvents')->name('manageEvents');
+
+    });
+
+});
+
+Route::middleware(['permission:Manage Teams', config('jetstream.auth_session'), 'verified',])->group( function (){
+
+    Route::controller(TeamsController::class)->group(function () {
+
+        Route::get('/manage-teams','manageTeams')->name('manageTeams');
 
     });
 

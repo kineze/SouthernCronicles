@@ -45,11 +45,10 @@
   </div>
 
   <!-- Modal -->
-<div
-  v-if="showModal"
-  class="fixed inset-0 z-[1001] bg-black bg-opacity-50 flex items-center justify-center"
->
-  <div class="bg-white dark:bg-gray-900 w-[90%] max-w-lg lg:max-w-2xl shadow-lg overflow-hidden relative">
+<div v-if="showModal" class="fixed inset-0 z-[1001] bg-black bg-opacity-50 flex items-center justify-center px-3 ">
+
+
+  <div class="bg-white dark:bg-gray-900 w-full max-w-lg lg:max-w-2xl rounded-lg shadow-lg relative max-h-screen overflow-y-auto ">
     <button
       class="absolute top-3 right-3 text-gray-500 hover:text-red-600"
       @click="closeModal"
@@ -98,6 +97,8 @@
     <div class="bg-black p-2"></div>
   </div>
 </div>
+
+
 
 </template>
 

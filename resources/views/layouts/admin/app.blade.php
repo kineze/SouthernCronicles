@@ -5,7 +5,7 @@
 
 @livewireStyles
 
-<body class="m-0 font-sans antialiased font-normal text-left  dark:bg-slate-950 bg-gray-50 text-slate-500 dark:text-white">
+<body class="m-0 font-sans antialiased font-normal text-left  dark:bg-slate-900 bg-gray-50 text-slate-500 dark:text-white">
 
     @role('Admin')
         @include('dashboards.admin.includes.sidebar')
