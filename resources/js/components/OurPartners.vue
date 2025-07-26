@@ -9,7 +9,7 @@
       <div
         v-for="partner in visiblePartners"
         :key="partner.id"
-        class="overflow-hidden rounded shadow bg-white"
+        class="overflow-hidden rounded bg-white"
       >
         <img :src="`/storage/${partner.image}`" alt="Partner" class="w-full h-36 object-contain p-2" />
       </div>
