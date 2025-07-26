@@ -39,7 +39,7 @@ const links = [
   {
     title: 'Untold Asian Stories',
     url: 'https://untoldasianstories.be/',
-    image: 'assets/img/untoldstory.webp'
+    image: 'assets/img/untold-stories.webp'
   },
   {
     title: 'Transport in Brussles',
