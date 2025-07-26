@@ -78,7 +78,7 @@
         </div>
     </div>
     
-          <div class=" md:hidden">
+        <div class=" md:hidden">
          <div  class=" relative flex pb-24 flex-wrap bg-white z-[1000] bg-opacity-30 backdrop-blur-xl rounded-3xl  bg-transparent items-start justify-end px-6 lg:px-12 pt-12 lg:pt-36">
            <div class="w-full lg:w-6/12">
                <div class="">
@@ -136,6 +136,27 @@
         </div>
     </div>
 </section>
+
+<section class="w-full max-w-screen-2xl -mt-10 mx-auto p-3">
+
+    <usefull-links></usefull-links>
+
+</section>
+
+<section class="w-full max-w-screen-2xl  mx-auto p-3">
+
+    <next-count-down></next-count-down>
+
+</section>
+
+<section class="w-full max-w-screen-2xl  mx-auto p-3">
+
+    <teams-carousel></teams-carousel>
+
+</section>
+
+
+
 
 @endsection
 

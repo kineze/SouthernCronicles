@@ -36,6 +36,7 @@ Route::controller(PagesController::class)->group( function (){
     Route::get('/speakers-list','speakersList')->name('speakersList');
     Route::get('/our-partners','ourPartners')->name('ourPartners');
     Route::get('/contact-us','contactus')->name('contactus');
+    route::get('/events-schedule','eventsSchedule')->name('eventsSchedule');
 
 });
 

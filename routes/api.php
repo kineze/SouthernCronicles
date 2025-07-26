@@ -47,3 +47,9 @@ Route::get('/our-partners', [PartnerController::class, 'partnersList']);
 Route::post('/contact', [ContactController::class, 'sendContactEmail']);
 
 Route::post('/register', [RegistrationController::class, 'store']);
+
+Route::get('/get-events', [EventsController::class, 'getEvents']);
+Route::get('/events/dates', [EventsController::class, 'uniqueDates']);
+
+Route::get('/get-teams', [TeamsController::class, 'getTeams']);
+

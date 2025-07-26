@@ -34,7 +34,7 @@
           <img :src="`/storage/${team.image}`" alt="Team Image" class="w-full h-80 object-cover" />
           <div class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white p-4 text-center">
             <h3 class="text-lg font-semibold mb-2">{{ team.name }}</h3>
-            <p class="text-sm mb-2">{{ team.description }}</p>
+            <!-- <p class="text-sm mb-2">{{ team.description }}</p> -->
             <div class="flex space-x-4 text-sm mt-4">
               <button @click="editTeam(team)" class="text-white"><i class="fa-solid fa-pen"></i></button>
               <button @click="showDeleteConfirmation(team)" class="text-rose-500"><i class="fa-solid fa-trash"></i></button>

@@ -71,4 +71,36 @@ public function update(Request $request, Event $event)
     {
         return Speaker::all();
     }
+
+
+    public function getEvents(Request $request)
+    {
+        $query = Event::with(['moderator', 'speakers'])->orderBy('event_date');
+
+        if ($request->has('date')) {
+            $query->whereDate('event_date', $request->input('date'));
+        }
+
+        return response()->json($query->get());
+    }
+
+    public function uniqueDates()
+    {
+        $dates = Event::select('event_date')
+            ->orderBy('event_date')
+            ->get()
+            ->pluck('event_date')
+            ->unique()
+            ->map(function ($date) {
+                return [
+                    'raw' => $date->format('Y-m-d'),
+                    'label' => strtoupper($date->format('M j')),
+                ];
+            })
+            ->values();
+
+        return response()->json($dates);
+    }
+
+
 }

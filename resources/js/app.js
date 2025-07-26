@@ -30,6 +30,9 @@ import UsefullLinks from './components/UsefullLinks.vue';
 import ContactUs from './components/ContactUs.vue';
 import RegisterNowModal from './components/RegisterNowModal.vue';
 import OurEcosystem from './components/OurEcosystem.vue';
+import EventSchedule from './components/EventSchedule.vue';
+import NextCountDown from './components/NextCountDown.vue';
+import TeamsCarousel from './components/TeamsCarousel.vue';
 
 
 const app = createApp({});
@@ -69,5 +72,8 @@ app
     .component('contact-us',ContactUs)
     .component('register-now-modal', RegisterNowModal)
     .component('our-ecosystem', OurEcosystem)
+    .component('event-schedule',EventSchedule)
+    .component('next-count-down',NextCountDown)
+    .component('teams-carousel',TeamsCarousel)
 
     .mount('#app')

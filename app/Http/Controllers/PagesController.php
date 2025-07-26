@@ -20,4 +20,9 @@ class PagesController extends Controller
 
         return view('web.contactus');
     }
+
+    public function eventsSchedule(){
+
+        return view('web.eventsSchedule');
+    }
 }
