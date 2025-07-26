@@ -7,7 +7,7 @@
     <!-- sidenav -->
 
 
-    <main id="app" class="mt-0 transition-all duration-200 ease-soft-in-out">
+    <main id="app" class="mt-0 transition-all duration-200 p-3 ease-soft-in-out">
       
       @include('web.includes.nav')
 

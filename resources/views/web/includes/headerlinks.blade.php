@@ -16,14 +16,26 @@
         pointer-events: none;
     }
 
-  @keyframes loop-x {
+    @keyframes loop-x {
   0%   { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
+  100% { transform: translateX(-160vw); } /* 2 images worth */
 }
 
+.loop-container {
+  display: flex;
+  width: calc(80vw * 4); /* Ensure at least 2 full loops */
+}
+
+.loop-container img {
+  width: 80vw;
+  flex-shrink: 0;
+  object-fit: contain;
+}
 .animate-loop-x {
   animation: loop-x 60s linear infinite;
 }
+
+
 
 .parallax-layer img {
     pointer-events: none;

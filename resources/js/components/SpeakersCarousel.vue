@@ -1,4 +1,5 @@
 <template>
+    <div class="relative bg-white bg-transparent bg-opacity-30 pt-6 backdrop-blur-xl">
     <div>
         <h1 class="lg:text-6xl text-3xl text-black font-extrabold tracking-widest uppercase text-center">Speakers</h1>
     </div>
@@ -40,6 +41,7 @@
             <a href="/speakers-list" class="px-6 py-3 bg-black text-white foont-bold"> VIEW MORE </a>
         </div>
 
+    </div>
     </div>
 </template>
 
