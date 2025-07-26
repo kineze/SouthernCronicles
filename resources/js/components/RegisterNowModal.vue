@@ -1,10 +1,12 @@
 <template>
   <div>
-    <button @click="showModal = true" class="text-black bg-white px-4 py-2 mb-4 rounded font-semibold">Register Now</button>
+    <button @click="showModal = true" class="text-white bg-black px-4 py-2 mb-4  font-semibold">Register Now</button>
 
-    <div v-if="showModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+
+    <teleport to="body">
+    <div v-if="showModal" class="fixed inset-0 z-[1001] flex items-center justify-center bg-black bg-opacity-50">
       <div class="bg-white  w-full max-w-md">
-        <div class="bg-black p-2 w-full"></div>
+        <!-- <div class="bg-black p-2 w-full"></div> -->
        <div class="p-6 relative">
          <h2 class="text-xl text-black text-center font-bold mb-4">Register Now</h2>
          <button @click="showModal = false" class="absolute top-2 right-3 text-gray-600 hover:text-black text-lg">&times;</button>
@@ -24,10 +26,11 @@
             </form>
        </div>
 
-       
+       <div class="bg-black p-2 w-full"></div>
 
       </div>
     </div>
+    </teleport>
   </div>
 </template>
 

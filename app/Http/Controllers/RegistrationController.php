@@ -7,6 +7,26 @@ use Illuminate\Http\Request;
 
 class RegistrationController extends Controller
 {
+
+
+    public function index(Request $request)
+    {
+        $query = Registration::query();
+
+        if ($request->has('search') && $request->search !== '') {
+            $query->where('contact_number', 'like', '%' . $request->search . '%');
+        }
+
+        return response()->json($query->paginate(10));
+    }
+
+
+    public function registeredList(){
+
+        return view('dashboards.admin.registeredList');
+    }
+
+
     public function store(Request $request)
     {
         $validated = $request->validate([
