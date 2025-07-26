@@ -55,7 +55,7 @@ class PartnerController extends Controller
 
     public function partnersList(Request $request)
     {
-        $limit = $request->get('limit', 12); // 4 cols * 5 rows = 20 images
+        $limit = $request->get('limit', 14);
         return Partner::select('id', 'image')->take($limit)->get();
     }
 }

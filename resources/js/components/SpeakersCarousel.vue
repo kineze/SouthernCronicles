@@ -22,17 +22,19 @@
         >
             <Slide v-for="speaker in homeSpeakers" :key="speaker.id">
                 <div class="p-3">
-                <div class="overflow-hidden  dark:bg-gray-800">
-                    <img :src="`/storage/${speaker.image}`" :alt="speaker.name" class="w-full h-80 object-cover" />
-                    <div class="p-4 text-center">
-                    <h3 class="font-semibold text-gray-800 dark:text-white">{{ speaker.name }}</h3>
-                    <!-- <div class="flex justify-center mt-2 gap-4 text-lg text-gray-500">
-                        <a v-if="speaker.facebook" :href="speaker.facebook" target="_blank" class="hover:text-blue-500"><i class="fab fa-facebook"></i></a>
-                        <a v-if="speaker.instagram" :href="speaker.instagram" target="_blank" class="hover:text-pink-500"><i class="fab fa-instagram"></i></a>
-                        <a v-if="speaker.linkedin" :href="speaker.linkedin" target="_blank" class="hover:text-blue-400"><i class="fab fa-linkedin"></i></a>
-                    </div> -->
-                    </div>
-                </div>
+                    <a href="/speakers-list">
+                        <div class="overflow-hidden  dark:bg-gray-800">
+                            <img :src="`/storage/${speaker.image}`" :alt="speaker.name" class="w-full h-80 object-cover aspect-square" />
+                            <div class="p-4 text-center">
+                            <h3 class="font-semibold text-gray-800 dark:text-white uppercase">{{ speaker.name }}</h3>
+                            <!-- <div class="flex justify-center mt-2 gap-4 text-lg text-gray-500">
+                                <a v-if="speaker.facebook" :href="speaker.facebook" target="_blank" class="hover:text-blue-500"><i class="fab fa-facebook"></i></a>
+                                <a v-if="speaker.instagram" :href="speaker.instagram" target="_blank" class="hover:text-pink-500"><i class="fab fa-instagram"></i></a>
+                                <a v-if="speaker.linkedin" :href="speaker.linkedin" target="_blank" class="hover:text-blue-400"><i class="fab fa-linkedin"></i></a>
+                            </div> -->
+                            </div>
+                        </div>
+                    </a>
                 </div>
             </Slide>
         </Carousel>

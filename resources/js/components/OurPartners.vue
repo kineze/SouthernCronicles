@@ -5,11 +5,11 @@
     </h1>
 
     
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
       <div
         v-for="partner in visiblePartners"
         :key="partner.id"
-        class="overflow-hidden rounded shadow bg-white"
+        class="overflow-hidden rounded bg-white"
       >
         <img :src="`/storage/${partner.image}`" alt="Partner" class="w-full h-36 object-contain p-2" />
       </div>
@@ -34,7 +34,7 @@ import axios from 'axios'
 const allPartners = ref([])
 const visiblePartners = ref([])
 const rowsToShow = ref(2)
-const cols = 6
+const cols = 7
 
 const fetchPartners = async () => {
   const { data } = await axios.get('/api/our-partners')
@@ -43,7 +43,7 @@ const fetchPartners = async () => {
 }
 
 const loadMore = () => {
-  rowsToShow.value += 5
+  rowsToShow.value += 7
   visiblePartners.value = allPartners.value.slice(0, rowsToShow.value * cols)
 }
 
