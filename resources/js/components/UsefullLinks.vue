@@ -1,17 +1,17 @@
 <template>
-  <section class="w-full max-w-screen-2xl mt-6 mx-auto p-3">
+  <section class="w-full max-w-screen-2xl mt-6 mx-auto p-3 ">
     <!-- Map -->
 
 
     <!-- Useful Links Grid -->
-    <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+    <div class="grid gap-6 grid-cols-1 md:grid-cols-3 lg:grid-cols-5">
       <div
         v-for="link in links"
         :key="link.title"
         class="bg-white dark:bg-gray-800 overflow-hidden "
       >
         <a :href="link.url" target="_blank" rel="noopener noreferrer">
-          <img :src="link.image" :alt="link.title" class="w-full h-40 object-contain" />
+          <img :src="link.image" :alt="link.title" class="w-full h-16 object-contain" />
           <div class="p-4 text-center">
             <h3 class="text-lg font-semibold text-gray-800 dark:text-white">
               {{ link.title }}
