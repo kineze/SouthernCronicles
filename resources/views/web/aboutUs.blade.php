@@ -139,7 +139,13 @@
 
 <section class="w-full max-w-screen-2xl -mt-10 mx-auto p-3">
 
-    <usefull-links></usefull-links>
+    <our-ecosystem></our-ecosystem>
+
+</section>
+
+<section class="w-full max-w-screen-2xl  mx-auto p-3">
+
+    <teams-carousel></teams-carousel>
 
 </section>
 
@@ -149,9 +155,9 @@
 
 </section>
 
-<section class="w-full max-w-screen-2xl  mx-auto p-3">
+<section class="w-full max-w-screen-2xl -mt-10 mx-auto p-3">
 
-    <teams-carousel></teams-carousel>
+    <usefull-links></usefull-links>
 
 </section>
 
