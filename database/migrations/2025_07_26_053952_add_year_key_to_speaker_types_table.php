@@ -1,0 +1,23 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    
+    public function up(): void
+    {
+        Schema::table('speaker_types', function (Blueprint $table) {
+            $table->string('year_key')->default('2025')->after('name');
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::table('speaker_types', function (Blueprint $table) {
+            $table->dropColumn('year_key');
+        });
+    }
+};

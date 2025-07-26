@@ -4,7 +4,7 @@
       Our Partners
     </h1>
 
-    <!-- Image Grid -->
+    
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
       <div
         v-for="partner in visiblePartners"
@@ -15,7 +15,7 @@
       </div>
     </div>
 
-    <!-- Load More Button -->
+
     <div class="text-center mt-10" v-if="visiblePartners.length < allPartners.length">
       <button
         @click="loadMore"
