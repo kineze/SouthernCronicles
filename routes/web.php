@@ -18,6 +18,8 @@ Route::controller(GenaralController::class)->group( function (){
     Route::get('/', 'index')->name('index');
 
     Route::get('/home', 'home')->name('home');
+    Route::get('/the-writing-lab', 'writingLab')->name('writingLab');
+    Route::get('/about-us', 'aboutUs')->name('aboutUs');
     Route::get('/setdashboard', 'setDashboard')->name('setDashboard');
     Route::get('/dashboard', 'setDashboard')->name('dashboard');
     Route::get('/user-login','userLogin')->name('userLogin');

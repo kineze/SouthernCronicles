@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Heading -->
-    <h1 class="lg:text-6xl text-3xl text-black font-extrabold tracking-widest uppercase text-center">Speakers</h1>
+    <h1 class="lg:text-6xl text-3xl mt-12 lg:mt-4 text-black font-extrabold tracking-widest uppercase text-center">Speakers</h1>
 
     <!-- Filter Section -->
     <div class="flex flex-wrap justify-between items-center w-full mt-10">
