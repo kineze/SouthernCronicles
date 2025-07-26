@@ -1,4 +1,4 @@
-<aside id="sidebar" class="fixed top-0 left-0 h-full w-60 bg-white dark:bg-slate-900 shadow-xl transition-all duration-300 z-50 overflow-hidden transform -translate-x-full lg:translate-x-0">
+<aside id="sidebar" class="fixed top-0 left-0 h-full w-60 bg-white dark:bg-slate-900 shadow-lg transition-all duration-300 z-50 overflow-hidden transform -translate-x-full lg:translate-x-0">
 
   <div class="flex items-center justify-center px-3 h-24 border-b border-gray-500 dark:border-gray-700">
     <a href="{{ url('/') }}" class="relative flex justify-center w-full items-center">
@@ -13,6 +13,66 @@
 
   <!-- Nav -->
   <nav class="mt-4 space-y-1 px-3">
+
+    @can('Manage Teams')
+
+      <div class="relative sidebar-dropdown"
+          data-subtitle="Manage Teams"
+          data-links='[
+            {"label":"All Teams","href":"{{ url('/manage-teams') }}"}
+          ]'>
+
+        <button class="dropdown-toggle w-full flex items-center gap-3 p-2 rounded-lg dark:hover:bg-slate-800 transition-all">
+          <div class="sidebar-icon-box">
+            <i class="fa-solid fa-square-binary"></i>
+            <span class="sr-only test-black">Manage Teams</span>
+          </div>
+          <span class="sidebar-label flex-1 text-sm font-medium text-black dark:text-white text-left">
+            Manage Teams
+          </span>
+          <i class="fas fa-chevron-down text-xs text-black sidebar-label"></i>
+        </button>
+
+        <div class="expanded-only hidden py-1 space-y-1">
+
+          <a href="{{ url('/manage-teams') }}" class="block px-4 py-2 text-xs font-semibold text-black dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-md">
+           All Teams
+          </a>
+
+        </div>
+      </div>
+
+    @endcan
+
+    @can('Manage Events')
+
+      <div class="relative sidebar-dropdown"
+          data-subtitle="Manage Events"
+          data-links='[
+            {"label":"All Events","href":"{{ url('/manage-events') }}"}
+          ]'>
+
+        <button class="dropdown-toggle w-full flex items-center gap-3 p-2 rounded-lg dark:hover:bg-slate-800 transition-all">
+          <div class="sidebar-icon-box">
+            <i class="fa-solid fa-square-binary"></i>
+            <span class="sr-only test-black">Manage Events</span>
+          </div>
+          <span class="sidebar-label flex-1 text-sm font-medium text-black dark:text-white text-left">
+            Manage Events
+          </span>
+          <i class="fas fa-chevron-down text-xs text-black sidebar-label"></i>
+        </button>
+
+        <div class="expanded-only hidden py-1 space-y-1">
+
+          <a href="{{ url('/manage-events') }}" class="block px-4 py-2 text-xs font-semibold text-black dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-md">
+            All Events
+          </a>
+
+        </div>
+      </div>
+
+    @endcan
 
     @can('Manage Partners')
 
@@ -103,6 +163,7 @@
         </button>
 
         <div class="expanded-only hidden py-1 space-y-1">
+
           <a href="{{ url('registered-list') }}" class="block px-4 py-2 text-xs font-semibold text-black dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-md">
            Registered list
           </a>

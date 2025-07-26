@@ -1,6 +1,9 @@
 import './bootstrap';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'vue-toastification/dist/index.css';
+import 'tom-select/dist/css/tom-select.css';
+
+
 import Toast from 'vue-toastification';
 import { POSITION } from 'vue-toastification';
 
@@ -15,6 +18,8 @@ import SpeakerTypes from './components/SpeakerTypes.vue';
 import Speakers from './components/Speakers.vue';
 import Partners from './components/Partners.vue';
 import RegisteredList from './components/RegisteredList.vue';
+import ManageEvents from './components/ManageEvents.vue';
+import ManageTeams from './components/ManageTeams.vue';
 
 // for web view 
 import WebNav from './components/webNav.vue';
@@ -52,6 +57,8 @@ app
     .component('speakers',Speakers)
     .component('partners',Partners)
     .component('registered-list',RegisteredList)
+    .component('manage-events', ManageEvents)
+    .component('manage-teams', ManageTeams)
 
     // for web view
     .component('web-nav',WebNav)

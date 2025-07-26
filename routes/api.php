@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TeamsController;
+use App\Http\Controllers\EventsController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\FestivalController;
@@ -17,6 +19,18 @@ Route::apiResource('speaker-types', SpeakerTypeController::class);
 
 Route::apiResource('speakers', SpeakersController::class);
 Route::get('/registrations', [RegistrationController::class, 'index']);
+
+Route::get('/events', [EventsController::class, 'index']);
+Route::post('/events', [EventsController::class, 'store']);
+Route::put('/events/{event}', [EventsController::class, 'update']);
+Route::delete('/events/{event}', [EventsController::class, 'destroy']);
+Route::get('/get-speakers', [EventsController::class, 'getSpeakers']);
+
+Route::get('/teams', [TeamsController::class, 'index']);
+Route::post('/teams', [TeamsController::class, 'store']);
+Route::put('/teams/{team}', [TeamsController::class, 'update']);
+Route::delete('/teams/{team}', [TeamsController::class, 'destroy']);
+Route::put('/teams/{team}/toggle-status', [TeamsController::class, 'toggleStatus']);
 
 
 
