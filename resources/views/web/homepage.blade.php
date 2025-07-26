@@ -27,11 +27,11 @@
 
         <!-- Foreground Content -->
         <div class="relative z-30 flex flex-col items-start justify-center px-6  pt-28">
-            <h2 class="font-bold text-black uppercase text-7xl">2025</h2>
-            <h1 class="tracking-[10px] text-4xl uppercase font-extrabold text-black leading-tight">
+            <h2 class="font-semibold text-black uppercase text-8xl">2025</h2>
+            <h1 class="tracking-[10px] text-5xl uppercase font-bold text-black leading-tight">
                 The Asian Literary <br> Festival
             </h1>
-            <h2 class="font-bold tracking-[10px] text-black uppercase text-2xl">Brussels</h2>
+            <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl">Brussels.</h2>
         </div>
         
     </div>
@@ -118,7 +118,7 @@
         <!-- Foreground Content -->
         <div class="relative z-30 flex flex-col items-start justify-center p-3 pt-32 lg:pt-28">
             <h2 class="font-semibold text-black uppercase text-8xl">2025</h2>
-            <h1 class="tracking-[10px] text-5xl uppercase font-bold text-black leading-tight">
+            <h1 class="tracking-[7px] text-5xl uppercase font-bold text-black leading-tight">
                 The Asian Literary <br> Festival
             </h1>
             <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl">Brussels.</h2>
