@@ -11,7 +11,7 @@
             <h1 class="tracking-[10px] text-4xl uppercase font-bold text-black leading-tight">
                 The Asian Literary <br> Festival
             </h1>
-            <h2 class="font-semibold tracking-[10px] text-black uppercase text-2xl">Brussels.</h2>
+            <h2 class="font-semibold tracking-[10px] text-black uppercase text-2xl">Brussels</h2>
         </div>
     </div>
 </div>
@@ -20,8 +20,11 @@
    <div class="">
          <div  class=" relative flex pb-12 h-full flex-wrap bg-white z-[1000] bg-opacity-30 backdrop-blur-xl rounded-3xl  bg-transparent items-start justify-end pt-12">
             <div class="w-full lg:w-6/12 p-6 flex bg-black text-white">
-             <h2 class="font-semibold h-full  uppercase textstart text-6xl md:text-8xl">The Asian Writing <br> Lab <br><br></h2>
-
+            <div class="flex w-full mb-24 flex-col justify-start items-start ">
+                 <h2 class="font-normal h-full textstart text-6xl md:text-8xl ml-12">the</h2>
+                <h2 class="font-bold h-full textstart text-6xl md:text-8xl">writing</h2>
+                <h2 class="font-normal h-full textstart text-6xl md:text-8xl ml-24 lg:ml-36">lab</h2>
+            </div>
             </div>
             
             <div class="w-full  lg:w-6/12">

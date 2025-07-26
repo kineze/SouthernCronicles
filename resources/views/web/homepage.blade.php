@@ -31,7 +31,7 @@
             <h1 class="tracking-[10px] text-5xl uppercase font-bold text-black leading-tight">
                 The Asian Literary <br> Festival
             </h1>
-            <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl">Brussels.</h2>
+            <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl">Brussels</h2>
         </div>
         
     </div>
