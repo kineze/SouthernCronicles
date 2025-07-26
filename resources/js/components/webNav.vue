@@ -1,7 +1,7 @@
 <template>
     <nav class="w-full">
         <div class="w-full max-w-screen-2xl  bg-transparent mx-auto p-3">
-            <div class='w-full flex  -mb-96 justify-between'>
+            <div class='w-full flex  -mb-80 justify-between'>
                 <div class="w-full flex justify-between">
                    <div class="py-6 -pl-3 relative">
                      <button @click="isDrawerOpen = true" type="button" class="inline-flex absolute items-center w-10 h-10 justify-center text-sm text-white rounded-lg focus:outline-none z-[200]">
@@ -12,7 +12,7 @@
                     </button>
                    </div>
                 </div>
-                <div class=" w-44 md:w-96 rounded-es-3xl aspect-square">
+                <div class=" w-44 md:w-80 rounded-es-3xl aspect-square">
                     <div>
                         <img src="../../../public/assets/img/logo.webp" class="inline-block max-w-full transition-all duration-200 ease-soft-in-out w-full h-full  dark:hidden" alt="main_logo" />
                     </div>
