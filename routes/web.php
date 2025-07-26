@@ -9,6 +9,7 @@ use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\FestivalController;
 use App\Http\Controllers\SpeakersController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\RegistrationController;
 
 Route::controller(GenaralController::class)->group( function (){
 
@@ -97,6 +98,13 @@ Route::middleware(['permission:Manage Users', config('jetstream.auth_session'), 
         Route::post('/store-role', 'storeRole')->name('storeRole');
         Route::post('/delete-role/{id}', 'deleteRole')->name('deleteRole');
         Route::get('/view-role/{id}', 'viewRole')->name('viewRole');
+    });
+
+
+    Route::controller(RegistrationController::class)->group(function (){
+
+        route::get('/registered-list','registeredList')->name('registeredList');
+
     });
 
 });

@@ -14,6 +14,7 @@ import Festivals from './components/Festivals.vue';
 import SpeakerTypes from './components/SpeakerTypes.vue';
 import Speakers from './components/Speakers.vue';
 import Partners from './components/Partners.vue';
+import RegisteredList from './components/RegisteredList.vue';
 
 // for web view 
 import WebNav from './components/webNav.vue';
@@ -22,6 +23,8 @@ import SpeakersList from './components/Speakers List.vue';
 import OurPartners from './components/OurPartners.vue';
 import UsefullLinks from './components/UsefullLinks.vue';
 import ContactUs from './components/ContactUs.vue';
+import RegisterNowModal from './components/RegisterNowModal.vue';
+import OurEcosystem from './components/OurEcosystem.vue';
 
 
 const app = createApp({});
@@ -48,6 +51,7 @@ app
     .component('speaker-types',SpeakerTypes)
     .component('speakers',Speakers)
     .component('partners',Partners)
+    .component('registered-list',RegisteredList)
 
     // for web view
     .component('web-nav',WebNav)
@@ -56,5 +60,7 @@ app
     .component('our-partners',OurPartners)
     .component('usefull-links', UsefullLinks)
     .component('contact-us',ContactUs)
+    .component('register-now-modal', RegisterNowModal)
+    .component('our-ecosystem', OurEcosystem)
 
     .mount('#app')

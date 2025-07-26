@@ -99,10 +99,8 @@
                                 <h2 class="text-active-purple uppercase text-5xl">Coming Soon</h2>
                             @endif
 
-                            <div class="flex justify-center items-center">
-                                <a href="{{url('schoolRegister')}}" class="bg-black  text-center text-lg text-white font-semibold flex items-center justify-center py-3 px-3 rounded-lg hover:bg-gray-900 transition duration-300">
-                                Register For Free
-                                </a>
+                            <div class="flex justify-center items-center mt-6">
+                                <register-now-modal></register-now-modal>
                             </div>
                             
                         </div>
@@ -128,6 +126,12 @@
 
 </section>
 
+<section class="w-full max-w-screen-2xl  mt-6 mx-auto p-3">
+
+    <our-ecosystem></our-ecosystem>
+   
+</section>
+
 <section class="w-full max-w-screen-2xl mx-auto p-3">
 
     <our-partners></our-partners>
@@ -147,6 +151,12 @@
     <usefull-links></usefull-links>
    
 </section>
+
+
+
+
+
+
 
 
 @endsection

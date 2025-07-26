@@ -28,27 +28,28 @@ const links = [
   {
     title: 'Gallery Bortier',
     url: 'https://bortier.be/en/',
-    image: 'https://bortier.be/wp-content/uploads/2025/01/Bortier-Gallery-Brussels-logo-Black.png'
+    image: 'assets/img/Bortier-logo.webp'
   },
   {
     title: 'visit.brussels',
     url: 'https://www.visit.brussels/en/visitors',
-    image: 'https://www.visit.brussels/content/dam/visitbrussels/logos/visit-brussels.svg/jcr:content/renditions/large-1920px.jpeg'
+    image: 'assets/img/visitbrussels.webp'
+    
   },
   {
     title: 'Untold Asian Stories',
     url: 'https://untoldasianstories.be/',
-    image: 'https://untoldasianstories.be/wp-content/uploads/2025/05/35A9783-2048x1365.jpg'
+    image: 'assets/img/untoldstory.webp'
   },
   {
     title: 'Transport in Brussles',
     url: 'https://www.stib-mivb.be/home',
-    image: 'https://www.stib-mivb.be/files/live/sites/STIBMIVB/files/Legal/Homepage/sitb-mivb-logo.svg'
+    image: 'assets/img/sitb-logo.webp'
   },
     {
     title: 'Brussels Musiums',
     url: 'https://www.brusselsmuseums.be/en/',
-    image: 'https://brusselsmuseums-prod.imgix.net/images/MMRK_10STATION-1.jpg?auto=compress%2Cformat&crop=faces&faceindex=1&fit=crop&fp-x=0.5&fp-y=0.5&h=696&q=80&w=1198'
+    image: 'assets/img/museum-logo.webp'
   },
   
 ]

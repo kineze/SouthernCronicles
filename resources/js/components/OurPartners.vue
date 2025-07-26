@@ -11,7 +11,7 @@
         :key="partner.id"
         class="overflow-hidden rounded shadow bg-white"
       >
-        <img :src="`/storage/${partner.image}`" alt="Partner" class="w-full h-36 object-cover" />
+        <img :src="`/storage/${partner.image}`" alt="Partner" class="w-full h-36 object-contain p-2" />
       </div>
     </div>
 

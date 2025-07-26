@@ -14,9 +14,13 @@
 
         @yield('content')
 
+
+
+        @include('web.includes.footer')
+
     </main>
 
-    @include('web.includes.footer')
+    
   </body>
 
   @include('web.includes.footerlinks')
