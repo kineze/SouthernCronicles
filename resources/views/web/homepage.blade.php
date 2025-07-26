@@ -197,6 +197,12 @@
 
 <section class="w-full max-w-screen-2xl  mt-6 mx-auto">
 
+    <div class="bg-black px-4 py-2 mb-5">
+      <h1 class="lg:text-6xl text-3xl text-white font-extrabold tracking-widest uppercase text-center">
+        Our Ecosystem
+      </h1>
+    </div>
+
     <our-ecosystem></our-ecosystem>
    
 </section>
