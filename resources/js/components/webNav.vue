@@ -6,9 +6,10 @@
                    <div class="p-6 relative">
                      <button @click="isDrawerOpen = true" type="button" class="inline-flex absolute items-center w-10 h-10 justify-center text-sm text-white rounded-lg focus:outline-none z-[200]">
                         <span class="sr-only">Open main menu</span>
-                        <svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- <svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M4 6H20M4 12H14M4 18H9" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
+                        </svg> -->
+                        <svg fill="#000000" width="32px" height="32px" viewBox="-5.5 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>alignright</title> <path d="M19.938 9.75h-10.406c-0.469 0-0.844-0.438-0.844-0.875v-1.313c0-0.438 0.375-0.844 0.844-0.844h10.406c0.469 0 0.875 0.406 0.875 0.844v1.313c0 0.469-0.406 0.875-0.875 0.875zM19.938 14.813h-17.344c-0.469 0-0.875-0.375-0.875-0.875v-1.281c0-0.5 0.406-0.844 0.875-0.844h17.344c0.469 0 0.875 0.344 0.875 0.844v1.281c0 0.5-0.406 0.875-0.875 0.875zM19.938 19.906h-12.125c-0.469 0-0.875-0.406-0.875-0.875v-1.313c0-0.469 0.406-0.875 0.875-0.875h12.125c0.469 0 0.875 0.406 0.875 0.875v1.313c0 0.469-0.406 0.875-0.875 0.875zM0.906 22.219h19.031c0.469 0 0.875 0.438 0.875 0.875v1.281c0 0.5-0.406 0.906-0.875 0.906h-19.031c-0.5 0-0.906-0.406-0.906-0.906v-1.281c0-0.469 0.406-0.875 0.906-0.875z"></path> </g></svg>
                     </button>
                    </div> 
                 </div>
