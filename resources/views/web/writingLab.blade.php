@@ -44,7 +44,7 @@
     </div>
 
     <div >
-        <h1 class="lg:text-4xl text-3xl mt-12 lg:mt-4 text-black font-extrabold tracking-widest uppercase text-center">Voices Unbound: Liberating the Next Wave of Asian Writers</h1>
+        <h1 class="lg:text-4xl text-3xl mt-12 lg:mt-4 text-black font-extrabold tracking-widest uppercase text-center">Stage, Page, Revolution: The Future of Storytelling Starts Here</h1>
     
         <div class="flex w-full justify-center flex-wrap py-12">
             <div class="aspect-w-1 aspect-h-1 w-full max-w-md">
