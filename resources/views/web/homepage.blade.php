@@ -26,10 +26,10 @@
         </div>
 
         <!-- Foreground Content -->
-        <div class="relative z-30 flex flex-col items-start justify-center  pt-28">
+        <div class="relative z-30 flex flex-col items-start justify-center px-6  pt-28">
             <h2 class="font-semibold text-black uppercase text-8xl">2025</h2>
             <h1 class="tracking-[10px] text-5xl uppercase font-bold text-black leading-tight">
-                Asian Literary <br> Festival
+                The Asian Literary <br> Festival
             </h1>
             <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl">Brussels.</h2>
         </div>
@@ -83,7 +83,7 @@
             <div class="w-full lg:w-6/12">
              <h2 class="font-semibold text-black uppercase text-start text-8xl">About</h2>
                 <h1 class="tracking-[10px] text-4xl uppercase font-bold text-black leading-tight">
-                    Asian Literary <br> Festival - Brussels
+                    The Asian Literary <br> Festival - Brussels
                 </h1>
             <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl mt-5"></h2>
             <p class="text-gray-700"> The Asian Literature Festival in Brussels is a vibrant celebration of the rich and diverse literary traditions from across Asia. Our mission is to bridge cultures, foster understanding, and showcase the incredible talent of Asian authors, poets, and storytellers. Through engaging readings, insightful discussions, and interactive workshops, we invite you to explore the captivating narratives and profound perspectives that define Asian literature. Join us in Brussels to connect with authors.</p>
@@ -119,7 +119,7 @@
         <div class="relative z-30 flex flex-col items-start justify-center p-3 pt-32 lg:pt-28">
             <h2 class="font-semibold text-black uppercase text-8xl">2025</h2>
             <h1 class="tracking-[10px] text-5xl uppercase font-bold text-black leading-tight">
-                Asian Literary <br> Festival
+                The Asian Literary <br> Festival
             </h1>
             <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl">Brussels.</h2>
         </div>
@@ -171,9 +171,9 @@
            </div>
            
             <div class="w-full lg:w-6/12">
-             <h2 class="font-semibold text-black text-center uppercase md:text-start text-4xl md:text-8xl">About</h2>
-                <h1 class="tracking-[5px] text-2xl uppercase text-center md:text-start font-bold text-black leading-tight">
-                    Asian Literary <br> Festival 
+             <h2 class="font-semibold text-black text-center uppercase md:text-start text-3xl md:text-8xl">About</h2>
+                <h1 class="tracking-[5px] text-xl uppercase text-center md:text-start font-bold text-black leading-tight">
+                    The Asian Literary <br> Festival 
                 </h1>
             <h2 class="font-semibold tracking-[10px] text-black text-center md:text-start uppercase text-xl">Brussels.</h2>
             <p class="text-justify md:text-left"> The Asian Literature Festival in Brussels is a vibrant celebration of the rich and diverse literary traditions from across Asia. Our mission is to bridge cultures, foster understanding, and showcase the incredible talent of Asian authors, poets, and storytellers. Through engaging readings, insightful discussions, and interactive workshops, we invite you to explore the captivating narratives and profound perspectives that define Asian literature. Join us in Brussels to connect with authors.</p>
