@@ -42,10 +42,6 @@
            </div>
         </div>
     </div>
-   
-
-
-
 
     <div >
         <h1 class="lg:text-4xl text-3xl mt-12 lg:mt-4 text-black font-extrabold tracking-widest uppercase text-center">Voices Unbound: Liberating the Next Wave of Asian Writers</h1>

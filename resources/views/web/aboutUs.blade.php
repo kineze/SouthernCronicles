@@ -21,38 +21,38 @@
 
  
      <div class="hidden md:block">
-         <div  class=" relative flex pb-24 flex-wrap  z-[1000] bg-opacity-30 backdrop-blur-xl rounded-3xl  bg-transparent items-start justify-end px-6 lg:px-12 pt-36">
+         <div  class=" relative flex mb-24 flex-wrap items-center  z-[1000] bg-opacity-30 backdrop-blur-xl rounded-3xl  bg-transparent  justify-end pt-12">
            <div class="w-full bg-black lg:w-6/12">
                <div class="">
                     <div class=" mx-auto px-4 text-center py-6">
                             @if($nextFestival)
                                 <h1 class="text-4xl md:text-5xl uppercase font-extrabold text-active-purple mb-4 animate-pulse">{{$nextFestival->title}}</h1>
                                 <p class="text-xl md:text-xl uppercase font-extrabold text-active-purple mb-4 animate-pulse"></p>
-                                <h2 class="font-semibold text-black uppercase text-3xl">
+                                <h2 class="font-semibold text-white uppercase text-3xl">
                                     {{ \Carbon\Carbon::parse($nextFestival->start_at)->format('jS') }}
                                     to
                                     {{ \Carbon\Carbon::parse($nextFestival->end_at)->format('jS F Y') }}
                                 </h2>
 
-                                <h1 class="tracking-[10px] text-3xl uppercase font-bold text-black leading-tight">
+                                <h1 class="tracking-[10px] text-3xl uppercase font-bold text-white leading-tight">
                                      {{ $nextFestival->location }}
                                 </h1>
                                 <div class="flex flex-wrap justify-center gap-4 py-12" id="countdown">
-                                    <div class="bg-white/50 backdrop-blur-sm rounded-xl p-4">
-                                        <span class="text-5xl font-bold text-black" id="days"></span>
-                                        <p class="text-black mb-0">Days</p>
+                                    <div class="bg-white/20 backdrop-blur-sm rounded-xl p-4">
+                                        <span class="text-5xl font-bold text-white" id="days"></span>
+                                        <p class="text-white mb-0">Days</p>
                                     </div>
-                                    <div class="bg-white/50 backdrop-blur-sm rounded-xl p-4">
-                                        <span class="text-5xl font-bold text-black" id="hours"></span>
-                                        <p class="text-black mb-0">Hours</p>
+                                    <div class="bg-white/20 backdrop-blur-sm rounded-xl p-4">
+                                        <span class="text-5xl font-bold text-white" id="hours"></span>
+                                        <p class="text-white mb-0">Hours</p>
                                     </div>
-                                    <div class="bg-white/50 backdrop-blur-sm rounded-xl p-4">
-                                        <span class="text-5xl font-bold text-black" id="minutes"></span>
-                                        <p class="text-black mb-0">Minutes</p>
+                                    <div class="bg-white/20 backdrop-blur-sm rounded-xl p-4">
+                                        <span class="text-5xl font-bold text-white" id="minutes"></span>
+                                        <p class="text-white mb-0">Minutes</p>
                                     </div>
-                                    <div class="bg-white/50 backdrop-blur-sm rounded-xl p-4">
-                                        <span class="text-5xl font-bold text-black" id="seconds"></span>
-                                        <p class="text-black mb-0">Seconds</p>
+                                    <div class="bg-white/20 backdrop-blur-sm rounded-xl p-4">
+                                        <span class="text-5xl font-bold text-white" id="seconds"></span>
+                                        <p class="text-white mb-0">Seconds</p>
                                     </div>
                                 </div>
                             @else
@@ -67,13 +67,13 @@
                </div>
            </div>
            
-            <div class="w-full lg:w-6/12">
+            <div class="w-full p-6 lg:w-6/12">
              <h2 class="font-semibold text-black uppercase text-start text-8xl">About</h2>
                 <h1 class="tracking-[10px] text-4xl uppercase font-bold text-black leading-tight">
                     The Asian Literary <br> Festival - Brussels
                 </h1>
             <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl mt-5"></h2>
-            <p class="text-gray-700"> The Asian Literature Festival in Brussels is a vibrant celebration of the rich and diverse literary traditions from across Asia. Our mission is to bridge cultures, foster understanding, and showcase the incredible talent of Asian authors, poets, and storytellers. Through engaging readings, insightful discussions, and interactive workshops, we invite you to explore the captivating narratives and profound perspectives that define Asian literature. Join us in Brussels to connect with authors.</p>
+            <p class="text-gray-700 text-justify"> The Asian Literature Festival in Brussels is a vibrant celebration of the rich and diverse literary traditions from across Asia. Our mission is to bridge cultures, foster understanding, and showcase the incredible talent of Asian authors, poets, and storytellers. Through engaging readings, insightful discussions, and interactive workshops, we invite you to explore the captivating narratives and profound perspectives that define Asian literature. Join us in Brussels to connect with authors.</p>
            </div>
         </div>
     </div>

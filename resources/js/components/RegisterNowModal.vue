@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button @click="showModal = true" class="text-white bg-black px-4 py-2 mb-4  font-semibold">Register Now</button>
+    <button @click="showModal = true" class="text-black bg-white px-4 py-2 mb-4  font-semibold">Register Now</button>
 
 
     <teleport to="body">
