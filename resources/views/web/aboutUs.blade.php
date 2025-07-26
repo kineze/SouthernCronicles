@@ -20,7 +20,7 @@
     </div>
 
  
-     <div class="">
+     <div class="hidden md:block">
          <div  class=" relative flex pb-24 flex-wrap bg-white z-[1000] bg-opacity-30 backdrop-blur-xl rounded-3xl  bg-transparent items-start justify-end px-6 lg:px-12 pt-36">
            <div class="w-full lg:w-6/12">
                <div class="">
@@ -78,6 +78,63 @@
         </div>
     </div>
     
+          <div class=" md:hidden">
+         <div  class=" relative flex pb-24 flex-wrap bg-white z-[1000] bg-opacity-30 backdrop-blur-xl rounded-3xl  bg-transparent items-start justify-end px-6 lg:px-12 pt-12 lg:pt-36">
+           <div class="w-full lg:w-6/12">
+               <div class="">
+                    <div class=" mx-auto px-4 text-center py-6">
+                            @if($nextFestival)
+                                <h1 class="text-4xl md:text-5xl uppercase font-extrabold text-active-purple mb-4 animate-pulse">{{$nextFestival->title}}</h1>
+                                <p class="text-xl md:text-xl uppercase font-extrabold text-active-purple mb-4 animate-pulse"></p>
+                                <h2 class="font-semibold text-black uppercase text-3xl">
+                                    {{ \Carbon\Carbon::parse($nextFestival->start_at)->format('jS') }}
+                                    to
+                                    {{ \Carbon\Carbon::parse($nextFestival->end_at)->format('jS F Y') }}
+                                </h2>
+
+                                <h1 class="tracking-[5px] text-xl uppercase font-bold text-black leading-tight">
+                                     {{ $nextFestival->location }}
+                                </h1>
+                                <div class="flex flex-wrap justify-center gap-2 py-6 lg:py-12" id="countdown-mobile">
+                                    <div class="bg-white/50 backdrop-blur-sm rounded-xl p-2">
+                                        <span class="text-xl font-bold text-black" id="days-mobile"></span>
+                                        <p class="text-black text-sm mb-0">Days</p>
+                                    </div>
+                                    <div class="bg-white/50 backdrop-blur-sm rounded-xl p-2">
+                                        <span class="text-xl font-bold text-black" id="hours-mobile"></span>
+                                        <p class="text-black text-sm mb-0">Hours</p>
+                                    </div>
+                                    <div class="bg-white/50 backdrop-blur-sm rounded-xl p-2">
+                                        <span class="text-xl  font-bold text-black" id="minutes-mobile"></span>
+                                        <p class="text-black text-sm mb-0">Mins</p>
+                                    </div>
+                                    <div class="bg-white/50 backdrop-blur-sm rounded-xl p-2">
+                                        <span class="text-xl font-bold text-black" id="seconds-mobile"></span>
+                                        <p class="text-black text-sm mb-0">Secs</p>
+                                    </div>
+                                </div>
+                            @else
+                                <h2 class="text-active-purple uppercase text-5xl">Coming Soon</h2>
+                            @endif
+
+                            <div class="flex justify-center items-center mt-6">
+                                <register-now-modal></register-now-modal>
+                            </div>
+                            
+                        </div>
+               </div>
+           </div>
+           
+            <div class="w-full lg:w-6/12">
+             <h2 class="font-semibold text-black text-center uppercase md:text-start text-3xl md:text-8xl">About</h2>
+                <h1 class="tracking-[5px] text-xl uppercase text-center md:text-start font-bold text-black leading-tight">
+                    The Asian Literary <br> Festival 
+                </h1>
+            <h2 class="font-semibold tracking-[10px] text-black text-center md:text-start uppercase text-xl">Brussels.</h2>
+            <p class="text-justify md:text-left"> The Asian Literature Festival in Brussels is a vibrant celebration of the rich and diverse literary traditions from across Asia. Our mission is to bridge cultures, foster understanding, and showcase the incredible talent of Asian authors, poets, and storytellers. Through engaging readings, insightful discussions, and interactive workshops, we invite you to explore the captivating narratives and profound perspectives that define Asian literature. Join us in Brussels to connect with authors.</p>
+           </div>
+        </div>
+    </div>
 </section>
 
 @endsection
