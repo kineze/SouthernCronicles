@@ -31,6 +31,18 @@
   flex-shrink: 0;
   object-fit: contain;
 }
+
+.loop-container-mobile img {
+  width: 100vw;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.loop-container-mobile {
+  display: flex;
+  width: calc(100vw * 4); /* Ensure at least 2 full loops */
+}
+
 .animate-loop-x {
   animation: loop-x 60s linear infinite;
 }
