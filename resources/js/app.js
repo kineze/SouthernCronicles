@@ -22,6 +22,7 @@ import SpeakersList from './components/Speakers List.vue';
 import OurPartners from './components/OurPartners.vue';
 import UsefullLinks from './components/UsefullLinks.vue';
 import ContactUs from './components/ContactUs.vue';
+import RegisterNowModal from './components/RegisterNowModal.vue';
 
 
 const app = createApp({});
@@ -56,5 +57,6 @@ app
     .component('our-partners',OurPartners)
     .component('usefull-links', UsefullLinks)
     .component('contact-us',ContactUs)
+    .component('register-now-modal', RegisterNowModal)
 
     .mount('#app')

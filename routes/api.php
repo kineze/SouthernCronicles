@@ -7,6 +7,7 @@ use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\FestivalController;
 use App\Http\Controllers\SpeakersController;
 use App\Http\Controllers\SpeakerTypeController;
+use App\Http\Controllers\RegistrationController;
 
 
 // for admin view
@@ -27,3 +28,4 @@ Route::apiResource('partners', PartnerController::class);
 Route::get('/our-partners', [PartnerController::class, 'partnersList']);
 
 Route::post('/contact', [ContactController::class, 'sendContactEmail']);
+Route::post('/register', [RegistrationController::class, 'store']);
