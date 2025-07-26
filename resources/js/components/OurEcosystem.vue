@@ -1,10 +1,6 @@
 <template>
   <div class="relative pt-6 backdrop-blur-xl overflow-hidden lg:py-16">
-    <div class="bg-black px-4 py-2 mb-5">
-      <h1 class="lg:text-6xl text-3xl text-white font-extrabold tracking-widest uppercase text-center">
-        Our Ecosystem
-      </h1>
-    </div>
+
 
     <div class="w-full max-w-screen-2xl mx-auto py-10 overflow-hidden">
       <!-- Make sure container has enough width and no clipping -->
