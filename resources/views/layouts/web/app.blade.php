@@ -19,7 +19,8 @@
         @include('web.includes.footer')
 
     </main>
-
+    
+    @stack('scripts')
     
   </body>
 
