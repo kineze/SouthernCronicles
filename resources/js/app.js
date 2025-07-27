@@ -34,7 +34,7 @@ import EventSchedule from './components/EventSchedule.vue';
 import NextCountDown from './components/NextCountDown.vue';
 import TeamsCarousel from './components/TeamsCarousel.vue';
 import PrivacyPolicy from './components/PrivacyPolicy.vue';
-
+import ReadMoreText from './components/ReadMoreText.vue';
 
 const app = createApp({});
 
@@ -77,5 +77,7 @@ app
     .component('next-count-down',NextCountDown)
     .component('teams-carousel',TeamsCarousel)
     .component('privacy-policy',PrivacyPolicy)
+    .component('read-more-text',ReadMoreText)
+
 
     .mount('#app')

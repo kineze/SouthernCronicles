@@ -19,15 +19,19 @@
  
    <div class="">
          <div  class=" relative flex pb-12 h-full flex-wrap bg-white z-[1000] bg-opacity-30 backdrop-blur-xl rounded-3xl  bg-transparent items-start justify-end pt-12">
-            <div class="w-full lg:w-6/12 p-6 flex bg-black text-white">
-            <div class="flex w-full mb-24 flex-col justify-start items-start ">
-                 <h2 class="font-normal h-full textstart text-6xl md:text-8xl ml-12">the</h2>
+            <div class="w-full lg:w-5/12  justify-between p-6 flex bg-black text-white">
+            <div class="flex w-full mb-12 flex-col justify-start items-start ">
+                <h2 class="font-normal h-full textstart text-6xl md:text-8xl ml-12">the</h2>
                 <h2 class="font-bold h-full textstart text-6xl md:text-8xl">writing</h2>
                 <h2 class="font-normal h-full textstart text-6xl md:text-8xl ml-24 lg:ml-36">lab</h2>
             </div>
+
+            <div class="p-2 border-white border w-fit h-fit text-md rounded-full">  <i class="fas  fa-trademark"></i> </div>
+               
+
             </div>
             
-            <div class="w-full  lg:w-6/12">
+            <div class="w-full  lg:w-7/12">
                 <p class="text-gray-700 py-3 p-6">The Asian Writing Lab forms the creative heart of our festivals, nurturing emerging writers
                 to push beyond conventional boundaries and harness the transformative power of
                 imagination. This dynamic incubator seamlessly blends stage and classroom into an
