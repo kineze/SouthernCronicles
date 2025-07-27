@@ -5,7 +5,7 @@
     <h5 class="text-sm lg:text-lg font-bold tracking-wide">Gampaha - Sri Lanka</h5>
 
     <div class="lg:mt-10 mt-5">
-      <p class="text-sm font-semibold uppercase">23rd DEC 2025</p>
+      <p class="text-sm font-semibold uppercase">27th DEC 2025</p>
 
       <div class="mt-6 mb-10 flex justify-center gap-4 flex-wrap">
         <div class="bg-white/20 text-white rounded-md w-20 h-20 flex flex-col justify-center items-center">
@@ -40,7 +40,7 @@ const countdown = ref({
   seconds: '00'
 })
 
-const targetDate = new Date('2025-12-23T00:00:00')
+const targetDate = new Date('2025-12-27T00:00:00')
 
 let interval = null
 
