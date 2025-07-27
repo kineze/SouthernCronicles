@@ -11,11 +11,18 @@
             :key="index"
             class="flex justify-center items-center shrink-0 px-4"
           >
+          <a
+            :href="logo.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex justify-center items-center shrink-0 px-4"
+          >
             <img
-              :src="logo"
+              :src="logo.src"
               alt="ecosystem-logo"
               class="w-40 h-24 object-contain transition duration-300"
             />
+          </a>
           </div>
         </div>
       </div>
@@ -25,19 +32,19 @@
 
 
 <script setup>
+
 const logos = [
-  'assets/img/asian-lit-festival.webp',
-  'assets/img/asian-books.webp',
-  'assets/img/asian-review-sinhala.webp',
-  'assets/img/asianhomeoflit.webp',
-  'assets/img/asianprizes.webp',
-  'assets/img/asianreviews.webp',
-  'assets/img/asian-journal.webp',
-  'assets/img/TALA_LOGO.webp',
-  'assets/img/trogon.webp'
+  { src: 'assets/img/asian-lit-festival.webp', url: 'https://www.facebook.com/profile.php?id=61573846436965' },
+  { src: 'assets/img/asian-books.webp', url: 'https://asian-reviews.com/' },
+  { src: 'assets/img/asian-review-sinhala.webp', url: 'https://theasianreviewsinhala.reviews/' },
+  { src: 'assets/img/asianhomeoflit.webp', url: 'https://www.facebook.com/profile.php?id=100089906924668&_rdc=2&_rdr#' },
+  { src: 'assets/img/asianprizes.webp', url: 'https://www.facebook.com/TheAsianPrizes/?_rdc=2&_rdr#' },
+  { src: 'assets/img/asianreviews.webp', url: 'https://asian-reviews.com/' },
+  { src: 'assets/img/asian-journal.webp', url: 'https://theasianjournalofliterature.org/' },
+  { src: 'assets/img/TALA_LOGO.webp', url: 'https://theasianliteraryagency.com/' },
+  { src: 'assets/img/trogon.webp', url: '#' }
 ]
 
-// Duplicate for continuous scroll
 const duplicatedLogos = [...logos, ...logos]
 </script>
 

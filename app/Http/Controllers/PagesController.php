@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Festival;
 use Illuminate\Http\Request;
+use PDO;
 
 class PagesController extends Controller
 {
@@ -48,5 +49,10 @@ class PagesController extends Controller
     public function privacyPolicy(){
 
         return view('web.privacyPolicy');
+    }
+
+    public function temsConditions(){
+
+        return view('web.temsConditions');
     }
 }

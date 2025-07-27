@@ -141,6 +141,7 @@
         <p>Philippine Art & Culture Exchange</p>
         <p>Chée de Roodebeek 148, 1200 Woluwe-Saint-Lambert</p>
         <p>+32 496 06 81 86</p>
+        <p>info@theasianliteraryfestival.com</p>
     </div>
   </div>
 </template>

@@ -1,14 +1,19 @@
 <template>
   <div>
-    <h1 class="lg:text-6xl text-3xl mt-12 lg:mt-4 text-black font-extrabold tracking-widest uppercase text-center">Events Agenda</h1>
+    <h1 class="lg:text-6xl text-3xl mt-12 lg:mt-4 text-black font-extrabold tracking-widest uppercase text-center">
+      Events Agenda
+    </h1>
 
     <!-- Filter -->
-    <div class="flex flex-wrap justify-end items-center w-full mt-10">
+    <div v-if="showFilter" class="flex flex-wrap justify-end items-center w-full mt-10">
       <div class="lg:w-auto w-full mt-4 lg:mt-0">
         <div class="px-2.5 py-2.5 border rounded-full border-gray-300 flex flex-wrap gap-2">
           <button
             @click="filterDate = null; fetchEvents()"
-            :class="['font-semibold rounded-full px-3 py-1.5 transition-all duration-300', !filterDate ? 'bg-black text-white' : 'bg-white text-black']">
+            :class="[
+              'font-semibold rounded-full px-3 py-1.5 transition-all duration-300',
+              !filterDate ? 'bg-black text-white' : 'bg-white text-black'
+            ]">
             All
           </button>
 
@@ -16,8 +21,10 @@
             v-for="date in eventDates"
             :key="date.raw"
             @click="filterDate = date.raw; fetchEvents()"
-            :class="['font-semibold rounded-full px-3 py-1.5 transition-all duration-300',
-              filterDate === date.raw ? 'bg-black text-white' : 'bg-white text-black']">
+            :class="[
+              'font-semibold rounded-full px-3 py-1.5 transition-all duration-300',
+              filterDate === date.raw ? 'bg-black text-white' : 'bg-white text-black'
+            ]">
             {{ date.label }}
           </button>
         </div>
@@ -26,75 +33,165 @@
 
     <!-- Events Accordion -->
     <div class="mt-8 space-y-4">
-      <div v-for="(event, idx) in events" :key="event.id" class=" overflow-hidden shadow-md">
+      <div
+        v-for="(event, idx) in events.slice(0, visibleCount)"
+        :key="event.id"
+        class="overflow-hidden shadow-md"
+      >
         <button
-          class="w-full flex justify-between items-center px-6 py-4 bg-black text-white font-semibold border-b border-black"
-          @click="openIndex = openIndex === idx ? null : idx">
+          :class="[
+            'w-full flex justify-between items-center px-6 py-4 text-white font-semibold border-b border-black',
+            eventColorMap[event.id] || 'bg-black'
+          ]"
+          @click="openIndex = openIndex === idx ? null : idx"
+        >
           <span class="text-left font-semibold uppercase">
-            {{ event.name }} - {{ formatDate(event.event_date) }} ---- ({{ formatTime(event.time_in) }} - {{ formatTime(event.time_out) }})
+            {{ event.name }} - {{ formatDate(event.event_date) }} ----
+            ({{ formatTime(event.time_in) }} - {{ formatTime(event.time_out) }})
           </span>
-          <svg :class="{'rotate-180': openIndex === idx}" class="w-5 h-5 transition-transform" fill="none" stroke="currentColor" stroke-width="2"
-            viewBox="0 0 24 24">
+          <svg
+            :class="{ 'rotate-180': openIndex === idx }"
+            class="w-5 h-5 transition-transform"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
             <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
           </svg>
         </button>
 
-<Transition
-  enter-active-class="transition-all duration-800 ease-in-out"
-  leave-active-class="transition-all duration-800 ease-in-out"
-  enter-from-class="max-h-0 opacity-0"
-  enter-to-class="max-h-full opacity-100"
-  leave-from-class="max-h-full opacity-100"
-  leave-to-class="max-h-0 opacity-0"
->
-  <div
-    v-show="openIndex === idx"
-    class="px-6 py-4 border-b border-l border-r border-black text-black space-y-6 bg-gray-50"
-  >
-    <!-- Row 1: Venue / Moderator / Book Signing -->
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-      <p><strong>Venue:</strong> {{ event.venue }}</p>
-      <p><strong>Moderator:</strong> {{ event.moderator?.name ?? 'N/A' }}</p>
-      <p><strong>Book Signing:</strong> {{ event.book_signing ? 'Yes' : 'No' }}</p>
-    </div>
+        <Transition
+          enter-active-class="transition-all duration-800 ease-in-out"
+          leave-active-class="transition-all duration-800 ease-in-out"
+          enter-from-class="max-h-0 opacity-0"
+          enter-to-class="max-h-full opacity-100"
+          leave-from-class="max-h-full opacity-100"
+          leave-to-class="max-h-0 opacity-0"
+        >
+          <div
+            v-show="openIndex === idx"
+            class="px-6 py-4 border-b border-l border-r border-black text-black space-y-6 bg-gray-50"
+          >
+            <!-- Row 1 -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+              <p><strong>Venue:</strong> {{ event.venue }}</p>
+              <p><strong>Moderator:</strong> {{ event.moderator?.name ?? 'N/A' }}</p>
+              <p><strong>Book Signing:</strong> {{ event.book_signing ? 'Yes' : 'No' }}</p>
+            </div>
 
-    <!-- Row 2: Speakers / Event Type (styled like description row) -->
-    <div class="pt-4 border-t border-gray-200 grid grid-cols-1 lg:grid-cols-3 gap-4">
-      <div>
-        <p><strong>Speakers:</strong></p>
-        <ul class="list-disc list-inside">
-          <li v-for="s in event.speakers" :key="s.id">{{ s.name }}</li>
-        </ul>
+            <!-- Row 2 -->
+            <div class="pt-4 border-t border-gray-200 grid grid-cols-1 lg:grid-cols-3 gap-4">
+              <div>
+                <p><strong>Speakers:</strong></p>
+                <ul class="list-disc list-inside">
+                  <li v-for="s in event.speakers" :key="s.id">{{ s.name }}</li>
+                </ul>
+              </div>
+              <div>
+                <p><strong>Event Type:</strong> {{ event.event_type }}</p>
+              </div>
+            </div>
+
+            <!-- Description -->
+            <div v-if="event.description" class="pt-4 border-t border-gray-200">
+              <p class="text-gray-900 whitespace-pre-line capitalize break-words max-w-screen-2xl">
+                {{ event.description }}
+              </p>
+            </div>
+          </div>
+        </Transition>
       </div>
-      <div>
-        <p><strong>Event Type:</strong> {{ event.event_type }}</p>
-      </div>
-    </div>
 
-    <!-- Description (only if available) -->
-    <div v-if="event.description" class="pt-4 border-t border-gray-200">
-      
-      <p class="text-gray-900 whitespace-pre-line capitalize break-words max-w-screen-2xl">{{ event.description }}</p>
-    </div>
-  </div>
-</Transition>
-
-
-
+      <div v-if="visibleCount < events.length" class="flex justify-center mt-6">
+        <button
+          @click="visibleCount += increment"
+          class="bg-black text-white px-6 py-2 font-semibold hover:bg-gray-800 transition"
+        >
+          Load More
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import axios from 'axios'
 
+// Props
+const { count, increment, showFilter: rawShowFilter } = defineProps({
+  count: { type: Number, default: 10 },
+  increment: { type: Number, default: 10 },
+  showFilter: { type: [Boolean, String], default: false }
+})
+
+const showFilter = computed(() => rawShowFilter === true || rawShowFilter === 'true')
+
+// State
 const eventDates = ref([])
 const events = ref([])
 const filterDate = ref(null)
 const openIndex = ref(null)
+const visibleCount = ref(count)
+const eventColorMap = ref({})
 
+// Colors to use for overlapping groups
+const colorPalette = [
+  'bg-gradient-to-r from-black to-gray-800',
+  'bg-gradient-to-r from-gray-800 to-gray-600',
+  'bg-gradient-to-r from-gray-900 to-black',
+  'bg-gradient-to-r from-gray-700 to-gray-900',
+  'bg-gradient-to-r from-black to-gray-700',
+  'bg-gradient-to-r from-gray-600 to-black'
+]
+
+// Helper: convert "HH:mm" to minutes
+const timeToMinutes = (timeStr) => {
+  const [h, m] = timeStr.split(':').map(Number)
+  return h * 60 + m
+}
+
+// Group overlapping events and assign color
+const groupEventsByTime = () => {
+  const map = {}
+  const colors = {}
+
+  events.value.forEach(event => {
+    const date = event.event_date
+    if (!map[date]) map[date] = []
+
+    const start = timeToMinutes(event.time_in)
+    const end = timeToMinutes(event.time_out)
+
+    let groupIndex = map[date].findIndex(group =>
+      group.some(e => {
+        const s = timeToMinutes(e.time_in)
+        const e_ = timeToMinutes(e.time_out)
+        return Math.max(s, start) < Math.min(e_, end) // Overlap
+      })
+    )
+
+    if (groupIndex === -1) {
+      map[date].push([event])
+    } else {
+      map[date][groupIndex].push(event)
+    }
+  })
+
+  Object.entries(map).forEach(([_, groups]) => {
+    groups.forEach((group, i) => {
+      const color = colorPalette[i % colorPalette.length]
+      group.forEach(e => {
+        colors[e.id] = color
+      })
+    })
+  })
+
+  eventColorMap.value = colors
+}
+
+// Fetch
 const fetchDates = async () => {
   const res = await axios.get('/api/events/dates')
   eventDates.value = res.data
@@ -105,12 +202,20 @@ const fetchEvents = async () => {
     params: filterDate.value ? { date: filterDate.value } : {}
   })
   events.value = res.data
-  openIndex.value = null // Reset accordion state
+
+  visibleCount.value = count
+  openIndex.value = null
+
+  groupEventsByTime()
 }
 
+// Format
 const formatDate = (dateStr) => {
-  const options = { year: 'numeric', month: 'long', day: 'numeric' } // e.g., August 3, 2025
-  return new Date(dateStr).toLocaleDateString('en-US', options)
+  return new Date(dateStr).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  })
 }
 
 const formatTime = (timeStr) => {
