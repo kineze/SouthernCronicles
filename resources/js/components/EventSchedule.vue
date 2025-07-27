@@ -39,30 +39,47 @@
           </svg>
         </button>
 
-        <Transition
-            enter-active-class="transition-all duration-800 ease-in-out"
-            leave-active-class="transition-all duration-800 ease-in-out"
-            enter-from-class="max-h-0 opacity-0"
-            enter-to-class="max-h-full opacity-100"
-            leave-from-class="max-h-full opacity-100"
-            leave-to-class="max-h-0 opacity-0"
-            >
-            <div
-                v-show="openIndex === idx"
-                class="px-6 py-4 border-b border-l border-r border-black text-black space-y-6 lg:space-y-0 bg-gray-50 grid grid-cols-1 lg:grid-cols-4 overflow-hidden"
-            >
-                <p><strong>Venue:</strong> {{ event.venue }}</p>
-                <p><strong>Event Type:</strong> {{ event.event_type }}</p>
-                <p><strong>Moderator:</strong> {{ event.moderator?.name ?? 'N/A' }}</p>
-                <p><strong>Book Signing:</strong> {{ event.book_signing ? 'Yes' : 'No' }}</p>
-                <div class="lg:pt-4">
-                    <p><strong>Speakers:</strong></p>
-                    <ul class="list-disc list-inside">
-                        <li v-for="s in event.speakers" :key="s.id">{{ s.name }}</li>
-                    </ul>
-                </div>
-            </div>
-        </Transition>
+<Transition
+  enter-active-class="transition-all duration-800 ease-in-out"
+  leave-active-class="transition-all duration-800 ease-in-out"
+  enter-from-class="max-h-0 opacity-0"
+  enter-to-class="max-h-full opacity-100"
+  leave-from-class="max-h-full opacity-100"
+  leave-to-class="max-h-0 opacity-0"
+>
+  <div
+    v-show="openIndex === idx"
+    class="px-6 py-4 border-b border-l border-r border-black text-black space-y-6 bg-gray-50"
+  >
+    <!-- Row 1: Venue / Moderator / Book Signing -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+      <p><strong>Venue:</strong> {{ event.venue }}</p>
+      <p><strong>Moderator:</strong> {{ event.moderator?.name ?? 'N/A' }}</p>
+      <p><strong>Book Signing:</strong> {{ event.book_signing ? 'Yes' : 'No' }}</p>
+    </div>
+
+    <!-- Row 2: Speakers / Event Type (styled like description row) -->
+    <div class="pt-4 border-t border-gray-200 grid grid-cols-1 lg:grid-cols-3 gap-4">
+      <div>
+        <p><strong>Speakers:</strong></p>
+        <ul class="list-disc list-inside">
+          <li v-for="s in event.speakers" :key="s.id">{{ s.name }}</li>
+        </ul>
+      </div>
+      <div>
+        <p><strong>Event Type:</strong> {{ event.event_type }}</p>
+      </div>
+    </div>
+
+    <!-- Description (only if available) -->
+    <div v-if="event.description" class="pt-4 border-t border-gray-200">
+      
+      <p class="text-gray-900 whitespace-pre-line capitalize break-words max-w-screen-2xl">{{ event.description }}</p>
+    </div>
+  </div>
+</Transition>
+
+
 
       </div>
     </div>
