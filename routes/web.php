@@ -18,8 +18,6 @@ Route::controller(GenaralController::class)->group( function (){
     Route::get('/', 'index')->name('index');
 
     Route::get('/home', 'home')->name('home');
-    Route::get('/the-writing-lab', 'writingLab')->name('writingLab');
-    Route::get('/about-us', 'aboutUs')->name('aboutUs');
     Route::get('/setdashboard', 'setDashboard')->name('setDashboard');
     Route::get('/dashboard', 'setDashboard')->name('dashboard');
     Route::get('/user-login','userLogin')->name('userLogin');
@@ -33,10 +31,13 @@ Route::controller(GenaralController::class)->group( function (){
 
 Route::controller(PagesController::class)->group( function (){
 
+    Route::get('/the-writing-lab', 'writingLab')->name('writingLab');
+    Route::get('/about-us', 'aboutUs')->name('aboutUs');
     Route::get('/speakers-list','speakersList')->name('speakersList');
     Route::get('/our-partners','ourPartners')->name('ourPartners');
     Route::get('/contact-us','contactus')->name('contactus');
-    route::get('/events-schedule','eventsSchedule')->name('eventsSchedule');
+    Route::get('/events-schedule','eventsSchedule')->name('eventsSchedule');
+    Route::get('/privacy-policy', 'privacyPolicy')->name('privacyPolicy');
 
 });
 
@@ -98,10 +99,6 @@ Route::middleware(['permission:Manage Teams', config('jetstream.auth_session'), 
     });
 
 });
-
-
-
-
 
 
 Route::middleware(['permission:Manage Users', config('jetstream.auth_session'), 'verified',])->group(function () {

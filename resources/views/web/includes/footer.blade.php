@@ -9,7 +9,7 @@
     <div class="mt-6 text-sm space-x-6 mx-auto items-center flex justify-center flex-wrap">
         <p class=" text-gray-400 text-sm">©{{ now()->format('Y') }}</p>
         <a href="#" class="hover:underline">General Terms and Conditions</a>
-        <a href="#" class="hover:underline">Privacy Policy</a>
+        <a href="{{url('/privacy-policy')}}" class="hover:underline">Privacy Policy</a>
         <a href="{{route('contactus')}}" class="hover:underline">Contact Us</a>
       </div>
 
