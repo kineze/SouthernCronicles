@@ -38,6 +38,7 @@ Route::controller(PagesController::class)->group( function (){
     Route::get('/contact-us','contactus')->name('contactus');
     Route::get('/events-schedule','eventsSchedule')->name('eventsSchedule');
     Route::get('/privacy-policy', 'privacyPolicy')->name('privacyPolicy');
+    Route::get('/terms-&-conditions','temsConditions')->name('temsConditions');
 
 });
 
