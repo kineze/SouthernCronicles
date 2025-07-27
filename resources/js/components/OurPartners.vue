@@ -5,7 +5,7 @@
     </h1>
 
     
-    <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-2">
+    <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-9 gap-2">
       <div
         v-for="partner in visiblePartners"
         :key="partner.id"
@@ -34,7 +34,7 @@ import axios from 'axios'
 const allPartners = ref([])
 const visiblePartners = ref([])
 const rowsToShow = ref(3)
-const cols = 8
+const cols = 9
 
 const fetchPartners = async () => {
   const { data } = await axios.get('/api/our-partners')
@@ -43,7 +43,7 @@ const fetchPartners = async () => {
 }
 
 const loadMore = () => {
-  rowsToShow.value += 8
+  rowsToShow.value += 9
   visiblePartners.value = allPartners.value.slice(0, rowsToShow.value * cols)
 }
 
