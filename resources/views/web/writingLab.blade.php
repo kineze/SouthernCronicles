@@ -20,13 +20,15 @@
    <div class="">
          <div  class=" relative flex pb-12 h-full flex-wrap bg-white z-[1000] bg-opacity-30 backdrop-blur-xl rounded-3xl  bg-transparent items-start justify-end pt-12">
             <div class="w-full lg:w-5/12  justify-between p-6 flex bg-black text-white">
-            <div class="flex w-full mb-12 flex-col justify-start items-start ">
+            <div class="flex w-full  mb-12 flex-col justify-start items-start ">
                 <h2 class="font-normal h-full textstart text-6xl md:text-8xl ml-12">the</h2>
-                <h2 class="font-bold h-full textstart text-6xl md:text-8xl">writing</h2>
-                <h2 class="font-normal h-full textstart text-6xl md:text-8xl ml-24 lg:ml-36">lab</h2>
+                <h2 class="font-bold h-full uppercase textstart text-6xl md:text-7xl">writing</h2>
+                <div class="flex items-start"><h2 class="font-normal h-full textstart text-6xl md:text-8xl ml-24 lg:ml-36">lab </h2>
+                
+                <span class="p-0.5 border-white mt-3 border text-xs rounded-full">  <i class="fas fa-trademark"></i> </span></div>
             </div>
 
-            <div class="p-2 border-white border w-fit h-fit text-md rounded-full">  <i class="fas  fa-trademark"></i> </div>
+            
                
 
             </div>
