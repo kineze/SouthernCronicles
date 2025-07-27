@@ -27,7 +27,7 @@ public function store(Request $request)
         'time_out'      => 'required',
         'venue'         => 'required|string',
         'name'          => 'required|string',
-        'event_type'    => 'required|string',
+        'event_type'    => 'nullable|string',
         'description'   => 'nullable|string', // ✅ new field
         'speaker_ids'   => 'nullable|array',
         'moderator_id'  => 'nullable|exists:speakers,id',
@@ -56,7 +56,7 @@ public function update(Request $request, Event $event)
         'time_out'      => 'required',
         'venue'         => 'required|string',
         'name'          => 'required|string',
-        'event_type'    => 'required|string',
+        'event_type'    => 'nullable|string',
         'description'   => 'nullable|string', // ✅ new field
         'speaker_ids'   => 'nullable|array',
         'moderator_id'  => 'nullable|exists:speakers,id',
