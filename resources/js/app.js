@@ -33,6 +33,7 @@ import OurEcosystem from './components/OurEcosystem.vue';
 import EventSchedule from './components/EventSchedule.vue';
 import NextCountDown from './components/NextCountDown.vue';
 import TeamsCarousel from './components/TeamsCarousel.vue';
+import ReadMoreText from './components/ReadMoreText.vue';
 
 
 const app = createApp({});
@@ -75,5 +76,7 @@ app
     .component('event-schedule',EventSchedule)
     .component('next-count-down',NextCountDown)
     .component('teams-carousel',TeamsCarousel)
+    .component('read-more-text',ReadMoreText)
+
 
     .mount('#app')

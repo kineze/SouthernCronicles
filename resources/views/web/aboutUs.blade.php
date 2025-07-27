@@ -137,17 +137,16 @@
     </div>
 </section>
 
-{{-- <section class="w-full max-w-screen-2xl -mt-10 mx-auto p-3">
+<section class="w-full max-w-screen-2xl -mt-10 mx-auto p-3">
 
     <div class="bg-white px-4 py-2 mb-5">
       <h1 class="lg:text-6xl text-3xl text-black font-extrabold tracking-widest uppercase text-center">
-        Our Ecosystem
+       The Organizing Force
       </h1>
     </div>
 
-    <our-ecosystem></our-ecosystem>
-
-</section> --}}
+    <read-more-text></read-more-text>
+</section>
 
 <section class="w-full max-w-screen-2xl  mx-auto p-3">
 
