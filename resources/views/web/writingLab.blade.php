@@ -24,7 +24,6 @@
                 <h2 class="font-normal h-full textstart text-6xl md:text-8xl ml-12">the</h2>
                 <h2 class="font-bold h-full uppercase textstart text-6xl md:text-7xl">writing</h2>
                 <div class="flex items-start"><h2 class="font-normal h-full textstart text-6xl md:text-8xl ml-24 lg:ml-36">lab </h2>
-                
                 <span class="p-0.5 border-white mt-3 border text-xs rounded-full">  <i class="fas fa-trademark"></i> </span></div>
             </div>
 
