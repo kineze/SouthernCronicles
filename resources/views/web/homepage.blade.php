@@ -209,9 +209,18 @@
 
 <section class="w-full max-w-screen-2xl mx-auto">
 
+    <event-schedule :count="5" :increment="1" show-filter="false"></event-schedule>
+
+</section>
+
+<section class="w-full max-w-screen-2xl mx-auto">
+
     <our-partners></our-partners>
 
 </section>
+
+
+
 
 <section class="w-full max-w-screen-2xl  mt-6 mx-auto">
 
