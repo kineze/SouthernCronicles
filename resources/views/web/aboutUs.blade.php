@@ -70,7 +70,7 @@
             <div class="w-full px-6 lg:w-6/12">
              <h2 class="font-semibold text-black uppercase text-start text-8xl">About</h2>
                 <h1 class="tracking-[10px] text-4xl uppercase font-bold text-black leading-tight">
-                    The Asian Literary <br> Festival - Brussels
+                    The Fastest Growing Global Network of Festivals
                 </h1>
             <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl mt-5"></h2>
              <p class="text-gray-700 py-3">The Asian Literary Festivals: Where Stories Unite the World Creative expression is humanity's most profound manifestation of diversity—a mirror reflecting our heritage, our souls, and the rich tapestry of human experience. The Asian Literary Festivals serve as the crucible where this diversity fuses into one shared humanity, creating a global stage that celebrates both our unity and our beautiful differences within the human species.</p>
@@ -131,7 +131,7 @@
             <div class="w-full lg:w-6/12">
              <h2 class="font-semibold text-black text-center uppercase md:text-start text-3xl md:text-8xl">About</h2>
                 <h1 class="tracking-[5px] text-xl uppercase text-center md:text-start font-bold text-black leading-tight">
-                    The Asian Literary <br> Festival 
+                   The Fastest Growing Global Network of Festivals
                 </h1>
             <h2 class="font-semibold tracking-[10px] text-black text-center md:text-start uppercase text-xl">Brussels.</h2>
             <p class="text-gray-700 py-3 text-justify">The Asian Literary Festivals: Where Stories Unite the World Creative expression is humanity's most profound manifestation of diversity—a mirror reflecting our heritage, our souls, and the rich tapestry of human experience. The Asian Literary Festivals serve as the crucible where this diversity fuses into one shared humanity, creating a global stage that celebrates both our unity and our beautiful differences within the human species.</p>
@@ -148,7 +148,7 @@
 
     <div class="bg-white px-4 py-2 mb-5">
       <h1 class="lg:text-6xl text-3xl text-black font-extrabold tracking-widest uppercase text-center">
-       The Organizing Force
+       Powered By
       </h1>
     </div>
 
