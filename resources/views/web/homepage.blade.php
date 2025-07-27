@@ -200,7 +200,7 @@
         <div class="lg:w-2/12 w-full">
             <div class="aspect-w-1 aspect-h-1 w-full h-44">
                 <video autoplay muted loop playsinline class="w-full h-full object-contain rounded-xl">
-                    <source src="{{ asset('/assets/img/Moody_Dog.webm') }}" type="video/webm">
+                    <source src="{{ asset('/assets/img/Dog walking.webm') }}" type="video/webm">
                     Your browser does not support the video tag.
                 </video>
             </div>
