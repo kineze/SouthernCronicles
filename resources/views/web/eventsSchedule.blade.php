@@ -16,7 +16,7 @@
         </div>
 
 
-        <event-schedule :count="10" :increment="1" show-filter="true"></event-schedule>
+        <event-schedule :count="10" :increment="5" show-filter="true"></event-schedule>
 
 
     </div>

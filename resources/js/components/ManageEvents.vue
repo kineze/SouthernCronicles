@@ -12,62 +12,74 @@
     <!-- Event Table -->
 <div class="relative overflow-x-auto shadow-md mt-7 sm:rounded-lg">
   <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-<thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-  <tr>
-    <th class="px-6 py-3 dark:text-white font-semibold">Event Name</th>
-    <th class="px-6 py-3 dark:text-white font-semibold">Type</th>
-    <th class="px-6 py-3 dark:text-white font-semibold">Description</th>
-    <th class="px-6 py-3 dark:text-white font-semibold">Date</th>
-    <th class="px-6 py-3 dark:text-white font-semibold">Time</th>
-    <th class="px-6 py-3 dark:text-white font-semibold">Venue</th>
-    <th class="px-6 py-3 dark:text-white font-semibold">Speakers</th>
-    <th class="px-6 py-3 dark:text-white font-semibold">Moderator</th>
-    <th class="px-6 py-3 dark:text-white font-semibold">Book Signing</th>
-    <th class="px-6 py-3 dark:text-white font-semibold text-right">Actions</th>
-  </tr>
-</thead>
-<tbody>
-  <tr v-for="event in events" :key="event.id" class="border-b dark:border-gray-700">
-    <td class="px-6 py-4 dark:text-white font-semibold">{{ event.name }}</td>
-    <td class="px-6 py-4 dark:text-white">{{ event.event_type }}</td>
-    <td class="px-6 py-4 dark:text-white">
-      {{ event.description?.length > 30 ? event.description.slice(0, 30) + '...' : event.description || '—' }}
-    </td>
-    <td class="px-6 py-4 dark:text-white">{{ formatDateForInput(event.event_date) }}</td>
-    <td class="px-6 py-4 dark:text-white">{{ event.time_in }} - {{ event.time_out }}</td>
-    <td class="px-6 py-4 dark:text-white">{{ event.venue }}</td>
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <tr>
+        <th class="px-6 py-3 dark:text-white font-semibold">Event Name</th>
+        <th class="px-6 py-3 dark:text-white font-semibold">Type</th>
+        <th class="px-6 py-3 dark:text-white font-semibold">Description</th>
+        <th class="px-6 py-3 dark:text-white font-semibold">Date</th>
+        <th class="px-6 py-3 dark:text-white font-semibold">Time</th>
+        <th class="px-6 py-3 dark:text-white font-semibold">Venue</th>
+        <th class="px-6 py-3 dark:text-white font-semibold">Speakers</th>
+        <th class="px-6 py-3 dark:text-white font-semibold">Moderator</th>
+        <th class="px-6 py-3 dark:text-white font-semibold">Color</th>
+        <th class="px-6 py-3 dark:text-white font-semibold">Book Signing</th>
+        <th class="px-6 py-3 dark:text-white font-semibold text-right">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="event in events" :key="event.id" class="border-b dark:border-gray-700">
+        <td class="px-6 py-4 dark:text-white font-semibold">{{ event.name }}</td>
+        <td class="px-6 py-4 dark:text-white">{{ event.event_type }}</td>
+        <td class="px-6 py-4 dark:text-white">
+          {{ event.description?.length > 30 ? event.description.slice(0, 30) + '...' : event.description || '—' }}
+        </td>
+        <td class="px-6 py-4 dark:text-white">{{ formatDateForInput(event.event_date) }}</td>
+        <td class="px-6 py-4 dark:text-white">{{ event.time_in }} - {{ event.time_out }}</td>
+        <td class="px-6 py-4 dark:text-white">{{ event.venue }}</td>
 
-    <!-- Speaker names -->
-<td class="px-6 py-4 dark:text-white">
-  <ul v-if="event.speakers && event.speakers.length">
-    <li v-for="speaker in event.speakers" :key="speaker.id" class="text-sm">{{ speaker.name }}</li>
-  </ul>
-  <span v-else class="text-gray-400 italic">No have</span>
-</td>
+        <!-- Speaker names -->
+          <td class="px-6 py-4 dark:text-white">
+            <ul v-if="event.speakers && event.speakers.length">
+              <li v-for="speaker in event.speakers" :key="speaker.id" class="text-sm">{{ speaker.name }}</li>
+            </ul>
+            <span v-else class="text-gray-400 italic">No have</span>
+          </td>
 
-    <!-- Moderator name -->
-    <td class="px-6 py-4 dark:text-white">
-      {{ event.moderator?.name || '—' }}
-    </td>
+        <!-- Moderator name -->
+        <td class="px-6 py-4 dark:text-white">
+          {{ event.moderator?.name || '—' }}
+        </td>
 
-    <!-- Book Signing -->
-    <td class="px-6 py-4 dark:text-white">
-      <span :class="event.book_signing ? 'text-green-500' : 'text-gray-400'">
-        {{ event.book_signing ? 'Yes' : 'No' }}
-      </span>
-    </td>
+        <td class="px-6 py-4">
+          <div v-if="event.has_color" class="flex items-center gap-2">
+            <div
+              class="w-5 h-5 rounded-full border border-gray-400"
+              :style="{ backgroundColor: event.color }"
+            ></div>
+            <span class="text-xs font-mono dark:text-white">{{ event.color }}</span>
+          </div>
+          <span v-else class="text-gray-400 italic">No</span>
+        </td>
 
-    <!-- Actions -->
-    <td class="px-6 py-4 flex justify-end gap-3 text-right">
-      <button @click="editEvent(event)" class="text-blue-500" title="Edit">
-        <i class="fa-solid fa-pen"></i>
-      </button>
-      <button @click="showDeleteConfirmation(event.id)" class="text-red-500" title="Delete">
-        <i class="fa-solid fa-trash"></i>
-      </button>
-    </td>
-  </tr>
-</tbody>
+        <!-- Book Signing -->
+        <td class="px-6 py-4 dark:text-white">
+          <span :class="event.book_signing ? 'text-green-500' : 'text-gray-400'">
+            {{ event.book_signing ? 'Yes' : 'No' }}
+          </span>
+        </td>
+
+        <!-- Actions -->
+        <td class="px-6 py-4 flex justify-end gap-3 text-right">
+          <button @click="editEvent(event)" class="text-blue-500" title="Edit">
+            <i class="fa-solid fa-pen"></i>
+          </button>
+          <button @click="showDeleteConfirmation(event.id)" class="text-red-500" title="Delete">
+            <i class="fa-solid fa-trash"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
 
   </table>
 </div>
@@ -155,6 +167,42 @@
               <label for="description" class="floating-label">Description</label>
             </div>
 
+            <label class="flex items-center">
+              <input type="checkbox" v-model="form.has_color" class="mr-2" />
+              Enable Custom Color
+            </label>
+
+            <!-- Color Picker (shown if checked) -->
+
+            <div v-if="form.has_color" class="relative mt-2">
+              <label for="color" class="block mb-2 text-sm font-medium dark:text-white">Pick Color</label>
+              
+              <div class="flex items-center gap-3">
+                <!-- Visual Picker -->
+                <input
+                  type="color"
+                  id="color"
+                  v-model="form.color"
+                  class="w-12 h-10 rounded border border-gray-300 dark:border-gray-700"
+                />
+
+                <!-- Manual Hex Code Input -->
+                <input
+                  type="text"
+                  v-model="form.color"
+                  placeholder="#000000"
+                  class="w-28 px-2 py-1 text-sm rounded border border-gray-300 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
+                />
+
+                <!-- Preview Circle -->
+                <div
+                  :style="{ backgroundColor: form.color }"
+                  class="w-6 h-6 rounded-full border border-gray-400"
+                ></div>
+              </div>
+            </div>
+
+
             <!-- Book Signing -->
             <label class="flex items-center">
             <input type="checkbox" v-model="form.book_signing" class="mr-2" />
@@ -238,10 +286,12 @@ const form = ref({
   venue: '',
   name: '',
   event_type: '',
-  description: '', // ✅ added
+  description: '',
   speaker_ids: [],
   moderator_id: null,
-  book_signing: false
+  book_signing: false,
+  has_color: false,
+  color: '#000000'
 })
 
 // Cleanup old TomSelect instances
@@ -313,18 +363,21 @@ const editEvent = async (event) => {
     speaker_ids: Array.isArray(event.speakers) ? event.speakers.map(s => s.id) : [],
     moderator_id: event.moderator_id ?? '',
     description: event.description ?? '',
-    book_signing: !!event.book_signing
+    book_signing: !!event.book_signing,
+    has_color: !!event.has_color, // ✅ include this
+    color: event.color || '#000000' // ✅ include this too
   }
 
   selectedId.value = event.id
   isEdit.value = true
   drawerOpen.value = true
 
-  await nextTick() // render form
-  initializeTomSelects() // reinit TomSelect
-  await nextTick() // ensure options are in DOM
-  setTomSelectValues() // set values properly
+  await nextTick()
+  initializeTomSelects()
+  await nextTick()
+  setTomSelectValues()
 }
+
 
 
 const formatDateForInput = (dateStr) => {
@@ -358,9 +411,12 @@ const resetForm = () => {
     venue: '',
     name: '',
     event_type: '',
+    description: '',
     speaker_ids: [],
     moderator_id: null,
-    book_signing: false
+    book_signing: false,
+    has_color: false,
+    color: '#000000'
   }
 }
 
