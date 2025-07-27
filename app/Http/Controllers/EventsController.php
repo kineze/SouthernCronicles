@@ -22,43 +22,61 @@ class EventsController extends Controller
 public function store(Request $request)
 {
     $validated = $request->validate([
-        'event_date' => 'required|date',
-        'time_in' => 'required',
-        'time_out' => 'required',
-        'venue' => 'required|string',
-        'name' => 'required|string',
-        'event_type' => 'required|string',
-        'speaker_ids' => 'required|array',
-        'moderator_id' => 'nullable|exists:speakers,id',
-        'book_signing' => 'required|boolean',
+        'event_date'    => 'required|date',
+        'time_in'       => 'required',
+        'time_out'      => 'required',
+        'venue'         => 'required|string',
+        'name'          => 'required|string',
+        'event_type'    => 'required|string',
+        'description'   => 'nullable|string', // ✅ new field
+        'speaker_ids'   => 'nullable|array',
+        'moderator_id'  => 'nullable|exists:speakers,id',
+        'book_signing'  => 'required|boolean',
     ]);
 
-    $event = Event::create($validated);
-    $event->speakers()->sync($validated['speaker_ids']);
+    $eventData = $validated;
+    unset($eventData['speaker_ids']);
+
+    $event = Event::create($eventData);
+
+    if (!empty($validated['speaker_ids'])) {
+        $event->speakers()->sync($validated['speaker_ids']);
+    }
 
     return Event::with(['speakers', 'moderator'])->find($event->id);
 }
+
 
 
 public function update(Request $request, Event $event)
 {
     $validated = $request->validate([
-        'event_date' => 'required|date',
-        'time_in' => 'required',
-        'time_out' => 'required',
-        'venue' => 'required|string',
-        'name' => 'required|string',
-        'event_type' => 'required|string',
-        'speaker_ids' => 'required|array',
-        'moderator_id' => 'nullable|exists:speakers,id',
-        'book_signing' => 'required|boolean',
+        'event_date'    => 'required|date',
+        'time_in'       => 'required',
+        'time_out'      => 'required',
+        'venue'         => 'required|string',
+        'name'          => 'required|string',
+        'event_type'    => 'required|string',
+        'description'   => 'nullable|string', // ✅ new field
+        'speaker_ids'   => 'nullable|array',
+        'moderator_id'  => 'nullable|exists:speakers,id',
+        'book_signing'  => 'required|boolean',
     ]);
 
-    $event->update($validated);
-    $event->speakers()->sync($validated['speaker_ids']);
+    $eventData = $validated;
+    unset($eventData['speaker_ids']);
+
+    $event->update($eventData);
+
+    if (!empty($validated['speaker_ids'])) {
+        $event->speakers()->sync($validated['speaker_ids']);
+    } else {
+        $event->speakers()->detach();
+    }
 
     return Event::with(['speakers', 'moderator'])->find($event->id);
 }
+
 
 
 

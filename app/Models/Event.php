@@ -16,6 +16,7 @@ class Event extends Model
         'venue',
         'name',
         'event_type',
+        'description',
         'moderator_id',
         'book_signing',
     ];

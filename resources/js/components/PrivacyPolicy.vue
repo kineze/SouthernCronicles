@@ -1,5 +1,5 @@
 <template>
-  <section class="max-w-2xl mx-auto px-4 py-16 text-gray-800 dark:text-gray-200">
+  <section class="max-w-screen-2xl mx-auto px-4 py-16 text-gray-800 dark:text-gray-200">
     <!-- Heading -->
     <h1 class="text-3xl lg:text-6xl font-extrabold tracking-widest uppercase text-center text-black dark:text-white mb-12">
       Privacy Policy

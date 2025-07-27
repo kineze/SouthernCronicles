@@ -16,6 +16,7 @@
   <tr>
     <th class="px-6 py-3 dark:text-white font-semibold">Event Name</th>
     <th class="px-6 py-3 dark:text-white font-semibold">Type</th>
+    <th class="px-6 py-3 dark:text-white font-semibold">Description</th>
     <th class="px-6 py-3 dark:text-white font-semibold">Date</th>
     <th class="px-6 py-3 dark:text-white font-semibold">Time</th>
     <th class="px-6 py-3 dark:text-white font-semibold">Venue</th>
@@ -29,6 +30,9 @@
   <tr v-for="event in events" :key="event.id" class="border-b dark:border-gray-700">
     <td class="px-6 py-4 dark:text-white font-semibold">{{ event.name }}</td>
     <td class="px-6 py-4 dark:text-white">{{ event.event_type }}</td>
+    <td class="px-6 py-4 dark:text-white">
+      {{ event.description?.length > 30 ? event.description.slice(0, 30) + '...' : event.description || '—' }}
+    </td>
     <td class="px-6 py-4 dark:text-white">{{ formatDateForInput(event.event_date) }}</td>
     <td class="px-6 py-4 dark:text-white">{{ event.time_in }} - {{ event.time_out }}</td>
     <td class="px-6 py-4 dark:text-white">{{ event.venue }}</td>
@@ -140,6 +144,17 @@
                 </select>
             </div>
 
+            <div class="relative">
+              <textarea
+                v-model="form.description"
+                id="description"
+                placeholder=" "
+                rows="4"
+                class="floating-input peer resize-none"
+              ></textarea>
+              <label for="description" class="floating-label">Description</label>
+            </div>
+
             <!-- Book Signing -->
             <label class="flex items-center">
             <input type="checkbox" v-model="form.book_signing" class="mr-2" />
@@ -223,6 +238,7 @@ const form = ref({
   venue: '',
   name: '',
   event_type: '',
+  description: '', // ✅ added
   speaker_ids: [],
   moderator_id: null,
   book_signing: false
@@ -295,16 +311,19 @@ const editEvent = async (event) => {
     ...event,
     event_date: formatDateForInput(event.event_date),
     speaker_ids: Array.isArray(event.speakers) ? event.speakers.map(s => s.id) : [],
-    moderator_id: event.moderator_id ?? null,
+    moderator_id: event.moderator_id ?? '',
+    description: event.description ?? '',
     book_signing: !!event.book_signing
   }
 
   selectedId.value = event.id
-  drawerOpen.value = true
   isEdit.value = true
+  drawerOpen.value = true
 
-  await nextTick()
-  setTomSelectValues()
+  await nextTick() // render form
+  initializeTomSelects() // reinit TomSelect
+  await nextTick() // ensure options are in DOM
+  setTomSelectValues() // set values properly
 }
 
 
