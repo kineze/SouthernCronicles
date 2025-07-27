@@ -21,8 +21,8 @@
 
  
      <div class="hidden md:block">
-         <div  class=" relative flex mb-24 flex-wrap items-center  z-[1000] bg-opacity-30 backdrop-blur-xl rounded-3xl  bg-transparent  justify-end pt-12">
-           <div class="w-full bg-black lg:w-6/12">
+         <div  class=" relative flex mb-24 flex-wrap items-start  z-[1000] bg-opacity-30 backdrop-blur-xl rounded-3xl  bg-transparent  justify-end pt-12">
+           <div class="w-full bg-black md:sticky py-6 top-5 lg:w-6/12">
                <div class="">
                     <div class=" mx-auto px-4 text-center py-6">
                             @if($nextFestival)
@@ -67,19 +67,22 @@
                </div>
            </div>
            
-            <div class="w-full p-6 lg:w-6/12">
+            <div class="w-full px-6 lg:w-6/12">
              <h2 class="font-semibold text-black uppercase text-start text-8xl">About</h2>
                 <h1 class="tracking-[10px] text-4xl uppercase font-bold text-black leading-tight">
                     The Asian Literary <br> Festival - Brussels
                 </h1>
             <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl mt-5"></h2>
-            <p class="text-gray-700 text-justify"> The Asian Literature Festival in Brussels is a vibrant celebration of the rich and diverse literary traditions from across Asia. Our mission is to bridge cultures, foster understanding, and showcase the incredible talent of Asian authors, poets, and storytellers. Through engaging readings, insightful discussions, and interactive workshops, we invite you to explore the captivating narratives and profound perspectives that define Asian literature. Join us in Brussels to connect with authors.</p>
-           </div>
+             <p class="text-gray-700 py-3">The Asian Literary Festivals: Where Stories Unite the World Creative expression is humanity's most profound manifestation of diversity—a mirror reflecting our heritage, our souls, and the rich tapestry of human experience. The Asian Literary Festivals serve as the crucible where this diversity fuses into one shared humanity, creating a global stage that celebrates both our unity and our beautiful differences within the human species.</p>
+                <p class="text-gray-700 py-3">Co-created by The Asian Group of Literature and Trogon Global, The Asian Literary Festivals represent an inclusive ecosystem anchored by our flagship festival in Abu Dhabi, with satellite festivals flourishing in major cultural centres worldwide. This network creates a year-round celebration of literary excellence and cultural exchange.</p>
+                <p class="text-gray-700 py-3">Whether you hail from East or West, North or South, this is your space. Here, you speak in your own language, share your culinary traditions, and offer your unique perspectives. The Asian Literary Festivals don't just showcase literature—they celebrate the full spectrum of human creativity and connection.</p>
+                <p class="text-gray-700 py-3">Join us in writing the next chapter of global literary dialogue, where every story matters and every voice contributes to our collective human narrative. The Asian Literary Festival, Brussels Edition, weaves creative expression from the global majority into this vibrant tapestry, transforming the European capital into an unparalleled sanctuary of cultural exchange and cross-fertilisation. This festival revives the historical exchanges between East and West, breathing new life into ancient dialogues as literary traditions converge and contemporary voices rise, creating a dynamic crossroads where stories transcend borders and new cultural conversations bloom in this remarkable intersection of civilisations.</p>
+            </div>
         </div>
     </div>
     
         <div class=" md:hidden">
-         <div  class=" relative flex pb-24 flex-wrap bg-white z-[1000] bg-opacity-30 backdrop-blur-xl rounded-3xl  bg-transparent items-start justify-end px-6 lg:px-12 pt-12 lg:pt-36">
+         <div  class=" relative flex pb-24 flex-wrap bg-white z-[1000] bg-opacity-30 backdrop-blur-xl rounded-3xl  bg-transparent items-start justify-end lg:px-12 pt-12 lg:pt-36">
            <div class="w-full lg:w-6/12">
                <div class="">
                     <div class=" mx-auto px-4 text-center py-6">
@@ -131,7 +134,11 @@
                     The Asian Literary <br> Festival 
                 </h1>
             <h2 class="font-semibold tracking-[10px] text-black text-center md:text-start uppercase text-xl">Brussels.</h2>
-            <p class="text-justify md:text-left"> The Asian Literature Festival in Brussels is a vibrant celebration of the rich and diverse literary traditions from across Asia. Our mission is to bridge cultures, foster understanding, and showcase the incredible talent of Asian authors, poets, and storytellers. Through engaging readings, insightful discussions, and interactive workshops, we invite you to explore the captivating narratives and profound perspectives that define Asian literature. Join us in Brussels to connect with authors.</p>
+            <p class="text-gray-700 py-3 text-justify">The Asian Literary Festivals: Where Stories Unite the World Creative expression is humanity's most profound manifestation of diversity—a mirror reflecting our heritage, our souls, and the rich tapestry of human experience. The Asian Literary Festivals serve as the crucible where this diversity fuses into one shared humanity, creating a global stage that celebrates both our unity and our beautiful differences within the human species.</p>
+                <p class="text-gray-700  text-justify py-3">Co-created by The Asian Group of Literature and Trogon Global, The Asian Literary Festivals represent an inclusive ecosystem anchored by our flagship festival in Abu Dhabi, with satellite festivals flourishing in major cultural centres worldwide. This network creates a year-round celebration of literary excellence and cultural exchange.</p>
+                <p class="text-gray-700   text-justify py-3">Whether you hail from East or West, North or South, this is your space. Here, you speak in your own language, share your culinary traditions, and offer your unique perspectives. The Asian Literary Festivals don't just showcase literature—they celebrate the full spectrum of human creativity and connection.</p>
+                <p class="text-gray-700   text-justify py-3">Join us in writing the next chapter of global literary dialogue, where every story matters and every voice contributes to our collective human narrative. The Asian Literary Festival, Brussels Edition, weaves creative expression from the global majority into this vibrant tapestry, transforming the European capital into an unparalleled sanctuary of cultural exchange and cross-fertilisation. This festival revives the historical exchanges between East and West, breathing new life into ancient dialogues as literary traditions converge and contemporary voices rise, creating a dynamic crossroads where stories transcend borders and new cultural conversations bloom in this remarkable intersection of civilisations.</p>
+            </div>
            </div>
         </div>
     </div>
