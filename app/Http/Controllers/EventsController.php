@@ -28,10 +28,12 @@ public function store(Request $request)
         'venue'         => 'required|string',
         'name'          => 'required|string',
         'event_type'    => 'nullable|string',
-        'description'   => 'nullable|string', // ✅ new field
+        'description'   => 'nullable|string',
         'speaker_ids'   => 'nullable|array',
         'moderator_id'  => 'nullable|exists:speakers,id',
         'book_signing'  => 'required|boolean',
+        'has_color'     => 'nullable|boolean',
+        'color'         => 'nullable|string|max:7', // hex color
     ]);
 
     $eventData = $validated;
@@ -57,10 +59,12 @@ public function update(Request $request, Event $event)
         'venue'         => 'required|string',
         'name'          => 'required|string',
         'event_type'    => 'nullable|string',
-        'description'   => 'nullable|string', // ✅ new field
+        'description'   => 'nullable|string',
         'speaker_ids'   => 'nullable|array',
         'moderator_id'  => 'nullable|exists:speakers,id',
         'book_signing'  => 'required|boolean',
+        'has_color'     => 'nullable|boolean',
+        'color'         => 'nullable|string|max:7', // hex color
     ]);
 
     $eventData = $validated;

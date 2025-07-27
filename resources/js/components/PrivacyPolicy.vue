@@ -77,7 +77,7 @@
         <h2 class="text-xl font-semibold mb-2">9. Contact Us</h2>
         <p>If you have any questions regarding this privacy policy, you may contact us at 
           <a href="mailto:admin@atasteofthehills.com.au" class="text-blue-600 dark:text-blue-400 underline">
-            admin@atasteofthehills.com.au
+            info@theasianliteraryfestival.com
           </a>.
         </p>
       </div>

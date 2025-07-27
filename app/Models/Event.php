@@ -19,11 +19,13 @@ class Event extends Model
         'description',
         'moderator_id',
         'book_signing',
+        'has_color',
+        'color',
     ];
 
-    // No longer cast or store `speaker_ids` directly
     protected $casts = [
         'book_signing' => 'boolean',
+        'has_color' => 'boolean',
         'event_date' => 'date',
         'time_in' => 'datetime:H:i',
         'time_out' => 'datetime:H:i',
