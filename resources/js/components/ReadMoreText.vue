@@ -31,7 +31,7 @@ import { reactive } from 'vue'
 // Content blocks: each with its own image and text
 const contentBlocks = [
   {
-    image: '/assets/img/TALA_LOGO.webp',
+    image: '/assets/img/asian-group-logo.webp',
     limit: 300,
     text: `The Asian Group of Literature stands as a pioneering collective of six creative social enterprises, founded by Sri Lankan novelist Pramudith D Rupasinghe, humanitarian and social entrepreneur. With a global presence of its services spanning Asia, Europe, Africa, and the Americas, the organisation operates through a diversified portfolio addressing the evolving landscape of contemporary literature.
     The group's operations encompass six core business divisions: Literary Representation and Editorial Services, Literary Publicist, Academic and Scholarly Publications, Cultural Programmes and Residencies, Recognition and Awards Frameworks, and Festival Curation and Event Management. This comprehensive approach ensures support for writers and literary communities at every stage of their creative journey.
