@@ -195,6 +195,24 @@
 
 </section>
 
+<section class="relative w-full max-w-screen-2xl mx-auto">
+
+    <div class="w-full flex items-center flex-wrap">
+        <div class="lg:w-2/12 w-full">
+            <div class="aspect-w-1 aspect-h-1 w-full h-44">
+                <video autoplay muted loop playsinline class="w-full h-full object-contain rounded-xl">
+                    <source src="{{ asset('/assets/img/Dog walking.mp4') }}" type="video/webm">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+        <div class="lg:w-10/12 w-full">
+            <p class="text-xl font-semibold">Our conference is proudly pet-friendly and family-friendly, creating a warm, inclusive space for everyone. Whether you're attending with children or furry companions, you're welcome here. We believe innovation thrives in joyful, supportive environments—so come as you are, bring your whole family, and feel at home.</p>
+        </div>
+    </div>
+
+</section>
+
 <section class="w-full max-w-screen-2xl  mt-6 mx-auto">
 
     <div class="bg-black px-4 py-2 mb-5">
