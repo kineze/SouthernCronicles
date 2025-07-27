@@ -26,11 +26,7 @@
                 <div class="flex items-start"><h2 class="font-normal h-full textstart text-6xl md:text-8xl ml-24 lg:ml-36">lab </h2>
                 <span class="p-0.5 border-white mt-3 border text-xs rounded-full">  <i class="fas fa-trademark"></i> </span></div>
             </div>
-
-            
-               
-
-            </div>
+          </div>
             
             <div class="w-full  lg:w-7/12">
                 <p class="text-gray-700 py-3 p-6">The Asian Writing Lab forms the creative heart of our festivals, nurturing emerging writers
