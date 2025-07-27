@@ -1,7 +1,7 @@
 <template>
   <div class="relative bg-white bg-opacity-30 md:pt-6 backdrop-blur-xl ">
     <div>
-      <h1 class="lg:text-6xl text-3xl text-black font-extrabold tracking-widest uppercase text-center">OUR Teams</h1>
+      <h1 class="lg:text-6xl text-3xl text-black font-extrabold tracking-widest uppercase text-center">OUR Team</h1>
     </div>
 
     <div class="py-8 w-full max-w-screen-2xl flex flex-col">
