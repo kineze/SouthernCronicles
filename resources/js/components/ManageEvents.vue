@@ -38,13 +38,13 @@
         <td class="px-6 py-4 dark:text-white">{{ event.time_in }} - {{ event.time_out }}</td>
         <td class="px-6 py-4 dark:text-white">{{ event.venue }}</td>
 
-        <!-- Speaker names -->
-          <td class="px-6 py-4 dark:text-white">
-            <ul v-if="event.speakers && event.speakers.length">
-              <li v-for="speaker in event.speakers" :key="speaker.id" class="text-sm">{{ speaker.name }}</li>
-            </ul>
-            <span v-else class="text-gray-400 italic">No have</span>
-          </td>
+    <!-- Speaker names -->
+    <td class="px-6 py-4 dark:text-white">
+      <ul v-if="event.speakers && event.speakers.length">
+        <li v-for="speaker in event.speakers" :key="speaker.id" class="text-sm">{{ speaker.name }}</li>
+      </ul>
+      <span v-else class="text-gray-400 italic">N/A</span>
+    </td>
 
         <!-- Moderator name -->
         <td class="px-6 py-4 dark:text-white">
