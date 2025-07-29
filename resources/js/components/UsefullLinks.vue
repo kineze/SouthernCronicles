@@ -26,7 +26,7 @@
 <script setup>
 const links = [
   {
-    title: 'Gallery Bortier',
+    title: 'Galerie Bortier',
     url: 'https://bortier.be/en/',
     image: 'assets/img/Bortier-logo.webp'
   },
@@ -42,12 +42,12 @@ const links = [
     image: 'assets/img/untold-stories.webp'
   },
   {
-    title: 'Transport in Brussles',
+    title: 'Transport in Brussels',
     url: 'https://www.stib-mivb.be/home',
     image: 'assets/img/sitb-logo.webp'
   },
     {
-    title: 'Brussels Musiums',
+    title: 'Brussels Museums',
     url: 'https://www.brusselsmuseums.be/en/',
     image: 'assets/img/museum-logo.webp'
   },

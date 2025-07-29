@@ -42,7 +42,7 @@
 
             <div class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white p-4 text-center">
 
-                <h3 class="text-lg font-semibold mb-2">{{ speaker.name }}</h3>
+                <h3 class="text-lg font-semibold uppercase mb-2">{{ speaker.name }}</h3>
 
                 <div class="flex space-x-4 text-xl">
                     <a
