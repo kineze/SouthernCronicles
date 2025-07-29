@@ -33,19 +33,12 @@ class BookingController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'given_name' => 'required',
-            'family_name' => 'required',
-            'email' => 'required|email',
+            'full_name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
             'contact_number' => 'required|string|max:20',
-            'country' => 'required',
-            'submission_text' => 'required',
-            'is_copyright' => 'boolean',
-            'copyright_holder' => 'nullable|string',
-            'copyright_contact' => 'nullable|string',
             'booking_date' => 'required|date',
             'time_slot_id' => 'required|exists:time_slots,id'
         ]);
-
 
         $validated['status'] = 'pending';
         LaunchpadBooking::create($validated);

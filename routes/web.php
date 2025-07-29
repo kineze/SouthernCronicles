@@ -44,6 +44,7 @@ Route::controller(PagesController::class)->group( function (){
     Route::get('/terms-&-conditions','temsConditions')->name('temsConditions');
 
     Route::get('booking-now','bookingNow')->name('bookingNow');
+    Route::get('living-memory-vault','livingMemoryVault')->name('livingMemoryVault');
 
 });
 

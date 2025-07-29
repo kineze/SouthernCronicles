@@ -4,6 +4,7 @@ import 'vue-toastification/dist/index.css';
 import 'tom-select/dist/css/tom-select.css';
 
 
+
 import Toast from 'vue-toastification';
 import { POSITION } from 'vue-toastification';
 
@@ -39,6 +40,7 @@ import PrivacyPolicy from './components/PrivacyPolicy.vue';
 import ReadMoreText from './components/ReadMoreText.vue';
 import TermsConditions from './components/TermsConditions.vue';
 import BookingNow from './components/BookingNow.vue';
+import LivingMemoryVault from './components/LivingMemoryVault.vue';
 
 const app = createApp({});
 
@@ -87,6 +89,7 @@ app
     .component('read-more-text',ReadMoreText)
     .component('terms-conditions',TermsConditions)
     .component('booking-now',BookingNow)
+    .component('living-memory-vault', LivingMemoryVault)
 
 
     .mount('#app')

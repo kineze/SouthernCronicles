@@ -6,9 +6,9 @@
       <p class="text-sm mt-2 tracking-widest uppercase">Brussels <span class="font-semibold">2025</span></p>
     </div>
 
-    <div class="flex justify-center mx-auto items-center mt-6">
+    {{-- <div class="flex justify-center mx-auto items-center mt-6">
                                 <a href="{{route('bookingNow')}}" class="px-4 py-2 bg-white text-black font-semibold">Booking Now</a>
-                            </div>
+                            </div> --}}
 
     <div class="mt-6 text-sm space-x-6 mx-auto items-center flex justify-center flex-wrap">
         <p class=" text-gray-400 text-sm">©{{ now()->format('Y') }}</p>

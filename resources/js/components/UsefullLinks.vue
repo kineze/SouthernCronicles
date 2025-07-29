@@ -13,7 +13,7 @@
         <a :href="link.url" target="_blank" rel="noopener noreferrer">
           <img :src="link.image" :alt="link.title" class="w-full h-16 object-contain" />
           <div class="p-4 text-center">
-            <h3 class="text-lg font-semibold text-gray-800 dark:text-white">
+            <h3 class="text-sm font-semibold text-gray-800 dark:text-white ">
               {{ link.title }}
             </h3>
           </div>
@@ -37,9 +37,9 @@ const links = [
     
   },
   {
-    title: 'Civitatis Brussels',
-    url: 'https://www.introducingbrussels.com/',
-    image: 'assets/img/civitails.webp'
+    title: 'UNIVERSITÉ LIBRE DE BRUXELLES',
+    url: 'https://www.ulb.be/en',
+    image: 'assets/img/Logo-ULB.svg'
   },
   {
     title: 'Transport in Brussles',

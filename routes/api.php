@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TeamsController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\BookingController;
-use App\Http\Controllers\BookingManageController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\FestivalController;
@@ -13,6 +12,8 @@ use App\Http\Controllers\SpeakersController;
 use App\Http\Controllers\TimeSlotController;
 use App\Http\Controllers\SpeakerTypeController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\BookingManageController;
+use App\Http\Controllers\MemorySubmissionController;
 
 
 // for admin view
@@ -62,4 +63,6 @@ Route::get('/get-teams', [TeamsController::class, 'getTeams']);
 
 Route::get('/launchpad/time-slots', [BookingController::class, 'getTimeSlots']);
 Route::post('/launchpad/book', [BookingController::class, 'store']);
+
+Route::post('/memory-submissions', [MemorySubmissionController::class, 'store']);
 

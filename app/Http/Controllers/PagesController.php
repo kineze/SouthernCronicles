@@ -60,4 +60,9 @@ class PagesController extends Controller
 
         return view('web.bookingNow');
     }
+
+    public function livingMemoryVault(){
+
+        return view('web.livingMemoryVault');
+    }
 }
