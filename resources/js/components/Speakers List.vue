@@ -38,7 +38,7 @@
       <div v-for="speaker in filteredSpeakers" :key="speaker.id"  @click="openModal(speaker)" class=" text-black font-semibold cursor-pointer transition duration-300 hover:bg-black hover:text-white overflow-hidden">
         <img :src="`/storage/${speaker.image}`" class="w-full lg:h-80 h-96 object-cover"  />
         <div class="p-4 text-center">
-          <h3 class="font-bold text-lg">{{ speaker.name }}</h3>
+          <h3 class="font-bold uppercase text-lg">{{ speaker.name }}</h3>
         </div>
       </div>
     </div>
