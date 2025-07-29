@@ -20,6 +20,8 @@ import Partners from './components/Partners.vue';
 import RegisteredList from './components/RegisteredList.vue';
 import ManageEvents from './components/ManageEvents.vue';
 import ManageTeams from './components/ManageTeams.vue';
+import ManageTimeSlots from './components/ManageTimeSlots.vue';
+import ManageBookings from './components/ManageBookings.vue';
 
 // for web view 
 import WebNav from './components/webNav.vue';
@@ -36,6 +38,7 @@ import TeamsCarousel from './components/TeamsCarousel.vue';
 import PrivacyPolicy from './components/PrivacyPolicy.vue';
 import ReadMoreText from './components/ReadMoreText.vue';
 import TermsConditions from './components/TermsConditions.vue';
+import BookingNow from './components/BookingNow.vue';
 
 const app = createApp({});
 
@@ -64,6 +67,9 @@ app
     .component('registered-list',RegisteredList)
     .component('manage-events', ManageEvents)
     .component('manage-teams', ManageTeams)
+    .component('manage-time-slots', ManageTimeSlots)
+    .component('manage-bookings', ManageBookings)
+
 
     // for web view
     .component('web-nav',WebNav)
@@ -80,6 +86,7 @@ app
     .component('privacy-policy',PrivacyPolicy)
     .component('read-more-text',ReadMoreText)
     .component('terms-conditions',TermsConditions)
+    .component('booking-now',BookingNow)
 
 
     .mount('#app')

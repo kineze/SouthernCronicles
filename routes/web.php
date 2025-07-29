@@ -6,10 +6,13 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\TeamsController;
 use App\Http\Controllers\EventsController;
+use App\Http\Controllers\BookingController;
+use App\Http\Controllers\BookingManageController;
 use App\Http\Controllers\GenaralController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\FestivalController;
 use App\Http\Controllers\SpeakersController;
+use App\Http\Controllers\TimeSlotController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RegistrationController;
 
@@ -39,6 +42,8 @@ Route::controller(PagesController::class)->group( function (){
     Route::get('/events-schedule','eventsSchedule')->name('eventsSchedule');
     Route::get('/privacy-policy', 'privacyPolicy')->name('privacyPolicy');
     Route::get('/terms-&-conditions','temsConditions')->name('temsConditions');
+
+    Route::get('booking-now','bookingNow')->name('bookingNow');
 
 });
 
@@ -101,6 +106,22 @@ Route::middleware(['permission:Manage Teams', config('jetstream.auth_session'), 
 
 });
 
+
+Route::middleware(['permission:Manage Bookings', config('jetstream.auth_session'), 'verified',])->group( function (){
+
+    Route::controller(TimeSlotController::class)->group(function () {
+
+        Route::get('/manage-time-slots','manageTimeSlots')->name('manageTimeSlots');
+
+    });
+
+    Route::controller(BookingManageController::class)->group( function () {
+
+        Route::get('/manage-bookings','manageBookings')->name('manageBookings');
+
+    });
+
+});
 
 Route::middleware(['permission:Manage Users', config('jetstream.auth_session'), 'verified',])->group(function () {
 

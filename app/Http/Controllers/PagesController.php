@@ -55,4 +55,9 @@ class PagesController extends Controller
 
         return view('web.temsConditions');
     }
+
+    public function bookingNow(){
+
+        return view('web.bookingNow');
+    }
 }

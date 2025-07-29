@@ -4,10 +4,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TeamsController;
 use App\Http\Controllers\EventsController;
+use App\Http\Controllers\BookingController;
+use App\Http\Controllers\BookingManageController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\FestivalController;
 use App\Http\Controllers\SpeakersController;
+use App\Http\Controllers\TimeSlotController;
 use App\Http\Controllers\SpeakerTypeController;
 use App\Http\Controllers\RegistrationController;
 
@@ -32,6 +35,10 @@ Route::put('/teams/{team}', [TeamsController::class, 'update']);
 Route::delete('/teams/{team}', [TeamsController::class, 'destroy']);
 Route::put('/teams/{team}/toggle-status', [TeamsController::class, 'toggleStatus']);
 
+Route::apiResource('time-slots', TimeSlotController::class);
+Route::get('/launchpad/bookings', [BookingManageController::class, 'allBookings']);
+Route::put('/launchpad/bookings/{booking}/status', [BookingManageController::class, 'updateStatus']);
+
 
 
 
@@ -52,4 +59,7 @@ Route::get('/get-events', [EventsController::class, 'getEvents']);
 Route::get('/events/dates', [EventsController::class, 'uniqueDates']);
 
 Route::get('/get-teams', [TeamsController::class, 'getTeams']);
+
+Route::get('/launchpad/time-slots', [BookingController::class, 'getTimeSlots']);
+Route::post('/launchpad/book', [BookingController::class, 'store']);
 
