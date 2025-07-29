@@ -14,6 +14,44 @@
   <!-- Nav -->
   <nav class="mt-4 space-y-1 px-3">
 
+    
+    
+    @can('Manage Bookings')
+
+      <div class="relative sidebar-dropdown"
+          data-subtitle="Manage Bookings"
+          data-links='[
+            {"label":"Time Slots","href":"{{ route('manageTimeSlots') }}"},
+            {"label":"Time Slots","href":"{{ route('manageBookings') }}"}
+          ]'>
+
+        <button class="dropdown-toggle w-full flex items-center gap-3 p-2 rounded-lg dark:hover:bg-slate-800 transition-all">
+          <div class="sidebar-icon-box">
+            <i class="fa-solid fa-calendar-check"></i>
+            <span class="sr-only test-black">Manage Bookings</span>
+          </div>
+          <span class="sidebar-label flex-1 text-sm font-medium text-black dark:text-white text-left">
+            Manage Bookings
+          </span>
+          <i class="fas fa-chevron-down text-xs text-black sidebar-label"></i>
+        </button>
+
+        <div class="expanded-only hidden py-1 space-y-1">
+
+          <a href="{{ route('manageTimeSlots') }}" class="block px-4 py-2 text-xs font-semibold text-black dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-md">
+           Time Slots
+          </a>
+
+          <a href="{{ route('manageBookings') }}" class="block px-4 py-2 text-xs font-semibold text-black dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-md">
+            Bookings
+          </a>
+
+
+        </div>
+      </div>
+
+    @endcan
+
     @can('Manage Teams')
 
       <div class="relative sidebar-dropdown"
@@ -24,7 +62,7 @@
 
         <button class="dropdown-toggle w-full flex items-center gap-3 p-2 rounded-lg dark:hover:bg-slate-800 transition-all">
           <div class="sidebar-icon-box">
-            <i class="fa-solid fa-square-binary"></i>
+            <i class="fa-solid fa-people-group"></i>
             <span class="sr-only test-black">Manage Teams</span>
           </div>
           <span class="sidebar-label flex-1 text-sm font-medium text-black dark:text-white text-left">
@@ -54,7 +92,7 @@
 
         <button class="dropdown-toggle w-full flex items-center gap-3 p-2 rounded-lg dark:hover:bg-slate-800 transition-all">
           <div class="sidebar-icon-box">
-            <i class="fa-solid fa-square-binary"></i>
+            <i class="fa-regular fa-bookmark"></i>
             <span class="sr-only test-black">Manage Events</span>
           </div>
           <span class="sidebar-label flex-1 text-sm font-medium text-black dark:text-white text-left">

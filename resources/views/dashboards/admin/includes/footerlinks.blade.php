@@ -322,9 +322,9 @@
     const THEME_STORAGE_KEY = 'sidebarTheme';
     const sidebar = document.getElementById('sidebar');
     const cfg = (window.SidebarThemeConfig && window.SidebarThemeConfig.logos) || {};
-    const lightLogo = cfg.light || 'assets/img/logo.webp';
-    const darkLogo  = cfg.dark  || 'assets/img/logo.webp';
-    const iconLogo  = cfg.icon  || 'assets/img/logo.webp';
+    const lightLogo = cfg.light || '/assets/img/logo.webp';
+    const darkLogo  = cfg.dark  || '/assets/img/logo.webp';
+    const iconLogo  = cfg.icon  || '/assets/img/logo.webp';
 
 
     // If you have alternate icon versions you can extend config.
