@@ -37,9 +37,9 @@ const links = [
     
   },
   {
-    title: 'Untold Asian Stories',
-    url: 'https://untoldasianstories.be/',
-    image: 'assets/img/untold-stories.webp'
+    title: 'Civitatis Brussels',
+    url: 'https://www.introducingbrussels.com/',
+    image: 'assets/img/civitails.webp'
   },
   {
     title: 'Transport in Brussles',
