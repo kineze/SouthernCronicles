@@ -29,7 +29,6 @@
           <tr>
             <th class="px-6 py-3 dark:text-white font-semibold">Name</th>
             <th class="px-6 py-3 dark:text-white font-semibold">Email</th>
-            <th class="px-6 py-3 dark:text-white font-semibold">Country</th>
             <th class="px-6 py-3 dark:text-white font-semibold">Date</th>
             <th class="px-6 py-3 dark:text-white font-semibold">Time</th>
             <th class="px-6 py-3 dark:text-white font-semibold">Status</th>
@@ -38,9 +37,8 @@
         </thead>
         <tbody>
           <tr v-for="booking in bookings" :key="booking.id" class="border-b dark:border-gray-700">
-            <td class="px-6 py-4 dark:text-white">{{ booking.given_name }} {{ booking.family_name }}</td>
+            <td class="px-6 py-4 dark:text-white">{{ booking.full_name }}</td>
             <td class="px-6 py-4 dark:text-white">{{ booking.email }}</td>
-            <td class="px-6 py-4 dark:text-white">{{ booking.country }}</td>
             <td class="px-6 py-4 dark:text-white">{{ booking.booking_date }}</td>
             <td class="px-6 py-4 dark:text-white">{{ booking.time_slot?.start_time }} - {{ booking.time_slot?.end_time }}</td>
             <td class="px-6 py-4 capitalize dark:text-white">{{ booking.status }}</td>
@@ -73,7 +71,7 @@
 
     <!-- Drawer (View) -->
     <div
-      class="fixed top-0 right-0 z-[990] h-screen w-[800px] p-4 overflow-y-auto transition-transform bg-white dark:bg-gray-800"
+      class="fixed top-0 right-0 z-[990] h-screen w-96 p-4 overflow-y-auto transition-transform bg-white dark:bg-gray-800"
       :class="showDrawer ? 'translate-x-0' : 'translate-x-full'"
       tabindex="-1"
     >
@@ -88,21 +86,15 @@
         <i class="fa-solid fa-xmark"></i>
       </button>
 
-      <div class="text-sm text-gray-700 dark:text-gray-200 space-y-2">
-        <p><strong>Name:</strong> {{ selectedBooking?.given_name }} {{ selectedBooking?.family_name }}</p>
+      <div class="text-sm text-gray-700 dark:text-gray-200 space-y-4">
+
+        <p><strong>Name:</strong> {{ selectedBooking?.full_name }}</p>
         <p><strong>Email:</strong> {{ selectedBooking?.email }}</p>
         <p><strong>Contact:</strong> {{ selectedBooking?.contact_number }}</p>
-        <p><strong>Country:</strong> {{ selectedBooking?.country }}</p>
         <p><strong>Date:</strong> {{ selectedBooking?.booking_date }}</p>
         <p><strong>Time:</strong> {{ selectedBooking?.time_slot?.start_time }} - {{ selectedBooking?.time_slot?.end_time }}</p>
         <p><strong>Status:</strong> {{ selectedBooking?.status }}</p>
-        <p><strong>Copyright:</strong> {{ selectedBooking?.is_copyright ? 'Yes' : 'No' }}</p>
-        <p v-if="selectedBooking?.is_copyright"><strong>Holder:</strong> {{ selectedBooking?.copyright_holder }}</p>
-        <p v-if="selectedBooking?.is_copyright"><strong>Contact:</strong> {{ selectedBooking?.copyright_contact }}</p>
-        <p><strong>Submission:</strong></p>
-        <p class="p-2 border rounded bg-gray-50 dark:bg-gray-900 whitespace-pre-wrap">
-          {{ selectedBooking?.submission_text || '—' }}
-        </p>
+
 
         <div class="flex gap-2 mt-4">
           <button

@@ -41,6 +41,9 @@ Route::get('/launchpad/bookings', [BookingManageController::class, 'allBookings'
 Route::put('/launchpad/bookings/{booking}/status', [BookingManageController::class, 'updateStatus']);
 
 
+Route::get('/memory-submissions', [MemorySubmissionController::class, 'index']);
+
+
 
 
 // for web view

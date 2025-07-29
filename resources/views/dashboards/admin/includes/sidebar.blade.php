@@ -22,7 +22,8 @@
           data-subtitle="Manage Bookings"
           data-links='[
             {"label":"Time Slots","href":"{{ route('manageTimeSlots') }}"},
-            {"label":"Time Slots","href":"{{ route('manageBookings') }}"}
+            {"label":"Bookings","href":"{{ route('manageBookings') }}"},
+            {"label":"Memory Submission","href":"{{ route('memorySubmission') }}"}
           ]'>
 
         <button class="dropdown-toggle w-full flex items-center gap-3 p-2 rounded-lg dark:hover:bg-slate-800 transition-all">
@@ -46,6 +47,9 @@
             Bookings
           </a>
 
+          <a href="{{ route('memorySubmission') }}" class="block px-4 py-2 text-xs font-semibold text-black dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-md">
+            Memory Submission
+          </a>
 
         </div>
       </div>

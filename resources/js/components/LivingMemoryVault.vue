@@ -237,15 +237,14 @@ const form = ref({
   declaration: false
 })
 
-const selectedFileName = ref('')
 const selectedFile = ref(null)
+const selectedFileName = ref('')
 
 const handleFileUpload = (event) => {
   const file = event.target.files[0]
   if (file) {
     selectedFile.value = file
     selectedFileName.value = file.name
-    console.log('File selected:', file.name)
   }
 }
 
@@ -254,14 +253,60 @@ const removeSelectedFile = () => {
   selectedFileName.value = ''
 }
 
-const submitForm = () => {
+const clearForm = () => {
+  form.value = {
+    given_name: '',
+    family_name: '',
+    country: '',
+    submission: '',
+    is_copyright: false,
+    copyright_holder: '',
+    copyright_contact: '',
+    declaration: false
+  }
+  selectedFile.value = null
+  selectedFileName.value = ''
+}
+
+const submitForm = async () => {
   if (!form.value.declaration) {
-    toast.error('Please accept the declaration.')
+    toast.error('❗ Please accept the declaration before submitting.')
     return
   }
 
-  console.log('Submitting form:', form.value)
-  toast.success('✅ Submission received!')
-  showForm.value = false
+  try {
+    const formData = new FormData()
+    formData.append('given_name', form.value.given_name)
+    formData.append('family_name', form.value.family_name)
+    formData.append('country', form.value.country)
+    formData.append('submission', form.value.submission)
+    formData.append('is_copyright', form.value.is_copyright ? '1' : '0')
+    formData.append('copyright_holder', form.value.copyright_holder)
+    formData.append('copyright_contact', form.value.copyright_contact)
+    if (selectedFile.value) {
+      formData.append('file', selectedFile.value)
+    }
+
+    const response = await fetch('/api/memory-submissions', {
+      method: 'POST',
+      body: formData
+    })
+
+    const data = await response.json()
+
+    if (!response.ok) {
+      toast.error(`❌ Submission failed: ${data.message || 'Unknown error'}`)
+      return
+    }
+
+    toast.success('✅ Your submission has been received!')
+    clearForm()
+    showForm.value = false
+  } catch (error) {
+    console.error('Submission error:', error)
+    toast.error('❌ An error occurred while submitting. Please try again.')
+  }
 }
+
 </script>
+

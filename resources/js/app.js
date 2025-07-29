@@ -23,6 +23,7 @@ import ManageEvents from './components/ManageEvents.vue';
 import ManageTeams from './components/ManageTeams.vue';
 import ManageTimeSlots from './components/ManageTimeSlots.vue';
 import ManageBookings from './components/ManageBookings.vue';
+import MemorySubmission from './components/MemorySubmission.vue';
 
 // for web view 
 import WebNav from './components/webNav.vue';
@@ -71,6 +72,7 @@ app
     .component('manage-teams', ManageTeams)
     .component('manage-time-slots', ManageTimeSlots)
     .component('manage-bookings', ManageBookings)
+    .component('memory-submission', MemorySubmission)
 
 
     // for web view
