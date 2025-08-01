@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-screen-2xl mx-auto bg-white dark:bg-gray-900 focus:border-black shadow py-6 py-10">
+  <div class="max-w-screen-2xl mx-auto bg-white dark:bg-gray-900 focus:border-black shadow py-10">
     <h1 class="lg:text-6xl text-3xl mt-4 text-black dark:text-white font-extrabold tracking-widest uppercase text-center mb-8">
       The Living Memory Vault
     </h1>
@@ -56,9 +56,10 @@
               v-model="form.given_name"
               type="text"
               placeholder=" "
+               id="given_name"
               class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 dark:text-white bg-transparent border border-gray-500 dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-black dark:focus:border-blue-500 peer"
             />
-            <label class="absolute text-sm text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-900 px-2 duration-300 transform scale-75 -translate-y-4 top-2 z-10 origin-[0]
+            <label  for="given_name" class="absolute text-sm text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-900 px-2 duration-300 transform scale-75 -translate-y-4 top-2 z-10 origin-[0]
                 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2
                 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1">
               Given Name
@@ -70,9 +71,10 @@
               v-model="form.family_name"
               type="text"
               placeholder=" "
+              id="family_name"
               class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 dark:text-white bg-transparent border border-gray-500 dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-black dark:focus:border-blue-500 peer"
             />
-            <label class="absolute text-sm text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-900 px-2 duration-300 transform scale-75 -translate-y-4 top-2 z-10 origin-[0]
+            <label  for="family_name" class="absolute text-sm text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-900 px-2 duration-300 transform scale-75 -translate-y-4 top-2 z-10 origin-[0]
                 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2
                 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1">
               Family Name
@@ -84,9 +86,10 @@
               v-model="form.country"
               type="text"
               placeholder=" "
+              id="title"
               class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 dark:text-white bg-transparent border border-gray-500 dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-black dark:focus:border-blue-500 peer"
             />
-            <label class="absolute text-sm text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-900 px-2 duration-300 transform scale-75 -translate-y-4 top-2 z-10 origin-[0]
+            <label for="title" class="absolute text-sm text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-900 px-2 duration-300 transform scale-75 -translate-y-4 top-2 z-10 origin-[0]
                 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2
                 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1">
               Country
