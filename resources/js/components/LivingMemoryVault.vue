@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-screen-2xl mx-auto bg-white dark:bg-gray-900 focus:border-black shadow px-6 py-10">
+  <div class="max-w-screen-2xl mx-auto bg-white dark:bg-gray-900 focus:border-black shadow py-6 py-10">
     <h1 class="lg:text-6xl text-3xl mt-4 text-black dark:text-white font-extrabold tracking-widest uppercase text-center mb-8">
       The Living Memory Vault
     </h1>
@@ -34,18 +34,16 @@
           Register as a contributor to <strong>The Living Memory Vault</strong> today and help us preserve humanity's greatest stories for tomorrow.
         </p>
 
-        <p class="text-justify">
-          For submission guidelines and registration, please visit the link below.
-        </p>
+        
 
 
         <div class="mt-6 text-center">
-          <button
+          <!-- <button
             @click="showForm = !showForm"
             class="inline-block px-6 py-3 bg-black text-white text-sm font-semibold rounded hover:bg-gray-800 transition"
           >
             Register & View Submission Guidelines
-          </button>
+          </button> -->
         </div>
       </div>
 
