@@ -50,7 +50,7 @@
       </div>
 
       <!-- Registration Form -->
-      <div class="mt-10 max-w-4xl lg:w-5/12 lg:p-4 mx-auto bg-white dark:bg-gray-800 rounded-lg shadow space-y-6 lg:sticky lg:top-9 lg:max-h-[100svh] lg:overflow-y-auto">
+      <div class="mt-10 max-w-4xl lg:w-5/12 lg:p-4 mx-auto bg-white dark:bg-gray-800 rounded-lg shadow space-y-6 lg:sticky lg:top-4 lg:max-h-[100svh] lg:overflow-y-auto">
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div class="relative">
