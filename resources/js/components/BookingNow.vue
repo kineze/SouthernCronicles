@@ -4,21 +4,22 @@
         Book Now
         </h1>
 
-    <!-- Launchpad 1000 Description -->
-<div class="flex flex-wrap">
+    <div class="flex flex-wrap">
       <div class="lg:w-6/12 lg:p-4  text-start text-gray-700 dark:text-gray-300 mb-10  leading-relaxed px-4">
-      <strong class="mb-3 -mt-2 font-semibold text-lg text-black dark:text-white">
-          Launchpad 1000 Global Literary Pitching Platform
-      </strong>
-      <p class="mb-2 text-justify">
-          Launchpad 1000 is The Asian Literary Festivals' live manuscript pitching platform, connecting writers worldwide with industry professionals. We seek fresh talent and welcome established authors across all genres.
-      </p>
-      <p class="mb-2 text-justify">
-          The Asian Literary Agency, our talent management wing, hosts live pitching sessions at festival locations. Our platform features two distinct tracks: an original manuscript submission desk for unpublished work and a translation pitching deck for published titles seeking international markets.
-      </p>
-      <p class="text-justify">
-          Book your slot and present your work directly to agents actively seeking compelling narratives and market-ready content. Whether you're submitting debut manuscripts or published works for translation opportunities, Launchpad 1000 provides the essential gateway to advance your literary career on the global stage.
-      </p>
+        <p class="mb-3">
+          <strong class="font-semibold text-lg text-black dark:text-white">
+            Launchpad 1000 Global Literary Pitching Platform
+        </strong>
+        </p>
+        <p class="mb-2 text-justify">
+            Launchpad 1000 is The Asian Literary Festivals' live manuscript pitching platform, connecting writers worldwide with industry professionals. We seek fresh talent and welcome established authors across all genres.
+        </p>
+        <p class="mb-2 text-justify">
+            The Asian Literary Agency, our talent management wing, hosts live pitching sessions at festival locations. Our platform features two distinct tracks: an original manuscript submission desk for unpublished work and a translation pitching deck for published titles seeking international markets.
+        </p>
+        <p class="text-justify">
+            Book your slot and present your work directly to agents actively seeking compelling narratives and market-ready content. Whether you're submitting debut manuscripts or published works for translation opportunities, Launchpad 1000 provides the essential gateway to advance your literary career on the global stage.
+        </p>
     </div>
 
     <div class="lg:w-6/12 w-full lg:p-4">
