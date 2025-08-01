@@ -117,7 +117,7 @@
             <div class="lg:w-6/12 flex flex-col items-center md:items-start justify-center w-full">
                 <img src="{{asset('assets/img/kipenzi-main-logo.webp')}}" class="w-80 p-3" alt="">
                 <p class="text-gray-700 text-justify py-3 p-3">Kipenzi reimagines storytelling from the ground up—breaking rules, shattering norms, and daring to explore what lies beyond the expected. Kipenzi’s work defies convention, stretching the very limits of narrative and reshaping how stories can be told. Kipenzi doesn’t just challenge the norms—it reinvents them, opening bold, uncharted paths in literature. This isn’t just innovation—it’s a literary revolution.</p>
-                <a href="https://kipenzi.me/all-ebooks" class="flex items-center gap-3 py-3 px-5 border w-fit border-main-blue/80 text-white rounded-full bg-black hover:text-white hover:shadow-lg">Kipenzi Connect</a>
+                <a href="https://kipenzi.me/all-ebooks" class="flex items-center gap-3 py-3 px-5 border w-fit border-main-blue/80 text-white  bg-black hover:text-white hover:shadow-lg">Kipenzi Connect</a>
             </div>
         </div>
     
