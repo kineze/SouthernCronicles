@@ -47,7 +47,7 @@ const links = [
     image: 'assets/img/sitb-logo.webp'
   },
   {
-    title: 'Find coworking',
+    title: 'commons hub BRUSSELS',
     url: 'https://commonshub.brussels',
     image: 'assets/img/coworking.webp'
   },
