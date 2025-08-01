@@ -111,7 +111,7 @@
                       : 'bg-white text-black border-black hover:bg-black hover:text-white'
                   ]"
                 >
-                  {{ slot.start_time }} - {{ slot.end_time }}
+                  {{ formatTime(slot.start_time) }} - {{ formatTime(slot.end_time) }}
                 </button>
               </div>
             </div>
@@ -146,6 +146,15 @@ const form = ref({
   time_slot_id: null
 })
 
+
+const formatTime = (timeStr) => {
+  const [hours, minutes] = timeStr.split(':').map(Number)
+  const date = new Date()
+  date.setHours(hours)
+  date.setMinutes(minutes)
+  return date.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true })
+}
+
 const isSlotApproved = (slot) => slot.status === 'approved'
 
 const isStep1Valid = computed(() => {
@@ -174,7 +183,7 @@ const fpConfig = {
 
 const filteredSlots = computed(() => {
   if (!form.value.booking_date) return []
-  return timeSlots.value
+  return timeSlots.value.filter(slot => slot.status !== 'inactive')
 })
 
 const selectSlot = (id) => {
