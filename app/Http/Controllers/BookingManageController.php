@@ -25,8 +25,7 @@ class BookingManageController extends Controller
         // Search by name
         if ($request->filled('search')) {
             $query->where(function ($q) use ($request) {
-                $q->where('given_name', 'like', '%' . $request->search . '%')
-                ->orWhere('family_name', 'like', '%' . $request->search . '%');
+                $q->where('full_name', 'like', '%' . $request->search . '%');
             });
         }
 

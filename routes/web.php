@@ -14,6 +14,7 @@ use App\Http\Controllers\FestivalController;
 use App\Http\Controllers\SpeakersController;
 use App\Http\Controllers\TimeSlotController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MemorySubmissionController;
 use App\Http\Controllers\RegistrationController;
 
 Route::controller(GenaralController::class)->group( function (){
@@ -120,6 +121,11 @@ Route::middleware(['permission:Manage Bookings', config('jetstream.auth_session'
 
         Route::get('/manage-bookings','manageBookings')->name('manageBookings');
 
+    });
+
+    Route::controller(MemorySubmissionController::class)->group(function () {
+
+        Route::get('/memory-submission','memorySubmission')->name('memorySubmission');
     });
 
 });
