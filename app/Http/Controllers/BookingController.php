@@ -12,22 +12,23 @@ class BookingController extends Controller
     {
         $selectedDate = $request->query('booking_date');
 
-        // Fetch all slots
-        $slots = TimeSlot::all();
+        // ✅ fetch only time slots for the selected date
+        $slots = TimeSlot::whereDate('date', $selectedDate)->get();
 
-        // Fetch all approved bookings for that date
         $bookedSlots = LaunchpadBooking::where('booking_date', $selectedDate)
             ->where('status', 'approved')
             ->pluck('time_slot_id')
             ->toArray();
 
-        // Append `status` to each slot
         $slots->each(function ($slot) use ($bookedSlots) {
-            $slot->status = in_array($slot->id, $bookedSlots) ? 'approved' : 'available';
+            $slot->status = in_array($slot->id, $bookedSlots)
+                ? 'approved'
+                : ($slot->is_active ? 'available' : 'inactive');
         });
 
         return $slots;
     }
+
 
 
     public function store(Request $request)

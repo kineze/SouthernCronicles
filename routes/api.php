@@ -36,7 +36,12 @@ Route::put('/teams/{team}', [TeamsController::class, 'update']);
 Route::delete('/teams/{team}', [TeamsController::class, 'destroy']);
 Route::put('/teams/{team}/toggle-status', [TeamsController::class, 'toggleStatus']);
 
+Route::delete('/time-slots/by-date', [TimeSlotController::class, 'destroyByDate']);
 Route::apiResource('time-slots', TimeSlotController::class);
+Route::post('/time-slots/{timeSlot}/toggle', [TimeSlotController::class, 'toggleStatus']);
+
+
+
 Route::get('/launchpad/bookings', [BookingManageController::class, 'allBookings']);
 Route::put('/launchpad/bookings/{booking}/status', [BookingManageController::class, 'updateStatus']);
 

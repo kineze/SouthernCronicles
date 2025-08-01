@@ -48,7 +48,7 @@
       </div>
 
       <!-- Registration Form -->
-      <div class="mt-10 max-w-4xl lg:w-5/12 lg:p-4 mx-auto bg-white dark:bg-gray-800 rounded-lg shadow space-y-6 lg:sticky lg:top-9 lg:max-h-[100vh] lg:overflow-y-auto">
+      <div class="mt-10 max-w-4xl lg:w-5/12 lg:p-4 mx-auto bg-white dark:bg-gray-800 rounded-lg shadow space-y-6 lg:sticky lg:top-4 lg:max-h-[100svh] lg:overflow-y-auto">
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div class="relative">
@@ -192,7 +192,7 @@
               <label for="copyright_contact" class="absolute text-sm text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-900 px-2 duration-300 transform scale-75 -translate-y-4 top-2 z-10 origin-[0]
                   peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2
                   peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1">
-                Contact Info
+                Contact Email
               </label>
             </div>
           </div>
@@ -210,7 +210,7 @@
         </div>
 
         <!-- Submit -->
-        <div class="text-right">
+        <div class="text-start">
           <button
             @click="submitForm"
             class="px-6 py-2 bg-black text-white font-semibold rounded hover:bg-gray-800 transition"
