@@ -7,9 +7,9 @@
     <!-- Launchpad 1000 Description -->
 <div class="flex flex-wrap">
       <div class="lg:w-6/12 lg:p-4  text-start text-gray-700 dark:text-gray-300 mb-10  leading-relaxed px-4">
-      <p class="mb-3 -mt-2 font-semibold text-lg text-black dark:text-white">
+      <strong class="mb-3 -mt-2 font-semibold text-lg text-black dark:text-white">
           Launchpad 1000 Global Literary Pitching Platform
-      </p>
+      </strong>
       <p class="mb-2 text-justify">
           Launchpad 1000 is The Asian Literary Festivals' live manuscript pitching platform, connecting writers worldwide with industry professionals. We seek fresh talent and welcome established authors across all genres.
       </p>
