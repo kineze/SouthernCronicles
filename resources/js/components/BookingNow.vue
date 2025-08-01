@@ -21,7 +21,7 @@
       </p>
     </div>
 
-    <div class="lg:w-6/12 lg:p-4">
+    <div class="lg:w-6/12 w-full lg:p-4">
           <div v-if="step === 1">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <!-- Full Name -->
@@ -89,7 +89,7 @@
               <Flatpickr
                 v-model="form.booking_date"
                 :config="fpConfig"
-                class="bg-black text-white rounded hidden-input-calendar"
+                class="bg-black text-white w-full rounded hidden-input-calendar"
                 placeholder="Choose a date"
               />
             </div>
@@ -160,8 +160,17 @@ const fpConfig = {
   inline: true,
   dateFormat: 'Y-m-d',
   disableMobile: true,
-  minDate: 'today',
+  minDate: '2025-10-03',
+  enable: ['2025-10-03', '2025-10-04', '2025-10-05'],
+  onReady: (selectedDates, dateStr, instance) => {
+    // Hide previous and next month buttons
+    const prev = instance.calendarContainer.querySelector('.flatpickr-prev-month')
+    const next = instance.calendarContainer.querySelector('.flatpickr-next-month')
+    if (prev) prev.style.display = 'none'
+    if (next) next.style.display = 'none'
+  }
 }
+
 
 const filteredSlots = computed(() => {
   if (!form.value.booking_date) return []
@@ -235,7 +244,6 @@ onMounted(() => {
 .flatpickr-weekdaycontainer .flatpickr-weekday,
 .flatpickr-days .flatpickr-day {
   color: white;
-  width: 100% !important;
 }
 .flatpickr-days .flatpickr-disabled {
   /* background-color: #4d4d4d; */
@@ -266,8 +274,7 @@ onMounted(() => {
 .flatpickr-calendar.inline {
   background-color: black;
   color: white;
-
-  padding: 1rem;
+  padding: 0px;
   box-shadow: none;
 }
 
@@ -321,17 +328,17 @@ onMounted(() => {
   opacity: 0.6;
 }
 .flatpickr-calendar .flatpickr-months .flatpickr-month {
-  margin-top: -10px;
-  margin-bottom: 10px;
+  /* margin-top: -10px;
+  margin-bottom: 10px; */
   color: white !important;
 }
 .flatpickr-months .flatpickr-next-month,
 .flatpickr-months .flatpickr-prev-month {
-  color: black !important;
+  color: white !important;
   font-weight: 600 !important;
   background-color: white !important;
-  margin-top: 10px;
-  border-radius: 5px;
+  margin-top: 4px;
+  border-radius: 50px;
 }
 .flatpickr-months .flatpickr-next-month {
   margin-right: 10px;
