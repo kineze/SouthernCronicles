@@ -52,7 +52,7 @@
     
         <div class="flex w-full flex-wrap justify-center py-6 px-3">
             <!-- Left: The Living Memory Vault -->
-            <div class="w-full lg:w-6/12 text-gray-700 dark:text-gray-300 pr-3 space-y-5">
+            <div class="w-full lg:w-6/12 text-gray-700 dark:text-gray-300 pr-6 space-y-5">
 
                 <div class="aspect-w-1 aspect-h-1 w-[200px]  -mb-6 mx-auto">
                     <img src="{{ asset('/assets/img/livingmemory.gif') }}" alt="Rocket Animation" class="w-full h-full object-cover rounded-xl">
