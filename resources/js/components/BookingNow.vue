@@ -6,7 +6,7 @@
 
     <!-- Launchpad 1000 Description -->
 <div class="flex flex-wrap">
-      <div class="lg:w-6/12 lg:p-4  text-center text-gray-700 dark:text-gray-300 mb-10 text-sm leading-relaxed px-4">
+      <div class="lg:w-6/12 lg:p-4  text-start text-gray-700 dark:text-gray-300 mb-10  leading-relaxed px-4">
       <p class="mb-3 -mt-2 font-semibold text-lg text-gray-900 dark:text-white">
           Launchpad 1000 Global Literary Pitching Platform
       </p>
@@ -23,9 +23,9 @@
 
     <div class="lg:w-6/12 w-full lg:p-4">
           <div v-if="step === 1">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="grid grid-cols-1 md:grid-cols-1 gap-4">
             <!-- Full Name -->
-            <div class="relative col-span-1 md:col-span-2">
+            <div class="relative col-span-1">
               <input
                 v-model="form.full_name"
                 type="text"
@@ -95,8 +95,8 @@
             </div>
 
             <div v-if="form.booking_date" class="mt-4 lg:mt-0">
-              <h3 class="mb-2 text-black font-semibold dark:text-gray-300">Available Time</h3>
-              <div class="grid grid-cols-1 lg:grid-cols-2 gap-3">
+              <h3 class="mb-2 text-black  font-semibold dark:text-gray-300">Available Time</h3>
+              <div class="grid grid-cols-1 h-96 overflow-y-auto lg:grid-cols-2 gap-3">
                 <button
                   v-for="slot in filteredSlots"
                   :key="slot.id"
