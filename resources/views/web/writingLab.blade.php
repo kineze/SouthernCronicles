@@ -70,6 +70,59 @@
         </div>
     
     </div>
+
+
+    <div >
+        {{-- <h1 class="lg:text-4xl text-3xl mt-12 lg:mt-4 text-black font-extrabold tracking-widest uppercase text-center">Stage, Page, Revolution: The Future of Storytelling Starts Here</h1> --}}
+    
+        <div class="flex w-full flex-wrap justify-center py-12 px-4">
+            <!-- Left: The Living Memory Vault -->
+            <div class="w-full lg:w-6/12 text-gray-700 dark:text-gray-300 space-y-5 p-4">
+                <h2 class="lg:text-4xl text-3xl mt-12 lg:mt-4 text-black font-extrabold tracking-widest uppercase text-left">The Living Memory Vault</h2>
+                <p>
+                    <strong class="text-lg text-black dark:text-white">A Global Initiative to Preserve Our Intangible Heritage</strong>
+                </p>
+                <p>
+                    As modernization accelerates, centuries of stories, rituals, and traditional knowledge are fading into silence. <strong>The Living Memory Vault</strong>, a collaborative initiative by The Asian Literary Festivals and The Purple Umbrella Theatre Festival, aims to safeguard these priceless cultural treasures. From ancient healing methods to folklore and community rituals, this digital archive honors the wisdom that shaped generations—ensuring it remains accessible and inspiring for those yet to come.
+                </p>
+                <p>
+                    We call upon storytellers, cultural custodians, scholars, and passionate individuals worldwide to contribute. By sharing your knowledge, you help ensure no story is lost and no tradition forgotten. Join us in building a living archive that celebrates our shared human heritage. <strong>Register today</strong> to become a contributor to The Living Memory Vault and help preserve humanity's greatest stories for tomorrow.
+                </p>
+
+                    <div class="aspect-w-1 aspect-h-1 w-32 -mt-8 mb-6">
+                        <img src="{{ asset('/assets/img/livingmemory.gif') }}" alt="Rocket Animation" class="w-full h-full object-cover rounded-xl">
+                    </div>
+
+                <div>
+                    <a href="{{route('livingMemoryVault')}}" class="px-4 py-2 bg-black text-white font-semibold">Learn More</a>
+                </div>
+                    
+            </div>
+
+            <!-- Right: Launchpad 1000 -->
+            <div class="w-full lg:w-6/12 text-gray-700 dark:text-gray-300 space-y-5 p-4">
+                <h2 class="lg:text-4xl text-3xl mt-12 lg:mt-4 text-black font-extrabold tracking-widest uppercase text-center">Launchpad 1000 Global Literary Pitching Platform</h2>
+                <p>Launchpad 1000 is The Asian Literary Festivals' live manuscript pitching platform, connecting writers worldwide with industry professionals. We seek fresh talent and welcome established authors across all genres.</p>
+                <p>The Asian Literary Agency, our talent management wing, hosts live pitching sessions at festival locations. Our platform features two distinct tracks: an original manuscript submission desk for unpublished work and a translation pitching deck for published titles seeking international markets.</p>
+                <p>Book your slot and present your work directly to agents actively seeking compelling narratives and market-ready content. Whether you're submitting debut manuscripts or published works for translation opportunities, Launchpad 1000 provides the essential gateway to advance your literary career on the global stage.</p>
+
+
+                <div class="aspect-w-1 aspect-h-1 w-28 flex items-end justify-end mb-6">
+                    <img src="{{ asset('/assets/img/rocket.gif') }}" alt="Rocket Animation" class="w-full h-full object-cover rounded-xl">
+                </div>
+
+                <div>
+                    <a href="{{route('bookingNow')}}" class="px-4 py-2 bg-black text-white font-semibold">Learn More</a>
+                </div>
+
+                
+
+            
+            </div>
+        </div>
+
+    
+    </div>
 </section>
 
 @endsection
