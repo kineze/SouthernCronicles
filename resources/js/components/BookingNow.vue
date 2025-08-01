@@ -7,7 +7,7 @@
     <!-- Launchpad 1000 Description -->
 <div class="flex flex-wrap">
       <div class="lg:w-6/12 lg:p-4  text-start text-gray-700 dark:text-gray-300 mb-10  leading-relaxed px-4">
-      <p class="mb-3 -mt-2 font-semibold text-lg text-gray-900 dark:text-white">
+      <p class="mb-3 -mt-2 font-semibold text-lg text-black dark:text-white">
           Launchpad 1000 Global Literary Pitching Platform
       </p>
       <p class="mb-2 text-justify">
