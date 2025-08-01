@@ -4,7 +4,7 @@
 
 
     <!-- Useful Links Grid -->
-    <div class="grid gap-6 grid-cols-1 md:grid-cols-3 lg:grid-cols-5">
+    <div class="grid gap-6 grid-cols-1 md:grid-cols-3 lg:grid-cols-6">
       <div
         v-for="link in links"
         :key="link.title"
@@ -45,6 +45,11 @@ const links = [
     title: 'Transport in Brussles',
     url: 'https://www.stib-mivb.be/home',
     image: 'assets/img/sitb-logo.webp'
+  },
+  {
+    title: 'Find coworking',
+    url: 'https://commonshub.brussels',
+    image: 'assets/img/coworking.webp'
   },
     {
     title: 'Brussels Musiums',
