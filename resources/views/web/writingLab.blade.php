@@ -29,18 +29,18 @@
           </div>
             
             <div class="w-full  lg:w-7/12">
-                <p class="text-gray-700 py-3 p-3 lg:p-6">The Asian Writing Lab forms the creative heart of our festivals, nurturing emerging writers
+                <p class="text-gray-700 text-justify  lg:px-6 py-3 px-3 lg:py-3">The Asian Writing Lab forms the creative heart of our festivals, nurturing emerging writers
                 to push beyond conventional boundaries and harness the transformative power of
                 imagination. This dynamic incubator seamlessly blends stage and classroom into an
                 infinite space of collaborative creation.</p>
-                <p class="text-gray-700 p-3 lg:px-6">We offer diverse programmes designed to dismantle the barriers that constrain human
+                <p class="text-gray-700 p-3 text-justify lg:px-6">We offer diverse programmes designed to dismantle the barriers that constrain human
                 creativity, addressing these challenges with the urgency they deserve. Our experimental
                 approach encourages writers to explore uncharted territories of storytelling, discovering
                 new forms and voices that challenge traditional frameworks.</p>
-                <p class="text-gray-700 p-3 lg:px-6">The Asian Writing Lab is championed by a global network of authors, thinkers, and cultural
+                <p class="text-gray-700 text-justify p-3 lg:px-6">The Asian Writing Lab is championed by a global network of authors, thinkers, and cultural
                 strategists who share our unwavering belief in imagination as a force for change. Together,
                 we cultivate a space where emerging voices can flourish and redefine what writing can be.</p>
-                <p class="text-gray-700 p-3 lg:px-6">Through this unique fusion of performance and pedagogy, we're not just developing
+                <p class="text-gray-700 text-justify p-3 lg:px-6">Through this unique fusion of performance and pedagogy, we're not just developing
                 writers—we're fostering the next generation of creative revolutionaries who will reshape
                 the literary landscape.</p>
            </div>
