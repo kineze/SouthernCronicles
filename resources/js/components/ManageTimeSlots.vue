@@ -45,6 +45,7 @@
                   type="checkbox"
                   class="sr-only peer"
                   :checked="slot.is_active"
+                  :disabled="slot.booking"
                   @change="toggleStatus(slot)"
                 >
                 <div
@@ -53,16 +54,23 @@
                         peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full
                         peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px]
                         after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5
-                        after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600">
+                        after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600
+                        disabled:opacity-50 disabled:cursor-not-allowed"
+                >
                 </div>
               </label>
 
-              <button
-              @click="confirmDeleteSlot(slot.id)"
-              class=" text-red-500 hover:text-red-700"
-            >
-              <i class="fas fa-trash"></i>
-            </button>
+
+              <div class="text-right">
+                <button
+                  @click="!slot.booking && confirmDeleteSlot(slot.id)"
+                  :disabled="slot.booking"
+                  class="text-red-500 hover:text-red-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  <i class="fas fa-trash"></i>
+                </button>
+                <span v-if="slot.booking" class="block text-xs text-gray-400">Has booking</span>
+              </div>
             </div>
             
           </div>
