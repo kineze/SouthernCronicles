@@ -97,17 +97,14 @@
         </div>
 
         <!-- Submission Quill Editor -->
-        <div class="relative">
-          <label class="block text-sm mb-2 text-gray-700 dark:text-gray-300">Submission</label>
-          <quill-editor
-            :key="editorKey"
-            :content="form.submission"
-            @update:content="form.submission = $event"
-            contentType="html"
-            theme="snow"
-            class="bg-white dark:bg-gray-900 text-black dark:text-white border border-gray-500 dark:border-gray-600 rounded min-h-[150px]"
-          />
-        </div>
+<!-- Inside your template -->
+<div class="relative">
+  <label class="block text-sm mb-2 text-gray-700 dark:text-gray-300">Submission</label>
+  <div
+    ref="editor"
+    class="min-h-[150px] bg-white dark:bg-gray-900 text-black dark:text-white border border-gray-500 dark:border-gray-600 rounded p-3"
+  ></div>
+</div>
 
   <div
     class="relative border-2 border-dashed border-gray-400 dark:border-gray-600 rounded-lg p-6 text-center bg-white dark:bg-gray-800 hover:border-black transition"
@@ -223,13 +220,16 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useToast } from 'vue-toastification'
-import { QuillEditor } from '@vueup/vue-quill'
-import '@vueup/vue-quill/dist/vue-quill.snow.css'
+import Quill from 'quill'
+import 'quill/dist/quill.snow.css'
 
 const toast = useToast()
 const showForm = ref(false)
+const editor = ref(null)
+let quillInstance = null
+
 const editorKey = ref(0)
 
 const form = ref({
@@ -245,6 +245,31 @@ const form = ref({
 
 const selectedFile = ref(null)
 const selectedFileName = ref('')
+
+onMounted(() => {
+  quillInstance = new Quill(editor.value, {
+    theme: 'snow',
+    modules: {
+      toolbar: [
+        [{ header: [1, 2, 3, 4, 5, 6, false] }],
+        ['bold', 'italic', 'underline', 'strike'],
+        [{ color: [] }, { background: [] }],
+        [{ script: 'sub' }, { script: 'super' }],
+        ['blockquote', 'code-block'],
+        [{ list: 'ordered' }, { list: 'bullet' }],
+        [{ indent: '-1' }, { indent: '+1' }],
+        [{ align: [] }],
+        ['link', 'image', 'video'],
+        ['clean']
+      ]
+    }
+  })
+
+  // Sync editor content with form.submission
+  quillInstance.on('text-change', () => {
+    form.value.submission = quillInstance.root.innerHTML
+  })
+})
 
 const handleFileUpload = (event) => {
   const file = event.target.files[0]
@@ -272,6 +297,9 @@ const clearForm = () => {
   }
   selectedFile.value = null
   selectedFileName.value = ''
+  if (quillInstance) {
+    quillInstance.setContents([{ insert: '\n' }])
+  }
   editorKey.value++
 }
 
@@ -314,6 +342,6 @@ const submitForm = async () => {
     toast.error('❌ An error occurred while submitting. Please try again.')
   }
 }
-
 </script>
+
 
