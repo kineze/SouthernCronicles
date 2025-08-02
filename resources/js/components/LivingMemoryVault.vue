@@ -100,7 +100,9 @@
         <div class="relative">
           <label class="block text-sm mb-2 text-gray-700 dark:text-gray-300">Submission</label>
           <quill-editor
-            v-model:content="form.submission"
+            :key="editorKey"
+            :content="form.submission"
+            @update:content="form.submission = $event"
             contentType="html"
             theme="snow"
             class="bg-white dark:bg-gray-900 text-black dark:text-white border border-gray-500 dark:border-gray-600 rounded min-h-[150px]"
@@ -228,6 +230,7 @@ import '@vueup/vue-quill/dist/vue-quill.snow.css'
 
 const toast = useToast()
 const showForm = ref(false)
+const editorKey = ref(0)
 
 const form = ref({
   given_name: '',
@@ -269,6 +272,7 @@ const clearForm = () => {
   }
   selectedFile.value = null
   selectedFileName.value = ''
+  editorKey.value++
 }
 
 const submitForm = async () => {
