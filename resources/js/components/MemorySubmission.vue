@@ -60,6 +60,7 @@
     </div>
 
     <!-- Drawer (View) -->
+     <div v-if="showDrawer" class="fixed inset-0 z-[990] bg-black bg-opacity-40" @click="closeDrawer"></div>
     <div
       class="fixed top-0 right-0 z-[990] h-screen w-[800px] p-4 overflow-y-auto transition-transform bg-white dark:bg-gray-800"
       :class="showDrawer ? 'translate-x-0' : 'translate-x-full'"
@@ -85,18 +86,27 @@
         <p class="mb-3" v-if="selected?.is_copyright"><strong>Copyright Holder Contact:</strong> {{ selected?.copyright_contact }}</p>
         
       </div>
-      <div >
-          <strong>Submission:</strong>
-          <div
-            class="p-4 border rounded mt-4 bg-gray-50 dark:bg-gray-900 prose prose-sm max-w-none dark:prose-invert"
-            v-html="selected?.submission"
-          />
+      <div class="mt-6">
+        <h5 class="font-semibold mb-2 text-gray-800 dark:text-white">Submission</h5>
+        <div class="p-4 border rounded bg-gray-50 dark:bg-white">
+          <div ref="printRef" class="submission-content" v-html="sanitizeSubmission(selected?.submission)"></div>
+                
         </div>
+<button
+              @click="downloadPDF"
+              class="mt-3 mb-2 px-4 py-2 text-sm font-semibold text-white bg-green-600 rounded"
+            >
+              <i class="fa-solid fa-download mr-1"></i> Export as PDF
+            </button>
+      </div>
+
+
     </div>
   </div>
 </template>
 
 <script setup>
+import html2pdf from 'html2pdf.js'
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import { useToast } from 'vue-toastification'
@@ -105,6 +115,30 @@ const toast = useToast()
 const submissions = ref([])
 const selected = ref(null)
 const showDrawer = ref(false)
+
+const printRef = ref(null)
+
+const downloadPDF = () => {
+  if (!printRef.value) return
+
+  const element = printRef.value
+
+  const opt = {
+    margin:       0.5,
+    filename:     `${selected.value?.given_name || 'submission'}-memory.pdf`,
+    image:        { type: 'jpeg', quality: 0.98 },
+    html2canvas:  { scale: 2 },
+    jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' },
+    pagebreak:    { mode: ['avoid-all', 'css', 'legacy'] }
+  }
+
+  html2pdf().set(opt).from(element).save()
+}
+
+const sanitizeSubmission = (html) => {
+  if (!html) return '<p class="text-gray-400">No submission provided.</p>'
+  return html.replace(/background-color:\s*[^;"]+;?/gi, '') // Remove inline backgrounds
+}
 
 const fetchSubmissions = async () => {
   try {
@@ -128,9 +162,90 @@ const closeDrawer = () => {
 onMounted(fetchSubmissions)
 </script>
 
-<style scoped>
-.prose a {
+<style >
+.submission-content {
+  font-size: 0.875rem; /* same as text-sm */
+  color: #374151; /* gray-700 */
+}
+
+/* Alignment from Quill */
+.submission-content .ql-align-center,
+.submission-content [style*="text-align: center"],
+.submission-content [style*="text-align:center"] {
+  text-align: center;
+  display: block;
+}
+.submission-content .ql-align-right,
+.submission-content [style*="text-align: right"],
+.submission-content [style*="text-align:right"] {
+  text-align: right;
+  display: block;
+}
+.submission-content .ql-align-justify,
+.submission-content [style*="text-align: justify"],
+.submission-content [style*="text-align:justify"] {
+  text-align: justify;
+  display: block;
+}
+
+/* Links */
+.submission-content a {
   color: #3b82f6;
   text-decoration: underline;
 }
+
+/* Media */
+.submission-content img,
+.submission-content video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Optional: blockquote and lists */
+.submission-content blockquote {
+  border-left: 4px solid #d1d5db; /* gray-300 */
+  padding-left: 1rem;
+  color: #6b7280; /* gray-500 */
+  font-style: italic;
+  margin: 1em 0;
+}
+.submission-content ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin: 1em 0;
+}
+.submission-content ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin: 1em 0;
+}
+
+.dark .submission-content {
+  color: #f9fafb;
+}
+
+.dark .submission-content h1,
+.dark .submission-content h2,
+.dark .submission-content h3,
+.dark .submission-content h4,
+.dark .submission-content h5,
+.dark .submission-content h6,
+.dark .submission-content strong,
+.dark .submission-content b {
+  color: #f9fafb !important; /* ensure bold/heading text is white too */
+}
+
+.dark .submission-content blockquote {
+  color: #e5e7eb; /* gray-200 for blockquotes */
+  border-left-color: #4b5563; /* gray-600 */
+}
+
+.dark .submission-content a {
+  color: #60a5fa; /* blue-400 */
+}
+
 </style>
+

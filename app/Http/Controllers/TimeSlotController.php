@@ -15,10 +15,10 @@ class TimeSlotController extends Controller
 public function index(Request $request)
 {
     if ($request->has('date')) {
-        return TimeSlot::whereDate('date', $request->date)->get();
+        return TimeSlot::with('booking')->whereDate('date', $request->date)->get();
     }
 
-    return TimeSlot::orderBy('date')->get(); // <-- return all when no date filter
+    return TimeSlot::with('booking')->orderBy('date')->get();
 }
 
 

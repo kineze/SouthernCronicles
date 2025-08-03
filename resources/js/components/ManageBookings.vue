@@ -70,6 +70,7 @@
     </div>
 
     <!-- Drawer (View) -->
+    <div v-if="showDrawer" class="fixed inset-0 z-[990] bg-black bg-opacity-40" @click="closeDrawer"></div>
     <div
       class="fixed top-0 right-0 z-[990] h-screen w-96 p-4 overflow-y-auto transition-transform bg-white dark:bg-gray-800"
       :class="showDrawer ? 'translate-x-0' : 'translate-x-full'"
