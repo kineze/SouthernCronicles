@@ -9,80 +9,77 @@
     </div>
 
 
-    <div class="relative overflow-x-auto  mt-7 sm:rounded-lg">
-        <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-        <div v-for="speaker in speakers" :key="speaker.id" class="relative group rounded-lg overflow-hidden shadow-lg" >
-
-            <div class="absolute top-2 right-2 z-[990]">
-            <label class="inline-flex items-center cursor-pointer">
-                <input
-                type="checkbox"
-                :checked="speaker.show_on_home"
-                @change="toggleShowOnHome(speaker)"
-                class="sr-only peer"
-                />
-                <div
-                class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300
-                        dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700
-                        peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full
-                        peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px]
-                        after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full
-                        after:h-5 after:w-5 after:transition-all dark:border-gray-600
-                        peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600"
-                ></div>
-            </label>
+    <div class="relative overflow-x-auto mt-7 sm:rounded-lg">
+      <draggable
+        v-model="speakers"
+        item-key="id"
+        group="speakers"
+        ghost-class="bg-yellow-100"
+        handle=".drag-handle"
+        @end="onDragEnd"
+        class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+      >
+        <template #item="{ element: speaker }">
+          <div class="relative group rounded-lg overflow-hidden shadow-lg">
+            <!-- Drag Handle -->
+            <div class="absolute top-2 left-2 z-[990] cursor-move drag-handle">
+              <i class="fa-solid fa-up-down"></i>
             </div>
+
+            <!-- Toggle and Image Block -->
+              <div class="absolute top-2 right-2 z-[990]">
+                <label class="inline-flex items-center cursor-pointer">
+                    <input
+                    type="checkbox"
+                    :checked="speaker.show_on_home"
+                    @change="toggleShowOnHome(speaker)"
+                    class="sr-only peer"
+                    />
+                    <div
+                    class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300
+                            dark:peer-focus:ring-green-800 rounded peer dark:bg-gray-700
+                            peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full
+                            peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px]
+                            after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded
+                            after:h-5 after:w-5 after:transition-all dark:border-gray-600
+                            peer-checked:bg-green-600 dark:peer-checked:bg-green-600"
+                    ></div>
+                </label>
+              </div>
 
             <!-- Speaker Image -->
-            <img :src="`/storage/${speaker.image}`"
-                alt="Speaker"
-                class="w-full h-80 object-cover"
-            />
+            <img :src="`/storage/${speaker.image}`" alt="Speaker" class="w-full h-80 object-cover" />
 
+            <!-- Hover Overlay -->
+            <div
+              class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white p-4 text-center"
+            >
+              <h3 class="text-lg font-semibold uppercase mb-2">{{ speaker.name }}</h3>
 
-            <div class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white p-4 text-center">
+              <!-- Social Links -->
+              <div class="flex space-x-4 text-xl">
+                <a v-if="speaker.facebook" :href="speaker.facebook" target="_blank" class="hover:text-blue-500">
+                  <i class="fa-brands fa-facebook"></i>
+                </a>
+                <a v-if="speaker.instagram" :href="speaker.instagram" target="_blank" class="hover:text-pink-500">
+                  <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a v-if="speaker.linkedin" :href="speaker.linkedin" target="_blank" class="hover:text-blue-400">
+                  <i class="fa-brands fa-linkedin"></i>
+                </a>
+              </div>
 
-                <h3 class="text-lg font-semibold uppercase mb-2">{{ speaker.name }}</h3>
-
-                <div class="flex space-x-4 text-xl">
-                    <a
-                    v-if="speaker.facebook"
-                    :href="speaker.facebook"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="hover:text-blue-500 transition"
-                    >
-                    <i class="fa-brands fa-facebook"></i>
-                    </a>
-
-                    <a
-                    v-if="speaker.instagram"
-                    :href="speaker.instagram"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="hover:text-pink-500 transition"
-                    >
-                    <i class="fa-brands fa-instagram"></i>
-                    </a>
-
-                    <a
-                    v-if="speaker.linkedin"
-                    :href="speaker.linkedin"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="hover:text-blue-400 transition"
-                    >
-                    <i class="fa-brands fa-linkedin"></i>
-                    </a>
-                </div>
-                <div class="flex space-x-4 text-sm mt-5">
-                    <button @click="editSpeaker(speaker)" class="text-white"><i class="fa-solid fa-pen"></i></button>
-                    <button @click="showDeleteConfirmation(speaker)" class="text-rose-500"><i class="fa-solid fa-trash"></i></button>
-                </div>
+              <!-- Actions -->
+              <div class="flex space-x-4 text-sm mt-5">
+                <button @click="editSpeaker(speaker)" class="text-white"><i class="fa-solid fa-pen"></i></button>
+                <button @click="showDeleteConfirmation(speaker)" class="text-rose-500">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
             </div>
-        </div>
-        </div>
-
+          </div>
+        </template>
+      </draggable>
     </div>
 
     <!-- Drawer -->
@@ -271,6 +268,7 @@
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import { useToast } from 'vue-toastification'
+import draggable from 'vuedraggable'
 
 const toast = useToast()
 const speakers = ref([])
@@ -300,7 +298,7 @@ const fetchSpeakerTypes = async () => {
 
 
 const fetchSpeakers = async () => {
-  const res = await axios.get('/api/speakers')
+  const res = await axios.get('/api/speakers?ordered=true')
   speakers.value = res.data
 }
 
@@ -408,6 +406,16 @@ const toggleShowOnHome = async (speaker) => {
     fetchSpeakers()
   } catch (err) {
     toast.error('Error toggling home preview')
+  }
+}
+
+const onDragEnd = async () => {
+  try {
+    const orderedIds = speakers.value.map((s, index) => ({ id: s.id, order: index }))
+    await axios.post('/api/speakers/reorder', { order: orderedIds })
+    toast.success('Reordered successfully')
+  } catch (err) {
+    toast.error('Error saving order')
   }
 }
 

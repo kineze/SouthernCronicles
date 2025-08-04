@@ -10,7 +10,7 @@
 
     <!-- Team Cards -->
     <div class="relative overflow-x-auto mt-7 sm:rounded-lg">
-      <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+      <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         <div v-for="team in teams" :key="team.id" class="relative group rounded-lg overflow-hidden shadow-lg">
             <div class="absolute top-2 right-2 z-[990]">
                 <label class="inline-flex items-center cursor-pointer">
@@ -22,12 +22,12 @@
                     />
                     <div
                     class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300
-                            dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700
+                            dark:peer-focus:ring-green-800 rounded peer dark:bg-gray-700
                             peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full
                             peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px]
-                            after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full
+                            after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded
                             after:h-5 after:w-5 after:transition-all dark:border-gray-600
-                            peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600"
+                            peer-checked:bg-green-600 dark:peer-checked:bg-green-600"
                     ></div>
                 </label>
             </div>
@@ -45,7 +45,10 @@
     </div>
 
     <!-- Drawer -->
+     <div v-if="drawerOpen" class="fixed inset-0 z-[990] bg-black bg-opacity-40" @click="closeDrawer"></div>
     <div :class="['fixed top-0 right-0 z-[990] h-screen w-96 transition-transform bg-white dark:bg-gray-800 p-6 overflow-y-auto', drawerOpen ? 'translate-x-0' : 'translate-x-full']">
+      
+      
       <div class="flex justify-between items-center mb-4">
         <h5 class="text-lg font-bold text-gray-800 dark:text-white">{{ editingId ? 'Edit Team' : 'Add Team' }}</h5>
         <button @click="closeDrawer" class="text-gray-500 hover:text-red-500">
@@ -53,152 +56,152 @@
         </button>
       </div>
 
-<form @submit.prevent="saveTeam">
-  <!-- Image Upload -->
-  <div class="mb-6">
-    <label class="block text-sm font-medium dark:text-white mb-1">Image</label>
-    <div
-      class="relative w-32 h-32 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center cursor-pointer bg-gray-50 hover:bg-gray-100 dark:bg-gray-700 dark:border-gray-600"
-      @click="$refs.imageInput.click()"
-    >
-      <template v-if="previewImage">
-        <img :src="previewImage" alt="Preview" class="w-full h-full object-cover rounded-lg" />
-        <button
-          @click.stop="removeImage"
-          type="button"
-          class="absolute top-1 right-1 bg-red-600 hover:bg-red-700 text-white rounded-full p-1 text-xs"
-        >
-          <i class="fa-solid fa-xmark"></i>
+      <form @submit.prevent="saveTeam">
+        <!-- Image Upload -->
+        <div class="mb-6">
+          <label class="block text-sm font-medium dark:text-white mb-1">Image</label>
+          <div
+            class="relative w-32 h-32 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center cursor-pointer bg-gray-50 hover:bg-gray-100 dark:bg-gray-700 dark:border-gray-600"
+            @click="$refs.imageInput.click()"
+          >
+            <template v-if="previewImage">
+              <img :src="previewImage" alt="Preview" class="w-full h-full object-cover rounded-lg" />
+              <button
+                @click.stop="removeImage"
+                type="button"
+                class="absolute top-1 right-1 bg-red-600 hover:bg-red-700 text-white rounded-full p-1 text-xs"
+              >
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </template>
+            <template v-else>
+              <span class="text-sm text-gray-400 dark:text-gray-300 text-center px-2">Click to upload</span>
+            </template>
+          </div>
+          <input type="file" accept="image/*" ref="imageInput" @change="handleImageUpload" class="hidden" />
+        </div>
+
+        <!-- Name -->
+        <div class="relative mb-5">
+          <input
+            v-model="form.name"
+            type="text"
+            id="team-name"
+            placeholder=" "
+            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            required
+          />
+          <label
+            for="team-name"
+            class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2
+            peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500
+            peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2
+            peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
+          >
+            Team Name
+          </label>
+        </div>
+
+        <!-- Facebook -->
+        <div class="relative mb-5">
+          <input
+            v-model="form.facebook"
+            type="text"
+            id="facebook"
+            placeholder=" "
+            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          />
+          <label
+            for="facebook"
+            class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2
+            peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500
+            peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2
+            peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
+          >
+            Facebook
+          </label>
+        </div>
+
+        <!-- Instagram -->
+        <div class="relative mb-5">
+          <input
+            v-model="form.instagram"
+            type="text"
+            id="instagram"
+            placeholder=" "
+            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          />
+          <label
+            for="instagram"
+            class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2
+            peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500
+            peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2
+            peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
+          >
+            Instagram
+          </label>
+        </div>
+
+        <!-- LinkedIn -->
+        <div class="relative mb-5">
+          <input
+            v-model="form.linkedin"
+            type="text"
+            id="linkedin"
+            placeholder=" "
+            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          />
+          <label
+            for="linkedin"
+            class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2
+            peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500
+            peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2
+            peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
+          >
+            LinkedIn
+          </label>
+        </div>
+
+        <!-- Description -->
+        <div class="relative mb-5">
+          <textarea
+            v-model="form.description"
+            id="team-description"
+            rows="3"
+            placeholder=" "
+            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          ></textarea>
+          <label
+            for="team-description"
+            class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2
+            peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500
+            peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2
+            peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
+          >
+            Description
+          </label>
+        </div>
+
+        <!-- Show on Home Toggle -->
+        <!-- <div class="mb-6">
+          <label class="block text-sm font-medium text-gray-700 dark:text-white mb-1">Show on Home</label>
+          <label class="inline-flex items-center cursor-pointer">
+            <input type="checkbox" v-model="form.show_on_home" class="sr-only peer" />
+            <div
+              class="relative w-11 h-6 bg-gray-200 rounded-full peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:bg-blue-600"
+            >
+              <div
+                class="absolute top-[2px] left-[2px] bg-white w-5 h-5 rounded-full transition-transform peer-checked:translate-x-full"
+              ></div>
+            </div>
+          </label>
+        </div> -->
+
+        <!-- Submit -->
+        <button type="submit" class="w-full bg-green-500 hover:bg-green-700 text-white py-2 rounded">
+          {{ editingId ? 'Update Team' : 'Add Team' }}
         </button>
-      </template>
-      <template v-else>
-        <span class="text-sm text-gray-400 dark:text-gray-300 text-center px-2">Click to upload</span>
-      </template>
-    </div>
-    <input type="file" accept="image/*" ref="imageInput" @change="handleImageUpload" class="hidden" />
-  </div>
-
-  <!-- Name -->
-  <div class="relative mb-5">
-    <input
-      v-model="form.name"
-      type="text"
-      id="team-name"
-      placeholder=" "
-      class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-      required
-    />
-    <label
-      for="team-name"
-      class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2
-      peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500
-      peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2
-      peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
-    >
-      Team Name
-    </label>
-  </div>
-
-  <!-- Facebook -->
-  <div class="relative mb-5">
-    <input
-      v-model="form.facebook"
-      type="text"
-      id="facebook"
-      placeholder=" "
-      class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-    />
-    <label
-      for="facebook"
-      class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2
-      peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500
-      peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2
-      peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
-    >
-      Facebook
-    </label>
-  </div>
-
-  <!-- Instagram -->
-  <div class="relative mb-5">
-    <input
-      v-model="form.instagram"
-      type="text"
-      id="instagram"
-      placeholder=" "
-      class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-    />
-    <label
-      for="instagram"
-      class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2
-      peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500
-      peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2
-      peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
-    >
-      Instagram
-    </label>
-  </div>
-
-  <!-- LinkedIn -->
-  <div class="relative mb-5">
-    <input
-      v-model="form.linkedin"
-      type="text"
-      id="linkedin"
-      placeholder=" "
-      class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-    />
-    <label
-      for="linkedin"
-      class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2
-      peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500
-      peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2
-      peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
-    >
-      LinkedIn
-    </label>
-  </div>
-
-  <!-- Description -->
-  <div class="relative mb-5">
-    <textarea
-      v-model="form.description"
-      id="team-description"
-      rows="3"
-      placeholder=" "
-      class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-    ></textarea>
-    <label
-      for="team-description"
-      class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2
-      peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500
-      peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2
-      peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
-    >
-      Description
-    </label>
-  </div>
-
-  <!-- Show on Home Toggle -->
-  <!-- <div class="mb-6">
-    <label class="block text-sm font-medium text-gray-700 dark:text-white mb-1">Show on Home</label>
-    <label class="inline-flex items-center cursor-pointer">
-      <input type="checkbox" v-model="form.show_on_home" class="sr-only peer" />
-      <div
-        class="relative w-11 h-6 bg-gray-200 rounded-full peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:bg-blue-600"
-      >
-        <div
-          class="absolute top-[2px] left-[2px] bg-white w-5 h-5 rounded-full transition-transform peer-checked:translate-x-full"
-        ></div>
-      </div>
-    </label>
-  </div> -->
-
-  <!-- Submit -->
-  <button type="submit" class="w-full bg-green-500 hover:bg-green-700 text-white py-2 rounded">
-    {{ editingId ? 'Update Team' : 'Add Team' }}
-  </button>
-</form>
+      </form>
 
 
     </div>

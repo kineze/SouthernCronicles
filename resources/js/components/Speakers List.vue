@@ -133,7 +133,7 @@ const fetchTypes = async () => {
 }
 
 const fetchSpeakers = async () => {
-  const res = await axios.get('/api/speakers')
+  const res = await axios.get('/api/speakers?ordered=true')
   speakers.value = res.data
 }
 

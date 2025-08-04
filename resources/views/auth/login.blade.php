@@ -3,7 +3,8 @@
 @section('content')
 <div class="w-full h-screen flex px-4 flex-col items-center justify-center bg-cover bg-center">
 
-    <div class="lg:w-4/12 md:w-7/12 bg-white dark:border-neutral-700 dark:border w-full rounded-lg md:shadow-xl dark:shadow-none p-6 shadow-gray-300 dark:shadow-neutral-800">
+<div class="lg:w-4/12 md:w-7/12">
+        <div class=" bg-white dark:border-neutral-700 dark:border w-full md:shadow-xl dark:shadow-none p-6 shadow-gray-300 dark:shadow-neutral-800">
 
         <div class="w-full flex flex-col p-6 items-center justify-center">
         <img src="{{asset('assets/img/logo.webp')}}" class="inline-block  max-w-full transition-all duration-200 ease-soft-in-out h-24 dark:hidden" alt="main_logo" />
@@ -56,16 +57,22 @@
                         @endif --}}
         
 
-                        <button class=" dark:bg-blue-600 mb-0 text-sm text-white py-2 px-4 ml-2 rounded-full shadow-lg flex items-center gap-3 bg-gradient-to-tl from-gray-900 to-gray-700">
+                        <button class=" dark:bg-blue-600 mb-0 font-semibold text-sm text-white py-2 px-4 ml-2 shadow-lg flex items-center gap-3 bg-black">
                             {{ __('Log in') }}
 
-                            <i class="fa-solid fa-arrow-right"></i>
+                            {{-- <i class="fa-solid fa-arrow-right"></i> --}}
                         </button>
                     </div>
                 </form>
         </div>
 
+        
+
     </div>
+
+    <div class="bg-black p-2 w-full"></div>
+</div>
+    
 
    
 </div>

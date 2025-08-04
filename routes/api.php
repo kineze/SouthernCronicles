@@ -21,7 +21,9 @@ Route::apiResource('festivals', FestivalController::class);
 
 Route::apiResource('speaker-types', SpeakerTypeController::class);
 
+Route::post('/speakers/reorder', [SpeakersController::class, 'reorder']);
 Route::apiResource('speakers', SpeakersController::class);
+
 Route::get('/registrations', [RegistrationController::class, 'index']);
 
 Route::get('/events', [EventsController::class, 'index']);

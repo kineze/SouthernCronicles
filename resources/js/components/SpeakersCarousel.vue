@@ -58,7 +58,7 @@ const homeSpeakers = ref([])
 const currentSlide = ref(0)
 
 const fetchHomeSpeakers = async () => {
-  const res = await axios.get('/api/speakers')
+  const res = await axios.get('/api/speakers?ordered=true')
   homeSpeakers.value = res.data.filter(speaker => speaker.show_on_home)
 }
 

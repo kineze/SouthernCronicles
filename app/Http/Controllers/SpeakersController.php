@@ -19,9 +19,27 @@ class SpeakersController extends Controller
         return view('dashboards.admin.speakerTypes');
     }
 
-     public function index()
+    public function index(Request $request)
     {
-        return Speaker::with('type')->get();
+        $speakers = Speaker::query();
+        
+        if ($request->ordered) {
+            $speakers->orderBy('order');
+        } else {
+            $speakers->latest();
+        }
+
+        return $speakers->get();
+    }
+
+
+    public function reorder(Request $request)
+    {
+        foreach ($request->order as $item) {
+            Speaker::where('id', $item['id'])->update(['order' => $item['order']]);
+        }
+
+        return response()->json(['message' => 'Order updated']);
     }
 
     public function store(Request $request)
@@ -82,7 +100,19 @@ class SpeakersController extends Controller
 
     public function byType($typeId)
     {
-        return Speaker::where('speaker_type_id', $typeId)->with('type')->get();
+        $speakers = Speaker::where('speaker_type_id', $typeId)
+        ->orderBy('order')
+        ->get();
+
+        return response()->json($speakers);
     }
     
+//     public function getByType($typeId)
+// {
+//     $speakers = Speaker::where('speaker_type_id', $typeId)
+//         ->orderBy('order') // <== enforce the order
+//         ->get();
+
+//     return response()->json($speakers);
+// }
 }

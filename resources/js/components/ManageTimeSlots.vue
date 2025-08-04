@@ -79,6 +79,7 @@
     </div>
 
     <!-- Drawer -->
+     <div v-if="showDrawer" class="fixed inset-0 z-[990] bg-black bg-opacity-40" @click="closeDrawer"></div>
     <div :class="['fixed top-0 right-0 z-[999] h-screen p-4 overflow-y-auto transition-transform bg-white dark:bg-gray-800 w-80', showDrawer ? 'translate-x-0' : 'translate-x-full']">
       <div class="flex justify-between items-center mb-4">
         <h5 class="text-base font-semibold text-gray-700 dark:text-white">Generate Time Slots</h5>
@@ -256,9 +257,9 @@ fetchSlots()
 </script>
 
 <style scoped>
-.input {
+/*.input {
   @apply block px-3 py-2 border rounded w-full;
-}
+}*/
 .translate-x-full {
   transform: translateX(100%);
 }

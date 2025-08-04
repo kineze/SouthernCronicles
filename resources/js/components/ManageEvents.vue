@@ -86,6 +86,7 @@
 
 
     <!-- Drawer -->
+     <div v-if="drawerOpen" class="fixed inset-0 z-[990] bg-black bg-opacity-40" @click="closeDrawer"></div>
     <div v-show="drawerOpen" class="fixed top-0 right-0 z-[990] h-screen p-4 overflow-y-auto bg-white w-96 dark:bg-gray-800 transition-all"
          :class="{ 'translate-x-0': drawerOpen, 'translate-x-full': !drawerOpen }">
         <div class="flex justify-between items-center mb-4">
@@ -255,6 +256,11 @@ const speakerSelect = ref(null)
 const moderatorSelect = ref(null)
 let speakerSelectInstance = null
 let moderatorSelectInstance = null
+
+const closeDrawer = () => {
+  drawerOpen.value = false
+  editingId.value = null
+}
 
 
 const showDeleteModal = ref(false)
