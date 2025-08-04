@@ -65,4 +65,9 @@ class PagesController extends Controller
 
         return view('web.livingMemoryVault');
     }
+
+    public function theKipenzi(){
+
+        return view('web.theKipenzi');
+    }
 }

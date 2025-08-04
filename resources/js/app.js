@@ -42,6 +42,7 @@ import ReadMoreText from './components/ReadMoreText.vue';
 import TermsConditions from './components/TermsConditions.vue';
 import BookingNow from './components/BookingNow.vue';
 import LivingMemoryVault from './components/LivingMemoryVault.vue';
+import TheKipenzi from './components/TheKipenzi.vue';
 
 const app = createApp({});
 
@@ -92,6 +93,7 @@ app
     .component('terms-conditions',TermsConditions)
     .component('booking-now',BookingNow)
     .component('living-memory-vault', LivingMemoryVault)
+    .component('the-kipenzi', TheKipenzi)
 
 
     .mount('#app')

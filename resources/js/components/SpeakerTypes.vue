@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- Header -->
+
     <div class="justify-between flex w-full p-4 bg-white dark:shadow-soft-dark-xl shadow-soft-xl rounded-xl dark:bg-gray-800 pb-2">
       <h4 class="dark:text-white text-lg">Speaker Types</h4>
       <button @click="openDrawer" class="px-4 py-1.5 bg-gray-800 text-white dark:bg-green-500 rounded-full text-sm font-semibold">
@@ -8,7 +8,7 @@
       </button>
     </div>
 
-
+    
     <div class="relative overflow-x-auto shadow-md mt-7 sm:rounded-lg">
       <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">

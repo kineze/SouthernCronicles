@@ -46,6 +46,7 @@ Route::controller(PagesController::class)->group( function (){
 
     Route::get('booking-now','bookingNow')->name('bookingNow');
     Route::get('living-memory-vault','livingMemoryVault')->name('livingMemoryVault');
+    Route::get('/the-kipenzi','theKipenzi')->name('theKipenzi');
 
 });
 
