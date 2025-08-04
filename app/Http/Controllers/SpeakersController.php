@@ -107,12 +107,5 @@ class SpeakersController extends Controller
         return response()->json($speakers);
     }
     
-//     public function getByType($typeId)
-// {
-//     $speakers = Speaker::where('speaker_type_id', $typeId)
-//         ->orderBy('order') // <== enforce the order
-//         ->get();
-
-//     return response()->json($speakers);
-// }
+    
 }

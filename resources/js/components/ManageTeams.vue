@@ -21,7 +21,7 @@
                     class="sr-only peer"
                     />
                     <div
-                    class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300
+                    class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300
                             dark:peer-focus:ring-green-800 rounded peer dark:bg-gray-700
                             peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full
                             peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px]
@@ -88,13 +88,13 @@
             type="text"
             id="team-name"
             placeholder=" "
-            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
             required
           />
           <label
             for="team-name"
             class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2
-            peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500
+            peer-focus:px-2 peer-focus:text-green-600 peer-focus:dark:text-green-500
             peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2
             peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
           >
@@ -109,12 +109,12 @@
             type="text"
             id="facebook"
             placeholder=" "
-            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
           />
           <label
             for="facebook"
             class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2
-            peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500
+            peer-focus:px-2 peer-focus:text-green-600 peer-focus:dark:text-green-500
             peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2
             peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
           >
@@ -129,12 +129,12 @@
             type="text"
             id="instagram"
             placeholder=" "
-            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
           />
           <label
             for="instagram"
             class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2
-            peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500
+            peer-focus:px-2 peer-focus:text-green-600 peer-focus:dark:text-green-500
             peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2
             peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
           >
@@ -149,12 +149,12 @@
             type="text"
             id="linkedin"
             placeholder=" "
-            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
           />
           <label
             for="linkedin"
             class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2
-            peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500
+            peer-focus:px-2 peer-focus:text-green-600 peer-focus:dark:text-green-500
             peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2
             peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
           >
@@ -169,13 +169,13 @@
             id="team-description"
             rows="3"
             placeholder=" "
-            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
           ></textarea>
           <label
             for="team-description"
             class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2
-            peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500
-            peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2
+            peer-focus:px-2 peer-focus:text-green-600 peer-focus:dark:text-green-500
+            peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-8
             peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
           >
             Description
@@ -188,7 +188,7 @@
           <label class="inline-flex items-center cursor-pointer">
             <input type="checkbox" v-model="form.show_on_home" class="sr-only peer" />
             <div
-              class="relative w-11 h-6 bg-gray-200 rounded-full peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:bg-blue-600"
+              class="relative w-11 h-6 bg-gray-200 rounded-full peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 dark:bg-gray-700 peer-checked:bg-green-600"
             >
               <div
                 class="absolute top-[2px] left-[2px] bg-white w-5 h-5 rounded-full transition-transform peer-checked:translate-x-full"

@@ -87,24 +87,93 @@
       </div>
 
       <form @submit.prevent="generateSlots" class="space-y-6">
-        <div class="relative">
-          <input v-model="form.date" type="date" id="date" class="input text-black" />
+        <!-- Date -->
+        <div class="relative mb-5">
+          <input
+            v-model="form.date"
+            type="date"
+            id="date"
+            placeholder=" "
+            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
+          />
+          <label
+            for="date"
+            class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2
+            peer-focus:px-2 peer-focus:text-green-600 peer-focus:dark:text-green-500
+            peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2
+            peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
+          >
+            Date
+          </label>
         </div>
 
-        <div class="relative">
-          <input v-model="form.start_time" type="time" id="start_time" class="input text-black" />
+        <!-- Start Time -->
+        <div class="relative mb-5">
+          <input
+            v-model="form.start_time"
+            type="time"
+            id="start_time"
+            placeholder=" "
+            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
+          />
+          <label
+            for="start_time"
+            class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2
+            peer-focus:px-2 peer-focus:text-green-600 peer-focus:dark:text-green-500
+            peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2
+            peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
+          >
+            Start Time
+          </label>
         </div>
 
-        <div class="relative">
-          <input v-model="form.end_time" type="time" id="end_time" class="input text-black" />
+        <!-- End Time -->
+        <div class="relative mb-5">
+          <input
+            v-model="form.end_time"
+            type="time"
+            id="end_time"
+            placeholder=" "
+            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
+          />
+          <label
+            for="end_time"
+            class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2
+            peer-focus:px-2 peer-focus:text-green-600 peer-focus:dark:text-green-500
+            peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2
+            peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
+          >
+            End Time
+          </label>
         </div>
 
-        <div class="relative">
-          <input v-model="form.interval" type="number" min="1" id="interval" placeholder="Interval (min)" class="input text-black" />
+        <!-- Interval -->
+        <div class="relative mb-5">
+          <input
+            v-model="form.interval"
+            type="number"
+            id="interval"
+            placeholder=" "
+            min="1"
+            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
+          />
+          <label
+            for="interval"
+            class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2
+            peer-focus:px-2 peer-focus:text-green-600 peer-focus:dark:text-green-500
+            peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2
+            peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
+          >
+            Interval (minutes)
+          </label>
         </div>
 
-        <button type="submit" class="w-full py-2 bg-green-600 text-white rounded">Generate</button>
+        <!-- Submit -->
+        <button type="submit" class="w-full py-2 bg-green-600 hover:bg-green-700 text-white font-semibold rounded">
+          Generate
+        </button>
       </form>
+
     </div>
 
     <!-- Confirm Delete Modal -->

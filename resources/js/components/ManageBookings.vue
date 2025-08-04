@@ -43,7 +43,7 @@
             <td class="px-6 py-4 dark:text-white">{{ booking.time_slot?.start_time }} - {{ booking.time_slot?.end_time }}</td>
             <td class="px-6 py-4 capitalize dark:text-white">{{ booking.status }}</td>
             <td class="px-6 py-4 flex justify-end gap-3 text-right">
-              <button @click="openDrawer(booking)" class="text-blue-500" title="View">
+              <button @click="openDrawer(booking)" class="text-green-500" title="View">
                 <i class="fa-solid fa-eye"></i>
               </button>
             </td>

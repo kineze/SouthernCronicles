@@ -43,14 +43,14 @@
                 v-if="submission.file_url"
                 :href="submission.file_url"
                 target="_blank"
-                class="text-blue-600 underline"
+                class="text-green-600 underline"
               >
                 Download
               </a>
               <span v-else>—</span>
             </td>
             <td class="px-6 py-4 flex justify-end gap-3 text-right">
-              <button @click="openDrawer(submission)" class="text-blue-500" title="View">
+              <button @click="openDrawer(submission)" class="text-green-500" title="View">
                 <i class="fa-solid fa-eye"></i>
               </button>
             </td>
@@ -244,7 +244,7 @@ onMounted(fetchSubmissions)
 }
 
 .dark .submission-content a {
-  color: #60a5fa; /* blue-400 */
+  color: #60a5fa; /* green-400 */
 }
 
 </style>

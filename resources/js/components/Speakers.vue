@@ -36,7 +36,7 @@
                     class="sr-only peer"
                     />
                     <div
-                    class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300
+                    class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300
                             dark:peer-focus:ring-green-800 rounded peer dark:bg-gray-700
                             peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full
                             peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px]
@@ -58,13 +58,13 @@
 
               <!-- Social Links -->
               <div class="flex space-x-4 text-xl">
-                <a v-if="speaker.facebook" :href="speaker.facebook" target="_blank" class="hover:text-blue-500">
+                <a v-if="speaker.facebook" :href="speaker.facebook" target="_blank" class="hover:text-green-500">
                   <i class="fa-brands fa-facebook"></i>
                 </a>
                 <a v-if="speaker.instagram" :href="speaker.instagram" target="_blank" class="hover:text-pink-500">
                   <i class="fa-brands fa-instagram"></i>
                 </a>
-                <a v-if="speaker.linkedin" :href="speaker.linkedin" target="_blank" class="hover:text-blue-400">
+                <a v-if="speaker.linkedin" :href="speaker.linkedin" target="_blank" class="hover:text-green-400">
                   <i class="fa-brands fa-linkedin"></i>
                 </a>
               </div>
@@ -83,6 +83,7 @@
     </div>
 
     <!-- Drawer -->
+     <div v-if="drawerOpen" class="fixed inset-0 z-[990] bg-black bg-opacity-40" @click="closeDrawer"></div>
     <div :class="['fixed top-0 right-0 z-[990] h-screen w-96 transition-transform bg-white dark:bg-gray-800 p-6 overflow-y-auto', drawerOpen ? 'translate-x-0' : 'translate-x-full']">
       <div class="flex justify-between items-center mb-4">
         <h5 class="text-lg font-bold text-gray-800 dark:text-white">{{ editingId ? 'Edit Speaker' : 'Add Speaker' }}</h5>
@@ -128,13 +129,13 @@
             type="text"
             id="name"
             placeholder=" "
-            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
             required
             />
             <label
             for="name"
             class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2 
-            peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 
+            peer-focus:px-2 peer-focus:text-green-600 peer-focus:dark:text-green-500 
             peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 
             peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
             >Name</label>
@@ -147,12 +148,12 @@
             type="text"
             id="facebook"
             placeholder=" "
-            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
             />
             <label
             for="facebook"
             class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2 
-            peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 
+            peer-focus:px-2 peer-focus:text-green-600 peer-focus:dark:text-green-500 
             peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 
             peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
             >Facebook</label>
@@ -165,12 +166,12 @@
             type="text"
             id="instagram"
             placeholder=" "
-            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
             />
             <label
             for="instagram"
             class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2 
-            peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 
+            peer-focus:px-2 peer-focus:text-green-600 peer-focus:dark:text-green-500 
             peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 
             peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
             >Instagram</label>
@@ -183,12 +184,12 @@
             type="text"
             id="linkedin"
             placeholder=" "
-            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
             />
             <label
             for="linkedin"
             class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2 
-            peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 
+            peer-focus:px-2 peer-focus:text-green-600 peer-focus:dark:text-green-500 
             peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 
             peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
             >LinkedIn</label>
@@ -199,7 +200,7 @@
                 v-model="form.speaker_type_id"
                 id="speaker_type"
                 required
-                class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
             >
                 <option :value="null" disabled selected>Select Type</option>
                 <option v-for="type in speakerTypes" :key="type.id" :value="type.id" class="text-black">
@@ -209,7 +210,7 @@
             <label
                 for="speaker_type"
                 class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2
-                peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500
+                peer-focus:px-2 peer-focus:text-green-600 peer-focus:dark:text-green-500
                 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2
                 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
             >
@@ -223,12 +224,12 @@
                 v-model="form.description"
                 id="description"
                 rows="3"
-                class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
             ></textarea>
             <label
                 for="description"
                 class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2
-                peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500
+                peer-focus:px-2 peer-focus:text-green-600 peer-focus:dark:text-green-500
                 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2
                 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
             >

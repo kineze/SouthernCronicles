@@ -2,31 +2,28 @@
   <div>
     <h1 class="lg:text-6xl text-3xl mt-12 lg:mt-4 text-black font-extrabold tracking-widest uppercase text-center">Events Agenda</h1>
 
-    <!-- Filter -->
-<!-- Filter -->
-<div v-if="showFilter" class="flex flex-wrap justify-end items-center w-full mt-10">
-  <div class="lg:w-auto w-full mt-4 lg:mt-0">
-    <div class="px-2.5 py-2.5 border rounded-full border-gray-300 flex flex-wrap gap-2">
-      <button
-        @click="filterDate = null; fetchEvents()"
-        :class="['font-semibold rounded-full px-3 py-1.5 transition-all duration-300', !filterDate ? 'bg-black text-white' : 'bg-white text-black']">
-        All
-      </button>
+    <div v-if="showFilter" class="flex flex-wrap justify-end items-center w-full mt-10">
+      <div class="lg:w-auto w-full mt-4 lg:mt-0">
+        <div class="px-2.5 py-2.5 border rounded-full border-gray-300 flex flex-wrap gap-2">
+          <button
+            @click="filterDate = null; fetchEvents()"
+            :class="['font-semibold rounded-full px-3 py-1.5 transition-all duration-300', !filterDate ? 'bg-black text-white' : 'bg-white text-black']">
+            All
+          </button>
 
-      <button
-        v-for="date in eventDates"
-        :key="date.raw"
-        @click="filterDate = date.raw; fetchEvents()"
-        :class="['font-semibold rounded-full px-3 py-1.5 transition-all duration-300',
-          filterDate === date.raw ? 'bg-black text-white' : 'bg-white text-black']">
-        {{ date.label }}
-      </button>
+          <button
+            v-for="date in eventDates"
+            :key="date.raw"
+            @click="filterDate = date.raw; fetchEvents()"
+            :class="['font-semibold rounded-full px-3 py-1.5 transition-all duration-300',
+              filterDate === date.raw ? 'bg-black text-white' : 'bg-white text-black']">
+            {{ date.label }}
+          </button>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-
-    <!-- Events Accordion -->
+    
     <div class="mt-8 space-y-4">
       <div v-for="(event, idx) in events.slice(0, visibleCount)" :key="event.id" class="overflow-hidden shadow-md">
        <button

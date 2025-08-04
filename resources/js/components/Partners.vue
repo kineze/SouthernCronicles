@@ -11,7 +11,7 @@
         <div class="p-4 text-center">
           <h5 class="font-medium dark:text-white">{{ partner.title }}</h5>
           <div class="flex justify-center mt-2 gap-3">
-            <button @click="editPartner(partner)" class="text-blue-600"><i class="fa fa-pen"></i></button>
+            <button @click="editPartner(partner)" class="text-green-600"><i class="fa fa-pen"></i></button>
             <button @click="confirmDelete(partner)" class="text-red-600"><i class="fa fa-trash"></i></button>
           </div>
         </div>
@@ -19,6 +19,7 @@
     </div>
 
     <!-- Drawer -->
+     <div v-if="drawerOpen" class="fixed inset-0 z-[990] bg-black bg-opacity-40" @click="closeDrawer"></div>
     <div :class="['fixed top-0 right-0 w-96 h-screen z-[990] bg-white dark:bg-gray-800 shadow-lg transform transition-transform overflow-y-auto p-6', drawerOpen ? 'translate-x-0' : 'translate-x-full']">
       <div class="flex justify-between items-center mb-4">
         <h3 class="text-lg font-bold dark:text-white">{{ editingId ? 'Edit Partner' : 'Add Partner' }}</h3>
@@ -47,13 +48,13 @@
             type="text"
             id="title"
             placeholder=" "
-            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
             required
         />
         <label
             for="title"
             class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2 
-            peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 
+            peer-focus:px-2 peer-focus:text-green-600 peer-focus:dark:text-green-500 
             peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 
             peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
         >
