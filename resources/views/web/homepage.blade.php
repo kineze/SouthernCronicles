@@ -2,190 +2,51 @@
 
 @section('content')
 
-<section class="w-full hidden md:block max-w-screen-2xl -mt-6 mx-auto relative" >
-    <!-- Container for layers -->
-    <div class="relative w-full z-0 rounded-3 min-h-[120vh]">
+<section class="w-full hidden md:block max-w-screen-2xl -mt-6 mx-auto relative">
+  <!-- Container for layers -->
+  <div class="relative w-full z-0 rounded-3 min-h-screen md:min-h-[120vh] overflow-hidden">
 
-        <!-- Layer 1: Background Skyline -->
-        <div class="parallax-layer absolute z-10 bottom-32 overflow-hidden w-full" data-speed="0.6">
-            <div class="loop-container animate-loop-x ">
-                <img src="{{ asset('assets/img/skyline-final.webp') }}" alt="Skyline">
-                <img src="{{ asset('assets/img/skyline-final.webp') }}" alt="Skyline">
-                <img src="{{ asset('assets/img/skyline-final.webp') }}" alt="Skyline">
-                <img src="{{ asset('assets/img/skyline-final.webp') }}" alt="Skyline">
-            </div>
-        </div>
-
-         <div class="parallax-layer absolute z-20 w-full top-0" data-speed="0.3">
-            <img src="{{ asset('assets/img/top-layer-new.webp') }}" class="w-full object-contain" alt="Buildings">
-        </div>
-
-        <!-- Layer 2: Mid layer -->
-        <div class="parallax-layer absolute z-20 w-full bottom-44" data-speed="0.3">
-            <img src="{{ asset('assets/img/layer-3-new.webp') }}" class="w-full object-contain" alt="Buildings">
-        </div>
-
-        <!-- Foreground Content -->
-        <div class="relative z-30 flex flex-col items-start justify-center px-6  pt-28">
-            <h2 class="font-semibold text-black uppercase text-8xl">2025</h2>
-            <h1 class="tracking-[10px] text-5xl uppercase font-bold text-black leading-tight">
-                The Asian Literary <br> Festival
-            </h1>
-            <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl">Brussels</h2>
-        </div>
-        
+    <!-- Layer 5: Farthest Background -->
+    <div class="parallax-layer absolute z-50 w-full bottom-0" data-speed="0.05">
+      <img src="{{ asset('assets/img/layer-005.webp') }}" class="w-full object-contain" alt="Layer 5">
     </div>
 
-      <div class="">
-         <div  class=" relative flex pb-24 flex-wrap bg-white z-[1000] bg-opacity-30 backdrop-blur-xl rounded-3xl  bg-transparent items-start justify-end px-6 lg:px-12 pt-36">
-           <div class="w-full lg:w-6/12">
-               <div class="">
-                    <div class=" mx-auto px-4 text-center py-6">
-                            @if($nextFestival)
-                                <h1 class="text-4xl md:text-5xl uppercase font-extrabold text-active-purple mb-4 animate-pulse">{{$nextFestival->title}}</h1>
-                                <p class="text-xl md:text-xl uppercase font-extrabold text-active-purple mb-4 animate-pulse"></p>
-                                <h2 class="font-semibold text-black uppercase text-3xl">
-                                    {{ \Carbon\Carbon::parse($nextFestival->start_at)->format('jS') }}
-                                    to
-                                    {{ \Carbon\Carbon::parse($nextFestival->end_at)->format('jS F Y') }}
-                                </h2>
+    <!-- Layer 4 -->
+    <div class="parallax-layer absolute z-40 w-full bottom-0" data-speed="0.08">
+      <img src="{{ asset('assets/img/layer-004.webp') }}" class="w-full object-contain" alt="Layer 4">
+    </div>
 
-                                <h1 class="tracking-[10px] text-3xl uppercase font-bold text-black leading-tight">
-                                     {{ $nextFestival->location }}
-                                </h1>
-                                <div class="flex flex-wrap justify-center gap-4 py-12" id="countdown">
-                                    <div class="bg-white/50 backdrop-blur-sm rounded-xl p-4">
-                                        <span class="text-5xl font-bold text-black" id="days"></span>
-                                        <p class="text-black mb-0">Days</p>
-                                    </div>
-                                    <div class="bg-white/50 backdrop-blur-sm rounded-xl p-4">
-                                        <span class="text-5xl font-bold text-black" id="hours"></span>
-                                        <p class="text-black mb-0">Hours</p>
-                                    </div>
-                                    <div class="bg-white/50 backdrop-blur-sm rounded-xl p-4">
-                                        <span class="text-5xl font-bold text-black" id="minutes"></span>
-                                        <p class="text-black mb-0">Minutes</p>
-                                    </div>
-                                    <div class="bg-white/50 backdrop-blur-sm rounded-xl p-4">
-                                        <span class="text-5xl font-bold text-black" id="seconds"></span>
-                                        <p class="text-black mb-0">Seconds</p>
-                                    </div>
-                                </div>
-                            @else
-                                <h2 class="text-active-purple uppercase text-5xl">Coming Soon</h2>
-                            @endif
-
-                            <div class="flex justify-center items-center lg:mt-6">
-                                <register-now-modal></register-now-modal>
-                            </div>
-                            
-                        </div>
-               </div>
-           </div>
-           
-            <div class="w-full lg:w-6/12">
-             <h2 class="font-semibold text-black uppercase text-start text-7xl">Between Worlds</h2>
-                <h1 class="tracking-[10px] text-4xl uppercase font-bold text-black leading-tight">
-                    Reviving the Silk Route of Expression
-                </h1>
-            <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl mt-5"></h2>
-            <p class="text-gray-700">In the heart of Europe lies a city of the entire world, yet suspended between worlds—Brussels, where extraordinary human character and cultural richness pulse beneath an often unnoticed surface. The Asian Literary Festival, Brussels Edition, weaves creative expression from the global majority into this vibrant tapestry, transforming the European capital into an unparalleled sanctuary of cultural exchange and cross-fertilisation. This festival revives the historical exchanges between East and West, breathing new life into ancient dialogues as literary traditions converge and contemporary voices rise, creating a dynamic crossroads where stories transcend borders and new cultural conversations bloom in this remarkable intersection of civilisations.</p>
-           </div>
+    <!-- Layer 3: Looping layer -->
+    <div class="parallax-layer absolute z-30 bottom-44 overflow-hidden w-full" data-speed="0.1">
+        <img src="{{ asset('assets/img/layer-002.webp') }}" class="w-full -mb-6 object-contain" alt="Layer 2">
+      
+        <div class="loop-container-mobile animate-loop-x">
+            <img src="{{ asset('assets/img/layer-003.webp') }}" alt="Layer 3">
+            <img src="{{ asset('assets/img/layer-003.webp') }}" alt="Layer 3">
+            <img src="{{ asset('assets/img/layer-003.webp') }}" alt="Layer 3">
+            <img src="{{ asset('assets/img/layer-003.webp') }}" alt="Layer 3">
         </div>
     </div>
+
+    <!-- Layer 1: Foreground -->
+    <div class="parallax-layer absolute z-10 w-full bottom-44" data-speed="0.2">
+      <img src="{{ asset('assets/img/layer-001.webp') }}" class="w-full object-contain" alt="Layer 1">
+    </div>
+
+    <!-- Foreground Content -->
+    <div class="relative z-60 flex flex-col items-start justify-center p-3 pt-32 lg:pt-28">
+      <h2 class="font-semibold text-black uppercase text-8xl">2025</h2>
+      <h1 class="tracking-[5px] text-5xl uppercase font-bold text-black leading-tight">
+        The Asian Literary <br> Festival
+      </h1>
+      <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl">Brussels.</h2>
+    </div>
+
+  </div>
+
+
 </section>
 
-<section class="w-full md:hidden max-w-screen-2xl -mt-6 mx-auto relative" >
-    <!-- Container for layers -->
-    <div class="relative w-full z-0 rounded-3 min-h-screen md:min-h-[120vh]">
-
-        <!-- Layer 1: Background Skyline -->
-        <div class="parallax-layer absolute z-10 bottom-0 overflow-hidden w-full" data-speed="0.2">
-            <div class="loop-container-mobile animate-loop-x ">
-                <img src="{{ asset('assets/img/skyline-final.webp') }}" alt="Skyline">
-                <img src="{{ asset('assets/img/skyline-final.webp') }}" alt="Skyline">
-                <img src="{{ asset('assets/img/skyline-final.webp') }}" alt="Skyline">
-                <img src="{{ asset('assets/img/skyline-final.webp') }}" alt="Skyline">
-            </div>
-        </div>
-
-         <div class="parallax-layer absolute z-20 w-full top-24" data-speed="0.1">
-            <img src="{{ asset('assets/img/top-layer-new.webp') }}" class="w-full object-contain" alt="Buildings">
-        </div>
-
-        <!-- Layer 2: Mid layer -->
-        <div class="parallax-layer absolute z-20 w-full bottom-10" data-speed="0.1">
-            <img src="{{ asset('assets/img/layer-3-new.webp') }}" class="w-full object-contain" alt="Buildings">
-        </div>
-
-        <!-- Foreground Content -->
-        <div class="relative z-30 flex flex-col items-start justify-center p-3 pt-32 lg:pt-28">
-            <h2 class="font-semibold text-black uppercase text-8xl">2025</h2>
-            <h1 class="tracking-[5px] text-5xl uppercase font-bold text-black leading-tight">
-                The Asian Literary <br> Festival
-            </h1>
-            <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl">Brussels.</h2>
-        </div>
-        
-    </div>
-
-      <div class="">
-         <div  class=" relative flex pb-24 flex-wrap bg-white z-[1000] bg-opacity-30 backdrop-blur-xl rounded-3xl  bg-transparent items-start justify-end px-6 lg:px-12 pt-12 lg:pt-36">
-           <div class="w-full lg:w-6/12">
-               <div class="">
-                    <div class=" mx-auto px-4 text-center py-6">
-                            @if($nextFestival)
-                                <h1 class="text-4xl md:text-5xl uppercase font-extrabold text-active-purple mb-4 animate-pulse">{{$nextFestival->title}}</h1>
-                                <p class="text-xl md:text-xl uppercase font-extrabold text-active-purple mb-4 animate-pulse"></p>
-                                <h2 class="font-semibold text-black uppercase text-3xl">
-                                    {{ \Carbon\Carbon::parse($nextFestival->start_at)->format('jS') }}
-                                    to
-                                    {{ \Carbon\Carbon::parse($nextFestival->end_at)->format('jS F Y') }}
-                                </h2>
-
-                                <h1 class="tracking-[5px] text-xl uppercase font-bold text-black leading-tight">
-                                     {{ $nextFestival->location }}
-                                </h1>
-                                <div class="flex flex-wrap justify-center gap-2 py-6 lg:py-12" id="countdown-mobile">
-                                    <div class="bg-white/50 backdrop-blur-sm rounded-xl p-2">
-                                        <span class="text-xl font-bold text-black" id="days-mobile"></span>
-                                        <p class="text-black text-sm mb-0">Days</p>
-                                    </div>
-                                    <div class="bg-white/50 backdrop-blur-sm rounded-xl p-2">
-                                        <span class="text-xl font-bold text-black" id="hours-mobile"></span>
-                                        <p class="text-black text-sm mb-0">Hours</p>
-                                    </div>
-                                    <div class="bg-white/50 backdrop-blur-sm rounded-xl p-2">
-                                        <span class="text-xl  font-bold text-black" id="minutes-mobile"></span>
-                                        <p class="text-black text-sm mb-0">Mins</p>
-                                    </div>
-                                    <div class="bg-white/50 backdrop-blur-sm rounded-xl p-2">
-                                        <span class="text-xl font-bold text-black" id="seconds-mobile"></span>
-                                        <p class="text-black text-sm mb-0">Secs</p>
-                                    </div>
-                                </div>
-                            @else
-                                <h2 class="text-active-purple uppercase text-5xl">Coming Soon</h2>
-                            @endif
-
-                            <div class="flex justify-center items-center mt-6">
-                                <register-now-modal></register-now-modal>
-                            </div>
-                            
-                        </div>
-               </div>
-           </div>
-           
-            <div class="w-full lg:w-6/12">
-             <h2 class="font-semibold text-black text-center uppercase md:text-start text-3xl md:text-7xl">Between Worlds</h2>
-                <h1 class="tracking-[5px] text-xl uppercase text-center md:text-start font-bold text-black leading-tight">
-                   Reviving the Silk Route of Expression
-                </h1>
-            <p class="text-justify md:text-left">In the heart of Europe lies a city of the entire world, yet suspended between worlds—Brussels, where extraordinary human character and cultural richness pulse beneath an often unnoticed surface. The Asian Literary Festival, Brussels Edition, weaves creative expression from the global majority into this vibrant tapestry, transforming the European capital into an unparalleled sanctuary of cultural exchange and cross-fertilisation. This festival revives the historical exchanges between East and West, breathing new life into ancient dialogues as literary traditions converge and contemporary voices rise, creating a dynamic crossroads where stories transcend borders and new cultural conversations bloom in this remarkable intersection of civilisations.</p>
-           </div>
-        </div>
-    </div>
-</section>
 
 
 <section class="relative w-full max-w-screen-2xl mx-auto">

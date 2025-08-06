@@ -10,48 +10,32 @@
 
 
 <style>
-    .parallax-layer {
-        will-change: transform;
-        transition: transform 0.1s ease-out;
-        pointer-events: none;
-    }
-
-    @keyframes loop-x {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-160vw); } /* 2 images worth */
+.parallax-layer {
+  will-change: transform;
+  transition: transform 0.1s ease-out;
+  pointer-events: none;
 }
-
-.loop-container {
+.parallax-layer img {
+  display: block;
+  width: 100%;
+  pointer-events: none;
+  user-select: none;
+}
+@keyframes loop-x {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(160vw); }
+}
+.loop-container-mobile {
   display: flex;
-  width: calc(80vw * 4); /* Ensure at least 2 full loops */
+  width: calc(100vw * 4);
 }
-
-.loop-container img {
-  width: 80vw;
-  flex-shrink: 0;
-  object-fit: contain;
-}
-
 .loop-container-mobile img {
   width: 100vw;
   flex-shrink: 0;
   object-fit: contain;
 }
-
-.loop-container-mobile {
-  display: flex;
-  width: calc(100vw * 4); /* Ensure at least 2 full loops */
-}
-
 .animate-loop-x {
   animation: loop-x 60s linear infinite;
-}
-
-
-
-.parallax-layer img {
-    pointer-events: none;
-    flex-shrink: 0;
 }
 </style>
 
