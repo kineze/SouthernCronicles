@@ -10,10 +10,14 @@
 
 
 <style>
+/* ===========================
+   Parallax base (keep as-is)
+   =========================== */
 .parallax-layer {
   will-change: transform;
   transition: transform 0.1s ease-out;
   pointer-events: none;
+  backface-visibility: hidden;
 }
 .parallax-layer img {
   display: block;
@@ -21,22 +25,90 @@
   pointer-events: none;
   user-select: none;
 }
-@keyframes loop-x {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(160vw); }
+
+/* =========================================
+   Layer 3: left → right infinite marquee
+   Starts with first slide fully on screen
+   ========================================= */
+:root{
+  /* Tweak these to taste */
+  --marquee-speed: 60s;                 /* total time for one cycle  */
+  --l3-height: clamp(140px, 22vw, 320px);/* visible height for layer 3 */
 }
-.loop-container-mobile {
+
+/* The visible window for the loop */
+.loop-viewport{
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: var(--l3-height);
+  pointer-events: none;                 /* ensure it doesn't catch clicks */
+}
+
+/* The moving track that contains two identical groups */
+.loop-track{
   display: flex;
-  width: calc(100vw * 4);
+  width: max-content;
+  will-change: transform;
+  animation: marquee-ltr var(--marquee-speed) linear infinite;
+  backface-visibility: hidden;
 }
-.loop-container-mobile img {
-  width: 100vw;
-  flex-shrink: 0;
-  object-fit: contain;
+
+/* One group = your sequence once (duplicate it twice for seamless loop) */
+.loop-group{
+  display: flex;
 }
-.animate-loop-x {
-  animation: loop-x 60s linear infinite;
+
+/* Each slide fills the viewport width so it “pages” across smoothly */
+.loop-group img{
+  width: 100vw;        /* one full viewport width per slide */
+  height: 100%;        /* match the viewport height */
+  flex: 0 0 auto;
+  object-fit: contain; /* keep artwork proportions */
+  user-select: none;
+  pointer-events: none;
 }
+
+/* Move the track exactly one group width (50% of the double track) */
+@keyframes marquee-ltr{
+  0%   { transform: translateX(-50%); } /* show Group B (bridge fully visible) */
+  100% { transform: translateX(0%); }   /* end aligned to Group A; loops seamlessly */
+}
+
+/* Optional: smaller devices can run slower/faster or change height */
+@media (max-width: 768px){
+  :root{ --l3-height: clamp(120px, 28vw, 260px); }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .loop-track{
+    animation: none;
+    transform: translateX(-50%); /* keep the bridge visible statically */
+  }
+}
+
+:root{
+  --bob-amp: 10px;   /* how far it moves up (px) */
+  --bob-dur: 1s;     /* one up–down cycle duration */
+}
+
+/* Generic vertical bob */
+.bob-y{
+  animation: bobY var(--bob-dur) ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes bobY{
+  0%,100% { transform: translate3d(0,0,0); }
+  50%     { transform: translate3d(0, calc(-1 * var(--bob-amp)), 0); }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .bob-y{ animation: none; }
+}
+
 </style>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
