@@ -30,14 +30,14 @@ const getPetalStyle = (index, total) => {
     <img
       :src="salFlower"
       alt="Sal flower"
-      class="absolute w-[620px] h-[620px] object-contain z-20 opacity-45 rotate-[-5deg]"
+      class="absolute w-[620px] h-[620px] object-contain z-20  rotate-[-5deg]"
     />
 
     <!-- Background with custom ping -->
     <img
       :src="salFlower"
       alt="Sal flower"
-      class="absolute w-[620px] h-[620px] object-contain opacity-45 z-10 sal-ping"
+      class="absolute w-[620px] h-[620px] object-contain  z-10 sal-ping"
     />
 
     <!-- Circular petal layout -->
