@@ -13,7 +13,7 @@ const petals = [
 
 const getPetalStyle = (index, total) => {
   const angle = (360 / total) * index
-  const radius = 220
+  const radius = 190
   return `
     transform:
       rotate(${angle}deg)
@@ -25,23 +25,23 @@ const getPetalStyle = (index, total) => {
 </script>
 
 <template>
-  <div class="relative w-full py-20 flex justify-center items-center bg-white overflow-hidden">
+  <div class="relative w-full  flex justify-center items-center bg-white overflow-hidden">
     <!-- Foreground -->
     <img
       :src="salFlower"
       alt="Sal flower"
-      class="absolute w-[620px] h-[620px] object-contain z-20 rotate-[-5deg]"
+      class="absolute w-[520px] h-[520px] object-contain z-20 rotate-[-5deg]"
     />
 
     <!-- Background with custom ping -->
     <img
       :src="salFlower"
       alt="Sal flower"
-      class="absolute w-[620px] h-[620px] object-contain z-10 sal-ping"
+      class="absolute w-[520px] h-[520px] object-contain z-10 sal-ping"
     />
 
     <!-- Circular petal layout -->
-    <div class="relative w-[620px] h-[620px] z-30">
+    <div class="relative w-[520px] h-[520px] z-30">
       <div
         v-for="(logo, index) in petals"
         :key="index"
