@@ -1,5 +1,5 @@
 <script setup>
-import salFlower from '@/assets/img/sal-flower.webp' // put file at resources/js/assets/img/sal-flower.webp
+import salFlower from '@/assets/img/sal-flower-02.webp' // put file at resources/js/assets/img/sal-flower.webp
 
 const petals = [
   { src: '/assets/img/asian-review-sinhala.webp', url: 'https://theasianreviewsinhala.reviews/' },
