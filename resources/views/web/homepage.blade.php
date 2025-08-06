@@ -123,7 +123,7 @@
 
 <section class="relative w-full max-w-screen-2xl mx-auto">
 
-    <speakers-carousel></speakers-carousel>
+    {{-- <speakers-carousel></speakers-carousel> --}}
 
 </section>
 
@@ -165,7 +165,7 @@
 
 <section class="w-full max-w-screen-2xl mx-auto">
 
-    <our-partners></our-partners>
+    {{-- <our-partners></our-partners> --}}
 
 </section>
 
