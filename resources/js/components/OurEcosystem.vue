@@ -2,7 +2,7 @@
   <div class="relative w-full py-20 flex justify-center items-center bg-white overflow-hidden">
     <!-- Rotated Sal flower background -->
     <img
-      src="/public/assets/img/sal-flower.webp"
+      src="/assets/img/sal-flower.webp"
       alt="Sal flower"
       class="absolute w-[620px] h-[620px] object-contain z-20"
       style="transform: rotate(-5deg);"
@@ -10,7 +10,7 @@
 
     <!-- Background flower with slow ping -->
     <img
-      src="/public/assets/img/sal-flower.webp"
+      src="/assets/img/sal-flower.webp"
       alt="Sal flower"
       class="absolute w-[620px] h-[620px] object-contain z-10 slow-ping"
       style="transform: rotate(-5deg);"
