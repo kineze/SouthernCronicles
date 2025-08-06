@@ -57,7 +57,3 @@ const getPetalStyle = (index, total) => {
     </div>
   </div>
 </template>
-
-<style scoped>
-.slow-ping { animation: ping 6s cubic-bezier(0, 0, 0.2, 1) infinite; }
-</style>

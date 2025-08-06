@@ -109,6 +109,8 @@
   .bob-y{ animation: none; }
 }
 
+.slow-ping { animation: ping 6s cubic-bezier(0, 0, 0.2, 1) infinite; }
+
 </style>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
