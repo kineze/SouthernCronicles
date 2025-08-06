@@ -17,7 +17,7 @@
     </div>
 
     <!-- Layer 3: Looping layer -->
-    <div class="parallax-layer absolute z-30 bottom-24 w-full overflow-hidden" data-speed="0.3">
+    <div class="parallax-layer absolute z-30 bottom-8 w-full overflow-hidden" data-speed="0.3">
       <img src="{{ asset('assets/img/layer-002.webp') }}" class="w-full bob-y -mb-9 object-contain" alt="Layer 2">
 
       <!-- Bob the entire marquee vertically -->
