@@ -65,6 +65,6 @@ const getPetalStyle = (index, total) => {
 }
 .sal-ping {
   /* keep rotation inside the animation so transform isn’t overridden */
-  animation: sal-ping 6s cubic-bezier(0, 0, 0.2, 1) infinite;
+  animation: sal-ping 3s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 </style>
