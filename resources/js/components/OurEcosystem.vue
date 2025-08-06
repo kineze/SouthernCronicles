@@ -1,5 +1,5 @@
 <script setup>
-import salFlower from '@/assets/img/sal-flower-02.webp' // put file at resources/js/assets/img/sal-flower.webp
+import salFlower from '@/assets/img/sal-flower.webp' // put file at resources/js/assets/img/sal-flower.webp
 
 const petals = [
   { src: '/assets/img/asian-review-sinhala.webp', url: 'https://theasianreviewsinhala.reviews/' },
@@ -30,14 +30,14 @@ const getPetalStyle = (index, total) => {
     <img
       :src="salFlower"
       alt="Sal flower"
-      class="absolute w-[620px] h-[620px] object-contain z-20  rotate-[-5deg]"
+      class="absolute w-[620px] h-[620px] object-contain z-20 rotate-[-5deg]"
     />
 
     <!-- Background with custom ping -->
     <img
       :src="salFlower"
       alt="Sal flower"
-      class="absolute w-[620px] h-[620px] object-contain  z-10 sal-ping"
+      class="absolute w-[620px] h-[620px] object-contain z-10 sal-ping"
     />
 
     <!-- Circular petal layout -->
