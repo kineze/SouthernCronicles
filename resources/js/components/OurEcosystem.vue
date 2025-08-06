@@ -10,10 +10,9 @@
 
     <!-- Background flower with slow ping -->
     <img
-      src="/public/assets/img/sal-flower.webp"
+      src="/assets/img/sal-flower.webp"
       alt="Sal flower"
       class="absolute w-[620px] h-[620px] object-contain z-10 slow-ping"
-      style="transform: rotate(-5deg);"
     />
 
 
@@ -69,26 +68,12 @@ const getPetalStyle = (index, total) => {
 </script>
 
 <style scoped>
-
-@keyframes slow-rotate {
-  0% {
-    transform: rotate(-5deg);
-  }
-  100% {
-    transform: rotate(355deg);
-  }
+@keyframes sal-ping {
+  0%   { transform: rotate(-5deg); opacity: 1; }
+  75%,
+  100% { transform: rotate(-5deg) scale(2); opacity: 0; }
 }
-
-.slow-spin {
-  animation: slow-rotate 60s linear infinite;
-}
-
-.slow-pulse {
-  animation: pulse 5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
 .slow-ping {
-  animation: ping 6s cubic-bezier(0, 0, 0.2, 1) infinite;
+  animation: sal-ping 6s cubic-bezier(0,0,0.2,1) infinite;
 }
-
 </style>

@@ -165,7 +165,7 @@
 
 <section class="w-full max-w-screen-2xl mx-auto">
 
-    {{-- <our-partners></our-partners> --}}
+    <our-partners></our-partners>
 
 </section>
 
