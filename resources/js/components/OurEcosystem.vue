@@ -46,13 +46,13 @@
 <script setup>
 // 7 logos — 6 original + 1 duplicate
 const petals = [
-   { src: 'assets/img/asian-review-sinhala.webp', url: 'https://theasianreviewsinhala.reviews/' },
+  { src: 'assets/img/asian-review-sinhala.webp', url: 'https://theasianreviewsinhala.reviews/' },
   { src: 'assets/img/asianhomeoflit.webp', url: 'https://www.facebook.com/profile.php?id=100089906924668&_rdc=2&_rdr#' },
   { src: 'assets/img/asianprizes.webp', url: 'https://www.facebook.com/TheAsianPrizes/?_rdc=2&_rdr#' },
   { src: 'assets/img/asianreviews.webp', url: 'https://asian-reviews.com/' },
   { src: 'assets/img/asian-journal.webp', url: 'https://theasianjournalofliterature.org/' },
   { src: 'assets/img/TALA_LOGO.webp', url: 'https://theasianliteraryagency.com/' },
-  { src: 'assets/img/asian-books.webp', url: 'https://asian-reviews.com/' } // duplicated one
+  { src: 'assets/img/asian-books.webp', url: 'https://asian-reviews.com/' }
 ]
 
 // Logo positions for 7-petal symmetry
