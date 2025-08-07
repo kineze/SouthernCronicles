@@ -101,11 +101,15 @@
 <!-- Inside your template -->
 <div class="relative">
   <label class="block text-sm mb-2 text-gray-700 dark:text-gray-300">Submission</label>
-  <div
-    ref="editor"
-    class="min-h-[150px] bg-white dark:bg-gray-900 text-black dark:text-white border border-gray-500 dark:border-gray-600 rounded p-3"
-  ></div>
+  <QuillEditor
+    theme="snow"
+    v-model:content="form.submission"
+    contentType="html"
+    toolbar="essential"
+    class="bg-white dark:bg-gray-900 text-black dark:text-white border border-gray-500 dark:border-gray-600 rounded"
+  />
 </div>
+
 
   <div
     class="relative border-2 border-dashed border-gray-400 dark:border-gray-600 rounded-lg p-6 text-center bg-white dark:bg-gray-800 hover:border-black transition"
@@ -223,23 +227,19 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import { useToast } from 'vue-toastification'
-import Quill from 'quill'
-import 'quill/dist/quill.snow.css'
+import { QuillEditor } from '@vueup/vue-quill'
+import '@vueup/vue-quill/dist/vue-quill.snow.css'
 
 const toast = useToast()
 const showForm = ref(false)
-const editor = ref(null)
-let quillInstance = null
-
-const editorKey = ref(0)
 
 const form = ref({
   given_name: '',
   family_name: '',
   country: '',
-  submission: '',
+  submission: '', // bound to QuillEditor v-model
   is_copyright: false,
   copyright_holder: '',
   copyright_contact: '',
@@ -248,31 +248,6 @@ const form = ref({
 
 const selectedFile = ref(null)
 const selectedFileName = ref('')
-
-onMounted(() => {
-  quillInstance = new Quill(editor.value, {
-    theme: 'snow',
-    modules: {
-      toolbar: [
-        [{ header: [1, 2, 3, 4, 5, 6, false] }],
-        ['bold', 'italic', 'underline', 'strike'],
-        [{ color: [] }, { background: [] }],
-        [{ script: 'sub' }, { script: 'super' }],
-        ['blockquote', 'code-block'],
-        [{ list: 'ordered' }, { list: 'bullet' }],
-        [{ indent: '-1' }, { indent: '+1' }],
-        [{ align: [] }],
-        ['link', 'image', 'video'],
-        ['clean']
-      ]
-    }
-  })
-
-  // Sync editor content with form.submission
-  quillInstance.on('text-change', () => {
-    form.value.submission = quillInstance.root.innerHTML
-  })
-})
 
 const handleFileUpload = (event) => {
   const file = event.target.files[0]
@@ -300,10 +275,6 @@ const clearForm = () => {
   }
   selectedFile.value = null
   selectedFileName.value = ''
-  if (quillInstance) {
-    quillInstance.setContents([{ insert: '\n' }])
-  }
-  editorKey.value++
 }
 
 const submitForm = async () => {
@@ -346,5 +317,6 @@ const submitForm = async () => {
   }
 }
 </script>
+
 
 
