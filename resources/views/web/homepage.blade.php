@@ -129,17 +129,17 @@
 
 <section class="relative w-full max-w-screen-2xl mx-auto">
 
-    <div class="w-full bg-black p-3 flex items-center flex-wrap">
+    <div class="w-full bg-yellow-50 p-3 flex items-center flex-wrap">
         <div class="lg:w-2/12 w-full">
-            <div class="aspect-w-1 aspect-h-1 w-full h-44">
-                <video autoplay muted loop playsinline class="w-full h-full object-contain rounded-xl">
-                    <source src="{{ asset('/assets/img/Dog walking.webm') }}" type="video/webm">
+            <div class="aspect-w-1 aspect-h-1  w-full h-56">
+                <video autoplay muted loop playsinline class="w-full  h-full object-contain rounded-xl">
+                    <source src="{{ asset('/assets/img/gog-big.webm') }}" type="video/webm">
                     Your browser does not support the video tag.
                 </video>
             </div>
         </div>
         <div class="lg:w-10/12 w-full">
-            <p class="text-lg text-white font-semibold">Our conference is proudly pet-friendly and family-friendly, creating a warm, inclusive space for everyone. Whether you're attending with children or furry companions, you're welcome here. We believe innovation thrives in joyful, supportive environments—so come as you are, bring your whole family, and feel at home.</p>
+            <p class="text-lg text-black font-semibold">Our conference is proudly pet-friendly and family-friendly, creating a warm, inclusive space for everyone. Whether you're attending with children or furry companions, you're welcome here. We believe innovation thrives in joyful, supportive environments—so come as you are, bring your whole family, and feel at home.</p>
         </div>
     </div>
 
