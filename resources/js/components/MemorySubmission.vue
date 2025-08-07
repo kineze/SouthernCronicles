@@ -166,6 +166,17 @@ onMounted(fetchSubmissions)
 .submission-content {
   font-size: 0.875rem; /* same as text-sm */
   color: #374151; /* gray-700 */
+  line-height: 1.75rem; /* Add better line-height */
+  overflow-wrap: break-word;
+  word-break: break-word;
+  padding: 1rem; /* Add padding to prevent clipping */
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.submission-content * {
+  max-width: 100%; /* Ensure child elements don't overflow */
+  box-sizing: border-box;
 }
 
 /* Alignment from Quill */
@@ -224,7 +235,7 @@ onMounted(fetchSubmissions)
 }
 
 .dark .submission-content {
-  color: #f9fafb;
+  color: #000000 !important;
 }
 
 .dark .submission-content h1,
@@ -235,11 +246,11 @@ onMounted(fetchSubmissions)
 .dark .submission-content h6,
 .dark .submission-content strong,
 .dark .submission-content b {
-  color: #f9fafb !important; /* ensure bold/heading text is white too */
+  color: #000000 !important; /* ensure bold/heading text is white too */
 }
 
 .dark .submission-content blockquote {
-  color: #e5e7eb; /* gray-200 for blockquotes */
+  color: #000000 !important; /* gray-200 for blockquotes */
   border-left-color: #4b5563; /* gray-600 */
 }
 

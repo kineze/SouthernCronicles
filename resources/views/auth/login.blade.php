@@ -9,7 +9,7 @@
         <div class="w-full flex flex-col p-6 items-center justify-center">
         <img src="{{asset('assets/img/logo.webp')}}" class="inline-block  max-w-full transition-all duration-200 ease-soft-in-out h-24 dark:hidden" alt="main_logo" />
         <img src="{{asset('assets/img/logo.webp')}}" class="hidden  max-w-full transition-all duration-200 ease-soft-in-out h-20 dark:inline-block" alt="main_logo" />
-        <h4 class="font-bold inline-flex flex-col space-y-2 leading-3 text-xl dark:text-white text-center uppercase text-black mb-0">The Asian <br> <span class=" text-xl">Literary Festival - Brussels</span></h4>
+        <h4 class="font-bold inline-flex flex-col space-y-2 leading-3 text-xl dark:text-white text-center uppercase text-black mb-0">The Asian <br> <span class=" text-xl">Literary Festival - Sri Lanka</span></h4>
 
         </div>
 
