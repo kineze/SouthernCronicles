@@ -123,7 +123,7 @@
 
 <section class="relative w-full max-w-screen-2xl mx-auto">
 
-    {{-- <speakers-carousel></speakers-carousel> --}}
+    <speakers-carousel></speakers-carousel>
 
 </section>
 
@@ -157,20 +157,17 @@
    
 </section>
 
-{{-- <section class="w-full max-w-screen-2xl mx-auto">
+<section class="w-full max-w-screen-2xl mx-auto">
 
     <event-schedule :count="5" :increment="1" show-filter="false"></event-schedule>
 
-</section> --}}
+</section>
 
 <section class="w-full max-w-screen-2xl mx-auto">
 
-    {{-- <our-partners></our-partners> --}}
+    <our-partners></our-partners>
 
 </section>
-
-
-
 
 <section class="w-full max-w-screen-2xl  mt-6 mx-auto">
 
