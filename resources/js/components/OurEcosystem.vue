@@ -29,6 +29,13 @@
         transformOrigin: 'center center'
       }"
     />
+
+    <img
+      :src="salFlower"
+      alt=""
+      class="sal-ping absolute w-[620px] h-[620px] object-contain z-0 select-none pointer-events-none"
+    />
+
     <div class="relative w-[620px] h-[620px] z-30">
       <div
         v-for="(logo, i) in petals"
@@ -93,7 +100,6 @@ const PARALLAX_RATE = 0.35
 const handleScroll = () => {
   const max = document.body.scrollHeight - window.innerHeight
   const y   = window.scrollY
-  rotationDeg.value = max ? (y / max) * 360 * FULL_TURNS : 0
   parallax.value    = y * PARALLAX_RATE
 }
 
@@ -127,5 +133,5 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
   75%  { transform: rotate(-5deg) scale(2); opacity: 0; }
   100% { transform: rotate(-5deg) scale(2); opacity: 0; }
 }
-.sal-ping { animation: sal-ping 3s cubic-bezier(0,0,0.2,1) infinite; }
+.sal-ping { animation: sal-ping 6s cubic-bezier(0,0,0.2,1) infinite; }
 </style>
