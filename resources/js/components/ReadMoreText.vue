@@ -48,12 +48,12 @@ const contentBlocks = [
     `
   },
   {
-    image: '/assets/img/pace.webp',
+    image: '/assets/img/pickbook.webp',
     limit: 300,
-    text: `The Philippine Art and Culture Exchange (PACE) stands as a vital cultural bridge between the Philippines and Europe, operating from its base in Brussels to champion Filipino artistic expression and heritage on the international stage. Established as a dynamic cultural organisation, PACE has positioned itself at the forefront of promoting Filipino art, culture, and traditions throughout Belgium and beyond, fostering deeper understanding and appreciation of Philippine heritage within European communities.
-    As the anchor organisation for The Asian Literary Festivals' Brussels chapter, PACE demonstrates its expanding influence within the broader Asian cultural landscape. Through this pivotal role, the organisation partners with The Asian Group of Literature and Trogon Global to advance literary excellence and cross-cultural dialogue across Asian communities in Europe. This collaboration positions PACE as a key player in celebrating diverse Asian voices whilst maintaining its distinctive focus on Filipino culture.
-    Through strategic partnerships with prestigious institutions such as the Université Libre de Bruxelles and the Philippine Embassy in Belgium, E orchestrates a diverse array of cultural initiatives that celebrate the richness of Filipino identity. The organisation's programming encompasses everything from compelling exhibitions exploring the Filipino diaspora experience to vibrant celebrations like Philippine Food Month, creating platforms that honour both traditional customs and contemporary artistic expressions.
-    At its core, PACE serves as a catalyst for international cultural exchange, facilitating meaningful connections between Filipino artists, cultural practitioners, and their European counterparts, ensuring that Filipino culture continues to flourish within the global cultural conversation.`
+    text: `Pick a Book is a revolutionary book club that transforms how we cultivate reading culture in our fast-paced digital age. What began as a simple office initiative at Epitom Digital in Colombo, Sri Lanka, has blossomed into a vibrant community platform that redefines how we engage with literature and learning.
+The concept emerged from a beautifully simple idea: one employee would read a chapter and share its insights with colleagues during workplace sessions. This organic sharing sparked something remarkable—it revealed a widespread hunger for knowledge amongst people who genuinely loved reading but struggled to find time in their busy schedules.
+Recognising this universal challenge, Pick a Book evolved beyond office walls to become a comprehensive book club ecosystem for readers of all backgrounds and ages. The platform ingeniously bridges the gap between our desire to read and the practical constraints of modern life, offering curated book clubs, engaging reading circles, and flexible options to buy, borrow, donate, or swap books.
+More than just a traditional book club, Pick a Book fosters genuine community connections through shared literary experiences. It transforms solitary reading into collaborative discovery, where every book becomes a conversation starter and every page turned contributes to personal growth whilst building meaningful relationships with fellow book enthusiasts across the community.`
   }
 ]
 
