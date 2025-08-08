@@ -37,7 +37,7 @@ const rowsToShow = ref(5)
 const cols = 10
 
 const fetchPartners = async () => {
-  const { data } = await axios.get('/api/our-partners')
+  const { data } = await axios.get('/api/our-partners?ordered=true')
   allPartners.value = data
   visiblePartners.value = data.slice(0, rowsToShow.value * cols)
 }

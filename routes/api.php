@@ -11,6 +11,7 @@ use App\Http\Controllers\FestivalController;
 use App\Http\Controllers\SpeakersController;
 use App\Http\Controllers\TimeSlotController;
 use App\Http\Controllers\UsefulLinkController;
+use App\Http\Controllers\VolunteersController;
 use App\Http\Controllers\SpeakerTypeController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\BookingManageController;
@@ -56,7 +57,7 @@ Route::get('/memory-submissions', [MemorySubmissionController::class, 'index']);
 
 Route::apiResource('useful-links', UsefulLinkController::class);
 
-
+Route::apiResource('volunteers', VolunteersController::class)->only(['index','store','update','destroy']);
 
 
 // for web view

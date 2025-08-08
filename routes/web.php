@@ -7,16 +7,17 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\TeamsController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\BookingController;
-use App\Http\Controllers\BookingManageController;
 use App\Http\Controllers\GenaralController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\FestivalController;
 use App\Http\Controllers\SpeakersController;
 use App\Http\Controllers\TimeSlotController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\MemorySubmissionController;
-use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\UsefulLinkController;
+use App\Http\Controllers\VolunteersController;
+use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\BookingManageController;
+use App\Http\Controllers\MemorySubmissionController;
 
 Route::controller(GenaralController::class)->group( function (){
 
@@ -164,6 +165,13 @@ Route::middleware(['permission:Manage Users', config('jetstream.auth_session'), 
     Route::controller(RegistrationController::class)->group(function (){
 
         route::get('/registered-list','registeredList')->name('registeredList');
+
+    });
+
+
+    Route::controller(VolunteersController::class)->group(function (){
+
+        route::get('/volunteers','volunteers')->name('volunteers');
 
     });
 

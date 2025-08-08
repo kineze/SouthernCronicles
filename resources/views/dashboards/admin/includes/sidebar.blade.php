@@ -193,6 +193,7 @@
       <div class="relative sidebar-dropdown"
           data-subtitle="Users"
           data-links='[
+          {"label":"Volunteers","href":"{{ url('/volunteers') }}"},
             {"label":"Registered list","href":"{{ url('registered-list') }}"},
             {"label":"Roles & Permissions","href":"{{ url('role-management') }}"},
             {"label":"System Managers","href":"{{ url('system-users') }}"}
@@ -210,6 +211,10 @@
         </button>
 
         <div class="expanded-only hidden py-1 space-y-1">
+
+          <a href="{{ url('/volunteers') }}" class="block px-4 py-2 text-xs font-semibold text-black dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-md">
+            Volunteers
+          </a>
 
           <a href="{{ url('registered-list') }}" class="block px-4 py-2 text-xs font-semibold text-black dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-md">
            Registered list
