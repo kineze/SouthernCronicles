@@ -128,10 +128,10 @@
         <button class="dropdown-toggle w-full flex items-center gap-3 p-2 rounded-lg dark:hover:bg-slate-800 transition-all">
           <div class="sidebar-icon-box">
             <i class="fa-solid fa-handshake"></i>
-            <span class="sr-only test-black">Usefull Links</span>
+            <span class="sr-only test-black">Partners</span>
           </div>
           <span class="sidebar-label flex-1 text-sm font-medium text-black dark:text-white text-left">
-            Usefull Links
+            Partners
           </span>
           <i class="fas fa-chevron-down text-xs text-black sidebar-label"></i>
         </button>

@@ -24,6 +24,7 @@ import ManageTeams from './components/ManageTeams.vue';
 import ManageTimeSlots from './components/ManageTimeSlots.vue';
 import ManageBookings from './components/ManageBookings.vue';
 import MemorySubmission from './components/MemorySubmission.vue';
+import ManageUsefullLinks from './components/ManageUsefullLinks.vue';
 
 // for web view 
 import WebNav from './components/webNav.vue';
@@ -74,6 +75,7 @@ app
     .component('manage-time-slots', ManageTimeSlots)
     .component('manage-bookings', ManageBookings)
     .component('memory-submission', MemorySubmission)
+    .component('manage-usefull-links', ManageUsefullLinks)
 
 
     // for web view

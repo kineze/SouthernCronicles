@@ -5,17 +5,35 @@
       <button @click="openDrawer"  class="px-4 py-1.5 bg-gray-800 text-white dark:bg-green-500 rounded-full text-sm font-semibold">Add Partner</button>
     </div>
 
-    <div class="grid gap-6 mt-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 px-4">
-      <div v-for="partner in partners" :key="partner.id" class="bg-white dark:bg-gray-800 shadow rounded-xl overflow-hidden">
-        <img :src="`/storage/${partner.image}`" alt="Partner" class="w-full h-60 object-contain bg-white p-4" />
-        <div class="p-4 text-center">
-          <h5 class="font-medium dark:text-white">{{ partner.title }}</h5>
-          <div class="flex justify-center mt-2 gap-3">
-            <button @click="editPartner(partner)" class="text-green-600"><i class="fa fa-pen"></i></button>
-            <button @click="confirmDelete(partner)" class="text-red-600"><i class="fa fa-trash"></i></button>
+    <div class="relative overflow-x-auto mt-6 sm:rounded-lg px-4">
+      <draggable
+        v-model="partners"
+        item-key="id"
+        group="partners"
+        handle=".drag-handle"
+        ghost-class="bg-yellow-100"
+        @end="onDragEnd"
+        class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5"
+      >
+        <template #item="{ element: partner }">
+          <div class="relative bg-white dark:bg-gray-800 shadow rounded-xl overflow-hidden">
+            <!-- drag handle -->
+            <div class="absolute top-2 left-2 z-10 cursor-move drag-handle text-gray-600 dark:text-gray-300">
+              <i class="fa-solid fa-up-down"></i>
+            </div>
+
+            <img :src="`/storage/${partner.image}`" alt="Partner"
+                 class="w-full h-60 object-contain bg-white p-4" />
+            <div class="p-4 text-center">
+              <h5 class="font-medium dark:text-white">{{ partner.title }}</h5>
+              <div class="flex justify-center mt-2 gap-3">
+                <button @click="editPartner(partner)" class="text-green-600"><i class="fa fa-pen"></i></button>
+                <button @click="confirmDelete(partner)" class="text-red-600"><i class="fa fa-trash"></i></button>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        </template>
+      </draggable>
     </div>
 
     <!-- Drawer -->
@@ -67,7 +85,7 @@
     </div>
 
     <!-- Delete Confirmation -->
-    <div v-if="showDeleteModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+    <div v-if="showDeleteModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-[999]">
       <div class="bg-white dark:bg-gray-800 p-6 rounded shadow max-w-md w-full">
         <h3 class="text-lg font-semibold mb-3 dark:text-white">Delete Partner</h3>
         <p class="mb-4 dark:text-gray-300">Are you sure you want to delete <strong>{{ partnerToDelete?.title }}</strong>?</p>
@@ -84,6 +102,7 @@
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import { useToast } from 'vue-toastification'
+import draggable from 'vuedraggable'
 
 const toast = useToast()
 const partners = ref([])
@@ -95,8 +114,18 @@ const previewImage = ref(null)
 const form = ref({ title: '', image: null })
 
 const fetchPartners = async () => {
-  const { data } = await axios.get('/api/partners')
+  const { data } = await axios.get('/api/partners?ordered=true') // ordered fetch
   partners.value = data
+}
+
+const onDragEnd = async () => {
+  try {
+    const ordered = partners.value.map((p, idx) => ({ id: p.id, order: idx }))
+    await axios.post('/api/partners/reorder', { order: ordered })
+    toast.success('Reordered successfully')
+  } catch (e) {
+    toast.error('Error saving order')
+  }
 }
 
 const openDrawer = () => {

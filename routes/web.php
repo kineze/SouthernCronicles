@@ -16,6 +16,7 @@ use App\Http\Controllers\TimeSlotController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MemorySubmissionController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\UsefulLinkController;
 
 Route::controller(GenaralController::class)->group( function (){
 
@@ -84,6 +85,13 @@ Route::middleware(['permission:Manage Partners', config('jetstream.auth_session'
     Route::controller(PartnerController::class)->group(function () {
 
         Route::get('/partners','Partners')->name('Partners');
+
+
+    });
+
+    Route::controller(UsefulLinkController::class)->group(function () {
+
+        Route::get('/usefull-links','usefullLinks')->name('usefullLinks');
 
     });
 
