@@ -5,94 +5,107 @@
         </div>
     
         <div class="flex w-full justify-center flex-wrap py-12">
-            <div class="aspect-w-1 aspect-h-1 w-full max-w-md lg:p-2">
+            <!-- <div class="aspect-w-1 aspect-h-1 w-full max-w-md lg:p-2">
 
                 <video autoplay muted loop playsinline class="w-full h-full object-cover rounded-xl">
                     <source src="/public/assets/img/video.webm" type="video/webm">
                     Your browser does not support the video tag.
                 </video>
 
-            </div>
+            </div> -->
 
 
-            <div class="lg:w-6/12 flex flex-col items-center md:items-start justify-center w-full lg:p-2">
-                <img src="/public/assets/img/kipenzi-main-logo.webp" class="w-80" alt="">
-                <p class="text-gray-700 text-justify py-3">Kipenzi reimagines storytelling from the ground up—breaking rules, shattering norms, and daring to explore what lies beyond the expected. Kipenzi’s work defies convention, stretching the very limits of narrative and reshaping how stories can be told. Kipenzi doesn’t just challenge the norms—it reinvents them, opening bold, uncharted paths in literature. This isn’t just innovation—it’s a literary revolution.</p>
-                <a href="https://kipenzi.me/all-ebooks" class="flex items-center gap-3 py-3 px-5 border w-fit border-main-blue/80 text-white  bg-black hover:text-white hover:shadow-lg">Kipenzi Connect</a>
-            </div>
+            <div class="lg:max-w-screen-2xl flex flex-col items-center md:items-start justify-center w-full lg:p-2">
+                <img src="/public/assets/img/kipenzi-main-logo.webp" class="w-80 mx-auto" alt="">
+                <!-- <p class="text-gray-700 text-justify py-3">Kipenzi reimagines storytelling from the ground up—breaking rules, shattering norms, and daring to explore what lies beyond the expected. Kipenzi’s work defies convention, stretching the very limits of narrative and reshaping how stories can be told. Kipenzi doesn’t just challenge the norms—it reinvents them, opening bold, uncharted paths in literature. This isn’t just innovation—it’s a literary revolution.</p> -->
+                <!--  -->
+                <div class="grid grid-cols-1 py-16 md:grid-cols-2 lg:grid-cols-3 md:gap-3">
+  <div
+    v-for="(item, index) in contentBlocks"
+    :key="index"
+    class="w-full items-center flex flex-col text-black dark:text-white px-4"
+  >
+    <!-- Image or Video -->
+    <template v-if="isVideo(item.src)">
+      <video
+        :src="item.src"
+        autoplay
+        muted
+        loop
+        playsinline
+        class="w-64 h-64 object-contain rounded"
+      ></video>
+    </template>
+    <template v-else>
+      <img
+        :src="item.src"
+        class="w-64 h-64 object-contain rounded"
+        :alt="'Media ' + (index + 1)"
+      />
+    </template>
+
+    <h1 class="text-center font-bold text-lg mt-3">{{ item.title }}</h1>
+
+    <p class="text-justify mt-4">
+      {{ isExpanded[index] ? item.text : item.text.slice(0, item.limit) + '...' }}
+      <span
+        v-if="item.text.length > item.limit"
+        class="text-blue-600 cursor-pointer ml-1"
+        @click="toggleText(index)"
+      >
+        {{ isExpanded[index] ? 'Read less' : 'Read more' }}
+      </span>
+    </p>
+  </div>
+</div>
+
+
+
+<p class="text-gray-700 text-justify py-3">
+                  Kipenzi reimagines storytelling from the ground up—breaking rules, shattering norms, and daring to explore what lies beyond the expected. Kipenzi’s work defies convention, stretching the very limits of narrative and reshaping how stories can be told. Kipenzi doesn’t just challenge the norms—it reinvents them, opening bold, uncharted paths in literature. This isn’t just innovation—it’s a literary revolution. 
+                  With every project, Kipenzi invites readers to experience stories in new dimensions, blending art, technology, and imagination. From immersive digital tales to interactive books and animated adventures, Kipenzi’s creations spark curiosity and inspire wonder. Join us as we transform the way stories are shared, making every moment a journey into the extraordinary.
+                </p>
+                <a href="https://kipenzi.me/all-ebooks" class="flex items-center mx-auto gap-3 py-3 px-5 mt-10 border w-fit border-main-blue/80 text-white  bg-black hover:text-white hover:shadow-lg">Kipenzi Connect</a>
+            
+              </div>
         </div>
     
     </div>
 
-    <div class="grid grid-cols-1 py-16 md:grid-cols-2 lg:grid-cols-3 md:gap-3">
-        <div
-        v-for="(item, index) in contentBlocks"
-        :key="index"
-        class="w-full items-center flex flex-col text-black dark:text-white px-4"
-        >
-        <img
-            :src="item.image"
-            class="w-64 h-64 object-contain"
-            :alt="'Logo ' + (index + 1)"
-        />
 
-        <h1 class="text-center font-bold text-lg">{{ item.title }}</h1>
 
-        <p class="text-justify mt-4">
-            {{ isExpanded[index] ? item.text : item.text.slice(0, item.limit) + '...' }}
-            <span
-            v-if="item.text.length > item.limit"
-            class="text-blue-600 cursor-pointer ml-1"
-            @click="toggleText(index)"
-            >
-            {{ isExpanded[index] ? 'Read less' : 'Read more' }}
-            </span>
-        </p>
-        </div>
-  </div>
 </template>
-
-
 
 <script setup>
 import { reactive } from 'vue'
 
-// Content blocks: each with its own image and text
+// Helper: detect video
+const isVideo = (src) => /\.webm($|\?)/i.test(src) || /\.mp4($|\?)/i.test(src)
+
+// If files are in /public/assets/img, use root-absolute paths:
 const contentBlocks = [
   {
-    image: '/assets/img/asian-group-logo.webp',
-    title: `Stories`,
+    src: '/assets/img/story.webp',
+    title: 'Stories',
     limit: 500,
-    text: `The Asian Group of Literature stands as a pioneering collective of six creative social enterprises, founded by Sri Lankan novelist Pramudith D Rupasinghe, humanitarian and social entrepreneur. With a global presence of its services spanning Asia, Europe, Africa, and the Americas, the organisation operates through a diversified portfolio addressing the evolving landscape of contemporary literature.
-    The group's operations encompass six core business divisions: Literary Representation and Editorial Services, Literary Publicist, Academic and Scholarly Publications, Cultural Programmes and Residencies, Recognition and Awards Frameworks, and Festival Curation and Event Management. This comprehensive approach ensures support for writers and literary communities at every stage of their creative journey.
-    The Asian Group's foundation rests upon six distinguished pillars: The Asian Review, its flagship literary publication; The Asian Prizes, recognising exceptional literary achievement; The Asian Literary Agency, providing professional representation; The Asian House of Literature, fostering creative residencies and cultural exchange; The Asian Journal of Literature, advancing scholarly discourse; and The Asian Literary Festivals, celebrating literary culture through curated events.
-    Through this integrated ecosystem, The Asian Group of Literature champions diverse voices, facilitates cross-cultural dialogue, and strengthens the global literary community. Its commitment extends beyond commerce to genuine social impact, reflecting the founder's vision of literature as a transformative force for positive change across continents and cultures.`
+    text: `Step into a world where tails wag with mystery, whiskers hold secrets, and tiny pawprints leave big marks on our hearts. At Kipenzi, we celebrate pets’ quirks, antics, and magical moments. Find heartwarming stories, fun pet care tips, and real-life adventures that remind you why animals are family. Kids and adults connect here through playful tales and expert advice.`
   },
   {
-    image: '/assets/img/trogon.webp',
-    title: `Animated Books`,
+    // This is a video
+    src: '/assets/img/animatedbook.webm',
+    title: 'Animated Books',
     limit: 500,
-    text: `Trogon Global emerges as a trailblazing leader in the international cultural landscape, bridging the gap between corporate excellence and creative innovation from its strategic base in the UAE. As a distinguished festival curation company and cultural consultancy, Trogon Global specialises in conceptualising and delivering world-class festivals and conferences worldwide, establishing itself as a trusted partner in the Creative Economy sector.
-    Founded on the principle that "the power of the local shapes the global," the company harnesses decades of collective expertise from its professional team to create meaningful cultural exchanges that transcend geographical boundaries. This philosophy drives every project, ensuring that local authenticity and global relevance converge to produce extraordinary experiences.
-    Trogon Global's unique positioning enables the creation of profitable and influential cultural brands that serve a greater purpose beyond commercial success. The company recognises culture as a unifying force, deliberately crafting events that foster understanding, collaboration, and connection across diverse communities. Each festival and conference is meticulously curated to not only entertain and educate but to strengthen the cultural fabric that binds our increasingly interconnected world.
-    Registered as Trogon Global Event Management Company LLC in Dubai, the organisation leverages the UAE's strategic location and multicultural environment to serve as a cultural bridge between East and West, consistently delivering transformative experiences that celebrate both local heritage and global innovation.
-    `
+    text: `Kipenzi’s animated books bring beloved tales to life with charming animations, gentle narration, and playful sound effects that captivate young minds. Perfect for bedtime, learning time, or cozy afternoons, these interactive stories spark imagination and nurture a love for reading. From brave little kittens to wise forest animals, each book is crafted to entertain, educate, and inspire kindness.`
   },
   {
-    image: '/assets/img/pace.webp',
-    title: `E Books`,
+    // This is a video
+    src: '/assets/img/video.webm',
+    title: 'E Books',
     limit: 500,
-    text: `The Philippine Art and Culture Exchange (PACE) stands as a vital cultural bridge between the Philippines and Europe, operating from its base in Brussels to champion Filipino artistic expression and heritage on the international stage. Established as a dynamic cultural organisation, PACE has positioned itself at the forefront of promoting Filipino art, culture, and traditions throughout Belgium and beyond, fostering deeper understanding and appreciation of Philippine heritage within European communities.
-    As the anchor organisation for The Asian Literary Festivals' Brussels chapter, PACE demonstrates its expanding influence within the broader Asian cultural landscape. Through this pivotal role, the organisation partners with The Asian Group of Literature and Trogon Global to advance literary excellence and cross-cultural dialogue across Asian communities in Europe. This collaboration positions PACE as a key player in celebrating diverse Asian voices whilst maintaining its distinctive focus on Filipino culture.
-    Through strategic partnerships with prestigious institutions such as the Université Libre de Bruxelles and the Philippine Embassy in Belgium, E orchestrates a diverse array of cultural initiatives that celebrate the richness of Filipino identity. The organisation's programming encompasses everything from compelling exhibitions exploring the Filipino diaspora experience to vibrant celebrations like Philippine Food Month, creating platforms that honour both traditional customs and contemporary artistic expressions.
-    At its core, PACE serves as a catalyst for international cultural exchange, facilitating meaningful connections between Filipino artists, cultural practitioners, and their European counterparts, ensuring that Filipino culture continues to flourish within the global cultural conversation.`
+    text: `Ever wondered what your pet would say if they could talk? At Kipenzi, we believe their stories are already written — in every wag, purr, and playful leap. Welcome to a place where animals aren’t just pets; they’re heroes, comedians, teachers, and magicians all rolled into one adorable package.`
   }
 ]
 
-// Reactive state for "read more" toggling per block
 const isExpanded = reactive(contentBlocks.map(() => false))
-
-const toggleText = (index) => {
-  isExpanded[index] = !isExpanded[index]
-}
+const toggleText = (i) => (isExpanded[i] = !isExpanded[i])
 </script>
