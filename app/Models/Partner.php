@@ -9,5 +9,5 @@ class Partner extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'image'];
+    protected $fillable = ['title', 'image', 'order'];
 }

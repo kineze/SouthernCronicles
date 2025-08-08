@@ -10,6 +10,7 @@ use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\FestivalController;
 use App\Http\Controllers\SpeakersController;
 use App\Http\Controllers\TimeSlotController;
+use App\Http\Controllers\UsefulLinkController;
 use App\Http\Controllers\SpeakerTypeController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\BookingManageController;
@@ -25,6 +26,9 @@ Route::post('/speakers/reorder', [SpeakersController::class, 'reorder']);
 Route::apiResource('speakers', SpeakersController::class);
 
 Route::get('/registrations', [RegistrationController::class, 'index']);
+
+Route::post('/partners/reorder', [PartnerController::class, 'reorder'])->name('partners.reorder');
+Route::apiResource('partners', PartnerController::class);
 
 Route::get('/events', [EventsController::class, 'index']);
 Route::post('/events', [EventsController::class, 'store']);
@@ -50,6 +54,8 @@ Route::put('/launchpad/bookings/{booking}/status', [BookingManageController::cla
 
 Route::get('/memory-submissions', [MemorySubmissionController::class, 'index']);
 
+Route::apiResource('useful-links', UsefulLinkController::class);
+
 
 
 
@@ -59,7 +65,7 @@ Route::get('/custom-speaker-types', [SpeakersController::class, 'types']);
 
 Route::get('/speakers/by-type/{typeId}', [SpeakersController::class, 'byType']);
 
-Route::apiResource('partners', PartnerController::class);
+
 Route::get('/our-partners', [PartnerController::class, 'partnersList']);
 
 Route::post('/contact', [ContactController::class, 'sendContactEmail']);

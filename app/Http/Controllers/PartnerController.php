@@ -13,20 +13,29 @@ class PartnerController extends Controller
         return view('dashboards.admin.partners');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        return Partner::all();
+        $q = Partner::query();
+        if ($request->boolean('ordered')) {
+            $q->orderBy('order')->orderByDesc('id');
+        } else {
+            $q->latest();
+        }
+        return $q->get();
     }
 
     public function store(Request $request)
     {
         $data = $request->validate([
-            'title' => 'required|string',
-            'image' => 'required|image|max:2048'
+            'title' => ['required','string','max:255'],
+            'image' => ['required','image','max:4096'],
         ]);
 
         $data['image'] = $request->file('image')->store('partners', 'public');
-        return Partner::create($data);
+        $data['order'] = Partner::max('order') + 1; // append to end
+
+        $partner = Partner::create($data);
+        return response()->json($partner, 201);
     }
 
     public function update(Request $request, Partner $partner)
@@ -57,5 +66,20 @@ class PartnerController extends Controller
     {
         $limit = $request->get('limit', 50);
         return Partner::select('id', 'image')->take($limit)->get();
+    }
+
+    public function reorder(Request $request)
+    {
+        $data = $request->validate([
+            'order' => ['required','array'],
+            'order.*.id' => ['required','integer','exists:partners,id'],
+            'order.*.order' => ['required','integer','min:0'],
+        ]);
+
+        foreach ($data['order'] as $row) {
+            Partner::where('id', $row['id'])->update(['order' => $row['order']]);
+        }
+
+        return response()->json(['message' => 'Order updated']);
     }
 }
