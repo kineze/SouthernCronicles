@@ -121,16 +121,17 @@
       <div class="relative sidebar-dropdown"
           data-subtitle="Partners"
           data-links='[
-            {"label":"All Partners","href":"{{ url('/partners') }}"}
+            {"label":"All Partners","href":"{{ url('/partners') }}"},
+            {"label":"All Usefull Links","href":"{{ url('/usefull-links') }}"}
           ]'>
 
         <button class="dropdown-toggle w-full flex items-center gap-3 p-2 rounded-lg dark:hover:bg-slate-800 transition-all">
           <div class="sidebar-icon-box">
             <i class="fa-solid fa-handshake"></i>
-            <span class="sr-only test-black">Partners</span>
+            <span class="sr-only test-black">Usefull Links</span>
           </div>
           <span class="sidebar-label flex-1 text-sm font-medium text-black dark:text-white text-left">
-            Partners
+            Usefull Links
           </span>
           <i class="fas fa-chevron-down text-xs text-black sidebar-label"></i>
         </button>
@@ -139,6 +140,10 @@
 
           <a href="{{ url('/partners') }}" class="block px-4 py-2 text-xs font-semibold text-black dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-md">
             All Partners
+          </a>
+
+          <a href="{{ url('/usefull-links') }}" class="block px-4 py-2 text-xs font-semibold text-black dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-md">
+            All Usefull Links
           </a>
 
         </div>
