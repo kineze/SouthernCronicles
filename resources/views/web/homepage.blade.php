@@ -107,17 +107,21 @@
           </div>
           
           <div class="w-full lg:w-6/12">
-            <h2 class="font-semibold text-black uppercase text-start text-7xl">Between Worlds</h2>
+            <h2 class="font-semibold text-black uppercase text-start text-7xl">It Isn't a Luxury…</h2>
               <h1 class="tracking-[10px] text-4xl uppercase font-bold text-black leading-tight">
-                  Reviving the Silk Route of Expression
+                  Bridging Worlds Through Words
               </h1>
           <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl mt-5"></h2>
-          <p class="text-gray-700">In the heart of Europe lies a city of the entire world, yet suspended between worlds—Brussels, where extraordinary human character and cultural richness pulse beneath an often unnoticed surface. The Asian Literary Festival, Brussels Edition, weaves creative expression from the global majority into this vibrant tapestry, transforming the European capital into an unparalleled sanctuary of cultural exchange and cross-fertilisation. This festival revives the historical exchanges between East and West, breathing new life into ancient dialogues as literary traditions converge and contemporary voices rise, creating a dynamic crossroads where stories transcend borders and new cultural conversations bloom in this remarkable intersection of civilisations.</p>
+          <p class="text-gray-700">Literature isn't a luxury—it's the lifeblood of human understanding, the bridge between hearts and minds across all divides. The Asian Literary Festival Gampaha, the island's first free literary celebration, serves as the epicentre where writers, thinkers, and artists from across the globe converge with Sri Lanka's local literary voices, fostering dynamic cross-fertilisation.
+Set in Gampaha—birthplace of numerous Sri Lankan creative luminaries—this festival transforms literary engagement from privilege to public right, celebrating the power of storytelling to unite, inspire, and transform communities across cultural and linguistic boundaries.</p>
           </div>
       </div>
     </div>
 
 </section>
+
+
+
 
 
 
