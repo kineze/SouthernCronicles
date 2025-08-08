@@ -25,6 +25,7 @@ import ManageTimeSlots from './components/ManageTimeSlots.vue';
 import ManageBookings from './components/ManageBookings.vue';
 import MemorySubmission from './components/MemorySubmission.vue';
 import ManageUsefullLinks from './components/ManageUsefullLinks.vue';
+import VolunteersList from './components/VolunteersList.vue';
 
 // for web view 
 import WebNav from './components/webNav.vue';
@@ -44,6 +45,7 @@ import TermsConditions from './components/TermsConditions.vue';
 import BookingNow from './components/BookingNow.vue';
 import LivingMemoryVault from './components/LivingMemoryVault.vue';
 import TheKipenzi from './components/TheKipenzi.vue';
+import Volunteers from './components/Volunteers.vue';
 
 const app = createApp({});
 
@@ -76,6 +78,7 @@ app
     .component('manage-bookings', ManageBookings)
     .component('memory-submission', MemorySubmission)
     .component('manage-usefull-links', ManageUsefullLinks)
+    .component('volunteers-list', VolunteersList)
 
 
     // for web view
@@ -96,6 +99,7 @@ app
     .component('booking-now',BookingNow)
     .component('living-memory-vault', LivingMemoryVault)
     .component('the-kipenzi', TheKipenzi)
+    .component('volunteers', Volunteers)
 
 
     .mount('#app')

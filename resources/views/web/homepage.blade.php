@@ -169,6 +169,12 @@
 
 </section>
 
+<section class="w-full max-w-screen-2xl mx-auto">
+
+
+    <volunteers></volunteers>
+</section>
+
 <section class="w-full max-w-screen-2xl  mt-6 mx-auto">
 
     <div class="w-full mb-10">

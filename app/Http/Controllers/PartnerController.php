@@ -64,9 +64,21 @@ class PartnerController extends Controller
 
     public function partnersList(Request $request)
     {
-        $limit = $request->get('limit', 50);
-        return Partner::select('id', 'image')->take($limit)->get();
+        $limit = (int) $request->get('limit', 50);
+
+        $q = Partner::query();
+
+        if ($request->boolean('ordered')) {
+            // order saved by drag & drop, then tie-break by id
+            $q->orderBy('order')->orderByDesc('id');
+        } else {
+            $q->latest();
+        }
+
+        // only expose fields needed by the public grid
+        return $q->select('id', 'image')->take($limit)->get();
     }
+
 
     public function reorder(Request $request)
     {
