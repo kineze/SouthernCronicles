@@ -4,8 +4,10 @@
     <div class="">
       <div class="relative flex mb-10 flex-wrap items-start z-[1000] bg-opacity-30 backdrop-blur-xl rounded-3xl bg-transparent justify-end pt-12">
         <!-- Left (sticky) -->
-      <div class="w-full md:sticky top-5 lg:w-6/12">
-        <div class="relative lg:h-[900px] h-[400px] w-full overflow-hidden rounded-3xl ring-1 ring-black/10">
+      <div class="w-full md:sticky top-5 lg:w-5/12">
+
+        
+        <div class="relative lg:h-[850px] h-[400px] w-full overflow-hidden rounded-3xl ring-1 ring-black/10">
           <video
             src="/public/assets/img/alfkids.webm"
             autoplay
@@ -15,14 +17,20 @@
             class="absolute inset-0 w-full h-full object-cover aspect-auto bg-black"
           ></video>
 
+         
+
           <!-- Optional overlay + caption (remove if you want only the video) -->
-          <!-- <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"></div> -->
 
         </div>
+
+          <div class=" bg-white text-end p-2 z-50 text-white font-bold w-full absolute bottom-0 bg-opacity-20 backdrop-blur-2xl -mt-12">KIPENZI™</div>
+        
+
+
       </div>
 
             <!-- Right (content) -->
-        <div class="w-full px-6 lg:w-6/12 sticky top-5">
+        <div class="w-full px-6 lg:w-7/12 sticky top-5">
           <h1 class="tracking-[10px] lg:-mt-2 mt-6 lg:text-4xl text-2xl uppercase font-bold text-black leading-tight">
             Heartwarming Pet Stories, Tips & Adventures
           </h1>
