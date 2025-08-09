@@ -58,60 +58,58 @@
   </div>
 
   <!-- Modal -->
-<div v-if="showModal" class="fixed inset-0 z-[1001] bg-black bg-opacity-50 flex items-center justify-center px-3 ">
+  <div v-if="showModal" class="fixed inset-0 z-[1001] bg-black bg-opacity-50 flex items-center justify-center px-3 ">
 
 
-  <div class="bg-white dark:bg-gray-900 w-full max-w-lg lg:max-w-2xl rounded-lg shadow-lg relative max-h-screen overflow-y-auto ">
-    <button
-      class="absolute top-3 right-3 text-gray-500 hover:text-red-600"
-      @click="closeModal"
-    >
-      <i class="fa-solid fa-xmark text-xl"></i>
-    </button>
+    <div class="bg-white dark:bg-gray-900 w-full max-w-lg lg:max-w-2xl rounded-lg shadow-lg relative max-h-screen overflow-y-auto ">
+      <button
+        class="absolute top-3 right-3 text-gray-500 hover:text-red-600"
+        @click="closeModal"
+      >
+        <i class="fa-solid fa-xmark text-xl"></i>
+      </button>
 
-    <div class="p-5 text-center">
-      <img
-        :src="`/storage/${selectedSpeaker?.image}`"
-        :alt="selectedSpeaker?.name"
-        class="w-40 h-40 lg:w-60 lg:h-60 object-cover rounded-none mx-auto mb-4"
-      />
-      <h3 class="text-xl font-bold text-black dark:text-white mb-2">{{ selectedSpeaker?.name }}</h3>
-      <p class="text-gray-700 dark:text-gray-300 mb-4">{{ selectedSpeaker?.description }}</p>
+      <div class="p-5 text-center">
+        <img
+          :src="`/storage/${selectedSpeaker?.image}`"
+          :alt="selectedSpeaker?.name"
+          class="w-40 h-40 lg:w-60 lg:h-60 object-cover rounded-none mx-auto mb-4"
+        />
+        <h3 class="text-xl font-bold text-black dark:text-white mb-2">{{ selectedSpeaker?.name }}</h3>
+        <p class="text-gray-700 dark:text-gray-300 mb-4">{{ selectedSpeaker?.description }}</p>
 
-      <div class="flex justify-center gap-6 text-2xl text-gray-500 mb-4">
-        <a
-          v-if="selectedSpeaker?.facebook"
-          :href="selectedSpeaker.facebook"
-          target="_blank"
-          class="hover:text-blue-600"
-        >
-          <i class="fa-brands fa-facebook"></i>
-        </a>
-        <a
-          v-if="selectedSpeaker?.instagram"
-          :href="selectedSpeaker.instagram"
-          target="_blank"
-          class="hover:text-pink-500"
-        >
-          <i class="fa-brands fa-instagram"></i>
-        </a>
-        <a
-          v-if="selectedSpeaker?.linkedin"
-          :href="selectedSpeaker.linkedin"
-          target="_blank"
-          class="hover:text-blue-400"
-        >
-          <i class="fa-brands fa-linkedin"></i>
-        </a>
+        <div class="flex justify-center gap-6 text-2xl text-gray-500 mb-4">
+          <a
+            v-if="selectedSpeaker?.facebook"
+            :href="selectedSpeaker.facebook"
+            target="_blank"
+            class="hover:text-blue-600"
+          >
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+          <a
+            v-if="selectedSpeaker?.instagram"
+            :href="selectedSpeaker.instagram"
+            target="_blank"
+            class="hover:text-pink-500"
+          >
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a
+            v-if="selectedSpeaker?.linkedin"
+            :href="selectedSpeaker.linkedin"
+            target="_blank"
+            class="hover:text-blue-400"
+          >
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </div>
       </div>
+
+      <!-- Bottom Border -->
+      <div class="bg-black p-2"></div>
     </div>
-
-    <!-- Bottom Border -->
-    <div class="bg-black p-2"></div>
   </div>
-</div>
-
-
 
 </template>
 
