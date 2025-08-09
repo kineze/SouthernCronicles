@@ -187,9 +187,6 @@
     </div>
   </div>
 
-        <!-- Right (content) -->
-
-
   </div>
 </div>
 
