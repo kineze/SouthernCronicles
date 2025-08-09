@@ -20,13 +20,11 @@
             </div>
         </div>  
     </nav>
-  <!-- Drawer -->
 
-  <div 
-  v-if="isDrawerOpen" 
-  @click="isDrawerOpen = false"
-  class="fixed inset-0 bg-transparent z-[1001]"
-></div>
+  <div v-if="isDrawerOpen" 
+    @click="isDrawerOpen = false"
+    class="fixed inset-0 bg-transparent z-[1001]"
+  ></div>
 
   <div id="drawer-navigation"
     class="fixed top-0 left-0 z-[1001] h-screen p-4 overflow-y-auto transition-transform transform bg-white bg-opacity-30 backdrop-blur-xl shadow-lg w-64 dark:bg-gray-800"
@@ -78,8 +76,9 @@
           <a href="/the-kipenzi" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
            
             <img :src="kipenziIcon" class="w-6 h-6" alt="The Kipenzi">
+             <!-- <i class="fa-solid fa-paw text-xl"></i> -->
 
-            <span class="ms-3 font-semibold">The Kipenzi</span>
+            <span class="ms-3 font-semibold">Kipenzy ALF Kids</span>
           </a>
 
 
