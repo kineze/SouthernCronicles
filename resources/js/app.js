@@ -47,6 +47,7 @@ import LivingMemoryVault from './components/LivingMemoryVault.vue';
 import TheKipenzi from './components/TheKipenzi.vue';
 import Volunteers from './components/Volunteers.vue';
 import VolunteerWithUs from './components/VolunteerWithUs.vue';
+import UpComingFestivals from './components/UpComingFestivals.vue';
 
 
 const app = createApp({});
@@ -103,6 +104,7 @@ app
     .component('living-memory-vault', LivingMemoryVault)
     .component('the-kipenzi', TheKipenzi)
     .component('volunteer-with-us', VolunteerWithUs)
+    .component('up-coming-festivals', UpComingFestivals)
 
 
 
