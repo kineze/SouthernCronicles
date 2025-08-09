@@ -280,15 +280,17 @@
 
 
 
+
+
 <section class="w-full max-w-screen-2xl mx-auto">
 
-    <up-coming-festivals></up-coming-festivals>
+    <our-partners></our-partners>
 
 </section>
 
 <section class="w-full max-w-screen-2xl mx-auto">
 
-    <our-partners></our-partners>
+    <up-coming-festivals></up-coming-festivals>
 
 </section>
 
