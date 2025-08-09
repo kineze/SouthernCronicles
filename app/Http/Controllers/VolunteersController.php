@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Throwable;
 use App\Models\Volunteer;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use App\Services\BrevoMailerService;
 
 class VolunteersController extends Controller
 {
@@ -46,24 +50,42 @@ class VolunteersController extends Controller
             'description'    => ['nullable','string'],
         ]);
 
+        $data['status'] = 'pending'; // default
+
         $vol = Volunteer::create($data);
         return response()->json($vol, 201);
     }
 
-    // Optional admin update/delete
-    public function update(Request $request, Volunteer $volunteer)
-    {
-        $data = $request->validate([
-            'email'          => ['required','email','max:255', Rule::unique('volunteers','email')->ignore($volunteer->id)],
-            'first_name'     => ['required','string','max:120'],
-            'last_name'      => ['required','string','max:120'],
-            'contact_number' => ['required','string','max:40'],
-            'description'    => ['nullable','string'],
-        ]);
+public function setStatus(Request $request, Volunteer $volunteer, BrevoMailerService $mailer)
+{
+    $validated = $request->validate([
+        'status' => ['required', Rule::in(['pending','accepted','rejected'])],
+    ]);
 
-        $volunteer->update($data);
-        return response()->json($volunteer);
+    $volunteer->update(['status' => $validated['status']]);
+
+    // Try email, but don't fail the whole request if Brevo errors
+    try {
+        $mailer->sendVolunteerStatusEmail([
+            'email'      => $volunteer->email,
+            'first_name' => $volunteer->first_name,
+            'last_name'  => $volunteer->last_name,
+            'status'     => $validated['status'],
+        ]);
+    } catch (Throwable $e) {
+        Log::warning('Volunteer status email failed', [
+            'volunteer_id' => $volunteer->id,
+            'status'       => $validated['status'],
+            'error'        => $e->getMessage(),
+        ]);
+        // continue; we still return 200
     }
+
+    return response()->json([
+        'message'   => 'Status updated' . ($validated['status'] !== 'pending' ? ' and email attempted.' : '.'),
+        'volunteer' => $volunteer->fresh(),
+    ]);
+}
 
     public function destroy(Volunteer $volunteer)
     {

@@ -140,7 +140,7 @@
     
     </div>
 
-    <div class="py-8" >
+    {{-- <div class="py-8" >
         <h1 class="lg:text-4xl text-3xl mt-12 lg:mt-4 text-black font-extrabold tracking-widest uppercase text-center">Stage, Page, Revolution: The Future of Storytelling Starts Here</h1>
     
         <div class="flex w-full justify-center flex-wrap py-12">
@@ -159,7 +159,7 @@
             </div>
         </div>
     
-    </div>
+    </div> --}}
 
 
   

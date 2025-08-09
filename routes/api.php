@@ -57,6 +57,7 @@ Route::get('/memory-submissions', [MemorySubmissionController::class, 'index']);
 
 Route::apiResource('useful-links', UsefulLinkController::class);
 
+Route::post('volunteers/{volunteer}/status', [VolunteersController::class, 'setStatus']); 
 Route::apiResource('volunteers', VolunteersController::class)->only(['index','store','update','destroy']);
 
 
