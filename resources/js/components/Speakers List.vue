@@ -5,7 +5,7 @@
 
 
     <div class="flex flex-wrap justify-between items-center w-full mt-10">
-      <!-- Search -->
+
       <div class="lg:w-4/12 w-full">
         <div class="relative">
           <input type="search" v-model="searchQuery" placeholder=" "
@@ -17,7 +17,6 @@
         </div>
       </div>
 
-      <!-- Types -->
       <div class="lg:w-auto w-full mt-4 lg:mt-0">
         <div class="px-2.5 py-2.5 border rounded-full border-1 border-gray-300 flex flex-wrap gap-2">
           <button
