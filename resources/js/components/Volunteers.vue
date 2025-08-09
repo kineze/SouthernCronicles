@@ -80,40 +80,114 @@
   </div>
 </template>
 
-<script setup>
-import { ref } from 'vue'
-import { useToast } from 'vue-toastification'
+<script>
 import axios from 'axios'
+import { useToast } from 'vue-toastification'
 
 const toast = useToast()
-const submitting = ref(false)
 
-const form = ref({
-  email: '',
-  first_name: '',
-  last_name: '',
-  contact_number: '',
-  description: ''
-})
+export default {
+  setup() {
+    const toast = useToast()
+    return { toast }
+  },
+  data() {
+    return {
+      volunteers: { data: [], current_page: 1, last_page: 1 },
+      search: '',
+      perPage: 15,
+      loading: false,
+      debounceId: null,
 
-const clearForm = () => {
-  form.value = { email: '', first_name: '', last_name: '', contact_number: '', description: '' }
-}
+      confirm: {
+        show: false,
+        type: null,
+        row: null,
+        title: '',
+        message: '',
+        confirmLabel: '',
+        loading: false,
+      },
+    }
+  },
+  mounted() {
+    this.fetchVolunteers()
+  },
+  methods: {
+    async fetchVolunteers(page = 1) {
+      if (this.debounceId) clearTimeout(this.debounceId)
+      this.debounceId = setTimeout(async () => {
+        this.loading = true
+        try {
+          const { data } = await axios.get('/api/volunteers', {
+            params: { search: this.search, page, per_page: this.perPage },
+          })
+          this.volunteers = data
+        } catch (e) {
+          console.error('Error fetching volunteers', e)
+          toast.error('Failed to fetch volunteers.')
+        } finally {
+          this.loading = false
+        }
+      }, 250)
+    },
+    changePage(page) {
+      this.fetchVolunteers(page)
+    },
 
-const submitForm = async () => {
-  if (!form.value.email || !form.value.first_name || !form.value.last_name || !form.value.contact_number) {
-    toast.error('Please fill all required fields.')
-    return
-  }
-  try {
-    submitting.value = true
-    await axios.post('/api/volunteers', form.value)
-    toast.success('✅ Thank you for volunteering! We will contact you soon.')
-    clearForm()
-  } catch (e) {
-    toast.error(e?.response?.data?.message || '❌ Submission failed. Please try again.')
-  } finally {
-    submitting.value = false
-  }
+    confirmAction(type, row) {
+      const map = {
+        accept: {
+          title: 'Accept Volunteer',
+          message: `Accept ${row.first_name} ${row.last_name}? This will email the volunteer.`,
+          confirmLabel: 'Accept',
+        },
+        reject: {
+          title: 'Reject Volunteer',
+          message: `Reject ${row.first_name} ${row.last_name}? This will email the volunteer.`,
+          confirmLabel: 'Reject',
+        },
+        delete: {
+          title: 'Delete Volunteer',
+          message: `Delete ${row.first_name} ${row.last_name}? This cannot be undone.`,
+          confirmLabel: 'Delete',
+        },
+      }
+      const meta = map[type]
+      this.confirm = {
+        show: true,
+        type,
+        row,
+        ...meta,
+        loading: false,
+      }
+    },
+    closeConfirm() {
+      this.confirm.show = false
+      this.confirm.type = null
+      this.confirm.row = null
+    },
+    async doConfirm() {
+      this.confirm.loading = true
+      try {
+        if (this.confirm.type === 'accept' || this.confirm.type === 'reject') {
+          const status = this.confirm.type === 'accept' ? 'accepted' : 'rejected'
+          await axios.post(`/api/volunteers/${this.confirm.row.id}/status`, { status })
+          this.toast.success(`Volunteer ${this.confirm.type}ed successfully.`)
+        } else if (this.confirm.type === 'delete') {
+          await axios.delete(`/api/volunteers/${this.confirm.row.id}`)
+          toast.success('Volunteer deleted successfully.')
+        }
+
+        await this.fetchVolunteers(this.volunteers.current_page || 1)
+        this.closeConfirm()
+      } catch (e) {
+        console.error('Action failed', e)
+        toast.error('Action failed. Please try again.')
+        this.confirm.loading = false
+      }
+    },
+  },
 }
 </script>
+
