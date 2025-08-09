@@ -21,9 +21,9 @@
         }"
       >
         <Slide v-for="team in teams" :key="team.id">
-          <div class="p-3 cursor-pointer" @click="openModal(team)">
+          <div class="p-3 aspect-square cursor-pointer" @click="openModal(team)">
             <div class="overflow-hidden dark:bg-gray-800">
-              <img :src="`/storage/${team.image}`" :alt="team.name" class="w-full h-full object-cover aspect-square" />
+              <img :src="`/storage/${team.image}`" :alt="team.name" class="w-full object-top object-cover"  />
               <div class="p-4 text-center">
                 <h3 class="font-semibold text-gray-800 dark:text-white uppercase leading-tight">
                   <span class="block">{{ team.nameParts[0] }}</span>
