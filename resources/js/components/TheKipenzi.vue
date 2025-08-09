@@ -74,44 +74,53 @@
                 <img src="/public/assets/img/kipenzi-main-logo.webp" class="w-80 mx-auto" alt="">
                 
                 <div class="grid grid-cols-1 py-16 md:grid-cols-2 lg:grid-cols-3 md:gap-3">
-  <div
-    v-for="(item, index) in contentBlocks"
-    :key="index"
-    class="w-full items-center flex flex-col text-black dark:text-white px-4"
-  >
-    <!-- Image or Video -->
-    <template v-if="isVideo(item.src)">
-      <video
-        :src="item.src"
-        autoplay
-        muted
-        loop
-        playsinline
-        class="w-64 h-64 object-contain rounded"
-      ></video>
-    </template>
-    <template v-else>
-      <img
-        :src="item.src"
-        class="w-64 h-64 object-contain rounded"
-        :alt="'Media ' + (index + 1)"
-      />
-    </template>
+            <div
+              v-for="(item, index) in contentBlocks"
+              :key="index"
+              class="w-full items-center justify-between flex flex-col text-black dark:text-white px-4"
+            >
 
-    <h1 class="text-center font-bold text-lg mt-3">{{ item.title }}</h1>
+            <div class=" flex flex-col items-center">
+                <!-- Image or Video -->
+                <template v-if="isVideo(item.src)">
+                  <video
+                    :src="item.src"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    class="w-64 h-64 object-contain rounded"
+                  ></video>
+                </template>
+                <template v-else>
+                  <img
+                    :src="item.src"
+                    class="w-64 h-64 object-contain rounded"
+                    :alt="'Media ' + (index + 1)"
+                  />
+                </template>
 
-    <p class="text-justify mt-4">
-      {{ isExpanded[index] ? item.text : item.text.slice(0, item.limit) + '...' }}
-      <span
-        v-if="item.text.length > item.limit"
-        class="text-blue-600 cursor-pointer ml-1"
-        @click="toggleText(index)"
-      >
-        {{ isExpanded[index] ? 'Read less' : 'Read more' }}
-      </span>
-    </p>
-  </div>
-</div>
+                <h1 class="text-center font-bold text-lg mt-3">{{ item.title }}</h1>
+
+                <p class="text-justify mt-4">
+                  {{ isExpanded[index] ? item.text : item.text.slice(0, item.limit) + '...' }}
+                  <span
+                    v-if="item.text.length > item.limit"
+                    class="text-blue-600 cursor-pointer ml-1"
+                    @click="toggleText(index)"
+                  >
+                    {{ isExpanded[index] ? 'Read less' : 'Read more' }}
+                  </span>
+                </p>
+            </div>
+              <a
+                :href="item.url || 'https://kipenzi.me/all-ebooks'"
+                class="flex items-center mx-auto gap-3 py-3 px-5 mt-10 border w-fit border-main-blue/80 text-white bg-black hover:text-white hover:shadow-lg"
+              >
+                Connect
+              </a>
+            </div>
+          </div>
 
 
 
@@ -119,7 +128,7 @@
                   Kipenzi reimagines storytelling from the ground up—breaking rules, shattering norms, and daring to explore what lies beyond the expected. Kipenzi’s work defies convention, stretching the very limits of narrative and reshaping how stories can be told. Kipenzi doesn’t just challenge the norms—it reinvents them, opening bold, uncharted paths in literature. This isn’t just innovation—it’s a literary revolution. 
                   With every project, Kipenzi invites readers to experience stories in new dimensions, blending art, technology, and imagination. From immersive digital tales to interactive books and animated adventures, Kipenzi’s creations spark curiosity and inspire wonder. Join us as we transform the way stories are shared, making every moment a journey into the extraordinary.
                 </p> -->
-                <a href="https://kipenzi.me/all-ebooks" class="flex items-center mx-auto gap-3 py-3 px-5 mt-10 border w-fit border-main-blue/80 text-white  bg-black hover:text-white hover:shadow-lg">Kipenzi Connect</a>
+                
             
               </div>
         </div>
@@ -129,30 +138,33 @@
 <div class="">
   <div class="relative flex mb-24 flex-wrap items-start z-[1000] bg-opacity-30 backdrop-blur-xl rounded-3xl bg-transparent justify-end pt-12">
 
-<div class="w-full px-6 lg:w-6/12 sticky top-5">
+<div class="w-full px-6 lg:w-6/12 sticky items-start top-5">
   <h1 class="tracking-[10px] lg:-mt-2 mt-6 lg:text-4xl text-2xl uppercase font-bold text-black leading-tight">
     The Purple Umbrella Festival
   </h1>
 
-  <h2 class="font-semibold tracking-[10px] text-black uppercase text-xl lg:text-3xl mt-5">
-    Creativity Meets Climate Action
-  </h2>
-
-  <p class="text-gray-700 py-3">
+  <p class="text-gray-700 text-justify py-3">
     The Purple Umbrella Festival emerges as a beacon of hope and creativity, where children's voices take centre stage in addressing one of our most pressing global challenges. Founded on the unwavering belief that young minds possess extraordinary power to inspire change, <span class="font-semibold">PUTF</span> transforms theatre into a vehicle for environmental advocacy and social action.
   </p>
 
-  <p class="text-gray-700 py-3">
+  <p class="text-gray-700 text-justify  py-3">
     Under the protective canopy of the purple umbrella—a symbol of nurturing creativity and bold expression—children from diverse backgrounds come together to tell stories that matter. Through compelling performances, they share their unique perspectives on climate change, weaving together comedy, drama, and music to create powerful calls to action that resonate far beyond the stage.
   </p>
 
-  <p class="text-gray-700 py-3">
+  <p class="text-gray-700 text-justify  py-3">
     <span class="font-semibold">PUTF 2025</span> brings together an inspiring coalition of schools, environmental organisations, UN agencies, and artists, all united in supporting young storytellers. Each performance represents more than entertainment; it's a testament to the belief that creativity can drive meaningful change. These young advocates don't simply perform—they challenge audiences to see the world through fresh eyes and embrace their responsibility towards a sustainable future.
   </p>
 
-  <p class="text-gray-700 py-3">
+  <p class="text-gray-700 mb-6 text-justify  py-3">
     At its heart, the Purple Umbrella Festival proves that when we listen to children's stories, we discover not just their fears and hopes, but also innovative solutions and the courage to act.
   </p>
+
+   <a
+      :href="'https://purplefest.in/'"
+      class=" gap-3 py-3 px-5 mt-10 border  border-main-blue/80 text-white bg-black hover:text-white hover:shadow-lg"
+    >
+      Connect
+    </a>
 </div>
 
 
@@ -166,6 +178,8 @@
         playsinline
         class="absolute inset-0 w-full h-full object-cover bg-black"
       ></video>
+
+          <div class=" bg-white text-end p-3 z-50 text-white font-bold w-full absolute bottom-0 bg-opacity-20 backdrop-blur-2xl -mt-12">PurpleUmbrella™</div>
 
       <!-- Optional overlay + caption (remove if you want only the video) -->
       <!-- <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"></div> -->
@@ -195,6 +209,7 @@ const contentBlocks = [
     src: '/assets/img/story.webp',
     title: 'Stories',
     limit: 500,
+     url: 'https://kipenzi.me/all-stories',
     text: `Step into a world where tails wag with mystery, whiskers hold secrets, and tiny pawprints leave big marks on our hearts. At Kipenzi, we celebrate pets’ quirks, antics, and magical moments. Find heartwarming stories, fun pet care tips, and real-life adventures that remind you why animals are family. Kids and adults connect here through playful tales and expert advice.`
   },
   {
@@ -202,6 +217,7 @@ const contentBlocks = [
     src: '/assets/img/animatedbook.webm',
     title: 'Animated Books',
     limit: 500,
+    url: 'https://kipenzi.me',
     text: `Kipenzi’s animated books bring beloved tales to life with charming animations, gentle narration, and playful sound effects that captivate young minds. Perfect for bedtime, learning time, or cozy afternoons, these interactive stories spark imagination and nurture a love for reading. From brave little kittens to wise forest animals, each book is crafted to entertain, educate, and inspire kindness.`
   },
   {
@@ -209,6 +225,7 @@ const contentBlocks = [
     src: '/assets/img/video.webm',
     title: 'E Books',
     limit: 500,
+    url: 'https://kipenzi.me/all-ebooks',
     text: `Ever wondered what your pet would say if they could talk? At Kipenzi, we believe their stories are already written — in every wag, purr, and playful leap. Welcome to a place where animals aren’t just pets; they’re heroes, comedians, teachers, and magicians all rolled into one adorable package.`
   }
 ]
