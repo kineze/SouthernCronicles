@@ -68,13 +68,10 @@
           </a>
 
           <a href="/the-writing-lab" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-            
-           <i class="fa-solid fa-feather-alt text-xl"></i>
             <span class="ms-3 font-semibold">The Writing Lab</span>
           </a>
 
           <a href="/the-kipenzi" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-           
             <img :src="kipenziIcon" class="w-6 h-6" alt="The Kipenzi">
              <!-- <i class="fa-solid fa-paw text-xl"></i> -->
 
@@ -84,11 +81,10 @@
 
 
           <a href="/events-schedule" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-           
             <svg class="w-6 h-6" viewBox="0 0 32 32" fill="#000000" xmlns="http://www.w3.org/2000/svg">
               <path d="M24,8V4h-4v4h-8V4H8v4H4v20h24V8H24z M20,24h-4v-8h-4v-4h8V24z" />
             </svg>
-
+            
             <span class="ms-3 font-semibold">Events Schedule</span>
           </a>
 
