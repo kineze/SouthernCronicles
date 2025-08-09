@@ -1,7 +1,7 @@
 <aside id="sidebar" class="fixed top-0 left-0 h-full w-60 bg-white dark:bg-slate-900 shadow-lg transition-all duration-300 z-50 overflow-hidden transform -translate-x-full lg:translate-x-0">
 
   <div class="flex items-center justify-center px-3 h-24 border-b border-gray-500 dark:border-gray-700">
-    <a href="{{ url('/') }}" class="relative flex justify-center w-full items-center">
+    <a href="{{ url('/home') }}" class="relative flex justify-center w-full items-center">
 
       <img src="/assets/img/logo.webp" alt="logo" class="sidebar-logo sidebar-logo-full block h-24 w-auto dark:hidden transition-opacity duration-200" loading="lazy" />
 

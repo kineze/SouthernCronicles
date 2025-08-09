@@ -5,7 +5,7 @@
     <link rel="icon" type="image/png" href="{{ asset('/assets/img/logo.webp') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Brussels - ALF</title>
+    <title>Gampaha - ALF</title>
 
     <link href="{{asset('/assets/css/theme.css')}}" rel="stylesheet" />
 

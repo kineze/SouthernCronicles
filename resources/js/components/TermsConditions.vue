@@ -74,6 +74,7 @@
         <p>The Asian Literary Agency, 16 Vishaka Road, Medagama, Gampaha</p>
         <p>+94 77 556 4255</p>
         <p>info@theasianliteraryfestival.com</p>
+        info@theasianliteraryfestival.com
       </div>
     </div>
   </section>
