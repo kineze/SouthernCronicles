@@ -32,30 +32,26 @@
             <!-- Right (content) -->
         <div class="w-full px-6 lg:w-7/12 sticky top-5">
           <h1 class="tracking-[10px] lg:-mt-2 mt-6 lg:text-4xl text-2xl uppercase font-bold text-black leading-tight">
-            Heartwarming Pet Stories, Tips & Adventures
+            Get Kipenzied @ ALF Kids
           </h1>
 
-          <h2 class="font-semibold tracking-[10px] text-black uppercase text-xl lg:text-3xl mt-5">
-            Imagination Meets Information
-          </h2>
-
-          <p class="text-gray-700 py-3">
+          <p class="text-gray-700 text-justify py-3">
             Today, more than ever, children are drifting away from books and towards screens, captivated by the endless distractions of devices. But instead of fighting technology, platforms like <span class="font-semibold">Kipenzi</span> are using it to reignite a love for literature.
           </p>
 
-          <p class="text-gray-700 py-3">
+          <p class="text-gray-700 text-justify py-3">
             Through enchanting audiobooks, vibrant illustrations, and imaginative storytelling, <span class="font-semibold">Kipenzi</span> brings stories to life in a way that speaks directly to digital-native minds. By blending the magic of narrative with the appeal of technology, Kipenzi is not just keeping kids engaged—it’s bringing them back to the timeless joy of reading, one click, one listen, and one story at a time.
           </p>
 
-          <p class="text-gray-700 py-3">
+          <p class="text-gray-700 text-justify py-3">
             This is the spirit that drives Kipenzi, our <span class="font-semibold">ALF-Kids</span> festival: embracing innovation whilst celebrating the enduring power of storytelling. We are reimagining a world where paper marries technology—where the crisp feel of turning pages remains part of our daily lives, enhanced rather than replaced by digital magic. Here, we explore how literature can flourish in the digital age, creating new pathways for young minds to discover wonder.
           </p>
 
-          <p class="text-gray-700 py-3">
+          <p class="text-gray-700 text-justify py-3">
             We envision children growing into a world of enhanced creativity, where they are empowered to dream bigger and reach further than ever before. In this harmonious blend of tactile and digital experiences, every story becomes a doorway to imagination, every page a stepping stone to greater possibilities.
           </p>
 
-          <p class="text-gray-700 py-3">
+          <p class="text-gray-700 text-justify py-3">
             Welcome to a celebration where tradition meets innovation, where the rustle of paper harmonises with the glow of screens, and where every child can find their gateway to the extraordinary world of books whilst never losing touch with the timeless magic of holding a story in their hands.
           </p>
         </div>
