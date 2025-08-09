@@ -140,27 +140,7 @@
     
     </div>
 
-    <div class="py-8" >
-        <h1 class="lg:text-4xl text-3xl mt-12 lg:mt-4 text-black font-extrabold tracking-widest uppercase text-center">Stage, Page, Revolution: The Future of Storytelling Starts Here</h1>
-    
-        <div class="flex w-full justify-center flex-wrap py-12">
-            <div class="aspect-w-1 aspect-h-1 w-full max-w-md lg:p-2">
-                <video autoplay muted loop playsinline class="w-full h-full object-cover rounded-xl">
-                    <source src="{{ asset('/assets/img/video.webm') }}" type="video/webm">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-
-
-            <div class="lg:w-6/12 flex flex-col items-center md:items-start justify-center w-full lg:p-2">
-                <img src="{{asset('assets/img/kipenzi-main-logo.webp')}}" class="w-80" alt="">
-                <p class="text-gray-700 text-justify py-3">Kipenzi reimagines storytelling from the ground up—breaking rules, shattering norms, and daring to explore what lies beyond the expected. Kipenzi’s work defies convention, stretching the very limits of narrative and reshaping how stories can be told. Kipenzi doesn’t just challenge the norms—it reinvents them, opening bold, uncharted paths in literature. This isn’t just innovation—it’s a literary revolution.</p>
-                <a href="https://kipenzi.me/all-ebooks" class="flex items-center gap-3 py-3 px-5 border w-fit border-main-blue/80 text-white  bg-black hover:text-white hover:shadow-lg">Kipenzi Connect</a>
-            </div>
-        </div>
-    
-    </div>
-
+  
 
   
 </section>
