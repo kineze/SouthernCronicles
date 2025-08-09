@@ -95,7 +95,7 @@ class SpeakersController extends Controller
 
     public function types()
     {
-        return SpeakerType::all();
+        return SpeakerType::orderBy('position')->orderBy('id')->get();
     }
 
     public function byType($typeId)
