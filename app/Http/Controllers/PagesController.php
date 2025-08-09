@@ -70,4 +70,9 @@ class PagesController extends Controller
 
         return view('web.theKipenzi');
     }
+
+    public function volunteerWithUs(){
+
+        return view('web.volunteerWithUs');
+    }
 }

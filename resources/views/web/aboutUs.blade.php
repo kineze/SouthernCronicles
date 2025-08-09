@@ -11,7 +11,7 @@
             <h1 class="tracking-[10px] text-4xl uppercase font-bold text-black leading-tight">
                 The Asian Literary <br> Festival
             </h1>
-            <h2 class="font-semibold tracking-[10px] text-black uppercase text-2xl">Brussels</h2>
+            <h2 class="font-semibold tracking-[10px] text-black uppercase text-2xl">Gampaha</h2>
         </div>
     </div>
 
@@ -20,8 +20,8 @@
     </div>
 
  
-     <div class="hidden md:block">
-         <div  class=" relative flex mb-24 flex-wrap items-start  z-[1000] bg-opacity-30 backdrop-blur-xl rounded-3xl  bg-transparent  justify-end pt-12">
+    <div class="hidden md:block">
+        <div  class=" relative flex mb-24 flex-wrap items-start  z-[1000] bg-opacity-30 backdrop-blur-xl rounded-3xl  bg-transparent  justify-end pt-12">
            <div class="w-full bg-black md:sticky py-6 top-5 lg:w-6/12">
                <div class="">
                     <div class=" mx-auto px-4 text-center py-6">
