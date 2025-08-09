@@ -8,7 +8,7 @@
       <article
         v-for="ev in events"
         :key="ev.id"
-        class="rounded shadow-lg bg-yellow-50 dark:bg-gray-800 hover:shadow-md transition-all"
+        class="rounded  bg-yellow-50 dark:bg-gray-800 hover:shadow-md transition-all"
       >
         <div class="flex items-start justify-between p-4">
           <div class="text-sm">
@@ -53,33 +53,6 @@ import { ref } from 'vue'
 
 const events = ref([
   {
-    id: 1,
-    starts_at: '2025-10-03T08:00:00',
-    ends_at:   '2025-10-05T18:00:00',
-    title: 'The Asian Literary Festival 2025',
-    // speakers: ['Student Ensembles'],
-    venue: 'Brussels',
-    // format: 'FESTIVAL',
-  },
-   {
-    id: 2,
-    starts_at: '2026-01-03T08:00:00',
-    ends_at:   '2026-01-44T18:00:00',
-    title: 'Kerala Chronicles 2026',
-    // speakers: ['Student Ensembles'],
-    venue: 'Kerala',
-    // format: 'FESTIVAL',
-  },
-  {
-    id: 2,
-    starts_at: '2026-01-21T08:00:00',
-    ends_at:   '2026-01-24T18:00:00',
-    title: 'Southern Chronicles 2026',
-    // speakers: ['Student Ensembles'],
-    venue: 'Abu Dhabi',
-    // format: 'FESTIVAL',
-  },
-   {
     id: 1,
     starts_at: '2025-10-03T08:00:00',
     ends_at:   '2025-10-05T18:00:00',
