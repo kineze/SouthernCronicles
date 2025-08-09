@@ -25,7 +25,10 @@
             <div class="overflow-hidden dark:bg-gray-800">
               <img :src="`/storage/${team.image}`" :alt="team.name" class="w-full h-80 object-cover aspect-square" />
               <div class="p-4 text-center">
-                <h3 class="font-semibold text-gray-800 dark:text-white uppercase">{{ team.name }}</h3>
+                <h3 class="font-semibold text-gray-800 dark:text-white uppercase leading-tight">
+                  <span class="block">{{ team.nameParts[0] }}</span>
+                  <span v-if="team.nameParts[1]" class="block">{{ team.nameParts[1] }}</span>
+                </h3>
               </div>
             </div>
           </div>
@@ -86,13 +89,29 @@ const currentSlide = ref(0)
 const showModal = ref(false)
 const selectedTeam = ref(null)
 
+// Split into [first, rest] (rest = second word or more, joined)
+const formatName = (name) => {
+  if (!name) return ['', '']
+  const parts = name.trim().split(/\s+/)
+  const first = parts.shift() || ''
+  const rest  = parts.join(' ') || ''
+  return [first, rest]
+}
+
 const fetchTeams = async () => {
   const res = await axios.get('/api/get-teams')
-  teams.value = res.data
+  teams.value = res.data.map(t => ({
+    ...t,
+    nameParts: formatName(t.name),
+  }))
 }
 
 const openModal = (team) => {
-  selectedTeam.value = team
+  // ensure modal also has the preformatted parts
+  selectedTeam.value = {
+    ...team,
+    nameParts: team.nameParts ?? formatName(team.name)
+  }
   showModal.value = true
 }
 
@@ -102,4 +121,5 @@ const closeModal = () => {
 }
 
 onMounted(fetchTeams)
+
 </script>

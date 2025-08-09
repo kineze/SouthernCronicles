@@ -140,10 +140,10 @@ const formatName = (name) => {
   if (!name) return ['', '', '']
   const parts = name.trim().split(/\s+/) // split by spaces
   // Ensure exactly 3 words
-  while (parts.length < 3) {
+  while (parts.length < 2) {
     parts.push('') // empty string for missing parts
   }
-  return parts.slice(0, 3)
+  return parts.slice(0, 2)
 }
 
 
