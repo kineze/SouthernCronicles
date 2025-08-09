@@ -5,16 +5,17 @@
     </h1>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-
+        
         <div class="w-full h-full lg:px-2">
             <iframe
-            class="w-full h-full "
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2519.268017319651!2d4.352317977181306!3d50.84472097167016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3c554d1953e11%3A0x2e24f524a97148fd!2sGalerie%20Bortier!5e0!3m2!1sen!2slk!4v1753439188989!5m2!1sen!2slk"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
+                class="w-full h-full"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.873008833078!2d79.99318437499782!3d7.089728115005731!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2f8a178f8f4c3%3A0x123456789abcdef!2sThe%20Asian%20Literary%20Agency%2C%2016%20Vishaka%20Road%2C%20Medagama%2C%20Gampaha!5e0!3m2!1sen!2slk!4v1753439188989!5m2!1sen!2slk"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
             ></iframe>
         </div>
+
 
         <div class="lg:px2 lg:pt-2 bg-white border border-gray-300">
 
@@ -136,11 +137,11 @@
         </div>
     </div>
 
-    <div class="mt-16 text-center text-gray-900 dark:text-gray-300 text-base">
-        <p class="font-semibold">The Asian Literary Festival, Gampaha</p>
-        <p>Philippine Art & Culture Exchange</p>
-        <p>Chée de Roodebeek 148, 1200 Woluwe-Saint-Lambert</p>
-        <p>+32 496 06 81 86</p>
+    <div class="mt-8 text-center text-base text-gray-900 dark:text-gray-300 leading-relaxed">
+        <p class="font-semibold text-lg">The Asian Literary Festival, Gampaha</p>
+        <p>The Asian Literary Agency,</p>
+        <p>16 Vishaka Road, Medagama, Gampaha</p>
+        <p>+94 77 556 4255</p>
         <p>info@theasianliteraryfestival.com</p>
     </div>
   </div>

@@ -50,18 +50,18 @@
 
       <div >
 
-         <div class="flex w-full flex-wrap justify-center py-6 px-3">
+         <div class="flex w-full flex-wrap justify-center py-12 px-3">
             <!-- Left: The Living Memory Vault -->
             <div class="w-full lg:w-6/12 text-gray-700 dark:text-gray-300 pr-6 space-y-5">
 
-                <div class="w-[250px] h-[200px] lg:-mb-6 mx-auto">
+                <div class="w-[150px] h-[150px] lg:-mb-6 mx-auto">
                     <video
                         src="{{ asset('/assets/img/padura.webm') }}"
                         autoplay
                         muted
                         loop
                         playsinline
-                        class="w-full h-full object-cover rounded-lg"
+                        class="w-full h-full object-cover aspect-square rounded-lg"
                     ></video>
                 </div>
 
@@ -81,14 +81,14 @@
 
             <div class="w-full  lg:w-6/12 text-gray-700 dark:text-gray-300 space-y-5 mt-5 lg:mt-0">
 
-                <div class="w-[250px] h-[195px] lg:-mb-6 mx-auto">
+                <div class="w-[150px] h-[150px] lg:-mb-6 mx-auto">
                     <video
                         src="{{ asset('/assets/img/kavipala.webm') }}"
                         autoplay
                         muted
                         loop
                         playsinline
-                        class="w-full h-full object-cover rounded-lg"
+                        class="w-full h-full aspect-square object-cover rounded-lg"
                     ></video>
                 </div>
 
