@@ -21,6 +21,7 @@ use App\Http\Controllers\MemorySubmissionController;
 // for admin view
 Route::apiResource('festivals', FestivalController::class);
 
+Route::post('/speaker-types/reorder', [SpeakerTypeController::class, 'reorder'])->name('speaker-types.reorder');
 Route::apiResource('speaker-types', SpeakerTypeController::class);
 
 Route::post('/speakers/reorder', [SpeakersController::class, 'reorder']);

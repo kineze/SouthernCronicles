@@ -13,26 +13,41 @@
       <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
+            <th class="px-6 py-3 dark:text-white font-semibold w-10"></th>
             <th class="px-6 py-3 dark:text-white font-semibold">Type Name</th>
-
             <th class="px-6 py-3 dark:text-white font-semibold">Actions</th>
           </tr>
         </thead>
-        <tbody>
-          <tr v-for="speakerType in speakerTypes" :key="speakerType.id" class="border-b dark:border-gray-700">
-            <td class="px-6 py-4 dark:text-white font-semibold">{{ speakerType.name }}</td>
-            
-            <td class="px-6 py-4 text-right flex gap-3 justify-end">
-                <button @click="editFestival(speakerType)" class="text-green-500">
-                    <i class="fa-solid fa-pen"></i>
-                    </button>
 
-                    <button @click="showDeleteConfirmation(speakerType)" class="text-red-500">
-                    <i class="fa-solid fa-trash"></i>
+        <!-- DRAGGABLE BODY -->
+        <draggable
+          v-model="speakerTypes"
+          item-key="id"
+          tag="tbody"
+          handle=".drag-handle"
+          @end="onDragEnd"
+        >
+          <template #item="{ element: speakerType }">
+            <tr class="border-b dark:border-gray-700">
+              <td class="px-6 py-4 w-10 cursor-grab drag-handle">
+                <i class="fa-solid fa-grip-vertical text-gray-400"></i>
+              </td>
+
+              <td class="px-6 py-4 dark:text-white font-semibold">
+                {{ speakerType.name }}
+              </td>
+
+              <td class="px-6 py-4 text-right flex gap-3 justify-end">
+                <button @click="editFestival(speakerType)" class="text-green-500">
+                  <i class="fa-solid fa-pen"></i>
                 </button>
-            </td>
-          </tr>
-        </tbody>
+                <button @click="showDeleteConfirmation(speakerType)" class="text-red-500">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </template>
+        </draggable>
       </table>
     </div>
 
@@ -90,10 +105,10 @@
 </template>
 
 <script setup>
-
-import { ref, onMounted } from 'vue'
+import { ref, onMounted , watch} from 'vue'
 import axios from 'axios'
 import { useToast } from 'vue-toastification'
+import draggable from 'vuedraggable'
 
 const toast = useToast()
 
@@ -103,6 +118,7 @@ const editingId = ref(null)
 const form = ref({ name: '' })
 const showDeleteModal = ref(false)
 const speakerTypeToDelete = ref(null)
+let beforeDragSnapshot = []
 
 const fetchSpeakerTypes = async () => {
   try {
@@ -141,7 +157,8 @@ const saveSpeakerType = async () => {
     await fetchSpeakerTypes()
     closeDrawer()
   } catch (error) {
-    toast.error('Failed to save speaker type.')
+    const msg = error?.response?.data?.message || 'Failed to save speaker type.'
+    toast.error(msg)
   }
 }
 
@@ -157,7 +174,6 @@ const cancelDeleteSpeakerType = () => {
 
 const confirmDeleteSpeakerType = async () => {
   if (!speakerTypeToDelete.value) return
-
   try {
     await axios.delete(`/api/speaker-types/${speakerTypeToDelete.value.id}`)
     toast.success('Speaker type deleted successfully.')
@@ -169,6 +185,30 @@ const confirmDeleteSpeakerType = async () => {
   }
 }
 
-onMounted(fetchSpeakerTypes)
+// DRAG HANDLERS
+const onDragEnd = async () => {
+  try {
+    const order = speakerTypes.value.map(s => s.id)
+    await axios.post('/api/speaker-types/reorder', { order })
+    toast.success('Order saved.')
+  } catch (e) {
+    // revert on failure
+    speakerTypes.value = [...beforeDragSnapshot]
+    toast.error('Failed to save order.')
+  }
+}
 
+// snapshot before any drag starts
+watch(
+  () => speakerTypes.value,
+  (val, oldVal) => {
+    // keep a snapshot only when the array length is stable
+    if (val.length === oldVal?.length) {
+      beforeDragSnapshot = [...oldVal ?? []]
+    }
+  },
+  { deep: true }
+)
+
+onMounted(fetchSpeakerTypes)
 </script>
