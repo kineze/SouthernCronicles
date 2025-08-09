@@ -8,7 +8,7 @@
       <article
         v-for="ev in events"
         :key="ev.id"
-        class="rounded  bg-yellow-50 dark:bg-gray-800 hover:shadow-md transition-all"
+        class="rounded shadow-lg bg-white dark:bg-gray-800 hover:shadow-md transition-all"
       >
         <div class="flex items-start justify-between p-4">
           <div class="text-sm">
@@ -62,6 +62,15 @@ const events = ref([
     // format: 'FESTIVAL',
   },
    {
+    id: 1,
+    starts_at: '2025-11-21T08:00:00',
+    ends_at:   '2025-11-23T18:00:00',
+    title: 'Ai brain science creativity festival',
+    // speakers: ['Student Ensembles'],
+    venue: 'Abu Dhabi',
+    // format: 'FESTIVAL',
+  },
+   {
     id: 2,
     starts_at: '2026-01-03T08:00:00',
     ends_at:   '2026-01-44T18:00:00',
@@ -79,7 +88,22 @@ const events = ref([
     venue: 'Abu Dhabi',
     // format: 'FESTIVAL',
   },
-  
+   {
+    id: 1,
+    starts_at: '2026-04-30T08:00:00',
+    title: 'The Asian Literary Festival 2025',
+    // speakers: ['Student Ensembles'],
+    venue: 'Nairobi',
+    // format: 'FESTIVAL',
+  }, 
+  {
+    id: 1,
+    starts_at: '2026-06-30T08:00:00',
+    title: 'The Asian Prizes 2025',
+    // speakers: ['Student Ensembles'],
+    venue: 'Global',
+    // format: 'FESTIVAL',
+  },
   
 ])
 
