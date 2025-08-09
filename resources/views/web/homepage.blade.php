@@ -174,11 +174,11 @@ Set in Gampaha—birthplace of numerous Sri Lankan creative luminaries—this fe
 
 </section>
 
-<section class="w-full max-w-screen-2xl mx-auto">
+{{-- <section class="w-full max-w-screen-2xl mx-auto">
 
 
     <volunteers></volunteers>
-</section>
+</section> --}}
 
 <section class="w-full max-w-screen-2xl  mt-6 mx-auto">
 
