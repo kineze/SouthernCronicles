@@ -44,7 +44,7 @@
         <!-- Fixed-height image, crop from top -->
         <img
           :src="`/storage/${speaker.image}`"
-          class="w-full lg:h-80 h-96 object-cover object-top"
+          class="w-full lg:h-80 h-96 object-cover"
         />
         <div class="p-4 w-full text-center">
           <h3 class="font-bold uppercase text-lg">
