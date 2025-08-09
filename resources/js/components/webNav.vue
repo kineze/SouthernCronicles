@@ -14,7 +14,7 @@
                 </div>
                 <div class=" w-44 md:w-80 z-50 rounded-es-3xl aspect-square">
                     <a href="/">
-                        <img src="../../../public/assets/img/logo.webp" class="inline-block max-w-full transition-all duration-200 ease-soft-in-out w-full h-full  dark:hidden" alt="main_logo" />
+                        <img src="../assets/img/logo.webp" class="inline-block max-w-full transition-all duration-200 ease-soft-in-out w-full h-full  dark:hidden" alt="main_logo" />
                     </a>
                 </div>
             </div>

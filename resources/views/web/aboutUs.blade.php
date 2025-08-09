@@ -29,9 +29,7 @@
                                 <h1 class="text-4xl md:text-5xl uppercase font-extrabold text-active-purple mb-4 animate-pulse">{{$nextFestival->title}}</h1>
                                 <p class="text-xl md:text-xl uppercase font-extrabold text-active-purple mb-4 animate-pulse"></p>
                                 <h2 class="font-semibold text-white uppercase text-3xl">
-                                    {{ \Carbon\Carbon::parse($nextFestival->start_at)->format('jS') }}
-                                    to
-                                    {{ \Carbon\Carbon::parse($nextFestival->end_at)->format('jS F Y') }}
+                                    {{ \Carbon\Carbon::parse($nextFestival->start_at)->format('jS F Y') }}
                                 </h2>
 
                                 <h1 class="tracking-[10px] text-3xl uppercase font-bold text-white leading-tight">
@@ -92,9 +90,7 @@
                                 <h1 class="text-4xl md:text-5xl uppercase font-extrabold text-active-purple mb-4 animate-pulse">{{$nextFestival->title}}</h1>
                                 <p class="text-xl md:text-xl uppercase font-extrabold text-active-purple mb-4 animate-pulse"></p>
                                 <h2 class="font-semibold text-black uppercase text-3xl">
-                                    {{ \Carbon\Carbon::parse($nextFestival->start_at)->format('jS') }}
-                                    to
-                                    {{ \Carbon\Carbon::parse($nextFestival->end_at)->format('jS F Y') }}
+                                    {{ \Carbon\Carbon::parse($nextFestival->start_at)->format('jS F Y') }}
                                 </h2>
 
                                 <h1 class="tracking-[5px] text-xl uppercase font-bold text-black leading-tight">

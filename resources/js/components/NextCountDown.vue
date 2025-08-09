@@ -2,10 +2,10 @@
   <div class="max-w-screen-2xl mx-auto px-6 py-6 bg-black text-white text-center">
     <h1 class="text-3xl lg:text-6xl font-bold tracking-wide uppercase mt-6 mb-3">Coming Soon</h1>
     <h3 class="text-xl lg:text-3xl font-bold tracking-widest uppercase mb-3">Next Festival</h3>
-    <h5 class="text-sm lg:text-lg font-bold tracking-wide">Gampaha - Sri Lanka</h5>
+    <h5 class="text-sm lg:text-lg font-bold tracking-wide">Abu Dhabi - UAE</h5>
 
     <div class="lg:mt-10 mt-5">
-      <p class="text-sm font-semibold uppercase">27th DEC 2025</p>
+      <p class="text-sm font-semibold uppercase">21th NOV 2025</p>
 
       <div class="mt-6 mb-10 flex justify-center gap-4 flex-wrap">
         <div class="bg-white/20 text-white rounded-md w-20 h-20 flex flex-col justify-center items-center">
@@ -40,7 +40,7 @@ const countdown = ref({
   seconds: '00'
 })
 
-const targetDate = new Date('2025-12-27T00:00:00')
+const targetDate = new Date('2025-11-21T00:00:00')
 
 let interval = null
 

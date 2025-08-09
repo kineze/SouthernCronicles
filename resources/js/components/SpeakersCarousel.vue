@@ -20,7 +20,7 @@
 
             v-model="currentSlide"
         >
-            <Slide v-for="speaker in homeSpeakers" :key="speaker.id">
+            <Slide v-for="speaker in homeSpeakers" :key="speaker.id" class="!flex !items-start h-full">
                 <div class="p-3">
                     <a href="/speakers-list">
                         <div class="overflow-hidden  dark:bg-gray-800">
