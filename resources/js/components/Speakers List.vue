@@ -33,23 +33,27 @@
     </div>
 
     <!-- Results -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
-  <div
-    v-for="speaker in filteredSpeakers"
-    :key="speaker.id"
-    @click="openModal(speaker)"
-    class="text-black font-semibold cursor-pointer transition duration-300 hover:bg-black hover:text-white overflow-hidden"
-  >
-    <img :src="`/storage/${speaker.image}`" class="w-full lg:h-80 h-96 object-cover" />
-    <div class="p-4 text-center">
-      <h3 class="font-bold uppercase text-lg">
-        <span v-for="(word, index) in formatName(speaker.name)" :key="index" class="block">
-          {{ word }}
-        </span>
-      </h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10 items-start">
+      <div
+        v-for="speaker in filteredSpeakers"
+        :key="speaker.id"
+        @click="openModal(speaker)"
+        class="text-black font-semibold cursor-pointer transition duration-300 hover:bg-black hover:text-white overflow-hidden
+              flex flex-col items-start h-full"
+      >
+        <!-- Fixed-height image, crop from top -->
+        <img
+          :src="`/storage/${speaker.image}`"
+          class="w-full lg:h-80 h-96 object-cover object-top"
+        />
+        <div class="p-4 w-full text-center">
+          <h3 class="font-bold uppercase text-lg">
+            {{ speaker.name }}
+          </h3>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+
 
   </div>
 

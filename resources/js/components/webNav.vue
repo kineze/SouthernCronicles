@@ -68,6 +68,8 @@
           </a>
 
           <a href="/the-writing-lab" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <i class="fa-solid fa-feather-alt text-xl"></i>
+         
             <span class="ms-3 font-semibold">The Writing Lab</span>
           </a>
 
