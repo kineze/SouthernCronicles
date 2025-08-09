@@ -223,9 +223,9 @@
                </div>
           
           <div class="w-full lg:w-6/12">
-            <h2 class="font-semibold text-black uppercase text-start text-7xl">It Isn't a Luxury…</h2>
-              <h1 class="tracking-[10px] text-4xl uppercase font-bold text-black leading-tight">
-                  Bridging Worlds Through Words
+            <h2 class="font-semibold text-black uppercase text-start lg:text-7xl mb-3 text-5xl">It Isn't a Luxury…</h2>
+              <h1 class="lg:tracking-[10px] tracking-[6px] lg:text-4xl text-xl uppercase font-bold text-black leading-tight">
+                  Bridging Worlds Through Words
               </h1>
           <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl mt-5"></h2>
           <p class="text-gray-700 text-justify">Literature is the lifeblood of human understanding, the bridge between hearts and minds across all divides. The Asian Literary Festival Gampaha, the island's first free literary celebration, serves as the epicentre where writers, thinkers, and artists from across the globe converge with Sri Lanka's local literary voices, fostering dynamic cross-fertilisation.
