@@ -13,16 +13,14 @@ return new class extends Migration
             $table->unsignedInteger('position')->after('name')->nullable()->index();
         });
 
-        // Backfill: position = row number by id asc
+        DB::statement("SET @row_number := 0");
         DB::statement("
-            UPDATE speaker_types st
-            JOIN (
-              SELECT id, ROW_NUMBER() OVER (ORDER BY id) AS rn
-              FROM speaker_types
-            ) x ON x.id = st.id
-            SET st.position = x.rn
+            UPDATE speaker_types
+            SET position = (@row_number := @row_number + 1)
+            ORDER BY id
         ");
     }
+
 
     public function down(): void
     {

@@ -78,7 +78,7 @@
             <img :src="kipenziIcon" class="w-6 h-6" alt="The Kipenzi">
              <!-- <i class="fa-solid fa-paw text-xl"></i> -->
 
-            <span class="ms-3 font-semibold">Kipenzy ALF Kids</span>
+            <span class="ms-3 font-semibold">Kipenzi ALF Kids</span>
           </a>
 
 
