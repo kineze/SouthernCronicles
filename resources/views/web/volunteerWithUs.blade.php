@@ -16,7 +16,7 @@
     </div>
 
 
-        <terms-conditions></terms-conditions>
+        <volunteer-with-us></volunteer-with-us>
 
     </div>
 </section>

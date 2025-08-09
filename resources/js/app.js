@@ -46,6 +46,8 @@ import BookingNow from './components/BookingNow.vue';
 import LivingMemoryVault from './components/LivingMemoryVault.vue';
 import TheKipenzi from './components/TheKipenzi.vue';
 import Volunteers from './components/Volunteers.vue';
+import VolunteerWithUs from './components/VolunteerWithUs.vue';
+
 
 const app = createApp({});
 
@@ -79,6 +81,7 @@ app
     .component('memory-submission', MemorySubmission)
     .component('manage-usefull-links', ManageUsefullLinks)
     .component('volunteers-list', VolunteersList)
+    .component('volunteers', Volunteers)
 
 
     // for web view
@@ -99,7 +102,8 @@ app
     .component('booking-now',BookingNow)
     .component('living-memory-vault', LivingMemoryVault)
     .component('the-kipenzi', TheKipenzi)
-    .component('volunteers', Volunteers)
+    .component('volunteer-with-us', VolunteerWithUs)
+
 
 
     .mount('#app')

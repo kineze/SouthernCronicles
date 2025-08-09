@@ -137,7 +137,7 @@
     </div>
 
     <div class="mt-16 text-center text-gray-900 dark:text-gray-300 text-base">
-        <p class="font-semibold">The Asian Literary Festival, Brussels</p>
+        <p class="font-semibold">The Asian Literary Festival, Gampaha</p>
         <p>Philippine Art & Culture Exchange</p>
         <p>Chée de Roodebeek 148, 1200 Woluwe-Saint-Lambert</p>
         <p>+32 496 06 81 86</p>
