@@ -121,7 +121,7 @@
 
 <section class="w-full md:hidden max-w-screen-2xl -mt-6 mx-auto relative">
   <!-- Container for layers -->
-  <div class="relative w-full z-0 rounded-3 min-h-[125vh]">
+  <div class="relative w-full z-0 rounded-3 min-h-[100vh]">
 
     <!-- Layer 5: Farthest Background -->
     <div class="parallax-layer absolute z-50 w-full bottom-0" data-speed="0.2">
