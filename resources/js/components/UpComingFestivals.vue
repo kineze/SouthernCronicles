@@ -4,11 +4,11 @@
       Upcoming Festivals
     </h1>
 
-    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="grid grid-cols-1 py-3 gap-6 sm:grid-cols-2 lg:grid-cols-3">
       <article
         v-for="ev in events"
         :key="ev.id"
-        class="rounded border border-black bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-all"
+        class="rounded shadow-lg bg-white dark:bg-gray-800 hover:shadow-md transition-all"
       >
         <div class="flex items-start justify-between p-4">
           <div class="text-sm">
@@ -61,6 +61,15 @@ const events = ref([
     venue: 'Brussels',
     // format: 'FESTIVAL',
   },
+   {
+    id: 2,
+    starts_at: '2026-01-03T08:00:00',
+    ends_at:   '2026-01-44T18:00:00',
+    title: 'Kerala Chronicles 2026',
+    // speakers: ['Student Ensembles'],
+    venue: 'Kerala',
+    // format: 'FESTIVAL',
+  },
   {
     id: 2,
     starts_at: '2026-01-21T08:00:00',
@@ -70,6 +79,7 @@ const events = ref([
     venue: 'Abu Dhabi',
     // format: 'FESTIVAL',
   },
+  
 ])
 
 const dFmt = new Intl.DateTimeFormat(undefined, { year: 'numeric', month: 'short', day: 'numeric' })
