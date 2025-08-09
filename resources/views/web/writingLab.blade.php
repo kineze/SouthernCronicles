@@ -54,8 +54,15 @@
             <!-- Left: The Living Memory Vault -->
             <div class="w-full lg:w-6/12 text-gray-700 dark:text-gray-300 pr-6 space-y-5">
 
-                <div class="aspect-w-1 aspect-h-1 w-[200px]  -mb-6 mx-auto">
-                    <img src="{{ asset('/assets/img/Yoga Carpet.gif') }}" alt="Rocket Animation" class="w-full h-full object-cover rounded-xl">
+                <div class="w-[250px] h-[200px] lg:-mb-6 mx-auto">
+                    <video
+                        src="{{ asset('/assets/img/padura.webm') }}"
+                        autoplay
+                        muted
+                        loop
+                        playsinline
+                        class="w-full h-full object-cover rounded-lg"
+                    ></video>
                 </div>
 
                 <h2 class="lg:text-5xl text-3xl mt-12 lg:mt-4 text-black font-extrabold tracking-widest uppercase text-left">පැදුර</h2>
@@ -71,14 +78,21 @@
                     
             </div>
 
-            <!-- Right: Launchpad 1000 -->
-            <div class="w-full  lg:w-6/12 text-gray-700 dark:text-gray-300 space-y-5">
 
-                <div class="aspect-w-1 aspect-h-1 w-40 flex items-end justify-center mx-auto mb-6">
-                    <img src="{{ asset('/assets/img/mic.gif') }}" alt="Rocket Animation" class="w-full h-full object-cover rounded-xl">
+            <div class="w-full  lg:w-6/12 text-gray-700 dark:text-gray-300 space-y-5 mt-5 lg:mt-0">
+
+                <div class="w-[250px] h-[195px] lg:-mb-6 mx-auto">
+                    <video
+                        src="{{ asset('/assets/img/kavipala.webm') }}"
+                        autoplay
+                        muted
+                        loop
+                        playsinline
+                        class="w-full h-full object-cover rounded-lg"
+                    ></video>
                 </div>
 
-                <h2 class="lg:text-5xl text-3xl mt-12 lg:mt-4 text-black font-extrabold tracking-widest uppercase text-center">කවි පැල</h2>
+                <h2 class="lg:text-5xl text-3xl mt-12 lg:mt-4 text-black font-extrabold tracking-widest uppercase text-left">කවි පැල</h2>
                  <p class="py-3">
                     <strong class="text-xl text-black text-justify  dark:text-white">ජන කවිය සහ පැරණි සාහිත්‍යය</strong>
                 </p>
@@ -89,7 +103,8 @@
         </div>
     
         <div class="flex w-full flex-wrap justify-center py-6 px-3">
-            <!-- Left: The Living Memory Vault -->
+
+
             <div class="w-full lg:w-6/12 text-gray-700 dark:text-gray-300 pr-6 space-y-5">
 
                 <div class="aspect-w-1 aspect-h-1 w-[200px]  -mb-6 mx-auto">
@@ -115,7 +130,7 @@
                     
             </div>
 
-            <!-- Right: Launchpad 1000 -->
+
             <div class="w-full  lg:w-6/12 text-gray-700 dark:text-gray-300 space-y-5">
 
                 <div class="aspect-w-1 aspect-h-1 w-40 flex items-end justify-center mx-auto mb-6">
