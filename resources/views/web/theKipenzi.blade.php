@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="w-full max-w-screen-2xl mx-auto p-3">
+<section class="w-full max-w-screen-2xl mx-auto lg:p-3">
 
     <div class="w-full rounded-xl bg-cover bg-top">
       <div class='w-full rounded-xl rounded-bl-none  bg-transparent flex bg-cover items-start'>
