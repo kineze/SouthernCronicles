@@ -22,6 +22,13 @@ use App\Http\Controllers\MemorySubmissionController;
 
 
 // for admin view
+
+Route::get('/config/google-maps-key', function () {
+    return response()->json([
+        'key' => config('services.google_maps.key')
+    ]);
+});
+
 Route::apiResource('festivals', FestivalController::class);
 
 Route::post('/speaker-types/reorder', [SpeakerTypeController::class, 'reorder'])->name('speaker-types.reorder');
