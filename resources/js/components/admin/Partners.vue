@@ -13,7 +13,7 @@
         handle=".drag-handle"
         ghost-class="bg-yellow-100"
         @end="onDragEnd"
-        class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5"
+        class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
       >
         <template #item="{ element: partner }">
           <div class="relative bg-white dark:bg-gray-800 shadow rounded-xl overflow-hidden">
@@ -23,7 +23,7 @@
             </div>
 
             <img :src="`/storage/${partner.image}`" alt="Partner"
-                 class="w-full h-60 object-contain bg-white p-4" />
+                 class="w-full h-40 object-cover bg-white" />
             <div class="p-4 text-center">
               <p v-if="partner.partner_type?.name" class="text-xs text-gray-500 mt-1">
                 {{ partner.partner_type.name }}
