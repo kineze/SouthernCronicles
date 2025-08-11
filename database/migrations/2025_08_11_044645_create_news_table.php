@@ -1,0 +1,25 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void {
+        Schema::create('news', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->dateTime('published_at');
+            $table->longText('content'); // HTML from Quill
+            $table->string('published_by')->nullable();
+            $table->boolean('status')->default(true); // visible toggle
+            $table->string('image')->nullable();
+            $table->timestamps();
+        });
+    }
+
+    public function down(): void {
+        Schema::dropIfExists('news');
+    }
+};

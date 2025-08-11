@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\TeamsController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\BookingController;
@@ -60,6 +61,9 @@ Route::apiResource('useful-links', UsefulLinkController::class);
 
 Route::post('volunteers/{volunteer}/status', [VolunteersController::class, 'setStatus']); 
 Route::apiResource('volunteers', VolunteersController::class)->only(['index','store','update','destroy']);
+
+Route::apiResource('news', NewsController::class);
+Route::put('news/{news}/toggle-status', [NewsController::class, 'toggleStatus']);
 
 
 // for web view
