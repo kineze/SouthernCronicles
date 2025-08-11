@@ -25,11 +25,16 @@
             <img :src="`/storage/${partner.image}`" alt="Partner"
                  class="w-full h-60 object-contain bg-white p-4" />
             <div class="p-4 text-center">
+              <p v-if="partner.partner_type?.name" class="text-xs text-gray-500 mt-1">
+                {{ partner.partner_type.name }}
+              </p>
               <h5 class="font-medium dark:text-white">{{ partner.title }}</h5>
+
               <div class="flex justify-center mt-2 gap-3">
                 <button @click="editPartner(partner)" class="text-green-600"><i class="fa fa-pen"></i></button>
                 <button @click="confirmDelete(partner)" class="text-red-600"><i class="fa fa-trash"></i></button>
               </div>
+
             </div>
           </div>
         </template>
@@ -58,6 +63,19 @@
             </template>
           </div>
           <input ref="imageInput" type="file" class="hidden" @change="handleImageUpload" accept="image/*" />
+        </div>
+
+        <div class="mb-5">
+          <label class="block text-sm font-medium dark:text-white mb-1">Partner Type</label>
+          <select
+            v-model="form.partner_type_id"
+            class="w-full px-3 py-2 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 dark:text-white"
+          >
+            <option disabled class="text-black dark:text-white">Select Type</option>
+            <option v-for="t in types" :key="t.id" :value="String(t.id)">
+              {{ t.name }}
+            </option>
+          </select>
         </div>
 
         <div class="relative mb-5">
@@ -105,13 +123,27 @@ import { useToast } from 'vue-toastification'
 import draggable from 'vuedraggable'
 
 const toast = useToast()
+
 const partners = ref([])
 const drawerOpen = ref(false)
 const editingId = ref(null)
 const showDeleteModal = ref(false)
 const partnerToDelete = ref(null)
 const previewImage = ref(null)
-const form = ref({ title: '', image: null })
+const form = ref({ title: '', image: null, partner_type_id: null })
+
+const types = ref([])
+
+
+const fetchTypes = async () => {
+  try {
+    const { data } = await axios.get('/api/partner-types?ordered=true')
+    types.value = data
+  } catch (e) {
+    console.error(e.response?.data || e.message)
+  }
+}
+
 
 const fetchPartners = async () => {
   const { data } = await axios.get('/api/partners?ordered=true') // ordered fetch
@@ -139,9 +171,11 @@ const closeDrawer = () => {
 }
 
 const resetForm = () => {
-  form.value = { title: '', image: null }
+  form.value = { title: '', image: null, partner_type_id: null }
   previewImage.value = null
+  editingId.value = null
 }
+
 
 const handleImageUpload = (e) => {
   const file = e.target.files[0]
@@ -159,7 +193,9 @@ const removeImage = () => {
 const savePartner = async () => {
   const formData = new FormData()
   for (const key in form.value) {
-    if (form.value[key]) formData.append(key, form.value[key])
+    // include null as empty string so backend sees the key
+    const v = form.value[key]
+    formData.append(key, v == null ? '' : v)
   }
 
   try {
@@ -180,10 +216,15 @@ const savePartner = async () => {
 
 const editPartner = (partner) => {
   editingId.value = partner.id
-  form.value = { title: partner.title, image: null }
+  form.value = {
+    title: partner.title,
+    image: null,
+    partner_type_id: partner.partner_type_id ?? null
+  }
   previewImage.value = `/storage/${partner.image}`
   drawerOpen.value = true
 }
+
 
 const confirmDelete = (partner) => {
   partnerToDelete.value = partner
@@ -202,11 +243,9 @@ const deletePartner = async () => {
   }
 }
 
-onMounted(fetchPartners)
-</script>
+onMounted(() => {
+  fetchPartners()
+  fetchTypes()
+})
 
-<!-- <style scoped>
-.input {
-  @apply w-full px-3 py-2 border border-gray-300 rounded dark:bg-gray-800 dark:text-white;
-}
-</style> -->
+</script>

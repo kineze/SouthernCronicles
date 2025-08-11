@@ -15,44 +15,66 @@ class PartnerController extends Controller
 
     public function index(Request $request)
     {
-        $q = Partner::query();
+        $q = Partner::query()->with('partnerType:id,name');
+
+        if ($request->filled('type_id')) {
+            $q->where('partner_type_id', $request->integer('type_id'));
+        }
+
         if ($request->boolean('ordered')) {
             $q->orderBy('order')->orderByDesc('id');
         } else {
             $q->latest();
         }
+
         return $q->get();
     }
 
-    public function store(Request $request)
-    {
-        $data = $request->validate([
-            'title' => ['required','string','max:255'],
-            'image' => ['required','image','max:4096'],
-        ]);
+public function store(Request $request)
+{
+    $data = $request->validate([
+        'title'            => ['required','string','max:255'],
+        'image'            => ['required','image','max:4096'],
+        'partner_type_id'  => ['nullable','exists:partner_types,id'],
+    ]);
 
-        $data['image'] = $request->file('image')->store('partners', 'public');
-        $data['order'] = Partner::max('order') + 1; // append to end
+    $data['image'] = $request->file('image')->store('partners', 'public');
 
-        $partner = Partner::create($data);
-        return response()->json($partner, 201);
-    }
+    // Avoid null + 1 when table empty
+    $maxOrder = Partner::max('order');
+    $data['order'] = is_null($maxOrder) ? 0 : $maxOrder + 1;
 
-    public function update(Request $request, Partner $partner)
-    {
-        $data = $request->validate([
-            'title' => 'required|string',
-            'image' => 'nullable|image|max:2048'
-        ]);
+    $partner = Partner::create($data);
 
-        if ($request->hasFile('image')) {
+    // include type in response for UI
+    $partner->load('partnerType:id,name');
+
+    return response()->json($partner, 201);
+}
+
+
+public function update(Request $request, Partner $partner)
+{
+    $data = $request->validate([
+        'title'            => ['required','string','max:255'],
+        'image'            => ['nullable','image','max:4096'],
+        'partner_type_id'  => ['nullable','exists:partner_types,id'],
+    ]);
+
+    if ($request->hasFile('image')) {
+        if ($partner->image) {
             Storage::disk('public')->delete($partner->image);
-            $data['image'] = $request->file('image')->store('partners', 'public');
         }
-
-        $partner->update($data);
-        return $partner;
+        $data['image'] = $request->file('image')->store('partners', 'public');
     }
+
+    $partner->update($data);
+
+    $partner->load('partnerType:id,name');
+
+    return $partner;
+}
+
 
     public function destroy(Partner $partner)
     {

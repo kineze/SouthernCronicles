@@ -9,5 +9,10 @@ class Partner extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'image', 'order'];
+    protected $fillable = ['title', 'image', 'order','partner_type_id'];
+
+    public function partnerType()
+    {
+        return $this->belongsTo(PartnerType::class);
+    }
 }
