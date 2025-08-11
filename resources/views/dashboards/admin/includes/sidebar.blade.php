@@ -15,7 +15,7 @@
   <nav class="mt-4 space-y-1 px-3">
 
 
-        @can('Manage News')
+      @can('Manage News')
 
       <div class="relative sidebar-dropdown"
           data-subtitle="Manage News"
@@ -151,8 +151,9 @@
       <div class="relative sidebar-dropdown"
           data-subtitle="Partners"
           data-links='[
-            {"label":"All Partners","href":"{{ url('/partners') }}"},
-            {"label":"All Usefull Links","href":"{{ url('/usefull-links') }}"}
+            {"label":"Partner Types","href":"{{ url('/partner-types') }}"},
+            {"label":"Partners","href":"{{ url('/partners') }}"},
+            {"label":"Usefull Links","href":"{{ url('/usefull-links') }}"}
           ]'>
 
         <button class="dropdown-toggle w-full flex items-center gap-3 p-2 rounded-lg dark:hover:bg-slate-800 transition-all">
@@ -168,12 +169,16 @@
 
         <div class="expanded-only hidden py-1 space-y-1">
 
+          <a href="{{ url('/partner-types') }}" class="block px-4 py-2 text-xs font-semibold text-black dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-md">
+            Partner Types
+          </a>
+
           <a href="{{ url('/partners') }}" class="block px-4 py-2 text-xs font-semibold text-black dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-md">
-            All Partners
+            Partners
           </a>
 
           <a href="{{ url('/usefull-links') }}" class="block px-4 py-2 text-xs font-semibold text-black dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-md">
-            All Usefull Links
+            Usefull Links
           </a>
 
         </div>

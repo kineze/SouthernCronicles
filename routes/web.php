@@ -16,6 +16,7 @@ use App\Http\Controllers\TimeSlotController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UsefulLinkController;
 use App\Http\Controllers\VolunteersController;
+use App\Http\Controllers\PartnerTypeController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\BookingManageController;
 use App\Http\Controllers\MemorySubmissionController;
@@ -54,6 +55,8 @@ Route::controller(PagesController::class)->group( function (){
 
 });
 
+
+
 Route::prefix('admin')->middleware(['auth:sanctum','permission:Access Admin Dashboard', config('jetstream.auth_session'),'verified'])->group(function (){
 
     Route::controller(DashboardController::class)->group(function (){
@@ -83,12 +86,20 @@ Route::middleware(['permission:Manage Festivals', config('jetstream.auth_session
 
 });
 
+
+
+
 Route::middleware(['permission:Manage Partners', config('jetstream.auth_session'), 'verified',])->group( function (){
+
+    Route::controller(PartnerTypeController::class)->group(function () {
+
+        Route::get('/partner-types','partnerTypes')->name('partnerTypes');
+
+    });
 
     Route::controller(PartnerController::class)->group(function () {
 
         Route::get('/partners','Partners')->name('Partners');
-
 
     });
 
@@ -100,6 +111,8 @@ Route::middleware(['permission:Manage Partners', config('jetstream.auth_session'
 
 });
 
+
+
 Route::middleware(['permission:Manage Events', config('jetstream.auth_session'), 'verified',])->group( function (){
 
     Route::controller(EventsController::class)->group(function () {
@@ -109,6 +122,8 @@ Route::middleware(['permission:Manage Events', config('jetstream.auth_session'),
     });
 
 });
+
+
 
 Route::middleware(['permission:Manage Teams', config('jetstream.auth_session'), 'verified',])->group( function (){
 

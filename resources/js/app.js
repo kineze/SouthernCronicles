@@ -27,6 +27,7 @@ import MemorySubmission from './components/admin/MemorySubmission.vue';
 import ManageUsefullLinks from './components/admin/ManageUsefullLinks.vue';
 import VolunteersList from './components/admin/VolunteersList.vue';
 import ManageNews from './components/admin/ManageNews.vue';
+import PartnerTypes from './components/admin/PartnerTypes.vue';
 
 // for web view 
 import WebNav from './components/web/webNav.vue';
@@ -85,6 +86,7 @@ app
     .component('volunteers-list', VolunteersList)
     .component('volunteers', Volunteers)
     .component('manage-news', ManageNews)
+    .component('partner-types', PartnerTypes)
 
 
     // for web view

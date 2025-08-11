@@ -13,6 +13,7 @@ use App\Http\Controllers\SpeakersController;
 use App\Http\Controllers\TimeSlotController;
 use App\Http\Controllers\UsefulLinkController;
 use App\Http\Controllers\VolunteersController;
+use App\Http\Controllers\PartnerTypeController;
 use App\Http\Controllers\SpeakerTypeController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\BookingManageController;
@@ -64,6 +65,9 @@ Route::apiResource('volunteers', VolunteersController::class)->only(['index','st
 
 Route::apiResource('news', NewsController::class);
 Route::put('news/{news}/toggle-status', [NewsController::class, 'toggleStatus']);
+
+Route::apiResource('partner-types', PartnerTypeController::class);
+Route::post('partner-types/reorder', [PartnerTypeController::class, 'reorder']);
 
 
 // for web view
