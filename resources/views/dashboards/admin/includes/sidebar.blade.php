@@ -91,7 +91,8 @@
       <div class="relative sidebar-dropdown"
           data-subtitle="Manage Teams"
           data-links='[
-            {"label":"All Teams","href":"{{ url('/manage-teams') }}"}
+            {"label":"Team Types","href":"{{ url('/team-types') }}"},
+            {"label":"Teams","href":"{{ url('/manage-teams') }}"}
           ]'>
 
         <button class="dropdown-toggle w-full flex items-center gap-3 p-2 rounded-lg dark:hover:bg-slate-800 transition-all">
@@ -106,9 +107,13 @@
         </button>
 
         <div class="expanded-only hidden py-1 space-y-1">
+          
+          <a href="{{ url('/team-types') }}" class="block px-4 py-2 text-xs font-semibold text-black dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-md">
+            Team Types
+          </a>
 
           <a href="{{ url('/manage-teams') }}" class="block px-4 py-2 text-xs font-semibold text-black dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-md">
-           All Teams
+           Teams
           </a>
 
         </div>

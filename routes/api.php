@@ -10,6 +10,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\FestivalController;
 use App\Http\Controllers\SpeakersController;
+use App\Http\Controllers\TeamTypeController;
 use App\Http\Controllers\TimeSlotController;
 use App\Http\Controllers\UsefulLinkController;
 use App\Http\Controllers\VolunteersController;
@@ -68,6 +69,9 @@ Route::put('news/{news}/toggle-status', [NewsController::class, 'toggleStatus'])
 
 Route::apiResource('partner-types', PartnerTypeController::class);
 Route::post('partner-types/reorder', [PartnerTypeController::class, 'reorder']);
+
+Route::apiResource('team-types', TeamTypeController::class);
+Route::post('team-types/reorder', [TeamTypeController::class, 'reorder']);
 
 
 // for web view

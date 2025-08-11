@@ -12,6 +12,7 @@ use App\Http\Controllers\GenaralController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\FestivalController;
 use App\Http\Controllers\SpeakersController;
+use App\Http\Controllers\TeamTypeController;
 use App\Http\Controllers\TimeSlotController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UsefulLinkController;
@@ -130,6 +131,12 @@ Route::middleware(['permission:Manage Teams', config('jetstream.auth_session'), 
     Route::controller(TeamsController::class)->group(function () {
 
         Route::get('/manage-teams','manageTeams')->name('manageTeams');
+
+    });
+
+    Route::controller(TeamTypeController::class)->group(function () {
+
+        Route::get('/team-types','teamTypes')->name('teamTypes');
 
     });
 
