@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PagesController;
@@ -137,6 +138,18 @@ Route::middleware(['permission:Manage Bookings', config('jetstream.auth_session'
     Route::controller(MemorySubmissionController::class)->group(function () {
 
         Route::get('/memory-submission','memorySubmission')->name('memorySubmission');
+    });
+
+});
+
+
+
+Route::middleware(['permission:Manage News', config('jetstream.auth_session'), 'verified',])->group( function (){
+
+    Route::controller(NewsController::class)->group(function () {
+
+        Route::get('/all-news','allNews')->name('allNews');
+
     });
 
 });

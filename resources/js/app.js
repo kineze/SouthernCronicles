@@ -13,41 +13,42 @@ import { POSITION } from 'vue-toastification';
 import { createApp } from 'vue'
 // for admin view 
 
-import DarkModeToggle from './components/DarkModeToggle.vue';
-import Festivals from './components/Festivals.vue';
-import SpeakerTypes from './components/SpeakerTypes.vue';
-import Speakers from './components/Speakers.vue';
-import Partners from './components/Partners.vue';
-import RegisteredList from './components/RegisteredList.vue';
-import ManageEvents from './components/ManageEvents.vue';
-import ManageTeams from './components/ManageTeams.vue';
-import ManageTimeSlots from './components/ManageTimeSlots.vue';
-import ManageBookings from './components/ManageBookings.vue';
-import MemorySubmission from './components/MemorySubmission.vue';
-import ManageUsefullLinks from './components/ManageUsefullLinks.vue';
-import VolunteersList from './components/VolunteersList.vue';
+import DarkModeToggle from './components/admin/DarkModeToggle.vue';
+import Festivals from './components/admin/Festivals.vue';
+import SpeakerTypes from './components/admin/SpeakerTypes.vue';
+import Speakers from './components/admin/Speakers.vue';
+import Partners from './components/admin/Partners.vue';
+import RegisteredList from './components/admin/RegisteredList.vue';
+import ManageEvents from './components/admin/ManageEvents.vue';
+import ManageTeams from './components/admin/ManageTeams.vue';
+import ManageTimeSlots from './components/admin/ManageTimeSlots.vue';
+import ManageBookings from './components/admin/ManageBookings.vue';
+import MemorySubmission from './components/admin/MemorySubmission.vue';
+import ManageUsefullLinks from './components/admin/ManageUsefullLinks.vue';
+import VolunteersList from './components/admin/VolunteersList.vue';
+import ManageNews from './components/admin/ManageNews.vue';
 
 // for web view 
-import WebNav from './components/webNav.vue';
-import SpeakersCarousel from './components/SpeakersCarousel.vue';
-import SpeakersList from './components/Speakers List.vue';
-import OurPartners from './components/OurPartners.vue';
-import UsefullLinks from './components/UsefullLinks.vue';
-import ContactUs from './components/ContactUs.vue';
-import RegisterNowModal from './components/RegisterNowModal.vue';
-import OurEcosystem from './components/OurEcosystem.vue';
-import EventSchedule from './components/EventSchedule.vue';
-import NextCountDown from './components/NextCountDown.vue';
-import TeamsCarousel from './components/TeamsCarousel.vue';
-import PrivacyPolicy from './components/PrivacyPolicy.vue';
-import ReadMoreText from './components/ReadMoreText.vue';
-import TermsConditions from './components/TermsConditions.vue';
-import BookingNow from './components/BookingNow.vue';
-import LivingMemoryVault from './components/LivingMemoryVault.vue';
-import TheKipenzi from './components/TheKipenzi.vue';
-import Volunteers from './components/Volunteers.vue';
-import VolunteerWithUs from './components/VolunteerWithUs.vue';
-import UpComingFestivals from './components/UpComingFestivals.vue';
+import WebNav from './components/web/webNav.vue';
+import SpeakersCarousel from './components/web/SpeakersCarousel.vue';
+import SpeakersList from './components/web/Speakers List.vue';
+import OurPartners from './components/web/OurPartners.vue';
+import UsefullLinks from './components/web/UsefullLinks.vue';
+import ContactUs from './components/web/ContactUs.vue';
+import RegisterNowModal from './components/web/RegisterNowModal.vue';
+import OurEcosystem from './components/web/OurEcosystem.vue';
+import EventSchedule from './components/web/EventSchedule.vue';
+import NextCountDown from './components/web/NextCountDown.vue';
+import TeamsCarousel from './components/web/TeamsCarousel.vue';
+import PrivacyPolicy from './components/web/PrivacyPolicy.vue';
+import ReadMoreText from './components/web/ReadMoreText.vue';
+import TermsConditions from './components/web/TermsConditions.vue';
+import BookingNow from './components/web/BookingNow.vue';
+import LivingMemoryVault from './components/web/LivingMemoryVault.vue';
+import TheKipenzi from './components/web/TheKipenzi.vue';
+import Volunteers from './components/web/Volunteers.vue';
+import VolunteerWithUs from './components/web/VolunteerWithUs.vue';
+import UpComingFestivals from './components/web/UpComingFestivals.vue';
 
 
 const app = createApp({});
@@ -83,6 +84,7 @@ app
     .component('manage-usefull-links', ManageUsefullLinks)
     .component('volunteers-list', VolunteersList)
     .component('volunteers', Volunteers)
+    .component('manage-news', ManageNews)
 
 
     // for web view
