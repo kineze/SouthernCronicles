@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-[60vh] rounded-lg overflow-hidden border dark:border-gray-700">
+  <div class="w-full h-[60vh] lg:h-[80vh] overflow-hidden">
     <div ref="mapEl" class="w-full h-full"></div>
   </div>
 </template>
@@ -93,7 +93,7 @@ function openInfoWindow(festival, position) {
   const start = `${formatDateYMD(festival.start_at)} • ${formatTimeAMPM(festival.start_at)}`
   const end   = `${formatDateYMD(festival.end_at)} • ${formatTimeAMPM(festival.end_at)}`
   const imgHtml = festival.image
-    ? `<img src="/storage/${festival.image}" alt="" style="width:100%;max-height:100px;object-fit:cover;border-radius:5px;margin-bottom:8px;margin-top:12px;" />`
+    ? `<img src="/storage/${festival.image}" alt="" style="width:230px;max-height:220px;object:cover;border-radius:5px;margin-bottom:8px;margin-top:12px;" />`
     : ''
 
 const urlHtml = festival.site_url
@@ -135,17 +135,20 @@ const urlHtml = festival.site_url
 }
 
 async function initMap() {
-  // Use new importLibrary API for robustness
-  // (available when loading v=weekly)
   const { Map } = await google.maps.importLibrary('maps')
-  await google.maps.importLibrary('marker') // AdvancedMarkerElement
+  await google.maps.importLibrary('marker')
 
 map = new Map(mapEl.value, {
-  center: { lat: 0, lng: 0 }, // show whole world
-  zoom: 0, // very zoomed out
+  center: { lat: 0, lng: 0 },
+  zoom: 1,
   streetViewControl: true,
   mapTypeControl: false,
   mapId: '5107c09a9c52ed1f388902c8',
+  // gestureHandling: 'greedy',   // 👈 remove ctrl+scroll overlay
+  zoomControl: true,
+  zoomControlOptions: {
+    position: google.maps.ControlPosition.RIGHT_BOTTOM,
+  },
 })
 
   infoWindow = new google.maps.InfoWindow()
@@ -181,8 +184,10 @@ async function plotFestivals() {
   }
 
   if (!bounds.isEmpty()) {
-    map.fitBounds(bounds, 60) // padding
+    const padding = window.innerWidth <= 640 ? 110 : 220 // mobile vs desktop
+    map.fitBounds(bounds, padding)
   }
+
 }
 
 onMounted(async () => {
