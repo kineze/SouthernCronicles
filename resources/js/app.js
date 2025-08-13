@@ -51,6 +51,7 @@ import TheKipenzi from './components/web/TheKipenzi.vue';
 import Volunteers from './components/web/Volunteers.vue';
 import VolunteerWithUs from './components/web/VolunteerWithUs.vue';
 import UpComingFestivals from './components/web/UpComingFestivals.vue';
+import FestivalLocations from './components/web/FestivalLocations.vue';
 
 
 const app = createApp({});
@@ -111,6 +112,7 @@ app
     .component('the-kipenzi', TheKipenzi)
     .component('volunteer-with-us', VolunteerWithUs)
     .component('up-coming-festivals', UpComingFestivals)
+    .component('festival-locations', FestivalLocations)
 
 
 

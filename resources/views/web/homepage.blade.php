@@ -242,6 +242,12 @@
 
 <section class="relative w-full max-w-screen-2xl mx-auto">
 
+    <festival-locations></festival-locations>
+
+</section>
+
+<section class="relative w-full max-w-screen-2xl mx-auto">
+
     <speakers-carousel></speakers-carousel>
 
 </section>
