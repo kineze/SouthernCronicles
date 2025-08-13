@@ -54,6 +54,8 @@ Route::controller(PagesController::class)->group( function (){
     Route::get('/the-kipenzi','theKipenzi')->name('theKipenzi');
     Route::get('/volunteer-with-us','volunteerWithUs')->name('volunteerWithUs');
 
+    Route::get('/team-list','teamList')->name('teamList');
+
 });
 
 

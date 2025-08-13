@@ -10,4 +10,9 @@ class TeamType extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'description', 'position'];
+
+        public function teams()
+    {
+        return $this->hasMany(Team::class, 'team_type_id');
+    }
 }

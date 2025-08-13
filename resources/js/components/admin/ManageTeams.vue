@@ -12,29 +12,31 @@
     <div class="relative overflow-x-auto mt-7 sm:rounded-lg">
       <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         <div v-for="team in teams" :key="team.id" class="relative group rounded-lg overflow-hidden shadow-lg">
-            <div class="absolute top-2 right-2 z-[990]">
-                <label class="inline-flex items-center cursor-pointer">
-                    <input
-                    type="checkbox"
-                    :checked="team.show_on_home"
-                    @change="toggleShowOnHome(team)"
-                    class="sr-only peer"
-                    />
-                    <div
-                    class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300
-                            dark:peer-focus:ring-green-800 rounded peer dark:bg-gray-700
-                            peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full
-                            peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px]
-                            after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded
-                            after:h-5 after:w-5 after:transition-all dark:border-gray-600
-                            peer-checked:bg-green-600 dark:peer-checked:bg-green-600"
-                    ></div>
-                </label>
-            </div>
+          <div class="absolute top-2 right-2 z-[990]">
+            <label class="inline-flex items-center cursor-pointer">
+              <input
+                type="checkbox"
+                :checked="team.show_on_home"
+                @change="toggleShowOnHome(team)"
+                class="sr-only peer"
+              />
+              <div
+                class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300
+                       dark:peer-focus:ring-green-800 rounded peer dark:bg-gray-700
+                       peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full
+                       peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px]
+                       after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded
+                       after:h-5 after:w-5 after:transition-all dark:border-gray-600
+                       peer-checked:bg-green-600 dark:peer-checked:bg-green-600">
+              </div>
+            </label>
+          </div>
+
           <img :src="`/storage/${team.image}`" alt="Team Image" class="w-full h-80 object-cover" />
+
           <div class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white p-4 text-center">
-            <h3 class="text-lg font-semibold mb-2">{{ team.name }}</h3>
-            <!-- <p class="text-sm mb-2">{{ team.description }}</p> -->
+            <h3 class="text-lg font-semibold mb-1">{{ team.name }}</h3>
+            <p v-if="team.type" class="text-xs uppercase tracking-wide text-emerald-300">{{ team.type.name }}</p>
             <div class="flex space-x-4 text-sm mt-4">
               <button @click="editTeam(team)" class="text-white"><i class="fa-solid fa-pen"></i></button>
               <button @click="showDeleteConfirmation(team)" class="text-rose-500"><i class="fa-solid fa-trash"></i></button>
@@ -44,11 +46,11 @@
       </div>
     </div>
 
+    <!-- Backdrop -->
+    <div v-if="drawerOpen" class="fixed inset-0 z-[990] bg-black/40" @click="closeDrawer"></div>
+
     <!-- Drawer -->
-     <div v-if="drawerOpen" class="fixed inset-0 z-[990] bg-black bg-opacity-40" @click="closeDrawer"></div>
     <div :class="['fixed top-0 right-0 z-[990] h-screen w-96 transition-transform bg-white dark:bg-gray-800 p-6 overflow-y-auto', drawerOpen ? 'translate-x-0' : 'translate-x-full']">
-      
-      
       <div class="flex justify-between items-center mb-4">
         <h5 class="text-lg font-bold text-gray-800 dark:text-white">{{ editingId ? 'Edit Team' : 'Add Team' }}</h5>
         <button @click="closeDrawer" class="text-gray-500 hover:text-red-500">
@@ -81,6 +83,28 @@
           <input type="file" accept="image/*" ref="imageInput" @change="handleImageUpload" class="hidden" />
         </div>
 
+        <!-- Team Type -->
+        <div class="relative mb-5">
+          <select
+            v-model="form.team_type_id"
+            id="team-type"
+            required
+            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
+          >
+            <option class="text-black" disabled value="">Select a team type</option>
+            <option class="text-black" v-for="t in teamTypes" :key="t.id" :value="t.id">{{ t.name }}</option>
+          </select>
+          <label
+            for="team-type"
+            class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2
+            peer-focus:px-2 peer-focus:text-green-600 peer-focus:dark:text-green-500
+            peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2
+            peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
+          >
+            Team Type
+          </label>
+        </div>
+
         <!-- Name -->
         <div class="relative mb-5">
           <input
@@ -88,122 +112,44 @@
             type="text"
             id="team-name"
             placeholder=" "
-            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
             required
+            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
           />
-          <label
-            for="team-name"
-            class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2
-            peer-focus:px-2 peer-focus:text-green-600 peer-focus:dark:text-green-500
-            peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2
-            peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
-          >
+          <label for="team-name" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2
+                 peer-focus:px-2 peer-focus:text-green-600 peer-focus:dark:text-green-500
+                 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2
+                 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1">
             Team Name
           </label>
         </div>
 
-        <!-- Facebook -->
+        <!-- Socials -->
         <div class="relative mb-5">
-          <input
-            v-model="form.facebook"
-            type="text"
-            id="facebook"
-            placeholder=" "
-            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
-          />
-          <label
-            for="facebook"
-            class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2
-            peer-focus:px-2 peer-focus:text-green-600 peer-focus:dark:text-green-500
-            peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2
-            peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
-          >
-            Facebook
-          </label>
+          <input v-model="form.facebook" type="url" id="facebook" placeholder=" " class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer" />
+          <label for="facebook" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2 peer-focus:px-2 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1">Facebook</label>
         </div>
 
-        <!-- Instagram -->
         <div class="relative mb-5">
-          <input
-            v-model="form.instagram"
-            type="text"
-            id="instagram"
-            placeholder=" "
-            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
-          />
-          <label
-            for="instagram"
-            class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2
-            peer-focus:px-2 peer-focus:text-green-600 peer-focus:dark:text-green-500
-            peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2
-            peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
-          >
-            Instagram
-          </label>
+          <input v-model="form.instagram" type="url" id="instagram" placeholder=" " class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer" />
+          <label for="instagram" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2 peer-focus:px-2 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1">Instagram</label>
         </div>
 
-        <!-- LinkedIn -->
         <div class="relative mb-5">
-          <input
-            v-model="form.linkedin"
-            type="text"
-            id="linkedin"
-            placeholder=" "
-            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
-          />
-          <label
-            for="linkedin"
-            class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2
-            peer-focus:px-2 peer-focus:text-green-600 peer-focus:dark:text-green-500
-            peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2
-            peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
-          >
-            LinkedIn
-          </label>
+          <input v-model="form.linkedin" type="url" id="linkedin" placeholder=" " class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer" />
+          <label for="linkedin" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2 peer-focus:px-2 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1">LinkedIn</label>
         </div>
 
         <!-- Description -->
         <div class="relative mb-5">
-          <textarea
-            v-model="form.description"
-            id="team-description"
-            rows="3"
-            placeholder=" "
-            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
-          ></textarea>
-          <label
-            for="team-description"
-            class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2
-            peer-focus:px-2 peer-focus:text-green-600 peer-focus:dark:text-green-500
-            peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-8
-            peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
-          >
-            Description
-          </label>
+          <textarea v-model="form.description" id="team-description" rows="3" placeholder=" " class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"></textarea>
+          <label for="team-description" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2 peer-focus:px-2 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-8 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1">Description</label>
         </div>
-
-        <!-- Show on Home Toggle -->
-        <!-- <div class="mb-6">
-          <label class="block text-sm font-medium text-gray-700 dark:text-white mb-1">Show on Home</label>
-          <label class="inline-flex items-center cursor-pointer">
-            <input type="checkbox" v-model="form.show_on_home" class="sr-only peer" />
-            <div
-              class="relative w-11 h-6 bg-gray-200 rounded-full peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 dark:bg-gray-700 peer-checked:bg-green-600"
-            >
-              <div
-                class="absolute top-[2px] left-[2px] bg-white w-5 h-5 rounded-full transition-transform peer-checked:translate-x-full"
-              ></div>
-            </div>
-          </label>
-        </div> -->
 
         <!-- Submit -->
         <button type="submit" class="w-full bg-green-500 hover:bg-green-700 text-white py-2 rounded">
           {{ editingId ? 'Update Team' : 'Add Team' }}
         </button>
       </form>
-
-
     </div>
 
     <!-- Delete Confirmation Modal -->
@@ -229,6 +175,7 @@ import { useToast } from 'vue-toastification'
 
 const toast = useToast()
 const teams = ref([])
+const teamTypes = ref([]) // ← new
 const drawerOpen = ref(false)
 const editingId = ref(null)
 const showDeleteModal = ref(false)
@@ -241,12 +188,18 @@ const form = ref({
   image: null,
   facebook: '',
   instagram: '',
-  linkedin: ''
+  linkedin: '',
+  team_type_id: '' // ← new (required)
 })
 
 const fetchTeams = async () => {
   const res = await axios.get('/api/teams')
   teams.value = res.data
+}
+
+const fetchTeamTypes = async () => {
+  const res = await axios.get('/api/team-types')
+  teamTypes.value = res.data
 }
 
 const openDrawer = () => {
@@ -260,7 +213,15 @@ const closeDrawer = () => {
 }
 
 const resetForm = () => {
-  form.value = { name: '', description: '', image: null }
+  form.value = {
+    name: '',
+    description: '',
+    image: null,
+    facebook: '',
+    instagram: '',
+    linkedin: '',
+    team_type_id: '' // reset
+  }
   previewImage.value = null
   editingId.value = null
 }
@@ -280,9 +241,9 @@ const removeImage = () => {
 
 const saveTeam = async () => {
   const formData = new FormData()
-  for (const key in form.value) {
-    if (form.value[key] !== null) formData.append(key, form.value[key])
-  }
+  Object.entries(form.value).forEach(([k, v]) => {
+    if (v !== null && v !== undefined) formData.append(k, v)
+  })
 
   try {
     if (editingId.value) {
@@ -293,10 +254,10 @@ const saveTeam = async () => {
       await axios.post('/api/teams', formData)
       toast.success('Team created')
     }
-    fetchTeams()
+    await fetchTeams()
     closeDrawer()
   } catch (err) {
-    toast.error('Error saving team')
+    toast.error(err?.response?.data?.message || 'Error saving team')
   }
 }
 
@@ -305,22 +266,22 @@ const toggleShowOnHome = async (team) => {
     await axios.put(`/api/teams/${team.id}/toggle-status`)
     toast.success('Team status updated')
     fetchTeams()
-  } catch (err) {
+  } catch {
     toast.error('Failed to update status')
   }
 }
 
-
 const editTeam = (team) => {
   form.value = {
     name: team.name,
-    description: team.description,
+    description: team.description ?? '',
     facebook: team.facebook ?? '',
     instagram: team.instagram ?? '',
     linkedin: team.linkedin ?? '',
+    team_type_id: team.team_type_id ?? '', // prefill
     image: null
   }
-  previewImage.value = `/storage/${team.image}`
+  previewImage.value = team.image ? `/storage/${team.image}` : null
   editingId.value = team.id
   drawerOpen.value = true
 }
@@ -340,15 +301,14 @@ const confirmDeleteTeam = async () => {
     await axios.delete(`/api/teams/${teamToDelete.value.id}`)
     toast.success('Team deleted')
     fetchTeams()
-  } catch (error) {
+  } catch {
     toast.error('Error deleting team')
   } finally {
     cancelDeleteTeam()
   }
 }
 
-onMounted(() => {
-  fetchTeams()
+onMounted(async () => {
+  await Promise.all([fetchTeams(), fetchTeamTypes()])
 })
 </script>
-

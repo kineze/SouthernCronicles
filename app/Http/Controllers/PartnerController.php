@@ -84,22 +84,29 @@ public function update(Request $request, Partner $partner)
     }
 
 
-    public function partnersList(Request $request)
-    {
-        $limit = (int) $request->get('limit', 50);
+// App/Http/Controllers/PartnerController.php
 
-        $q = Partner::query();
+public function partnersList(Request $request)
+{
+    $limit = (int) $request->get('limit', 50);
 
-        if ($request->boolean('ordered')) {
-            // order saved by drag & drop, then tie-break by id
-            $q->orderBy('order')->orderByDesc('id');
-        } else {
-            $q->latest();
-        }
+    $q = Partner::query();
 
-        // only expose fields needed by the public grid
-        return $q->select('id', 'image')->take($limit)->get();
+    // Optional server-side filter by type
+    if ($request->filled('type_id')) {
+        $q->where('partner_type_id', $request->integer('type_id'));
     }
+
+    if ($request->boolean('ordered')) {
+        $q->orderBy('order')->orderByDesc('id');
+    } else {
+        $q->latest();
+    }
+
+    // expose type id so the UI can filter client-side
+    return $q->select('id', 'image', 'partner_type_id')->take($limit)->get();
+}
+
 
 
     public function reorder(Request $request)
@@ -116,4 +123,6 @@ public function update(Request $request, Partner $partner)
 
         return response()->json(['message' => 'Order updated']);
     }
+
+    
 }

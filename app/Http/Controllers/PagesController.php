@@ -31,6 +31,11 @@ class PagesController extends Controller
         return view('web.speakersList');
     }
 
+    public function teamList(){
+
+        return view('web.teamList');
+    }
+
     public function ourPartners(){
 
         return view('web.ourPartners');
