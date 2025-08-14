@@ -40,6 +40,14 @@
           <p class="mt-2 text-xs text-gray-600">
             {{ formatDate(n.published_at) }} • {{ formatTime(n.created_at) }}
           </p>
+
+          <p class="mt-2 text-xs text-gray-600">
+            {{ n.small_description}}
+          </p>
+
+            <p class="mt-2 text-xs text-gray-600 font-semibold">
+                {{ n.published_by}}
+            </p>
         </div>
 
         <!-- Share row -->
@@ -90,7 +98,7 @@
             :href="newsUrl(n)"
             class="text-xs font-medium text-black hover:underline"
           >
-            Read More
+            Read More...
           </a>
         </div>
       </article>
@@ -120,7 +128,7 @@ import { useToast } from 'vue-toastification'
 const toast = useToast()
 
 const API_URL = '/api/news'
-const allUrl  = '/news'
+const allUrl  = '/news-list'
 
 const perPage = 8
 const items = ref([])

@@ -80,4 +80,9 @@ class PagesController extends Controller
 
         return view('web.volunteerWithUs');
     }
+
+    public function newsList(){
+
+        return view('web.newsList');
+    }
 }
