@@ -251,6 +251,27 @@
           </label>
         </div>
 
+
+        <div class="mb-5">
+          <div class="flex items-center justify-between mb-1">
+            <label class="block text-sm font-medium dark:text-white">Small Description</label>
+            <span class="text-xs text-gray-500 dark:text-gray-400">
+              {{ (form.small_description || '').length }} / 200
+            </span>
+          </div>
+
+          <textarea
+            v-model="form.small_description"
+            @input="enforceCharLimit(200)"
+            :maxlength="200"
+            rows="3"
+            placeholder="Short summary shown in lists and previews"
+            class="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 dark:text-white text-sm p-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+          ></textarea>
+          <p class="mt-1 text-xs text-gray-500">Max 200 characters.</p>
+        </div>
+
+
         <!-- Status -->
         <div class="mb-5">
           <label class="block text-sm font-medium text-gray-700 dark:text-white mb-2">Status (Visible)</label>
@@ -324,6 +345,7 @@ const meta = ref(null)
 
 const form = ref({
   title: '',
+  small_description: '', 
   published_at: '',
   content: '',
   published_by: '',
@@ -471,6 +493,7 @@ const closeDrawer = () => {
 const resetForm = () => {
   form.value = {
     title: '',
+    small_description: '',
     published_at: formatForInput(new Date()),
     content: '',
     published_by: '',
@@ -485,6 +508,7 @@ const saveNews = async () => {
   try {
     const fd = new FormData()
     fd.append('title', form.value.title)
+    fd.append('small_description', form.value.small_description || '') 
     fd.append('published_at', toServerDate(form.value.published_at))
     fd.append('content', form.value.content || '')
     fd.append('published_by', form.value.published_by || '')
@@ -519,6 +543,7 @@ const editNews = (item) => {
   editingId.value = item.id
   form.value = {
     title: item.title,
+    small_description: item.small_description || '',
     published_at: formatForInput(item.published_at),
     content: item.content || '',
     published_by: item.published_by || '',

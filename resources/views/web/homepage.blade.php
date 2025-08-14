@@ -298,13 +298,19 @@
 
 </section>
 
+<section class="w-full max-w-screen-2xl  mt-6 mx-auto">
+
+    <latest-news></latest-news>
+   
+</section>
+
 
 <section class="w-full max-w-screen-2xl  mt-6 mx-auto">
 
-    <div class="w-full mb-10">
+    {{-- <div class="w-full mb-10">
 
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31675.06777531941!2d79.99171349917356!3d7.081464785533528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2fb67a22e72d9%3A0x913a2c56a49c8d8e!2sGampaha!5e0!3m2!1sen!2slk!4v1754677061475!5m2!1sen!2slk" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
+    </div> --}}
 
     <usefull-links></usefull-links>
    

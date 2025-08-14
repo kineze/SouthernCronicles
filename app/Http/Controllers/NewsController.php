@@ -35,6 +35,7 @@ class NewsController extends Controller
     public function store(Request $request) {
         $data = $request->validate([
             'title'         => ['required','string','max:255'],
+            'small_description'=> ['nullable','string','max:200'],
             'published_at'  => ['required','date'],
             'content'       => ['required','string'],
             'published_by'  => ['nullable','string','max:255'],
@@ -58,6 +59,7 @@ class NewsController extends Controller
     public function update(Request $request, News $news) {
         $data = $request->validate([
             'title'         => ['required','string','max:255'],
+            'small_description'=> ['nullable','string','max:200'],
             'published_at'  => ['required','date'],
             'content'       => ['required','string'],
             'published_by'  => ['nullable','string','max:255'],

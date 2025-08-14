@@ -53,6 +53,7 @@ import VolunteerWithUs from './components/web/VolunteerWithUs.vue';
 import UpComingFestivals from './components/web/UpComingFestivals.vue';
 import FestivalLocations from './components/web/FestivalLocations.vue';
 import TeamList from './components/web/TeamList.vue';
+import LatestNews from './components/web/LatestNews.vue';
 
 const app = createApp({});
 
@@ -114,6 +115,7 @@ app
     .component('up-coming-festivals', UpComingFestivals)
     .component('festival-locations', FestivalLocations)
     .component('team-list', TeamList)
+    .component('latest-news', LatestNews)
 
 
 

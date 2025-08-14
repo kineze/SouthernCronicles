@@ -84,11 +84,13 @@ const pillClass = (isActive) =>
     isActive ? 'bg-black text-white' : 'bg-white text-black border border-gray-300 hover:bg-gray-100'
   ].join(' ')
 
+
 // --- Filtering ---
 const filteredPartners = computed(() => {
   if (activeType.value === null) return allPartners.value
   return allPartners.value.filter(p => p.partner_type_id === activeType.value)
 })
+
 
 // --- Visible subset (respecting rowsToShow x cols) ---
 const visiblePartners = computed(() => {
@@ -96,19 +98,23 @@ const visiblePartners = computed(() => {
   return filteredPartners.value.slice(0, max)
 })
 
+
 // --- UI actions ---
 const setType = (typeId) => {
   activeType.value = typeId
 }
 
+
 const loadMore = () => {
   rowsToShow.value += 10 // keep your existing growth pattern
 }
+
 
 // When switching tabs, reset rows so the user sees the first page again
 watch(activeType, () => {
   rowsToShow.value = 5
 })
+
 
 onMounted(async () => {
   await Promise.all([fetchTypes(), fetchPartners()])
