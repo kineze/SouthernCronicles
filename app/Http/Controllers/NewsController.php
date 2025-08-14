@@ -96,4 +96,8 @@ class NewsController extends Controller
         $news->update(['status' => !$news->status]);
         return response()->json(['message' => 'Status toggled.']);
     }
+
+    public function show(News $news) {
+        return response()->json($news);
+    }
 }

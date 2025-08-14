@@ -155,7 +155,8 @@ function imageUrl(path) {
   return `/storage/${path}`
 }
 function newsUrl(n) {
-  return `/news/${n.id}`
+  return `/view-news/${n.id}`
+
 }
 function formatDate(d) {
   if (!d) return ''

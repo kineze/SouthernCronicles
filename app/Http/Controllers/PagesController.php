@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use PDO;
 use Carbon\Carbon;
+use App\Models\News;
 use App\Models\Festival;
 use Illuminate\Http\Request;
-use PDO;
 
 class PagesController extends Controller
 {
@@ -84,5 +85,12 @@ class PagesController extends Controller
     public function newsList(){
 
         return view('web.newsList');
+    }
+
+    public function viewNews($id){
+
+        $news = News::findOrFail($id);
+
+        return view('web.viewNews', compact('news'));
     }
 }

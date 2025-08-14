@@ -72,7 +72,9 @@ Route::post('volunteers/{volunteer}/status', [VolunteersController::class, 'setS
 Route::apiResource('volunteers', VolunteersController::class)->only(['index','store','update','destroy']);
 
 Route::apiResource('news', NewsController::class);
+
 Route::put('news/{news}/toggle-status', [NewsController::class, 'toggleStatus']);
+Route::get('/news/{news}', [NewsController::class, 'show']);
 
 Route::apiResource('partner-types', PartnerTypeController::class);
 Route::post('partner-types/reorder', [PartnerTypeController::class, 'reorder']);

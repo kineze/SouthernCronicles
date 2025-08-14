@@ -57,6 +57,7 @@ Route::controller(PagesController::class)->group( function (){
     Route::get('/team-list','teamList')->name('teamList');
     Route::get('/news-list','newsList')->name('newsList');
 
+    Route::get('/view-news/{id}', 'viewNews')->name('viewNews');
 });
 
 
