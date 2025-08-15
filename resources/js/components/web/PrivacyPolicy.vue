@@ -1,12 +1,12 @@
 <template>
   <section class="max-w-screen-2xl mx-auto px-4 py-16 text-gray-800 dark:text-gray-200">
-    <!-- Heading -->
+
     <h1 class="text-3xl lg:text-6xl font-extrabold tracking-widest uppercase text-center text-black dark:text-white mb-12">
       Privacy Policy
     </h1>
 
     <div class="space-y-8 leading-relaxed text-lg">
-      <!-- Section 1 -->
+
       <div class="text-justify">
         <h2 class="text-xl font-semibold mb-2">1. Information We Collect</h2>
         <p><strong>1.1 Personal Information</strong><br>

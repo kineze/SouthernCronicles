@@ -5,20 +5,22 @@
     </h1>
 
     <div class="py-8 w-full max-w-screen-2xl mx-auto">
-      <div class="w-full bg-white -mt-10">
+      <div class="w-full lg:min-h-[200px] bg-white lg:-mt-10">
         <HexHoneyGrid
           v-if="imageUrls.length"
           :images="imageUrls"
           :radius="62"
           :stroke-width="6"
           stroke-color="#ffffff"
-          class="h-[600px] mx-auto"
+          class="lg:min-h-[300px] lg:max-h-full"
           :shuffle="true"
           :interval-ms="7000"   
           :fade-ms="600"
           :batch-size="1"
           :overlay-opacity="0.65"
           :avoid-duplicates="true"
+          :mobile-max-visible="20"
+          :mobile-breakpoint="768"
           dedupe-key="exact"
         />
         <div v-else class="w-full h-full grid place-items-center text-gray-500">
