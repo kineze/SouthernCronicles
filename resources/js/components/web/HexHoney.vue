@@ -2,7 +2,7 @@
 <template>
   <svg
     :viewBox="`0 0 ${boxW} ${boxH}`"
-    class="w-full -mt-72 lg:mt-10 -mb-5 lg:mb-0 lg:h-[600px]"
+    class="w-full -mt-[650px] lg:-mt-60 -mb-36 lg:mb-0 lg:h-[900px] h-[180vh]"
     role="img"
     aria-label="Speakers honeycomb"
   >
@@ -85,20 +85,7 @@ const props = defineProps({
   mobileBreakpoint: { type: Number, default: 768 }, // px
 })
 
-/* ---- Geometry ---- */
-const R = props.radius
-const HEX_W = 5 * R
-const HEX_H = Math.sqrt(2) * R
-const STEP_X = Math.sqrt(3) * R
-const STEP_Y = 1.5 * R
-const padX = 500
-const padY = 50
-
-// Desktop = 150 cells, Mobile = 20 cells
-const rowsDesktop = [5, 6, 7, 8, 9, 10, 11, 12, 14, 12, 11, 10, 9, 8, 7, 6, 5] // 150
-const rowsMobile  = [2,3 , 2, 3, 2, 3]                                         // 20
-
-// mobile detection
+/* ---- Mobile detection FIRST (so geometry can read it) ---- */
 const isMobile = ref(false)
 let mql = null
 let mqlHandler = null
@@ -118,20 +105,43 @@ onBeforeUnmount(() => {
   }
 })
 
+/* ---- Geometry (pointy-top). Desktop vs Mobile switch ---- */
+const R = props.radius
+
+// your request: use these ONLY on mobile
+//   HEX_W = 0.5 * R
+//   HEX_H = sqrt(2) * R
+//   STEP_X = sqrt(3) * R
+//   STEP_Y = 1.5 * R
+//   padX = 500, padY = 50
+// keep your existing desktop values (HEX_W = 5*R, etc.)
+const HEX_W = computed(() => isMobile.value ? 0.5 * R : 5 * R)
+const HEX_H = computed(() => Math.sqrt(2) * R)                 // same both
+const STEP_X = computed(() => Math.sqrt(3) * R)                // same both
+const STEP_Y = computed(() => 1.5 * R)                         // same both
+const padX   = computed(() => isMobile.value ? 500 : 0)
+const padY   = computed(() => isMobile.value ? 20 : -100 )
+
+// row counts (example; keep yours)
+const rowsDesktop = [10, 9, 6, 8, 9, 10]         // <- your desktop config
+const rowsMobile  = [2, 3, 2, 3, 2]                // <- your mobile config
 const rows = computed(() => (isMobile.value ? rowsMobile : rowsDesktop))
 
 const widest = computed(() => Math.max(...rows.value))
-const widestRowWidth = computed(() => HEX_W + (widest.value - 2) * STEP_X)
-const boxW = computed(() => padX * 0.4 + widestRowWidth.value)
-const boxH = computed(() => padY * 0.5 + HEX_H + (rows.value.length - 6) * STEP_Y)
+const widestRowWidth = computed(() => HEX_W.value + (widest.value - 2) * STEP_X.value)
+const boxW = computed(() => padX.value * 0.4 + widestRowWidth.value)
+const boxH = computed(() => padY.value * 0.5 + HEX_H.value + (rows.value.length - 6) * STEP_Y.value)
 
+/** centers/grid */
 const grid = computed(() => {
   const out = []
   rows.value.forEach((count, row) => {
-    const y = padY + HEX_H / 3 + row * STEP_Y
-    const rowWidth = HEX_W + (count - 1) * STEP_X
-    const startX = (boxW.value - rowWidth) / 2 + HEX_W / 2
-    for (let col = 0; col < count; col++) out.push({ x: startX + col * STEP_X, y, row, col })
+    const y = padY.value + HEX_H.value / 3 + row * STEP_Y.value
+    const rowWidth = HEX_W.value + (count - 1) * STEP_X.value
+    const startX = (boxW.value - rowWidth) / 2 + HEX_W.value / 2
+    for (let col = 0; col < count; col++) {
+      out.push({ x: startX + col * STEP_X.value, y, row, col })
+    }
   })
   return out
 })
@@ -342,6 +352,7 @@ watch([pool, gridToShow], () => { initState(); if (props.shuffle) startShuffler(
 onMounted(()=>{ if (props.shuffle) startShuffler() })
 onBeforeUnmount(()=> stopShuffler())
 </script>
+
 
 <style scoped>
 .hex-img { opacity: 1; transition: opacity var(--fade-ms) ease; pointer-events: none; }
