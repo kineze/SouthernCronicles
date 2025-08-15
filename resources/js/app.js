@@ -4,15 +4,17 @@ import 'vue-toastification/dist/index.css';
 import 'tom-select/dist/css/tom-select.css';
 
 
+import VueTelInput from 'vue3-tel-input';
+import 'vue3-tel-input/dist/vue3-tel-input.css';
+
+
 
 import Toast from 'vue-toastification';
 import { POSITION } from 'vue-toastification';
 
-
-
 import { createApp } from 'vue'
-// for admin view 
 
+// admin components
 import DarkModeToggle from './components/admin/DarkModeToggle.vue';
 import Festivals from './components/admin/Festivals.vue';
 import SpeakerTypes from './components/admin/SpeakerTypes.vue';
@@ -31,7 +33,7 @@ import PartnerTypes from './components/admin/PartnerTypes.vue';
 import TeamTypes from './components/admin/TeamTypes.vue';
 import ManageCareers from './components/admin/ManageCareers.vue';
 
-// for web view 
+// web components
 import WebNav from './components/web/webNav.vue';
 import SpeakersCarousel from './components/web/SpeakersCarousel.vue';
 import SpeakersList from './components/web/Speakers List.vue';
@@ -65,6 +67,7 @@ import CareerView from './components/web/CareerView.vue';
 const app = createApp({});
 
 app
+
   .use(Toast, {
     position: POSITION.TOP_RIGHT,
     timeout: 3000,
@@ -80,60 +83,65 @@ app
     rtl: false
   })
 
-    //for admin view
-    .component('dark-mode-toggle', DarkModeToggle)
-    .component('festivals', Festivals)
-    .component('speaker-types',SpeakerTypes)
-    .component('speakers',Speakers)
-    .component('partners',Partners)
-    .component('registered-list',RegisteredList)
-    .component('manage-events', ManageEvents)
-    .component('manage-teams', ManageTeams)
-    .component('manage-time-slots', ManageTimeSlots)
-    .component('manage-bookings', ManageBookings)
-    .component('memory-submission', MemorySubmission)
-    .component('manage-usefull-links', ManageUsefullLinks)
-    .component('volunteers-list', VolunteersList)
-    .component('volunteers', Volunteers)
-    .component('manage-news', ManageNews)
-    .component('partner-types', PartnerTypes)
-    .component('team-types', TeamTypes)
-    .component('manage-careers', ManageCareers)
+  
+  .use(VueTelInput, {
+    mode: 'international',
+    inputOptions: { showDialCode: true, placeholder: 'Your phone number' },
+    dropdownOptions: {
+      showFlags: true,
+      showDialCodeInList: true,
+      showSearchBox: true,
+    },
+  })
 
+  // admin
+  .component('dark-mode-toggle', DarkModeToggle)
+  .component('festivals', Festivals)
+  .component('speaker-types',SpeakerTypes)
+  .component('speakers',Speakers)
+  .component('partners',Partners)
+  .component('registered-list',RegisteredList)
+  .component('manage-events', ManageEvents)
+  .component('manage-teams', ManageTeams)
+  .component('manage-time-slots', ManageTimeSlots)
+  .component('manage-bookings', ManageBookings)
+  .component('memory-submission', MemorySubmission)
+  .component('manage-usefull-links', ManageUsefullLinks)
+  .component('volunteers-list', VolunteersList)
+  .component('volunteers', Volunteers)
+  .component('manage-news', ManageNews)
+  .component('partner-types', PartnerTypes)
+  .component('team-types', TeamTypes)
+  .component('manage-careers', ManageCareers)
 
-    // for web view
-    .component('web-nav',WebNav)
-    .component('speakers-carousel',SpeakersCarousel)
-    .component('speakers-list', SpeakersList)
-    .component('our-partners',OurPartners)
-    .component('usefull-links', UsefullLinks)
-    .component('contact-us',ContactUs)
-    .component('register-now-modal', RegisterNowModal)
-    .component('our-ecosystem', OurEcosystem)
-    .component('event-schedule',EventSchedule)
-    .component('next-count-down',NextCountDown)
-    .component('teams-carousel',TeamsCarousel)
-    .component('privacy-policy',PrivacyPolicy)
-    .component('read-more-text',ReadMoreText)
-    .component('terms-conditions',TermsConditions)
-    .component('booking-now',BookingNow)
-    .component('living-memory-vault', LivingMemoryVault)
-    .component('the-kipenzi', TheKipenzi)
-    .component('volunteer-with-us', VolunteerWithUs)
-    .component('up-coming-festivals', UpComingFestivals)
-    .component('festival-locations', FestivalLocations)
-    .component('team-list', TeamList)
-    .component('latest-news', LatestNews)
-    .component('news-list', NewsList)
-    .component('view-news', ViewNews)
-    .component('hex-honey', HexHoney)
-    .component('vision-mission', VisionMission)
-    .component('careers', Careers)
-    .component('career-view', CareerView)
+  // web
+  .component('web-nav',WebNav)
+  .component('speakers-carousel',SpeakersCarousel)
+  .component('speakers-list', SpeakersList)
+  .component('our-partners',OurPartners)
+  .component('usefull-links', UsefullLinks)
+  .component('contact-us',ContactUs)
+  .component('register-now-modal', RegisterNowModal)
+  .component('our-ecosystem', OurEcosystem)
+  .component('event-schedule',EventSchedule)
+  .component('next-count-down',NextCountDown)
+  .component('teams-carousel',TeamsCarousel)
+  .component('privacy-policy',PrivacyPolicy)
+  .component('read-more-text',ReadMoreText)
+  .component('terms-conditions',TermsConditions)
+  .component('booking-now',BookingNow)
+  .component('living-memory-vault', LivingMemoryVault)
+  .component('the-kipenzi', TheKipenzi)
+  .component('volunteer-with-us', VolunteerWithUs)
+  .component('up-coming-festivals', UpComingFestivals)
+  .component('festival-locations', FestivalLocations)
+  .component('team-list', TeamList)
+  .component('latest-news', LatestNews)
+  .component('news-list', NewsList)
+  .component('view-news', ViewNews)
+  .component('hex-honey', HexHoney)
+  .component('vision-mission', VisionMission)
+  .component('careers', Careers)
+  .component('career-view', CareerView)
 
-
-
-
-
-
-    .mount('#app')
+  .mount('#app')

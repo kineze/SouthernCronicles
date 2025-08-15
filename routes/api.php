@@ -20,6 +20,7 @@ use App\Http\Controllers\SpeakerTypeController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\BookingManageController;
 use App\Http\Controllers\MemorySubmissionController;
+use App\Http\Controllers\CareerApplicationController;
 
 
 // for admin view
@@ -114,4 +115,6 @@ Route::get('/launchpad/time-slots', [BookingController::class, 'getTimeSlots']);
 Route::post('/launchpad/book', [BookingController::class, 'store']);
 
 Route::post('/memory-submissions', [MemorySubmissionController::class, 'store']);
+
+Route::post('/careers/{career}/apply', [CareerApplicationController::class, 'store']);
 
