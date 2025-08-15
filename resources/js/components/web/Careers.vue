@@ -1,5 +1,5 @@
 <template>
-  <section class="max-w-screen-2xl mx-auto px-4 py-10">
+  <section class="max-w-screen-2xl mx-auto lg:px-4 lg:py-10 py-6">
     <h1 class="lg:text-6xl text-3xl mt-12 lg:mt-4 text-black font-extrabold tracking-widest uppercase text-center">
       Career Updates
     </h1>
@@ -88,7 +88,7 @@
             <!-- Meta row -->
             <div class="mt-2 flex flex-wrap items-center gap-2 text-xs">
               <span
-                class="inline-flex items-center gap-1 rounded-full font-semibold"
+                class=" items-center gap-1 rounded-full font-semibold"
                 :class="statusPillClass(c)"
                 title="Status"
               >
@@ -279,8 +279,8 @@ function isClosed(c) {
 }
 
 function statusPillClass(c) {
-  if (isClosed(c)) return 'bg-rose-100 text-rose-700'
-  return c.status ? 'bg-green-100 text-green-700' : 'bg-gray-200 text-gray-700'
+  if (isClosed(c)) return ' '
+  return c.status ? ' ' : 'bg-gray-200 text-gray-700'
 }
 
 /* Share helpers */
