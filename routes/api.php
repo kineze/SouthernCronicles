@@ -6,6 +6,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\TeamsController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\CareersController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\FestivalController;
@@ -81,6 +82,14 @@ Route::post('partner-types/reorder', [PartnerTypeController::class, 'reorder']);
 
 Route::apiResource('team-types', TeamTypeController::class);
 Route::post('team-types/reorder', [TeamTypeController::class, 'reorder']);
+
+
+Route::get('/careers',            [CareersController::class, 'index']);
+Route::post('/careers',           [CareersController::class, 'store']);
+Route::get('/careers/{career}',   [CareersController::class, 'show']);
+Route::put('/careers/{career}',   [CareersController::class, 'update']);
+Route::delete('/careers/{career}',[CareersController::class, 'destroy']);
+Route::put('/careers/{career}/toggle-status', [CareersController::class, 'toggleStatus']);
 
 
 // for web view

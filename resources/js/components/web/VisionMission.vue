@@ -28,7 +28,7 @@
       <!-- Vision -->
       <article
         ref="visionRef"
-        class="reveal group relative overflow-hidden rounded-2xl bg-white/70 backdrop-blur-xl border border-black/5 shadow-lg"
+        class="reveal group relative overflow-hidden rounded bg-white/70 backdrop-blur-xl border border-black/5 shadow-lg"
       >
         <div class="flex flex-col lg:flex-row">
           <!-- Media -->
@@ -77,7 +77,7 @@
       <!-- Mission -->
       <article
         ref="missionRef"
-        class="reveal group relative overflow-hidden rounded-2xl bg-white/70 backdrop-blur-xl border border-black/5 shadow-lg"
+        class="reveal group relative overflow-hidden rounded bg-white/70 backdrop-blur-xl border border-black/5 shadow-lg"
       >
         <div class="flex flex-col lg:flex-row-reverse">
           <!-- Media -->

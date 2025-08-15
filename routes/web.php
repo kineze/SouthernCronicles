@@ -8,6 +8,7 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\TeamsController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\CareersController;
 use App\Http\Controllers\GenaralController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\FestivalController;
@@ -179,6 +180,19 @@ Route::middleware(['permission:Manage News', config('jetstream.auth_session'), '
     });
 
 });
+
+
+Route::middleware(['permission:Manage Careers', config('jetstream.auth_session'), 'verified',])->group( function (){
+
+    Route::controller(CareersController::class)->group(function () {
+
+        Route::get('/careers','careers')->name('careers');
+
+    });
+
+});
+
+
 
 Route::middleware(['permission:Manage Users', config('jetstream.auth_session'), 'verified',])->group(function () {
 

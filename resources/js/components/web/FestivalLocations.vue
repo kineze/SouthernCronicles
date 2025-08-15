@@ -3,7 +3,7 @@
 
     <header class="text-center mb-10 lg:mb-14">
 
-      <h2 id="vm-title" class="mt-2 uppercase font-extrabold text-black tracking-widest text-6xl" >
+      <h2 id="vm-title" class="mt-2 uppercase font-extrabold text-black tracking-widest text-3xl lg:text-6xl " >
         Festival Locations
       </h2>
 
