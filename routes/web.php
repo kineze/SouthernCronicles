@@ -59,6 +59,10 @@ Route::controller(PagesController::class)->group( function (){
     Route::get('/news-list','newsList')->name('newsList');
 
     Route::get('/view-news/{id}', 'viewNews')->name('viewNews');
+
+    Route::get('/careers','careers')->name('careers');
+
+    Route::get('/view-career/{id}', 'viewCareer')->name('viewCareer');
 });
 
 
@@ -186,7 +190,7 @@ Route::middleware(['permission:Manage Careers', config('jetstream.auth_session')
 
     Route::controller(CareersController::class)->group(function () {
 
-        Route::get('/careers','careers')->name('careers');
+        Route::get('/manage-careers','manageCareers')->name('manageCareers');
 
     });
 

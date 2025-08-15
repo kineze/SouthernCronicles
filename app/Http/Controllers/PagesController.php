@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use PDO;
 use Carbon\Carbon;
 use App\Models\News;
+use App\Models\Career;
 use App\Models\Festival;
 use Illuminate\Http\Request;
 
@@ -92,5 +93,17 @@ class PagesController extends Controller
         $news = News::findOrFail($id);
 
         return view('web.viewNews', compact('news'));
+    }
+
+    public function careers(){
+
+        return view('web.careers');
+    }
+
+    public function viewCareer($id){
+
+        $career = Career::findOrFail($id);
+
+        return view('web.viewCareer', compact('career'));
     }
 }

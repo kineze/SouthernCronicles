@@ -8,7 +8,7 @@ use Illuminate\Validation\Rule;
 
 class CareersController extends Controller
 {
-    public function careers(){
+    public function manageCareers(){
 
         return view('dashboards.admin.manageCareers');
     }

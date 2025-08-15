@@ -100,6 +100,11 @@
             <span class="ms-3 font-semibold">Volunteer With Us</span>
           </a>
 
+          <a href="/careers" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <i class="fa-solid fa-id-badge text-xl"></i>
+            <span class="ms-3 font-semibold">Careers</span>
+          </a>
+
           <a href="/contact-us" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
             <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none"><path d="M17.523 19.897C9.848 18.898 4.509 13.455 4.034 6.23A.83.83 0 0 1 4.957 5.225l3.847-.19c.43-.021.825.235.981.636l.693 1.778c.18.464-.008.99-.441 1.235l-2.225 1.254c-.573.323-.684 1.101-.224 1.571l4.763 4.867c.456.466 1.229.378 1.568-.178l1.389-2.277c.251-.412.761-.586 1.212-.413l1.775.681c.417.16.677.577.638 1.022l-.337 3.805c-.049.546-.53.954-1.074.883z" fill="#000" stroke="#000" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <span class="ms-3 font-semibold">Contact Us</span>

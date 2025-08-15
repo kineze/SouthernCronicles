@@ -59,6 +59,8 @@ import NewsList from './components/web/NewsList.vue';
 import ViewNews from './components/web/ViewNews.vue';
 import HexHoney from './components/web/HexHoney.vue';
 import VisionMission from './components/web/VisionMission.vue';
+import Careers from './components/web/Careers.vue';
+import CareerView from './components/web/CareerView.vue';
 
 const app = createApp({});
 
@@ -126,6 +128,10 @@ app
     .component('view-news', ViewNews)
     .component('hex-honey', HexHoney)
     .component('vision-mission', VisionMission)
+    .component('careers', Careers)
+    .component('career-view', CareerView)
+
+
 
 
 
