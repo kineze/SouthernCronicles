@@ -5,7 +5,7 @@
     </h1>
 
     <div class="py-8 w-full max-w-screen-2xl mx-auto">
-      <div class="w-full lg:min-h-[200px] bg-white lg:-mt-10">
+      <div class="w-full lg:min-h-[200px] lg:-mt-10">
         <HexHoneyGrid
           v-if="imageUrls.length"
           :images="imageUrls"
