@@ -28,12 +28,11 @@
             {{ article.small_description }}
           </p> -->
 
-          <!-- Styled Quill HTML -->
           <div class="mt-8 prose max-w-none ql-render news-content" v-html="article.content"></div>
         </template>
       </article>
 
-      <!-- SIDEBAR -->
+      
       <aside class="lg:col-span-4">
 
         <div class="lg:sticky lg:top-4 space-y-6">

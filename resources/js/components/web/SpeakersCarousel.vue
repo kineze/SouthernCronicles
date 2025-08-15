@@ -1,68 +1,54 @@
 <template>
-    <div class="relative bg-white bg-transparent bg-opacity-30 md:pt-6 backdrop-blur-xl">
-    <div>
-        <h1 class="lg:text-6xl text-3xl text-black font-extrabold tracking-widest uppercase text-center">Speakers</h1>
-    </div>
-    <div class="py-8 w-full max-w-screen-2xl flex flex-col">
-        <Carousel 
-            :itemsToShow="4"
-            :wrapAround="true"
-            :itemsToScroll="1"
-            :autoplay="2000"
-            :pauseAutoplayOnHover="false"
-            :mouseDrag="true"
-            snapAlign="start"
-            :breakpoints="{
-                0: { itemsToShow: 1 },
-                768: { itemsToShow: 2 },
-                1024: { itemsToShow: 4 }
-            }"
+  <div class="relative bg-transparent md:pt-6">
+    <h1 class="lg:text-6xl text-3xl text-black font-extrabold tracking-widest uppercase text-center">
+      Speakers
+    </h1>
 
-            v-model="currentSlide"
-        >
-            <Slide v-for="speaker in homeSpeakers" :key="speaker.id" class="!flex !items-start h-full">
-                <div class="p-3">
-                    <a href="/speakers-list">
-                        <div class="overflow-hidden  dark:bg-gray-800">
-                            <img :src="`/storage/${speaker.image}`" :alt="speaker.name" class="w-full h-80 object-cover aspect-square" />
-                            <div class="p-4 text-center">
-                            <h3 class="font-semibold text-gray-800 dark:text-white uppercase">{{ speaker.name }}</h3>
-                            <!-- <div class="flex justify-center mt-2 gap-4 text-lg text-gray-500">
-                                <a v-if="speaker.facebook" :href="speaker.facebook" target="_blank" class="hover:text-blue-500"><i class="fab fa-facebook"></i></a>
-                                <a v-if="speaker.instagram" :href="speaker.instagram" target="_blank" class="hover:text-pink-500"><i class="fab fa-instagram"></i></a>
-                                <a v-if="speaker.linkedin" :href="speaker.linkedin" target="_blank" class="hover:text-blue-400"><i class="fab fa-linkedin"></i></a>
-                            </div> -->
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </Slide>
-        </Carousel>
-
-        <div class="mx-auto mt-7">
-            <a href="/speakers-list" class="px-6 py-3 bg-black text-white foont-bold"> VIEW MORE </a>
+    <div class="py-8 w-full max-w-screen-2xl mx-auto">
+      <div class="w-full bg-white -mt-10">
+        <HexHoneyGrid
+          v-if="imageUrls.length"
+          :images="imageUrls"
+          :radius="62"
+          :stroke-width="6"
+          stroke-color="#ffffff"
+          class="h-[600px] mx-auto"
+          :shuffle="true"
+          :interval-ms="7000"   
+          :fade-ms="600"
+          :batch-size="1"
+          :overlay-opacity="0.65"
+          :avoid-duplicates="true"
+          dedupe-key="exact"
+        />
+        <div v-else class="w-full h-full grid place-items-center text-gray-500">
+          Loading…
         </div>
+      </div>
 
+      <div class="text-center mt-6">
+        <a href="/speakers-list" class="px-6 py-3 bg-black text-white font-bold">VIEW MORE</a>
+      </div>
     </div>
-    </div>
+  </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import axios from 'axios'
-import { Carousel, Slide } from 'vue3-carousel'
-import 'vue3-carousel/dist/carousel.css'
+import HexHoneyGrid from './HexHoney.vue'
 
-const homeSpeakers = ref([])
-// const carousel = ref(null)
-const currentSlide = ref(0)
+const speakers = ref([])
 
-const fetchHomeSpeakers = async () => {
-  const res = await axios.get('/api/speakers?ordered=true')
-  homeSpeakers.value = res.data.filter(speaker => speaker.show_on_home)
+const imageUrls = computed(() =>
+  speakers.value
+    .filter(s => s.show_on_home)
+    .map(s => `/storage/${s.image}`)
+)
+
+async function fetchHomeSpeakers() {
+  const { data } = await axios.get('/api/speakers?ordered=true')
+  speakers.value = data || []
 }
-
 onMounted(fetchHomeSpeakers)
 </script>
-
-

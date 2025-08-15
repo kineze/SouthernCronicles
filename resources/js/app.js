@@ -56,6 +56,7 @@ import TeamList from './components/web/TeamList.vue';
 import LatestNews from './components/web/LatestNews.vue';
 import NewsList from './components/web/NewsList.vue';
 import ViewNews from './components/web/ViewNews.vue';
+import HexHoney from './components/web/HexHoney.vue';
 
 const app = createApp({});
 
@@ -120,6 +121,7 @@ app
     .component('latest-news', LatestNews)
     .component('news-list', NewsList)
     .component('view-news', ViewNews)
+    .component('hex-honey', HexHoney)
 
 
 
