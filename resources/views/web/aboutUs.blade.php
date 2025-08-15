@@ -144,6 +144,19 @@
     </div>
 </section>
 
+<section class="w-full max-w-screen-2xl mx-auto">
+  <vision-mission
+    eyebrow="Who We Are"
+    title="Our Vision & Mission"
+    subtitle="Bridging worlds through words."
+    vision-image="{{ asset('assets/img/kipenzi-art.webp') }}"
+    mission-image="{{ asset('assets/img/story.webp') }}"
+    :vision-points="['Champion free access', 'Inspire cross-cultural dialogue', 'Nurture future storytellers']"
+    :mission-points="['Inclusive programs & workshops', 'Multilingual participation', 'Community-driven initiatives']"
+    accent="active-purple"
+  ></vision-mission>
+</section>
+
 <section class="w-full max-w-screen-2xl mt-10 mx-auto p-3">
 
     <div class="bg-white px-4 py-2 mb-5">

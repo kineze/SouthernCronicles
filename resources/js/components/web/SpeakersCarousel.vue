@@ -1,5 +1,5 @@
 <template>
-  <div class="relative bg-transparent md:pt-6 hidden lg:block">
+  <div class="relative bg-transparent md:pt-20 hidden lg:block ">
     <h1 class="lg:text-6xl text-3xl text-black font-extrabold tracking-widest uppercase text-center">
       Speakers
     </h1>
@@ -14,7 +14,7 @@
           stroke-color="#ffffff"
           class="lg:min-h-[300px] lg:max-h-full"
           :shuffle="true"
-          :interval-ms="7000"   
+          :interval-ms="3000"   
           :fade-ms="600"
           :batch-size="1"
           :overlay-opacity="0.65"

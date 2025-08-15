@@ -1,5 +1,16 @@
 <template>
-  <div class="w-full h-[60vh] lg:h-[80vh] overflow-hidden">
+  <div class="w-full h-[60vh] lg:h-[100vh] overflow-hidden py-10 relative z-50">
+
+    <header class="text-center mb-10 lg:mb-14">
+
+      <h2 id="vm-title" class="mt-2 uppercase font-extrabold text-black tracking-widest text-6xl" >
+        Festival Locations
+      </h2>
+
+    </header>
+
+
+
     <div ref="mapEl" class="w-full h-full"></div>
   </div>
 </template>
