@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('dial_code', 8)->nullable();   // e.g. +94
             $table->string('phone', 32)->nullable();
             $table->string('cv_path')->nullable();
-            $table->string('status', 32)->default('pending'); // pending|reviewed|rejected|accepted
+            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->timestamps();
         });
     }

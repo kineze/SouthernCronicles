@@ -13,6 +13,7 @@ use App\Http\Controllers\FestivalController;
 use App\Http\Controllers\SpeakersController;
 use App\Http\Controllers\TeamTypeController;
 use App\Http\Controllers\TimeSlotController;
+use App\Http\Controllers\InternshipController;
 use App\Http\Controllers\UsefulLinkController;
 use App\Http\Controllers\VolunteersController;
 use App\Http\Controllers\PartnerTypeController;
@@ -21,7 +22,7 @@ use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\BookingManageController;
 use App\Http\Controllers\MemorySubmissionController;
 use App\Http\Controllers\CareerApplicationController;
-
+use App\Http\Controllers\VolunteerApplicationController;
 
 // for admin view
 
@@ -117,4 +118,7 @@ Route::post('/launchpad/book', [BookingController::class, 'store']);
 Route::post('/memory-submissions', [MemorySubmissionController::class, 'store']);
 
 Route::post('/careers/{career}/apply', [CareerApplicationController::class, 'store']);
+
+Route::post('/internships', [InternshipController::class, 'store']);
+Route::post('/volunteers',  [VolunteerApplicationController::class, 'store']);
 
