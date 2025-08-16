@@ -93,6 +93,12 @@ Route::put('/careers/{career}',   [CareersController::class, 'update']);
 Route::delete('/careers/{career}',[CareersController::class, 'destroy']);
 Route::put('/careers/{career}/toggle-status', [CareersController::class, 'toggleStatus']);
 
+Route::get('/career-applications', [CareerApplicationController::class, 'index']);
+Route::patch('/career-applications/{application}/status', [CareerApplicationController::class, 'updateStatus']);
+Route::get('/career-applications/{application}/cv', [CareerApplicationController::class, 'downloadCv']);
+
+
+
 
 // for web view
 Route::get('/speakers/home', [SpeakersController::class, 'homeSpeakers']);
@@ -121,4 +127,3 @@ Route::post('/careers/{career}/apply', [CareerApplicationController::class, 'sto
 
 Route::post('/internships', [InternshipController::class, 'store']);
 Route::post('/volunteers',  [VolunteerApplicationController::class, 'store']);
-

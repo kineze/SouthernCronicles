@@ -21,6 +21,7 @@ use App\Http\Controllers\VolunteersController;
 use App\Http\Controllers\PartnerTypeController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\BookingManageController;
+use App\Http\Controllers\CareerApplicationController;
 use App\Http\Controllers\MemorySubmissionController;
 
 Route::controller(GenaralController::class)->group( function (){
@@ -191,6 +192,12 @@ Route::middleware(['permission:Manage Careers', config('jetstream.auth_session')
     Route::controller(CareersController::class)->group(function () {
 
         Route::get('/manage-careers','manageCareers')->name('manageCareers');
+
+    });
+
+    Route::controller(CareerApplicationController::class)->group(function () {
+
+        Route::get('/career-applications','careerApplications')->name('careerApplications');
 
     });
 
