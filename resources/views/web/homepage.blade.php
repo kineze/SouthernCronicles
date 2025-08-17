@@ -4,10 +4,10 @@
 
 <section class="w-full hidden md:block max-w-screen-2xl -mt-6 mx-auto relative">
   <!-- Container for layers -->
-  <div class="relative w-full z-0 mb-12 rounded-3 min-h-[150vh]">
+  <div class="relative w-full z-0 mb-12 rounded-3 min-h-[130vh]">
 
     <!-- Layer 5: Farthest Background -->
-    <div class="parallax- overflow-hidden absolute z-50 w-full -bottom-0" data-speed="0.1">
+    <div class="parallax-layer overflow-hidden absolute z-50 w-full bottom-0" data-speed="0.1">
       <img src="{{ asset('assets/img/light-blue-waves.webp') }}" class="w-full bob-y -mb-9  object-contain" alt="Layer 5">
     </div>
     
@@ -34,7 +34,7 @@
 
     
     <!-- Layer 3: Looping layer -->
-    <div class="parallax-layer absolute z-30 bottom-0 w-full" data-speed="0.3">
+    <div class="parallax-layer absolute z-30 -bottom-20 w-full" data-speed="0.2">
     
         <svg class="absolute -mt-[450px] w-full h-auto" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" zoomAndPan="magnify" viewBox="0 0 810 1012.49997" height="1350" preserveAspectRatio="xMidYMid meet" version="1.2">
             <defs>
@@ -209,7 +209,7 @@
   </div>
   
    <div class="bg-transparent">
-        <div  class=" relative flex pb-24 flex-wrap bg-white z-[1000] bg-opacity-50 backdrop-blur-xl bg-transparent items-start justify-end px-6 ">
+        <div  class=" relative flex pb-24 flex-wrap bg-white z-[1000] bg-opacity-50 backdrop-blur-xl bg-transparent items-start justify-end px-6 pt-24 ">
           <div class="w-full lg:w-6/12">
               <div class="">
                   <div class=" mx-auto px-4 text-center py-6">
