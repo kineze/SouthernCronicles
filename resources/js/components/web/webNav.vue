@@ -22,7 +22,7 @@
           <a href="/">
             <img
               :src="trogonUrl"
-              class="inline-block max-w-full transition-all w-36 h-36 duration-200 ease-soft-in-out"
+              class="inline-block max-w-full transition-all w-36 h-36 p-4 duration-200 ease-soft-in-out"
               alt="main_logo"
             />
           </a>
