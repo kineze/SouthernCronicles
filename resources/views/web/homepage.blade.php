@@ -36,7 +36,7 @@
     <!-- Layer 3: Looping layer -->
     <div class="parallax-layer absolute  z-30 -bottom-20 w-full" data-speed="0.2">
     
-        <svg class="absolute -mt-[450px] w-full h-auto" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" zoomAndPan="magnify" viewBox="0 0 810 1012.49997" height="1350" preserveAspectRatio="xMidYMid meet" version="1.2">
+        <svg class="absolute -mt-[450px] w-full h-auto" stroke="#000000" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" zoomAndPan="magnify" viewBox="0 0 810 1012.49997" height="1350" preserveAspectRatio="xMidYMid meet" version="1.2">
             <defs>
                 <clipPath id="0da446e446"><path d="M 0.199219 168 L 6 168 L 6 183 L 0.199219 183 Z M 0.199219 168 " /></clipPath>
                 <clipPath id="2ca1c25d52"><path d="M 0.199219 190 L 6 190 L 6 203 L 0.199219 203 Z M 0.199219 190 " /></clipPath>
