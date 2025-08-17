@@ -121,7 +121,7 @@
     </div>
 
     <!-- Layer 1: Foreground -->
-    <div class="parallax-layer absolute  overflow-hidden z-0 w-full -top-16 -right-44"  data-speed="0.4">
+    <div class="parallax-layer absolute  overflow-hidden z-30 w-full -top-16 -right-44"  data-speed="0.4">
        <div class="w-full">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1080" zoomAndPan="magnify" viewBox="0 0 810 1012.49997" height="1350" preserveAspectRatio="xMidYMid meet" version="1.2">
             <defs>
