@@ -12,7 +12,7 @@
     </div>
     
     <!-- Layer 4 -->
-    <div class="parallax-layer absolute animate-bounce z-40 w-full bottom-28" data-speed="0.2">
+    <div class="parallax-layer absolute z-40 w-full bottom-28" data-speed="0.2">
       <div class="loop-viewport " style="--bob-amp:12px; --bob-dur:5s">
         <div class="loop-track">
           <div class="loop-group">
