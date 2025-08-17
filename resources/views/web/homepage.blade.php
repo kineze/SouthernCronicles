@@ -123,7 +123,7 @@
     <!-- Layer 1: Foreground -->
     <div class="parallax-layer absolute  overflow-hidden z-[120] w-full -top-16 -right-44"  data-speed="0.4">
        <div class="w-full">
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1080" zoomAndPan="magnify" viewBox="0 0 810 1012.49997" height="1350" preserveAspectRatio="xMidYMid meet" version="1.2">
+        <svg xmlns="http://www.w3.org/2000/svg" stroke="#000000" xmlns:xlink="http://www.w3.org/1999/xlink" width="1080" zoomAndPan="magnify" viewBox="0 0 810 1012.49997" height="1350" preserveAspectRatio="xMidYMid meet" version="1.2">
             <defs>
                 <clipPath id="eb653a4d8d"><path d="M 364 184 L 432 184 L 432 261.839844 L 364 261.839844 Z M 364 184 " /></clipPath>
                 <clipPath id="d8ae62010a"><path d="M 332.515625 128 L 400 128 L 400 207 L 332.515625 207 Z M 332.515625 128 " /></clipPath>
