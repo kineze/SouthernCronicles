@@ -66,7 +66,7 @@
             <div class="relative h-24 lg:h-full">
               <div class="aspect-w-1 aspect-h-1 w-full max-w-md">
                 <video autoplay muted loop playsinline class="w-full h-full object-cover bg-white rounded-xl">
-                    <source src="/public/assets/img/Target.webm" type="video/webm">
+                    <source src="/public/assets/img/target-new.webm" type="video/webm">
                     Your browser does not support the video tag.
                 </video>
               </div>
