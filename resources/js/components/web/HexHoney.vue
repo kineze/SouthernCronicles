@@ -123,7 +123,7 @@ const padX   = computed(() => isMobile.value ? 500 : 0)
 const padY   = computed(() => isMobile.value ? 20 : -100 )
 
 // row counts (example; keep yours)
-const rowsDesktop = [10, 9, 6, 7, 9, 10]         // <- your desktop config
+const rowsDesktop = [10, 9, 6, 7]         // <- your desktop config
 const rowsMobile  = [2, 3, 2, 3, 2]                // <- your mobile config
 const rows = computed(() => (isMobile.value ? rowsMobile : rowsDesktop))
 
