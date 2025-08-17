@@ -1702,7 +1702,7 @@ const duplicatedLogos = [...logos, ...logos]
 
     .pulse-text {
     fill: #000000; /* Matrix green */
-    animation: matrixPulse 4.0s infinite;
+    animation: matrixPulse 5.0s infinite;
   }
 
   @keyframes matrixPulse {
