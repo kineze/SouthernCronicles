@@ -17,14 +17,23 @@
           </div>
         </div>
 
-        <div class="w-44 md:w-80 z-50 rounded-es-3xl aspect-square">
+        <div class=" w-4/12 flex  justify-end items-start z-50 rounded-es-3xl aspect-square">
+          <div>
           <a href="/">
             <img
-              :src="logoUrl"
-              class="inline-block max-w-full transition-all duration-200 ease-soft-in-out w-full h-full dark:hidden"
+              :src="trogonUrl"
+              class="inline-block max-w-full transition-all w-36 h-36 duration-200 ease-soft-in-out"
               alt="main_logo"
             />
           </a>
+           <a href="/">
+            <img
+              :src="logoUrl"
+              class="inline-block max-w-full transition-all  w-44 h-44 aspect-square duration-200 ease-soft-in-out "
+              alt="main_logo"
+            />  
+          </a>
+          </div>
         </div>
       </div>
     </div>
@@ -118,6 +127,7 @@
 <script setup>
 import { ref } from 'vue'
 import logoUrl from '/public/assets/img/logo.webp'
+import trogonUrl from '/public/assets/img/trogon.webp'
 import kipenziIcon from '/public/assets/img/kipenzi-icon.webp'
 
 const isDrawerOpen = ref(false)

@@ -120,8 +120,12 @@
       <img src="{{ asset('assets/img/skyline-shadow.webp') }}" class="w-full object-contain" alt="Layer 2">
     </div>
 
+
+         
+
+
     <!-- Layer 1: Foreground -->
-    {{-- <div class="parallax-layer absolute  overflow-hidden z-0 w-full top-0 -right-56"  data-speed="0.4">
+    <div class="parallax-layer absolute  overflow-hidden z-0 w-full -top-16 -right-56"  data-speed="0.4">
        <div class="w-full">
          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1080" zoomAndPan="magnify" viewBox="0 0 810 1012.49997" height="1350" preserveAspectRatio="xMidYMid meet" version="1.2">
               <defs>
@@ -192,7 +196,7 @@
               </g>
           </svg>
         </div>
-    </div> --}}
+    </div>
 
        <!-- Bob the entire marquee vertically -->
      
