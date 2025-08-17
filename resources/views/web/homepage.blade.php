@@ -7,8 +7,8 @@
   <div class="relative w-full z-0 mb-12 rounded-3 min-h-[130vh]">
 
     <!-- Layer 5: Farthest Background -->
-    <div class="parallax-layer overflow-hidden absolute z-50 w-full bottom-0" data-speed="0.1">
-      <img src="{{ asset('assets/img/light-blue-waves.webp') }}" class="w-full bob-y -mb-9  object-contain" alt="Layer 5">
+    <div class="parallax-layer overflow-hidden absolute z-50 w-full bottom-0" data-speed="0.2">
+      <img src="{{ asset('assets/img/wave-002.webp') }}" class="w-full bob-y -mb-9  object-contain" alt="Layer 5">
     </div>
     
     <!-- Layer 4 -->
@@ -120,9 +120,9 @@
       <img src="{{ asset('assets/img/skyline-shadow.webp') }}" class="w-full object-contain" alt="Layer 2">
     </div>
 
-
-         
-
+     <div class="parallax-layer -mt-24 absolute z-20 w-full top-0" data-speed="0.3">
+            <img src="{{ asset('assets/img/top-layer-new.webp') }}" class="w-full object-contain" alt="Buildings">
+        </div>
 
     <!-- Layer 1: Foreground -->
     <div class="parallax-layer absolute  overflow-hidden z-0 w-full -top-16 -right-56"  data-speed="0.4">
@@ -197,12 +197,9 @@
           </svg>
         </div>
     </div>
-
-       <!-- Bob the entire marquee vertically -->
      
-
     <!-- Foreground Content -->
-    <div class="relative z-60 flex flex-col items-start justify-center p-3 pt-32 lg:pt-20">
+    <div class="relative z-60 flex flex-col items-start justify-center p-3">
       <h2 class="font-semibold text-black uppercase text-8xl">2025</h2>
       <h1 class="tracking-[5px] text-5xl uppercase font-bold text-black leading-tight">
         The Asian Literary <br> Festival
@@ -262,10 +259,10 @@
               <h1 class="tracking-[10px] text-4xl uppercase font-bold text-black leading-tight">
                   Bridging Worlds Through Words
               </h1>
-          <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl mt-5"></h2>
-          <p class="text-gray-700 text-justify">Literature is the lifeblood of human understanding, the bridge between hearts and minds across all divides. The Asian Literary Festival Gampaha, the island's first free literary celebration, serves as the epicentre where writers, thinkers, and artists from across the globe converge with Sri Lanka's local literary voices, fostering dynamic cross-fertilisation.
-            Set in Gampaha—birthplace of numerous Sri Lankan creative luminaries—this festival transforms literary engagement from privilege to public right, celebrating the power of storytelling to unite, inspire, and transform communities across cultural and linguistic boundaries.
-        </p>
+            <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl mt-5"></h2>
+            <p class="text-gray-700 text-justify">Literature is the lifeblood of human understanding, the bridge between hearts and minds across all divides. The Asian Literary Festival Gampaha, the island's first free literary celebration, serves as the epicentre where writers, thinkers, and artists from across the globe converge with Sri Lanka's local literary voices, fostering dynamic cross-fertilisation.
+                    Set in Gampaha—birthplace of numerous Sri Lankan creative luminaries—this festival transforms literary engagement from privilege to public right, celebrating the power of storytelling to unite, inspire, and transform communities across cultural and linguistic boundaries.
+                </p>
           </div>
       </div>
     </div>
