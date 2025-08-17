@@ -319,7 +319,7 @@
   </div>
   
    <div class="bg-transparent">
-        <div  class=" relative flex pb-24 flex-wrap bg-white z-[1000] bg-opacity-50 backdrop-blur-xl bg-transparent items-start justify-end px-6 pt-24 ">
+        <div  class=" relative flex pb-12 flex-wrap bg-white z-[1000] bg-opacity-50 backdrop-blur-xl bg-transparent items-start justify-end px-6 pt-24 ">
           <div class="w-full lg:w-6/12">
               <div class="">
                   <div class=" mx-auto px-4 text-center py-6">
@@ -436,7 +436,7 @@
   </div>
   
    <div class="bg-transparent">
-        <div  class=" relative flex pb-24 flex-wrap bg-white z-[1000] bg-opacity-50 backdrop-blur-xl bg-transparent items-start justify-end px-6 lg:px-12 pt-36">
+        <div  class=" relative flex flex-wrap bg-white z-[1000] bg-opacity-50 backdrop-blur-xl bg-transparent items-start justify-end px-6 lg:px-12 pt-36">
           <div class="w-full lg:w-6/12">
                <div class="">
                     <div class=" mx-auto px-4 text-center py-6">
@@ -494,7 +494,6 @@
 
 </section>
 
-
 <section class="w-full max-w-screen-2xl mx-auto">
   <vision-mission
     eyebrow="Who We Are"
@@ -507,9 +506,6 @@
     accent="active-purple"
   ></vision-mission>
 </section>
-
-
-
 
 <section class="relative w-full max-w-screen-2xl mx-auto">
 

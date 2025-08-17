@@ -1,7 +1,7 @@
 <!-- resources/js/components/web/VisionMission.vue -->
 <template>
   <section
-    class="relative w-full max-w-screen-2xl mx-auto px-4 -mt-5 sm:px-6 py-10 lg:py-20"
+    class="relative w-full max-w-screen-2xl mx-auto px-4 sm:px-6 py-8"
     aria-labelledby="vm-title"
   >
     <!-- Subtle decorative backdrop -->
@@ -34,96 +34,55 @@
           <!-- Media -->
           <div class="w-full lg:w-5/12">
             <div class="relative h-48 lg:h-full">
-              <img
-                v-if="visionImage"
-                :src="visionImage"
-                alt="Vision illustration"
-                class="absolute inset-0 h-full w-full object-cover"
-              />
-              <div v-else class="absolute inset-0 grid place-items-center">
-                <!-- inline SVG (no JSX) -->
-                <svg class="w-20 h-20 text-black/30" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                        d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z" />
-                  <circle cx="12" cy="12" r="3.5" stroke-width="1.5"/>
-                </svg>
+              <div class="aspect-w-1 aspect-h-1 w-full max-w-md">
+                <video autoplay muted loop playsinline class="w-full p-6 h-full object-cover bg-white rounded-xl">
+                    <source src="/public/assets/img/Idea_Bulb.webm" type="video/webm">
+                    Your browser does not support the video tag.
+                </video>
               </div>
-              <!-- subtle overlay -->
-              <div class="absolute inset-0 bg-gradient-to-tr from-white/30 to-transparent"></div>
+            </div>
+          </div>
+
+          <!-- Copy -->
+          <div class="w-full lg:w-7/12 p-6">
+            <h3 class="uppercase text-3xl lg:text-4xl font-extrabold tracking-widest text-black flex items-center gap-3">
+              <span class="inline-block">Vision</span>
+            </h3>
+
+            <p class="mt-4 text-gray-700 leading-relaxed">
+              {{ visionText }}
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <article
+        ref="missionRef"
+        class="reveal group relative overflow-hidden rounded bg-white/70 backdrop-blur-xl border border-black/5 shadow-lg"
+      >
+        <div class="flex flex-col lg:flex-row">
+          <!-- Media -->
+          <div class="w-full lg:w-5/12">
+            <div class="relative h-24 lg:h-full">
+              <div class="aspect-w-1 aspect-h-1 w-full max-w-md">
+                <video autoplay muted loop playsinline class="w-full h-full object-cover bg-white rounded-xl">
+                    <source src="/public/assets/img/Target.webm" type="video/webm">
+                    Your browser does not support the video tag.
+                </video>
+              </div>
             </div>
           </div>
 
           <!-- Copy -->
           <div class="w-full lg:w-7/12 p-6 lg:p-8">
             <h3 class="uppercase text-3xl lg:text-4xl font-extrabold tracking-widest text-black flex items-center gap-3">
-              <span class="inline-block">{{ visionTitle }}</span>
+              <span class="inline-block">Vision</span>
               <span class="h-[10px] w-[10px] rounded-full" :class="accentDotClass"></span>
             </h3>
 
             <p class="mt-4 text-gray-700 leading-relaxed">
               {{ visionText }}
             </p>
-
-            <ul v-if="visionPoints && visionPoints.length" class="mt-5 space-y-2">
-              <li v-for="(pt, idx) in visionPoints" :key="'v-'+idx" class="flex items-start gap-3">
-                <span class="mt-1 h-2 w-2 rounded-full" :class="accentDotClass"></span>
-                <span class="text-gray-800">{{ pt }}</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </article>
-
-      <!-- Mission -->
-      <article
-        ref="missionRef"
-        class="reveal group relative overflow-hidden rounded bg-white/70 backdrop-blur-xl border border-black/5 shadow-lg"
-      >
-        <div class="flex flex-col lg:flex-row-reverse">
-          <!-- Media -->
-          <div class="w-full lg:w-5/12">
-            <div class="relative h-48 lg:h-full">
-              <img
-                v-if="missionImage"
-                :src="missionImage"
-                alt="Mission illustration"
-                class="absolute inset-0 h-full w-full object-cover"
-              />
-              <div v-else class="absolute inset-0 grid place-items-center">
-                <!-- inline SVG (no JSX) -->
-                <svg class="w-20 h-20 text-black/30" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                        d="M4 21V5m0 0c2-1 4-1 6 0s4 1 6 0 4-1 4-1v9s-2 1-4 1-4-1-6 0-4 1-6 0" />
-                </svg>
-              </div>
-              <div class="absolute inset-0 bg-gradient-to-tl from-white/30 to-transparent"></div>
-            </div>
-          </div>
-
-          <!-- Copy -->
-          <div class="w-full lg:w-7/12 p-6 lg:p-8">
-            <h3 class="uppercase text-3xl lg:text-4xl font-extrabold tracking-widest text-black flex items-center gap-3">
-              <span class="inline-block">{{ missionTitle }}</span>
-              <span class="h-[10px] w-[10px] rounded-full" :class="accentDotClass"></span>
-            </h3>
-
-            <p class="mt-4 text-gray-700 leading-relaxed">
-              {{ missionText }}
-            </p>
-
-            <ul v-if="missionPoints && missionPoints.length" class="mt-5 space-y-2">
-              <li v-for="(pt, idx) in missionPoints" :key="'m-'+idx" class="flex items-start gap-3">
-                <span class="mt-1 h-2 w-2 rounded-full" :class="accentDotClass"></span>
-                <span class="text-gray-800">{{ pt }}</span>
-              </li>
-            </ul>
-
-            <div v-if="cta && cta.label" class="mt-6">
-              <a :href="cta.href || '#'"
-                 class="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-bold uppercase tracking-widest text-white bg-black hover:bg-black/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black">
-                {{ cta.label }}
-              </a>
-            </div>
           </div>
         </div>
       </article>
