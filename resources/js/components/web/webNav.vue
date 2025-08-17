@@ -127,7 +127,7 @@
 <script setup>
 import { ref } from 'vue'
 import logoUrl from '/public/assets/img/logo.webp'
-import trogonUrl from '/public/assets/img/trogon.webp'
+import trogonUrl from '/public/assets/img/trogon-logo.webp'
 import kipenziIcon from '/public/assets/img/kipenzi-icon.webp'
 
 const isDrawerOpen = ref(false)
