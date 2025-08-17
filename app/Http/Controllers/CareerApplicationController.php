@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Career;
 use Illuminate\Http\Request;
 use App\Models\CareerApplication;
+use Illuminate\Support\Facades\Storage;
 
 class CareerApplicationController extends Controller
 {
@@ -42,5 +43,60 @@ class CareerApplicationController extends Controller
             'message' => 'Application received. Thank you!',
             'id' => $app->id,
         ], 201);
+    }
+
+    public function careerApplications(){
+
+        return view('dashboards.admin.careerApplications');
+    }
+
+
+    public function index(Request $request)
+    {
+        $perPage = max(1, min((int)$request->input('per_page', 20), 100));
+        $status  = $request->input('status');
+        $search  = $request->input('search');
+
+        $q = CareerApplication::with('career:id,title')
+            ->when(in_array($status, ['pending','approved','rejected'], true), fn($qq) => $qq->where('status', $status))
+            ->when($search, function ($qq) use ($search) {
+                $qq->where(function ($w) use ($search) {
+                    $w->where('first_name', 'like', "%{$search}%")
+                      ->orWhere('last_name', 'like', "%{$search}%")
+                      ->orWhere('email', 'like', "%{$search}%")
+                      ->orWhere('phone', 'like', "%{$search}%");
+                });
+            })
+            ->orderByDesc('created_at');
+
+        return $q->paginate($perPage);
+    }
+
+
+    public function updateStatus(Request $request, CareerApplication $application)
+    {
+        $data = $request->validate([
+            'status' => 'required|in:pending,approved,rejected',
+        ]);
+
+        $application->update(['status' => $data['status']]);
+
+        return response()->json([
+            'ok' => true,
+            'message' => 'Status updated.',
+            'application' => $application->fresh('career:id,title'),
+        ]);
+    }
+
+    
+    public function downloadCv(CareerApplication $application)
+    {
+        if (!$application->cv_path || !Storage::disk('public')->exists($application->cv_path)) {
+            return response()->json(['message' => 'CV not found'], 404);
+        }
+
+        $filename = basename($application->cv_path) ?: 'cv.pdf';
+        $filePath = Storage::disk('public')->path($application->cv_path);
+        return response()->download($filePath, $filename);
     }
 }
