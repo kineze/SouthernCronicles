@@ -96,7 +96,21 @@ Route::put('/careers/{career}/toggle-status', [CareersController::class, 'toggle
 Route::get('/career-applications', [CareerApplicationController::class, 'index']);
 Route::patch('/career-applications/{application}/status', [CareerApplicationController::class, 'updateStatus']);
 Route::get('/career-applications/{application}/cv', [CareerApplicationController::class, 'downloadCv']);
+Route::delete('/career-applications/{id}', [CareerApplicationController::class, 'destroy']);
 
+Route::prefix('internships')->group(function () {
+    Route::get('/',            [InternshipController::class, 'index']);
+    Route::patch('{id}/status',[InternshipController::class, 'updateStatus']);
+    Route::get('{id}/cv',      [InternshipController::class, 'downloadCv']);
+    Route::delete('{id}',      [InternshipController::class, 'destroy']);
+});
+
+Route::prefix('volunteer-applications')->group(function () {
+    Route::get('/',              [VolunteerApplicationController::class, 'index']);         
+    Route::get('{id}',           [VolunteerApplicationController::class, 'show']);          
+    Route::patch('{id}/status',  [VolunteerApplicationController::class, 'updateStatus']);  
+    Route::delete('{id}',        [VolunteerApplicationController::class, 'destroy']); 
+});
 
 
 
