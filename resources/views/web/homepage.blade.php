@@ -4,52 +4,119 @@
 
 <section class="w-full hidden md:block max-w-screen-2xl -mt-6 mx-auto relative">
   <!-- Container for layers -->
-  <div class="relative w-full z-0 rounded-3 min-h-[130vh]">
+  <div class="relative w-full z-0 mb-12 overflow-hidden rounded-3 min-h-[150vh]">
 
     <!-- Layer 5: Farthest Background -->
-    <div class="parallax-layer absolute z-50 w-full bottom-0" data-speed="0.2">
-      <img src="{{ asset('assets/img/layer-005.webp') }}" class="w-full object-contain" alt="Layer 5">
+    <div class="parallax- overflow-hidden absolute z-50 w-full -bottom-20" data-speed="0.1">
+      <img src="{{ asset('assets/img/light-blue-waves.webp') }}" class="w-full bob-y -mb-9  object-contain" alt="Layer 5">
     </div>
     
     <!-- Layer 4 -->
-    <div class="parallax-layer absolute z-40 w-full bottom-0" data-speed="0.3">
-      <img src="{{ asset('assets/img/layer-004.webp') }}" class="w-full object-contain" alt="Layer 4">
-    </div>
-
-    <!-- Layer 3: Looping layer -->
-    <div class="parallax-layer absolute z-30 bottom-8 w-full overflow-hidden" data-speed="0.3">
-      <img src="{{ asset('assets/img/layer-002.webp') }}" class="w-full bob-y -mb-9 object-contain" alt="Layer 2">
-
-      <!-- Bob the entire marquee vertically -->
+    <div class="parallax-layer absolute z-40 w-full bottom-28" data-speed="0.2">
       <div class="loop-viewport " style="--bob-amp:12px; --bob-dur:5s">
         <div class="loop-track">
           <div class="loop-group">
-            <img src="{{ asset('assets/img/layer-003.webp') }}" alt="Layer 3">
-            <img src="{{ asset('assets/img/layer-003.webp') }}" alt="Layer 3">
-            <img src="{{ asset('assets/img/layer-003.webp') }}" alt="Layer 3">
-            <img src="{{ asset('assets/img/layer-003.webp') }}" alt="Layer 3">
+            <img src="{{ asset('assets/img/text-mrqeuu.webp') }}" alt="Layer 3">
+            <img src="{{ asset('assets/img/text-mrqeuu.webp') }}" alt="Layer 3">
+            <img src="{{ asset('assets/img/text-mrqeuu.webp') }}" alt="Layer 3">
+            <img src="{{ asset('assets/img/text-mrqeuu.webp') }}" alt="Layer 3">
           </div>
           <div class="loop-group" aria-hidden="true">
-            <img src="{{ asset('assets/img/layer-003.webp') }}" alt="Layer 3">
-            <img src="{{ asset('assets/img/layer-003.webp') }}" alt="Layer 3">
-            <img src="{{ asset('assets/img/layer-003.webp') }}" alt="Layer 3">
-            <img src="{{ asset('assets/img/layer-003.webp') }}" alt="Layer 3">
+            <img src="{{ asset('assets/img/text-mrqeuu.webp') }}" alt="Layer 3">
+            <img src="{{ asset('assets/img/text-mrqeuu.webp') }}" alt="Layer 3">
+            <img src="{{ asset('assets/img/text-mrqeuu.webp') }}" alt="Layer 3">
+            <img src="{{ asset('assets/img/text-mrqeuu.webp') }}" alt="Layer 3">
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Layer 1: Foreground -->
-    <div class="parallax-layer absolute z-10 w-full bottom-44" data-speed="0.3">
-      <img src="{{ asset('assets/img/layer-001.webp') }}" class="w-full object-contain" alt="Layer 1">
+    <!-- Layer 3: Looping layer -->
+    <div class="parallax-layer absolute z-30 bottom-0 w-full overflow-hidden" data-speed="0.3">
+      <img src="{{ asset('assets/img/uae-skyline.webp') }}" class="w-full  object-contain" alt="Layer 2">
+
+      <img src="{{ asset('assets/img/skyline-shadow.webp') }}" class="w-full object-contain" alt="Layer 2">
     </div>
 
-    <div class="parallax-layer absolute z-20 w-full top-0" data-speed="0.3">
-        <img src="{{ asset('assets/img/top-layer-new.webp') }}" class="w-full object-contain" alt="Buildings">
+    <!-- Layer 1: Foreground -->
+    <div class="parallax-layer absolute  overflow-hidden z-0 w-full top-0 -right-56"  data-speed="0.4">
+       <div class="w-full">
+         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1080" zoomAndPan="magnify" viewBox="0 0 810 1012.49997" height="1350" preserveAspectRatio="xMidYMid meet" version="1.2">
+              <defs>
+                  <clipPath id="717d2231e0"><path d="M 341.132812 133 L 409 133 L 409 211 L 341.132812 211 Z M 341.132812 133 " /></clipPath>
+                  <clipPath id="e64a9e9d83"><path d="M 598 22 L 664.972656 22 L 664.972656 100 L 598 100 Z M 598 22 " /></clipPath>
+              </defs>
+              <g id="db3e97c938">
+                  <path
+                      
+                      d="M 406.726562 265.785156 L 373.277344 246.476562 L 373.277344 207.859375 L 406.726562 188.550781 L 440.175781 207.859375 L 440.175781 246.476562 Z M 376.003906 244.898438 L 406.726562 262.625 L 437.445312 244.898438 L 437.445312 209.367188 L 406.726562 191.636719 L 376.003906 209.367188 Z M 376.003906 244.898438 "
+                  />
+                  <path
+                      
+                      d="M 438.8125 210.371094 L 405.363281 191.0625 L 405.363281 152.445312 L 438.8125 133.140625 L 472.257812 152.445312 L 472.257812 191.0625 Z M 408.089844 189.554688 L 438.8125 207.285156 L 469.53125 189.554688 L 469.53125 154.027344 L 438.8125 136.296875 L 408.089844 154.027344 Z M 408.089844 189.554688 "
+                  />
+                  <path
+                      
+                      d="M 470.96875 155.03125 L 437.519531 135.722656 L 437.519531 97.105469 L 470.96875 77.796875 L 504.414062 97.105469 L 504.414062 135.722656 Z M 440.175781 134.144531 L 470.894531 151.871094 L 501.617188 134.144531 L 501.617188 98.613281 L 470.894531 80.882812 L 440.175781 98.613281 Z M 440.175781 134.144531 "
+                  />
+                  <path
+                      
+                      d="M 503.050781 99.617188 L 469.601562 80.308594 L 469.601562 41.695312 L 503.050781 22.386719 L 536.5 41.695312 L 536.5 80.308594 Z M 472.257812 78.804688 L 502.980469 96.53125 L 533.699219 78.804688 L 533.699219 43.273438 L 502.980469 25.542969 L 472.257812 43.273438 Z M 472.257812 78.804688 "
+                  />
+                  <path
+                      
+                      d="M 535.136719 44.277344 L 501.6875 24.96875 L 501.6875 -13.648438 L 535.136719 -32.953125 L 568.585938 -13.648438 L 568.585938 24.96875 Z M 504.34375 23.390625 L 535.066406 41.121094 L 565.855469 23.390625 L 565.855469 -12.066406 L 535.136719 -29.867188 L 504.414062 -12.140625 L 504.414062 23.390625 Z M 504.34375 23.390625 "
+                  />
+                  <g clip-rule="nonzero" clip-path="url(#717d2231e0)">
+                      <path
+                          
+                          d="M 374.640625 210.371094 L 341.191406 191.0625 L 341.191406 152.445312 L 374.640625 133.140625 L 408.089844 152.445312 L 408.089844 191.0625 Z M 343.847656 189.554688 L 374.570312 207.285156 L 405.363281 189.554688 L 405.363281 154.027344 L 374.640625 136.296875 L 343.847656 154.027344 Z M 343.847656 189.554688 "
+                      />
+                  </g>
+                  <path
+                      
+                      d="M 438.8125 99.617188 L 405.363281 80.308594 L 405.363281 41.695312 L 438.8125 22.386719 L 472.257812 41.695312 L 472.257812 80.308594 Z M 408.089844 78.804688 L 438.8125 96.53125 L 469.53125 78.804688 L 469.53125 43.273438 L 438.8125 25.542969 L 408.089844 43.273438 Z M 408.089844 78.804688 "
+                  />
+                  <path
+                      
+                      d="M 470.96875 265.785156 L 437.519531 246.476562 L 437.519531 207.859375 L 470.96875 188.550781 L 504.414062 207.859375 L 504.414062 246.476562 Z M 440.175781 244.898438 L 470.894531 262.625 L 501.617188 244.898438 L 501.617188 209.367188 L 470.894531 191.636719 L 440.175781 209.367188 Z M 440.175781 244.898438 "
+                  />
+                  <path
+                      
+                      d="M 503.050781 210.371094 L 469.601562 191.0625 L 469.601562 152.445312 L 503.050781 133.140625 L 536.5 152.445312 L 536.5 191.0625 Z M 472.257812 189.554688 L 502.980469 207.285156 L 533.699219 189.554688 L 533.699219 154.027344 L 502.980469 136.296875 L 472.257812 154.027344 Z M 472.257812 189.554688 "
+                  />
+                  <path
+                      
+                      d="M 535.136719 155.03125 L 501.6875 135.722656 L 501.6875 97.105469 L 535.136719 77.796875 L 568.585938 97.105469 L 568.585938 135.722656 Z M 504.34375 134.144531 L 535.066406 151.871094 L 565.785156 134.144531 L 565.785156 98.613281 L 535.066406 80.882812 L 504.34375 98.613281 Z M 504.34375 134.144531 "
+                  />
+                  <path
+                      
+                      d="M 567.222656 99.617188 L 533.773438 80.308594 L 533.773438 41.695312 L 567.222656 22.386719 L 600.667969 41.695312 L 600.667969 80.308594 Z M 536.5 78.804688 L 567.222656 96.53125 L 597.941406 78.804688 L 597.941406 43.273438 L 567.222656 25.542969 L 536.5 43.273438 Z M 536.5 78.804688 "
+                  />
+                  <path
+                      
+                      d="M 599.304688 44.277344 L 565.855469 24.96875 L 565.855469 -13.648438 L 599.304688 -32.953125 L 632.753906 -13.648438 L 632.753906 24.96875 Z M 568.585938 23.390625 L 599.304688 41.121094 L 630.027344 23.390625 L 630.027344 -12.066406 L 599.304688 -29.867188 L 568.585938 -12.140625 Z M 568.585938 23.390625 "
+                  />
+                  <path
+                      
+                      d="M 567.222656 210.371094 L 533.773438 191.0625 L 533.773438 152.445312 L 567.222656 133.140625 L 600.667969 152.445312 L 600.667969 191.0625 Z M 536.5 189.554688 L 567.222656 207.285156 L 597.941406 189.554688 L 597.941406 154.027344 L 567.222656 136.296875 L 536.5 154.027344 Z M 536.5 189.554688 "
+                  />
+                  <g clip-rule="nonzero" clip-path="url(#e64a9e9d83)">
+                      <path
+                          
+                          d="M 631.460938 99.617188 L 598.015625 80.308594 L 598.015625 41.695312 L 631.460938 22.386719 L 664.910156 41.695312 L 664.910156 80.308594 Z M 600.667969 78.804688 L 631.390625 96.53125 L 662.109375 78.804688 L 662.109375 43.273438 L 631.390625 25.542969 L 600.667969 43.273438 Z M 600.667969 78.804688 "
+                      />
+                  </g>
+              </g>
+          </svg>
+        </div>
     </div>
+
+       <!-- Bob the entire marquee vertically -->
+     
 
     <!-- Foreground Content -->
-    <div class="relative z-60 flex flex-col items-start justify-center p-3 pt-32 lg:pt-28">
+    <div class="relative z-60 flex flex-col items-start justify-center p-3 pt-32 lg:pt-20">
       <h2 class="font-semibold text-black uppercase text-8xl">2025</h2>
       <h1 class="tracking-[5px] text-5xl uppercase font-bold text-black leading-tight">
         The Asian Literary <br> Festival
@@ -60,7 +127,7 @@
   </div>
   
    <div class="bg-transparent">
-        <div  class=" relative flex pb-24 flex-wrap bg-white z-[1000] bg-opacity-50 backdrop-blur-xl bg-transparent items-start justify-end px-6 lg:px-12 pt-36">
+        <div  class=" relative flex pb-24 flex-wrap bg-white z-[1000] bg-opacity-50 backdrop-blur-xl bg-transparent items-start justify-end px-6 ">
           <div class="w-full lg:w-6/12">
               <div class="">
                   <div class=" mx-auto px-4 text-center py-6">

@@ -39,7 +39,7 @@
    ========================================= */
 :root{
   /* Tweak these to taste */
-  --marquee-speed: 60s;                 /* total time for one cycle  */
+  --marquee-speed: 120s;                 /* total time for one cycle  */
   --l3-height: clamp(140px, 22vw, 320px);/* visible height for layer 3 */
 }
 
@@ -78,8 +78,8 @@
 
 /* Move the track exactly one group width (50% of the double track) */
 @keyframes marquee-ltr{
-  0%   { transform: translateX(-50%); } /* show Group B (bridge fully visible) */
-  100% { transform: translateX(0%); }   /* end aligned to Group A; loops seamlessly */
+  100%   { transform: translateX(-50%); } /* show Group B (bridge fully visible) */
+  0% { transform: translateX(0%); }   /* end aligned to Group A; loops seamlessly */
 }
 
 /* Optional: smaller devices can run slower/faster or change height */
@@ -117,6 +117,24 @@
 }
 
 .slow-ping { animation: ping 6s cubic-bezier(0, 0, 0.2, 1) infinite; }
+
+
+/* Keyframes for smooth looping through colors */
+@keyframes hiveColorCycle {
+  0%   { fill: #a0d4e0; }  /* light blue */
+  14%  { fill: #8fbaa0; }  /* soft green */
+  28%  { fill: #c5a1c6; }  /* lavender */
+  42%  { fill: #f58e81; }  /* coral */
+  57%  { fill: #fabea5; }  /* peach */
+  71%  { fill: #8ac1a3; }  /* mint */
+  85%  { fill: #f27c88; }  /* pink/red */
+  100% { fill: #a0d4e0; }  /* back to start */
+}
+
+svg path {
+  fill: #a0d4e0; /* default start */
+  animation: hiveColorCycle 8s infinite ease-in-out;
+}}
 
 </style>
 
