@@ -12,7 +12,7 @@
     </div>
     
     <!-- Layer 4 -->
-    <div class="parallax-layer absolute z-40 w-full bottom-28" data-speed="0.2">
+    <div class="parallax-layer absolute animate-bounce z-40 w-full bottom-28" data-speed="0.2">
       <div class="loop-viewport " style="--bob-amp:12px; --bob-dur:5s">
         <div class="loop-track">
           <div class="loop-group">
@@ -34,7 +34,7 @@
 
     
     <!-- Layer 3: Looping layer -->
-    <div class="parallax-layer absolute z-30 -bottom-20 w-full" data-speed="0.2">
+    <div class="parallax-layer absolute  z-30 -bottom-20 w-full" data-speed="0.2">
     
         <svg class="absolute -mt-[450px] w-full h-auto" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" zoomAndPan="magnify" viewBox="0 0 810 1012.49997" height="1350" preserveAspectRatio="xMidYMid meet" version="1.2">
             <defs>
@@ -120,10 +120,6 @@
       <img src="{{ asset('assets/img/skyline-shadow.webp') }}" class="w-full object-contain" alt="Layer 2">
     </div>
 
-     <div class="parallax-layer -mt-24 absolute z-20 w-full top-0" data-speed="0.3">
-            <img src="{{ asset('assets/img/top-layer-new.webp') }}" class="w-full object-contain" alt="Buildings">
-        </div>
-
     <!-- Layer 1: Foreground -->
     <div class="parallax-layer absolute  overflow-hidden z-0 w-full -top-16 -right-56"  data-speed="0.4">
        <div class="w-full">
@@ -199,7 +195,7 @@
     </div>
      
     <!-- Foreground Content -->
-    <div class="relative z-60 flex flex-col items-start justify-center p-3">
+    <div class="relative z-60  flex flex-col items-start justify-center p-3">
       <h2 class="font-semibold text-black uppercase text-8xl">2025</h2>
       <h1 class="tracking-[5px] text-5xl uppercase font-bold text-black leading-tight">
         The Asian Literary <br> Festival
