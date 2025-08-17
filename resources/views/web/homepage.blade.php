@@ -121,7 +121,7 @@
     </div>
 
     <!-- Layer 1: Foreground -->
-    <div class="parallax-layer absolute  overflow-hidden z-30 w-full -top-16 -right-44"  data-speed="0.4">
+    <div class="parallax-layer absolute  overflow-hidden z-[120] w-full -top-16 -right-44"  data-speed="0.4">
        <div class="w-full">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1080" zoomAndPan="magnify" viewBox="0 0 810 1012.49997" height="1350" preserveAspectRatio="xMidYMid meet" version="1.2">
             <defs>
@@ -308,7 +308,7 @@
     </div>
      
     <!-- Foreground Content -->
-    <div class="relative z-60  flex flex-col items-start justify-center mt-16 p-3">
+    <div class="relative z-60  flex flex-col items-start justify-center pt-12 p-3">
       <h2 class="font-semibold text-black uppercase text-8xl">2025</h2>
       <h1 class="tracking-[5px] text-5xl uppercase font-bold text-black leading-tight">
         The Asian Literary <br> Festival
