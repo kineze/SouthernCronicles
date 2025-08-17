@@ -1,5 +1,5 @@
 <template>
-  <div class="relative pt-6 backdrop-blur-xl overflow-hidden lg:py-16">
+  <div class="relative px-4 pt-6 backdrop-blur-xl overflow-hidden lg:py-16">
 
     <div>
       <div class="flex w-full items-center">
