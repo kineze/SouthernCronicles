@@ -4,15 +4,15 @@
 
 <section class="w-full hidden md:block max-w-screen-2xl -mt-6 mx-auto relative">
   <!-- Container for layers -->
-  <div class="relative w-full z-0 mb-12 overflow-hidden rounded-3 min-h-[120vh]">
+  <div class="relative w-full z-0 mb-12 rounded-3 min-h-[150vh]">
 
     <!-- Layer 5: Farthest Background -->
-    <div class="parallax- overflow-hidden absolute z-50 w-full -bottom-20" data-speed="0.1">
+    <div class="parallax- overflow-hidden absolute z-50 w-full -bottom-0" data-speed="0.1">
       <img src="{{ asset('assets/img/light-blue-waves.webp') }}" class="w-full bob-y -mb-9  object-contain" alt="Layer 5">
     </div>
     
     <!-- Layer 4 -->
-    <div class="parallax-layer absolute z-40 w-full bottom-44" data-speed="0.2">
+    <div class="parallax-layer absolute z-40 w-full bottom-28" data-speed="0.2">
       <div class="loop-viewport " style="--bob-amp:12px; --bob-dur:5s">
         <div class="loop-track">
           <div class="loop-group">
@@ -34,9 +34,9 @@
 
     
     <!-- Layer 3: Looping layer -->
-    <div class="parallax-layer absolute z-30 bottom-0 w-full overflow-hidden" data-speed="0.3">
-      <div class="w-full">
-        <svg class="z-50" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1080" zoomAndPan="magnify" viewBox="0 0 810 1012.49997" height="1350" preserveAspectRatio="xMidYMid meet" version="1.2">
+    <div class="parallax-layer absolute z-30 bottom-0 w-full" data-speed="0.3">
+    
+        <svg class="absolute -mt-[450px] w-full h-auto" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" zoomAndPan="magnify" viewBox="0 0 810 1012.49997" height="1350" preserveAspectRatio="xMidYMid meet" version="1.2">
             <defs>
                 <clipPath id="0da446e446"><path d="M 0.199219 168 L 6 168 L 6 183 L 0.199219 183 Z M 0.199219 168 " /></clipPath>
                 <clipPath id="2ca1c25d52"><path d="M 0.199219 190 L 6 190 L 6 203 L 0.199219 203 Z M 0.199219 190 " /></clipPath>
@@ -115,7 +115,7 @@
                 </g>
             </g>
         </svg>
-      </div>
+     
 
       <img src="{{ asset('assets/img/skyline-shadow.webp') }}" class="w-full object-contain" alt="Layer 2">
     </div>
