@@ -131,7 +131,7 @@
   100% { fill: #a0d4e0; }  /* back to start */
 }
 
-svg path {
+svg .animate-path {
   fill: #a0d4e0; /* default start */
   animation: hiveColorCycle 8s infinite ease-in-out;
 }}
