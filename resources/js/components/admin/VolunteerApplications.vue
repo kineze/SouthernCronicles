@@ -2,45 +2,31 @@
   <div>
     <!-- Header -->
     <div class="justify-between flex w-full p-4 bg-white dark:shadow-soft-dark-xl shadow-soft-xl rounded-xl dark:bg-gray-800">
-      <h4 class="dark:text-white text-lg">Career Applications</h4>
+      <h4 class="dark:text-white text-lg">Volunteer Applications</h4>
     </div>
 
-    <!-- Filters -->
-    <!-- <div class="mt-6 bg-white dark:bg-gray-800 rounded-xl shadow p-4">
-
-
-      <div class="mt-3 text-xs text-gray-600 dark:text-gray-300">
-        Page {{ meta.current_page || 1 }} of {{ meta.last_page || 1 }} — Total {{ meta.total || 0 }}
-      </div>
-    </div> -->
-
-    <!-- Table -->
+    <!-- Table Card -->
     <div class="mt-6 bg-white dark:bg-gray-800 rounded-xl shadow p-4 overflow-x-auto">
-
-
-        <div class="flex items-center gap-6 mb-4">
-            <div>
-                <!-- <label class="block text-sm mb-2 dark:text-white">Status</label> -->
-                <select v-model="statusFilter" class="w-46 px-3 py-2 rounded border dark:bg-gray-800 dark:text-white">
-                    <option value="all">All</option>
-                    <option value="pending">Pending</option>
-                    <option value="approved">Approved</option>
-                    <option value="rejected">Rejected</option>
-                </select>
-            </div>
-
-            <div>
-                <!-- <label class="block text-sm mb-2 dark:text-white">Search (name / email / phone)</label> -->
-                <input
-                    v-model.trim="search"
-                    type="text"
-                    placeholder="Type and press Enter…"
-                    @keyup.enter="fetchPage(1)"
-                    class="w-46 px-3 py-2 rounded border dark:bg-gray-800 dark:text-white"
-                />
-            </div>
+      <!-- Filters -->
+      <div class="flex items-center gap-6 mb-4">
+        <div>
+          <select v-model="statusFilter" class="w-46 px-3 py-2 rounded border dark:bg-gray-800 dark:text-white">
+            <option value="all">All</option>
+            <option value="pending">Pending</option>
+            <option value="approved">Approved</option>
+            <option value="rejected">Rejected</option>
+          </select>
         </div>
-
+        <div>
+          <input
+            v-model.trim="search"
+            type="text"
+            placeholder="Type and press Enter…"
+            @keyup.enter="fetchPage(1)"
+            class="w-46 px-3 py-2 rounded border dark:bg-gray-800 dark:text-white"
+          />
+        </div>
+      </div>
 
       <div v-if="loading" class="py-8 text-center text-sm text-gray-500 dark:text-gray-400">
         Loading…
@@ -55,8 +41,7 @@
               <th class="text-left px-3 py-2">Email</th>
               <th class="text-left px-3 py-2">Phone</th>
               <th class="text-left px-3 py-2">Country</th>
-              <th class="text-left px-3 py-2">Position</th>
-              <th class="text-left px-3 py-2">CV</th>
+              <th class="text-left px-3 py-2">Why</th>
               <th class="text-left px-3 py-2">Status</th>
               <th class="text-right px-3 py-2">Actions</th>
             </tr>
@@ -67,61 +52,59 @@
               :key="app.id"
               class="border-b border-gray-100 dark:border-gray-700 align-top"
             >
-              <td class="px-3 py-2 whitespace-nowrap">
-                {{ formatDate(app.created_at) }}
-              </td>
+              <td class="px-3 py-2 whitespace-nowrap">{{ formatDate(app.created_at) }}</td>
+
               <td class="px-3 py-2">
                 <div class="font-medium">{{ app.first_name }} {{ app.last_name }}</div>
               </td>
+
               <td class="px-3 py-2">
                 <a :href="`mailto:${app.email}`" class="text-blue-600 hover:underline">{{ app.email }}</a>
               </td>
+
               <td class="px-3 py-2">
                 <span v-if="app.dial_code">{{ app.phone || '—' }}</span>
-              </td>
-              <td class="px-3 py-2">
-                {{ app.country_iso2 || '—' }}
-              </td>
-              <td class="px-3 py-2">
-                {{ app.career?.title || `#${app.career_id}` }}
-              </td>
-              <td class="px-3 py-2">
-                <a
-                  v-if="app.cv_path"
-                  :href="cvUrl(app.id)"
-                  class="text-lime-500 hover:underline"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  <i class="fa-solid fa-download"></i>
-                </a>
                 <span v-else>—</span>
               </td>
 
-                <td class="px-3 py-2">
+              <td class="px-3 py-2">
+                {{ app.phone_country_iso2 || '—' }}
+              </td>
+
+              <td class="px-3 py-2">
+                <button
+                  class="px-2 py-1 text-xs rounded border hover:bg-gray-50 dark:hover:bg-gray-700"
+                  @click="openWhy(app)"
+                  title="View why this candidate wants to volunteer"
+                >
+                  View Why
+                </button>
+              </td>
+
+              <td class="px-3 py-2">
                 <span :class="chipClass(app.status)">
-                    <span :class="chipDotClass(app.status)"></span>
-                    {{ chipLabel(app.status) }}
+                  <span :class="chipDotClass(app.status)"></span>
+                  {{ chipLabel(app.status) }}
                 </span>
-                </td>
+              </td>
 
-                <td class="px-3 py-2 text-right flex gap-2">
-                    <button
-                    class="px-2 py-1 text-xs rounded bg-lime-600 font-semibold "
-                    :disabled="savingId === app.id"
-                    @click="setStatus(app, 'approved', app.status)"
-                    >
-                    Approve
-                    </button>
-                    <button
-                    class="px-2 py-1 text-xs rounded bg-rose-600 font-semibold"
-                    :disabled="savingId === app.id"
-                    @click="setStatus(app, 'rejected', app.status)"
-                    >
-                    Reject
-                    </button>
-
-                     <button
+              <td class="px-3 py-2 text-right flex gap-2 justify-end">
+                <button
+                  class="px-2 py-1 text-xs rounded bg-lime-600 font-semibold disabled:opacity-50"
+                  :disabled="savingId === app.id"
+                  @click="setStatus(app, 'approved', app.status)"
+                >
+                  Approve
+                </button>
+                <button
+                  class="px-2 py-1 text-xs rounded bg-rose-600 font-semibold disabled:opacity-50"
+                  :disabled="savingId === app.id"
+                  @click="setStatus(app, 'rejected', app.status)"
+                >
+                  Reject
+                </button>
+                <!-- Optional delete -->
+                <button
                   class="px-2 py-1 text-xs rounded bg-gray-700 text-white disabled:opacity-50"
                   :disabled="savingId === app.id"
                   @click="remove(app)"
@@ -129,11 +112,11 @@
                 >
                   Delete
                 </button>
-                </td>
+              </td>
             </tr>
 
             <tr v-if="items.length === 0">
-              <td colspan="9" class="px-3 py-6 text-center text-sm text-gray-500 dark:text-gray-400">
+              <td colspan="8" class="px-3 py-6 text-center text-sm text-gray-500 dark:text-gray-400">
                 No applications found.
               </td>
             </tr>
@@ -145,7 +128,6 @@
           <div class="text-xs text-gray-600 dark:text-gray-300">
             Showing {{ meta.from || 0 }}–{{ meta.to || 0 }} of {{ meta.total || 0 }}
           </div>
-
           <div class="flex items-center gap-2">
             <button
               class="px-3 py-1 rounded border text-sm"
@@ -155,11 +137,9 @@
             >
               Prev
             </button>
-
             <span class="text-xs text-gray-600 dark:text-gray-300">
               {{ meta.current_page || 1 }} / {{ meta.last_page || 1 }}
             </span>
-
             <button
               class="px-3 py-1 rounded border text-sm"
               :class="canNext ? 'hover:bg-gray-50 dark:hover:bg-gray-700' : 'opacity-50 cursor-not-allowed'"
@@ -172,11 +152,33 @@
         </div>
       </template>
     </div>
+
+    <!-- Why Modal -->
+    <div
+      v-if="whyModal.open"
+      class="fixed inset-0 bg-black/40 z-50 flex items-center justify-center px-3"
+      @click.self="closeWhy"
+    >
+      <div class="bg-white dark:bg-gray-900 rounded-xl shadow-xl max-w-2xl w-full p-5">
+        <div class="flex items-center justify-between mb-3">
+          <h3 class="text-lg font-semibold dark:text-white">Why does {{ whyModal.app?.first_name }} want to volunteer?</h3>
+          <button class="text-gray-500 hover:text-gray-800 dark:hover:text-gray-200" @click="closeWhy">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div class="prose max-w-none dark:prose-invert whitespace-pre-wrap">
+          {{ whyModal.app?.why || '—' }}
+        </div>
+        <div class="text-right mt-5">
+          <button class="px-4 py-2 rounded border hover:bg-gray-50 dark:hover:bg-gray-800" @click="closeWhy">Close</button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed, onMounted, watch, h, nextTick } from 'vue'
+import { ref, computed, onMounted, watch, h } from 'vue'
 import axios from 'axios'
 import { useToast } from 'vue-toastification'
 
@@ -206,10 +208,6 @@ function formatDate(iso) {
   return `${y}-${m}-${day} ${hh}:${mm}`
 }
 
-function cvUrl(id) {
-  return `/api/career-applications/${id}/cv`
-}
-
 async function fetchPage(p = 1) {
   loading.value = true
   try {
@@ -217,7 +215,7 @@ async function fetchPage(p = 1) {
     if (statusFilter.value !== 'all') params.status = statusFilter.value
     if (search.value) params.search = search.value
 
-    const { data } = await axios.get('/api/career-applications', { params })
+    const { data } = await axios.get('/api/volunteer-applications', { params })
     items.value = data.data || []
     meta.value = {
       current_page: data.current_page,
@@ -229,6 +227,7 @@ async function fetchPage(p = 1) {
     }
   } catch (e) {
     console.error(e)
+    toast.error('Failed to load volunteer applications.')
   } finally {
     loading.value = false
   }
@@ -266,119 +265,34 @@ const STATUS_VIEW = {
     dot: 'bg-slate-400'
   }
 }
+function chipClass(status) { const s = STATUS_VIEW[status] || STATUS_VIEW.default; return `inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full text-xs font-medium ${s.cls}` }
+function chipDotClass(status) { const s = STATUS_VIEW[status] || STATUS_VIEW.default; return `w-1.5 h-1.5 rounded-full ${s.dot}` }
+function chipLabel(status) { return (STATUS_VIEW[status] || STATUS_VIEW.default).label }
 
-function chipClass(status) {
-  const s = STATUS_VIEW[status] || STATUS_VIEW.default
-  return `inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full text-xs font-medium ${s.cls}`
-}
-function chipDotClass(status) {
-  const s = STATUS_VIEW[status] || STATUS_VIEW.default
-  return `w-1.5 h-1.5 rounded-full ${s.dot}`
-}
-function chipLabel(status) {
-  return (STATUS_VIEW[status] || STATUS_VIEW.default).label
-}
-
-
+// Confirm toast
 function confirmToast(message, { variant = 'info' } = {}) {
   const cfg = {
-    success: {
-      toastClass: ['!bg-emerald-600', '!text-white', 'border', 'border-emerald-700', 'shadow-lg'],
-      bodyClass: ['!text-white'],
-      icon: h('i', { class: 'fa-solid fa-circle-check me-2' })
-    },
-    danger: {
-      toastClass: ['!bg-rose-600', '!text-white', 'border', 'border-rose-700', 'shadow-lg'],
-      bodyClass: ['!text-white'],
-      icon: h('i', { class: 'fa-solid fa-triangle-exclamation me-2' })
-    },
-    info: {
-      toastClass: ['!bg-gray-950', '!text-white', 'border', 'border-slate-600', 'shadow-lg'],
-      bodyClass: ['!text-white'],
-      icon: h('i', { class: 'fa-solid fa-gear me-2' })
-    }
+    success: { toastClass: ['!bg-emerald-600','!text-white','border','border-emerald-700','shadow-lg'], bodyClass: ['!text-white'], icon: h('i',{ class:'fa-solid fa-circle-check me-2' }) },
+    danger:  { toastClass: ['!bg-rose-600','!text-white','border','border-rose-700','shadow-lg'],       bodyClass: ['!text-white'], icon: h('i',{ class:'fa-solid fa-triangle-exclamation me-2' }) },
+    info:    { toastClass: ['!bg-gray-950','!text-white','border','border-slate-600','shadow-lg'],      bodyClass: ['!text-white'], icon: h('i',{ class:'fa-solid fa-gear me-2' }) }
   }[variant] || {}
 
   return new Promise((resolve) => {
     let id
     const render = (props = {}) => {
-      const close =
-        typeof props.closeToast === 'function'
-          ? props.closeToast
-          : () => toast.dismiss(id)
+      const close = typeof props.closeToast === 'function' ? props.closeToast : () => toast.dismiss(id)
       return h('div', { class: 'space-y-3' }, [
-        h('div', { class: 'flex items-center font-medium' }, [
-          cfg.icon || null,
-          h('span', message),
-        ]),
+        h('div', { class: 'flex items-center font-medium' }, [cfg.icon || null, h('span', message)]),
         h('div', { class: 'flex gap-2 justify-end' }, [
-          h(
-            'button',
-            {
-              class: 'px-3 py-1 rounded bg-white/20 hover:bg-white/30 text-white',
-              onClick: () => {
-                close()
-                resolve(false)
-              },
-            },
-            'Cancel'
-          ),
-          h(
-            'button',
-            {
-              class: 'px-3 py-1 rounded bg-white text-slate-900 hover:bg-gray-200',
-              onClick: () => {
-                close()
-                resolve(true)
-              },
-            },
-            'Confirm'
-          ),
+          h('button', { class: 'px-3 py-1 rounded bg-white/20 hover:bg-white/30 text-white', onClick: () => { close(); resolve(false) } }, 'Cancel'),
+          h('button', { class: 'px-3 py-1 rounded bg-white text-slate-900 hover:bg-gray-200', onClick: () => { close(); resolve(true) } }, 'Confirm'),
         ]),
       ])
     }
-
-    id = toast(render, {
-      timeout: false,
-      closeOnClick: false,
-      draggable: true,
-      hideProgressBar: true,
-      position: 'top-center',
-      toastClassName: cfg.toastClass,
-      bodyClassName: cfg.bodyClass,
-      icon: false,
-    })
+    id = toast(render, { timeout:false, closeOnClick:false, draggable:true, hideProgressBar:true, position:'top-center', toastClassName: cfg.toastClass, bodyClassName: cfg.bodyClass, icon:false })
   })
 }
 
-/** Store previous status before user changes select */
-function storePrevStatus(app) {
-  app._prevStatus = app.status
-}
-
-/** Handle select change with confirmation and revert on cancel (also revert DOM UI) */
-async function onChangeStatus(app, evt) {
-  const next = evt?.target?.value ?? app.status
-  const prev = app._prevStatus ?? app.status
-  if (next === prev) return
-
-  const variant = next === 'approved' ? 'success' : next === 'rejected' ? 'danger' : 'info'
-  const ok = await confirmToast(`Change status to "${next}" for ${app.first_name} ${app.last_name}?`, { variant })
-
-  if (!ok) {
-    // revert reactive state AND the select element's visible value
-    app.status = prev
-    if (evt && evt.target) {
-      evt.target.value = prev
-      evt.target.blur?.()
-    }
-    await nextTick()
-    return
-  }
-  await actuallyUpdateStatus(app, next, prev)
-}
-
-/** Quick buttons (Approve/Reject) also confirm */
 async function setStatus(app, next, prev = app.status) {
   if (next === prev) return
   const variant = next === 'approved' ? 'success' : next === 'rejected' ? 'danger' : 'info'
@@ -387,12 +301,11 @@ async function setStatus(app, next, prev = app.status) {
   await actuallyUpdateStatus(app, next, prev)
 }
 
-/** Shared updater with optimistic UI + toasts */
 async function actuallyUpdateStatus(app, next, prev) {
   savingId.value = app.id
   app.status = next
   try {
-    await axios.patch(`/api/career-applications/${app.id}/status`, { status: next })
+    await axios.patch(`/api/volunteer-applications/${app.id}/status`, { status: next })
     toast.success('Status updated.')
   } catch (e) {
     console.error(e)
@@ -403,13 +316,14 @@ async function actuallyUpdateStatus(app, next, prev) {
   }
 }
 
+// Optional delete with confirm
 async function remove(app) {
   const ok = await confirmToast(`Delete application of ${app.first_name} ${app.last_name}?`, { variant: 'danger' })
   if (!ok) return
   const keep = [...items.value]
   items.value = keep.filter(r => r.id !== app.id)
   try {
-    await axios.delete(`/api/career-applications/${app.id}`)
+    await axios.delete(`/api/volunteer-applications/${app.id}`)
     toast.success('Application deleted.')
   } catch (e) {
     console.error(e)
@@ -418,12 +332,18 @@ async function remove(app) {
   }
 }
 
-// auto-refresh on filter change
+// Why modal
+const whyModal = ref({ open: false, app: null })
+function openWhy(app) {
+  // already present in row payload, or fetch full record if you prefer:
+  // const { data } = await axios.get(`/api/volunteer-applications/${app.id}`)
+  // whyModal.value = { open: true, app: data.data }
+  whyModal.value = { open: true, app }
+}
+function closeWhy() { whyModal.value = { open: false, app: null } }
+
+// auto-refresh on status filter change
 watch([statusFilter], () => fetchPage(1))
 
-onMounted(() => {
-  fetchPage(1)
-})
+onMounted(() => { fetchPage(1) })
 </script>
-
-

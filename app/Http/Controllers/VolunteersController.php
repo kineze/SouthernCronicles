@@ -64,7 +64,7 @@ public function setStatus(Request $request, Volunteer $volunteer, BrevoMailerSer
 
     $volunteer->update(['status' => $validated['status']]);
 
-    // Try email, but don't fail the whole request if Brevo errors
+    
     try {
         $mailer->sendVolunteerStatusEmail([
             'email'      => $volunteer->email,
@@ -78,7 +78,7 @@ public function setStatus(Request $request, Volunteer $volunteer, BrevoMailerSer
             'status'       => $validated['status'],
             'error'        => $e->getMessage(),
         ]);
-        // continue; we still return 200
+
     }
 
     return response()->json([

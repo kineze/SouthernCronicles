@@ -16,13 +16,15 @@ use App\Http\Controllers\SpeakersController;
 use App\Http\Controllers\TeamTypeController;
 use App\Http\Controllers\TimeSlotController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\InternshipController;
 use App\Http\Controllers\UsefulLinkController;
 use App\Http\Controllers\VolunteersController;
 use App\Http\Controllers\PartnerTypeController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\BookingManageController;
-use App\Http\Controllers\CareerApplicationController;
 use App\Http\Controllers\MemorySubmissionController;
+use App\Http\Controllers\CareerApplicationController;
+use App\Http\Controllers\VolunteerApplicationController;
 
 Route::controller(GenaralController::class)->group( function (){
 
@@ -200,6 +202,18 @@ Route::middleware(['permission:Manage Careers', config('jetstream.auth_session')
     Route::controller(CareerApplicationController::class)->group(function () {
 
         Route::get('/career-applications','careerApplications')->name('careerApplications');
+
+    });
+
+    Route::controller(InternshipController::class)->group(function () {
+
+        Route::get('/internship-applications','internshipApplications')->name('internshipApplications');
+
+    });
+
+    Route::controller(VolunteerApplicationController::class)->group(function () {
+
+        Route::get('/volunteer-applications','volunteerApplications')->name('volunteerApplications');
 
     });
 
