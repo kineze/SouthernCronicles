@@ -9,6 +9,7 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CareersController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PartnerController;
+use App\Http\Controllers\AdvisorsController;
 use App\Http\Controllers\FestivalController;
 use App\Http\Controllers\SpeakersController;
 use App\Http\Controllers\TeamTypeController;
@@ -18,6 +19,7 @@ use App\Http\Controllers\UsefulLinkController;
 use App\Http\Controllers\VolunteersController;
 use App\Http\Controllers\PartnerTypeController;
 use App\Http\Controllers\SpeakerTypeController;
+use App\Http\Controllers\AdvisorTypesController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\BookingManageController;
 use App\Http\Controllers\PartnerInquiryController;
@@ -118,6 +120,21 @@ Route::prefix('volunteer-applications')->group(function () {
 Route::get('/partner-inquiries', [PartnerInquiryController::class, 'index']);
 Route::patch('/partner-inquiries/{partnerInquiry}/status', [PartnerInquiryController::class, 'updateStatus']);
 Route::delete('/partner-inquiries/{partnerInquiry}', [PartnerInquiryController::class, 'destroy']);
+
+
+Route::get   ('/advisor-types',               [AdvisorTypesController::class, 'index']);
+Route::post  ('/advisor-types',               [AdvisorTypesController::class, 'store']);
+Route::put   ('/advisor-types/{advisorType}', [AdvisorTypesController::class, 'update']);
+Route::delete('/advisor-types/{advisorType}', [AdvisorTypesController::class, 'destroy']);
+Route::post  ('/advisor-types/reorder',       [AdvisorTypesController::class, 'reorder']);
+
+
+Route::get   ('/advisors',                       [AdvisorsController::class, 'index']);
+Route::post  ('/advisors',                       [AdvisorsController::class, 'store']);
+Route::put ('/advisors/{advisor}', [AdvisorsController::class, 'update']);
+Route::delete('/advisors/{advisor}',             [AdvisorsController::class, 'destroy']);
+Route::put   ('/advisors/{advisor}/toggle-status', [AdvisorsController::class, 'toggleStatus']);
+Route::post  ('/advisors/reorder',               [AdvisorsController::class, 'reorder']);
 
 
 // for web view

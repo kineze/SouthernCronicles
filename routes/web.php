@@ -11,6 +11,7 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CareersController;
 use App\Http\Controllers\GenaralController;
 use App\Http\Controllers\PartnerController;
+use App\Http\Controllers\AdvisorsController;
 use App\Http\Controllers\FestivalController;
 use App\Http\Controllers\SpeakersController;
 use App\Http\Controllers\TeamTypeController;
@@ -20,11 +21,12 @@ use App\Http\Controllers\InternshipController;
 use App\Http\Controllers\UsefulLinkController;
 use App\Http\Controllers\VolunteersController;
 use App\Http\Controllers\PartnerTypeController;
+use App\Http\Controllers\AdvisorTypesController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\BookingManageController;
+use App\Http\Controllers\PartnerInquiryController;
 use App\Http\Controllers\MemorySubmissionController;
 use App\Http\Controllers\CareerApplicationController;
-use App\Http\Controllers\PartnerInquiryController;
 use App\Http\Controllers\VolunteerApplicationController;
 
 Route::controller(GenaralController::class)->group( function (){
@@ -156,6 +158,26 @@ Route::middleware(['permission:Manage Teams', config('jetstream.auth_session'), 
     });
 
 });
+
+Route::middleware(['permission:Manage Advisors', config('jetstream.auth_session'), 'verified',])->group( function (){
+
+    Route::controller(AdvisorsController::class)->group(function () {
+
+        Route::get('/manage-advisors','manageAdvisors')->name('manageAdvisors');
+
+    });
+
+
+
+    Route::controller(AdvisorTypesController::class)->group(function () {
+
+        Route::get('/advisor-types','advisorTypes')->name('advisorTypes');
+
+    });
+
+});
+
+
 
 
 Route::middleware(['permission:Manage Bookings', config('jetstream.auth_session'), 'verified',])->group( function (){

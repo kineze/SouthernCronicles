@@ -21,7 +21,8 @@ class PermissionSeeder extends Seeder
             'Manage Bookings',
             'Manage News',
             'Manage Careers',
-            'Manage Partner Inquiries'
+            'Manage Partner Inquiries',
+            'Manage Advisors'
         ];
 
         foreach ($permissions as $permissionName) {

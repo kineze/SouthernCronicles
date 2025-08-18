@@ -68,7 +68,7 @@ class MakeVueComponent extends Command
             return <<<VUE
 <template>
   <div class="{$kebab}">
-    <!-- {$studly} component -->
+    {$studly} component
   </div>
 </template>
 

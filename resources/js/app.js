@@ -33,6 +33,8 @@ import CareerApplications from './components/admin/CareerApplications.vue';
 import InternshipApplications from './components/admin/InternshipApplications.vue';
 import VolunteerApplications from './components/admin/VolunteerApplications.vue';
 import ManagePartnerInquiries from './components/admin/ManagePartnerInquiries.vue';
+import AdvisorTypes from './components/admin/AdvisorTypes.vue';
+import ManageAdvisors from './components/admin/ManageAdvisors.vue';
 
 // web components
 import WebNav from './components/web/webNav.vue';
@@ -66,7 +68,6 @@ import Careers from './components/web/Careers.vue';
 import CareerView from './components/web/CareerView.vue';
 import PartnerWithUs from './components/web/PartnerWithUs.vue';
 
-
 const app = createApp({});
 
 app
@@ -97,6 +98,7 @@ app
     },
   })
 
+  
   // admin
   .component('dark-mode-toggle', DarkModeToggle)
   .component('festivals', Festivals)
@@ -120,6 +122,8 @@ app
   .component('internship-applications', InternshipApplications)
   .component('volunteer-applications',VolunteerApplications)
   .component('manage-partner-inquiries', ManagePartnerInquiries)
+  .component('advisor-types', AdvisorTypes)
+  .component('manage-advisors', ManageAdvisors)
 
   // web
   .component('web-nav',WebNav)

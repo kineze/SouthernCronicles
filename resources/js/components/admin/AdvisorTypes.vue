@@ -1,18 +1,19 @@
 <template>
   <div>
-    <!-- Header -->
+
     <div class="flex justify-between p-4 bg-white dark:bg-gray-800 dark:shadow-soft-dark-xl shadow rounded-xl">
-      <h4 class="text-lg font-semibold dark:text-white">Team Types</h4>
+      <h4 class="text-lg font-semibold dark:text-white">Advisor Types</h4>
       <button @click="openDrawer" class="px-4 py-1.5 bg-gray-800 text-white dark:bg-green-500 rounded-full text-sm font-semibold">
-        Add Team Type
+        Add Advisor Type
       </button>
     </div>
+
 
     <div class="relative overflow-x-auto mt-6 sm:rounded-lg px-4">
       <draggable
         v-model="types"
         item-key="id"
-        group="team-types"
+        group="advisor-types"
         handle=".drag-handle"
         ghost-class="bg-yellow-100"
         @end="onDragEnd"
@@ -26,7 +27,7 @@
             </div>
 
             <div class="p-4 ml-8 flex items-center justify-between">
-              <div class="text-center">
+              <div class="text-left">
                 <h5 class="font-medium dark:text-white">{{ t.name }}</h5>
                 <p v-if="t.description" class="mt-2 text-sm text-gray-600 dark:text-gray-300 line-clamp-3">
                   {{ t.description }}
@@ -34,8 +35,8 @@
               </div>
 
               <div class="flex justify-center text-sm gap-3">
-                <button @click="editType(t)" class="text-green-600"><i class="fa fa-pen"></i></button>
-                <button @click="confirmDelete(t)" class="text-red-600"><i class="fa fa-trash"></i></button>
+                <button @click="editType(t)" class="text-green-600" title="Edit"><i class="fa fa-pen"></i></button>
+                <button @click="confirmDelete(t)" class="text-red-600" title="Delete"><i class="fa fa-trash"></i></button>
               </div>
             </div>
           </div>
@@ -43,14 +44,17 @@
       </draggable>
     </div>
 
-    <!-- Backdrop -->
+
     <div v-if="drawerOpen" class="fixed inset-0 z-[990] bg-black bg-opacity-40" @click="closeDrawer"></div>
 
-    <!-- Drawer -->
-    <div :class="['fixed top-0 right-0 w-96 h-screen z-[990] bg-white dark:bg-gray-800 shadow-lg transform transition-transform overflow-y-auto p-6',
-                 drawerOpen ? 'translate-x-0' : 'translate-x-full']">
+    <div
+      :class="[
+        'fixed top-0 right-0 w-96 h-screen z-[990] bg-white dark:bg-gray-800 shadow-lg transform transition-transform overflow-y-auto p-6',
+        drawerOpen ? 'translate-x-0' : 'translate-x-full'
+      ]"
+    >
       <div class="flex justify-between items-center mb-4">
-        <h3 class="text-lg font-bold dark:text-white">{{ editingId ? 'Edit Team Type' : 'Add Team Type' }}</h3>
+        <h3 class="text-lg font-bold dark:text-white">{{ editingId ? 'Edit Advisor Type' : 'Add Advisor Type' }}</h3>
         <button @click="closeDrawer" class="text-gray-500 hover:text-red-600"><i class="fa fa-times"></i></button>
       </div>
 
@@ -58,7 +62,7 @@
         <!-- Name -->
         <div class="relative mb-5">
           <input
-            v-model="form.name"
+            v-model.trim="form.name"
             type="text"
             id="name"
             placeholder=" "
@@ -72,14 +76,14 @@
                    peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2
                    peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
           >
-            Team Type
+            Advisor Type
           </label>
         </div>
 
-        <!-- Description -->
+
         <div class="relative mb-5">
           <textarea
-            v-model="form.description"
+            v-model.trim="form.description"
             id="description"
             rows="4"
             placeholder=" "
@@ -102,10 +106,10 @@
       </form>
     </div>
 
-    <!-- Delete Confirmation -->
+
     <div v-if="showDeleteModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-[999]">
       <div class="bg-white dark:bg-gray-800 p-6 rounded shadow max-w-md w-full">
-        <h3 class="text-lg font-semibold mb-3 dark:text-white">Delete Team Type</h3>
+        <h3 class="text-lg font-semibold mb-3 dark:text-white">Delete Advisor Type</h3>
         <p class="mb-4 dark:text-gray-300">
           Are you sure you want to delete <strong>{{ typeToDelete?.name }}</strong>?
         </p>
@@ -134,14 +138,14 @@ const typeToDelete = ref(null)
 const form = ref({ name: '', description: '' })
 
 const fetchTypes = async () => {
-  const { data } = await axios.get('/api/team-types?ordered=true')
+  const { data } = await axios.get('/api/advisor-types?ordered=true')
   types.value = data
 }
 
 const onDragEnd = async () => {
   try {
     const ordered = types.value.map((t, idx) => ({ id: t.id, position: idx }))
-    await axios.post('/api/team-types/reorder', { order: ordered })
+    await axios.post('/api/advisor-types/reorder', { order: ordered })
     toast.success('Reordered successfully')
   } catch (e) {
     toast.error('Error saving order')
@@ -166,11 +170,11 @@ const resetForm = () => {
 const saveType = async () => {
   try {
     if (editingId.value) {
-      await axios.put(`/api/team-types/${editingId.value}`, form.value)
-      toast.success('Team type updated')
+      await axios.put(`/api/advisor-types/${editingId.value}`, form.value)
+      toast.success('Advisor type updated')
     } else {
-      await axios.post('/api/team-types', form.value)
-      toast.success('Team type created')
+      await axios.post('/api/advisor-types', form.value)
+      toast.success('Advisor type created')
     }
     await fetchTypes()
     closeDrawer()
@@ -179,7 +183,7 @@ const saveType = async () => {
       console.error('Validation:', error.response.data.errors)
       toast.error('Validation failed — check console')
     } else {
-      toast.error('Error saving team type')
+      toast.error('Error saving advisor type')
     }
   }
 }
@@ -197,11 +201,11 @@ const confirmDelete = (t) => {
 
 const deleteType = async () => {
   try {
-    await axios.delete(`/api/team-types/${typeToDelete.value.id}`)
-    toast.success('Team type deleted')
+    await axios.delete(`/api/advisor-types/${typeToDelete.value.id}`)
+    toast.success('Advisor type deleted')
     await fetchTypes()
   } catch {
-    toast.error('Error deleting team type')
+    toast.error('Error deleting advisor type')
   } finally {
     showDeleteModal.value = false
   }
