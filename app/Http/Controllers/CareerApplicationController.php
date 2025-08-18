@@ -99,4 +99,17 @@ class CareerApplicationController extends Controller
         $filePath = Storage::disk('public')->path($application->cv_path);
         return response()->download($filePath, $filename);
     }
+
+    public function destroy($id)
+    {
+        $rec = CareerApplication::findOrFail($id);
+
+        if ($rec->cv_path && Storage::disk('public')->exists($rec->cv_path)) {
+            Storage::disk('public')->delete($rec->cv_path);
+        }
+
+        $rec->delete();
+
+        return response()->json(['message' => 'Internship application deleted.']);
+    }
 }

@@ -33,6 +33,8 @@ import PartnerTypes from './components/admin/PartnerTypes.vue';
 import TeamTypes from './components/admin/TeamTypes.vue';
 import ManageCareers from './components/admin/ManageCareers.vue';
 import CareerApplications from './components/admin/CareerApplications.vue';
+import InternshipApplications from './components/admin/InternshipApplications.vue';
+import VolunteerApplications from './components/admin/VolunteerApplications.vue';
 
 // web components
 import WebNav from './components/web/webNav.vue';
@@ -64,6 +66,7 @@ import HexHoney from './components/web/HexHoney.vue';
 import VisionMission from './components/web/VisionMission.vue';
 import Careers from './components/web/Careers.vue';
 import CareerView from './components/web/CareerView.vue';
+
 
 
 const app = createApp({});
@@ -116,6 +119,8 @@ app
   .component('team-types', TeamTypes)
   .component('manage-careers', ManageCareers)
   .component('career-applications', CareerApplications)
+  .component('internship-applications', InternshipApplications)
+  .component('volunteer-applications',VolunteerApplications)
 
   // web
   .component('web-nav',WebNav)
