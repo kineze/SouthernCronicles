@@ -20,6 +20,7 @@ use App\Http\Controllers\PartnerTypeController;
 use App\Http\Controllers\SpeakerTypeController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\BookingManageController;
+use App\Http\Controllers\PartnerInquiryController;
 use App\Http\Controllers\MemorySubmissionController;
 use App\Http\Controllers\CareerApplicationController;
 use App\Http\Controllers\VolunteerApplicationController;
@@ -97,6 +98,8 @@ Route::get('/career-applications', [CareerApplicationController::class, 'index']
 Route::patch('/career-applications/{application}/status', [CareerApplicationController::class, 'updateStatus']);
 Route::get('/career-applications/{application}/cv', [CareerApplicationController::class, 'downloadCv']);
 
+Route::get('/partner-inquiries', [PartnerInquiryController::class, 'index']);
+
 
 
 
@@ -127,3 +130,6 @@ Route::post('/careers/{career}/apply', [CareerApplicationController::class, 'sto
 
 Route::post('/internships', [InternshipController::class, 'store']);
 Route::post('/volunteers',  [VolunteerApplicationController::class, 'store']);
+
+Route::post('/partner-inquiries', [PartnerInquiryController::class, 'store']);
+

@@ -106,4 +106,9 @@ class PagesController extends Controller
 
         return view('web.viewCareer', compact('career'));
     }
+
+    public function partnerWithUs(){
+
+        return view('web.partnerWithUs');
+    }
 }

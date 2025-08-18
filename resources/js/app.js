@@ -64,6 +64,7 @@ import HexHoney from './components/web/HexHoney.vue';
 import VisionMission from './components/web/VisionMission.vue';
 import Careers from './components/web/Careers.vue';
 import CareerView from './components/web/CareerView.vue';
+import PartnerWithUs from './components/web/PartnerWithUs.vue';
 
 
 const app = createApp({});
@@ -146,5 +147,6 @@ app
   .component('vision-mission', VisionMission)
   .component('careers', Careers)
   .component('career-view', CareerView)
+  .component('partner-with-us',PartnerWithUs)
 
   .mount('#app')

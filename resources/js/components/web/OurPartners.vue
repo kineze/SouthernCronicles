@@ -85,14 +85,13 @@ const pillClass = (isActive) =>
   ].join(' ')
 
 
-// --- Filtering ---
 const filteredPartners = computed(() => {
   if (activeType.value === null) return allPartners.value
   return allPartners.value.filter(p => p.partner_type_id === activeType.value)
 })
 
 
-// --- Visible subset (respecting rowsToShow x cols) ---
+
 const visiblePartners = computed(() => {
   const max = rowsToShow.value * cols
   return filteredPartners.value.slice(0, max)

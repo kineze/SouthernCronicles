@@ -703,22 +703,3 @@ watchEffect(()=>{
   debounceTimer = setTimeout(()=>{ fetchPage(1, true) }, 150)
 })
 </script>
-
-
-<!-- <style scoped>
-.input {
-  @apply w-full rounded-lg border border-gray-300 bg-white dark:bg-gray-800 dark:text-white px-3 py-2 text-sm outline-none focus:border-black;
-}
-.btn {
-  @apply inline-flex items-center gap-2 px-4 py-2 rounded border border-gray-300 hover:bg-gray-50;
-}
-.btn-primary {
-  @apply inline-flex items-center gap-2 px-4 py-2 rounded bg-black text-white hover:bg-black/90 disabled:opacity-60;
-}
-/* hide native search clear buttons */
-#career-search::-webkit-search-cancel-button,
-#career-search::-webkit-search-decoration,
-#career-search::-webkit-search-results-button,
-#career-search::-webkit-search-results-decoration { -webkit-appearance:none; appearance:none; display:none; }
-#career-search::-ms-clear { display:none; width:0; height:0; }
-</style> -->
