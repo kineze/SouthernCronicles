@@ -2,16 +2,15 @@
 
 @section('content')
 
+
 <section class="w-full hidden md:block max-w-screen-2xl -mt-6 mx-auto relative">
-  <!-- Container for layers -->
+
   <div class="relative w-full z-0 mb-12 rounded-3 min-h-[130vh]">
 
-    <!-- Layer 5: Farthest Background -->
     <div class="parallax-layer overflow-hidden absolute z-50 w-full bottom-0" data-speed="0.2">
       <img src="{{ asset('assets/img/wave-002.webp') }}" class="w-full bob-y -mb-9  object-contain" alt="Layer 5">
     </div>
-    
-    <!-- Layer 4 -->
+
     <div class="parallax-layer absolute z-40 w-full bottom-28" data-speed="0.2">
       <div class="loop-viewport " style="--bob-amp:12px; --bob-dur:5s">
         <div class="loop-track">
@@ -31,9 +30,6 @@
       </div>
     </div>
 
-
-    
-    <!-- Layer 3: Looping layer -->
     <div class="parallax-layer absolute  z-30 -bottom-20 w-full" data-speed="0.2">
     
         <svg class="absolute -mt-[450px] w-full h-auto" stroke="#000000" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" zoomAndPan="magnify" viewBox="0 0 810 1012.49997" height="1350" preserveAspectRatio="xMidYMid meet" version="1.2">
@@ -115,12 +111,10 @@
                 </g>
             </g>
         </svg>
-     
 
       <img src="{{ asset('assets/img/skyline-shadow.webp') }}" class="w-full object-contain" alt="Layer 2">
     </div>
 
-    <!-- Layer 1: Foreground -->
     <div class="parallax-layer absolute  overflow-hidden z-[120] w-full -top-16 -right-44"  data-speed="0.4">
        <div class="w-full">
         <svg xmlns="http://www.w3.org/2000/svg" stroke="#000000" xmlns:xlink="http://www.w3.org/1999/xlink" width="1080" zoomAndPan="magnify" viewBox="0 0 810 1012.49997" height="1350" preserveAspectRatio="xMidYMid meet" version="1.2">
@@ -306,8 +300,8 @@
 
         </div>
     </div>
-     
-    <!-- Foreground Content -->
+
+
     <div class="relative z-60  flex flex-col items-start justify-center pt-16 p-3">
       <h2 class="font-semibold text-black uppercase text-8xl">2025</h2>
       <h1 class="tracking-[5px] text-5xl uppercase font-bold text-black leading-tight">
@@ -379,24 +373,20 @@
 </section>
 
 <section class="w-full md:hidden max-w-screen-2xl -mt-6 mx-auto relative">
-  <!-- Container for layers -->
+
   <div class="relative w-full z-0 rounded-3 min-h-[100vh]">
 
-    <!-- Layer 5: Farthest Background -->
     <div class="parallax-layer absolute z-50 w-full bottom-0" data-speed="0.2">
       <img src="{{ asset('assets/img/layer-005.webp') }}" class="w-full object-contain" alt="Layer 5">
     </div>
-    
-    <!-- Layer 4 -->
+
     <div class="parallax-layer absolute z-40 w-full bottom-0" data-speed="0.3">
       <img src="{{ asset('assets/img/layer-004.webp') }}" class="w-full object-contain" alt="Layer 4">
     </div>
 
-    <!-- Layer 3: Looping layer -->
     <div class="parallax-layer absolute z-30 -bottom-5 w-full overflow-hidden" data-speed="0.3">
       <img src="{{ asset('assets/img/layer-002.webp') }}" class="w-full bob-y -mb-2 object-contain" alt="Layer 2">
 
-      <!-- Bob the entire marquee vertically -->
       <div class="loop-viewport " style="--bob-amp:12px; --bob-dur:5s">
         <div class="loop-track">
           <div class="loop-group">
@@ -507,11 +497,13 @@
   ></vision-mission>
 </section>
 
+
 <section class="relative w-full max-w-screen-2xl mx-auto">
 
     <festival-locations></festival-locations>
 
 </section>
+
 
 <section class="relative w-full max-w-screen-2xl mx-auto">
 
@@ -519,23 +511,33 @@
 
 </section>
 
+
 <section class="relative w-full max-w-screen-2xl mx-auto">
 
-    <div class="w-full bg-yellow-50 p-3 flex items-center flex-wrap">
+    <div class="w-full bg-white border-black border p-3 flex items-center flex-wrap">
         <div class="lg:w-2/12 w-full">
             <div class="aspect-w-1 aspect-h-1  w-full h-56">
                 <video autoplay muted loop playsinline class="w-full  h-full object-contain rounded-xl">
-                    <source src="{{ asset('/assets/img/gog-big.webm') }}" type="video/webm">
+                    <source src="{{ asset('/assets/img/dog.webm') }}" type="video/webm">
                     Your browser does not support the video tag.
                 </video>
             </div>
         </div>
-        <div class="lg:w-10/12 w-full">
+        <div class="lg:w-8/12 w-full">
             <p class="text-lg text-black font-semibold">Our conference is proudly pet-friendly and family-friendly, creating a warm, inclusive space for everyone. Whether you're attending with children or furry companions, you're welcome here. We believe innovation thrives in joyful, supportive environments—so come as you are, bring your whole family, and feel at home.</p>
+        </div>
+        <div class="lg:w-2/12 w-full">
+            <div class="aspect-w-1 aspect-h-1  w-full h-56">
+                <video autoplay muted loop playsinline class="w-full  h-full object-contain rounded-xl">
+                    <source src="{{ asset('/assets/img/cat.webm') }}" type="video/webm">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
         </div>
     </div>
 
 </section>
+
 
 <section class="w-full max-w-screen-2xl  mt-6 mx-auto">
 
@@ -548,9 +550,6 @@
     <our-ecosystem></our-ecosystem>
    
 </section>
-
-
-
 
 
 <section class="w-full max-w-screen-2xl mx-auto">

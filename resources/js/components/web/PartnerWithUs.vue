@@ -24,6 +24,7 @@
         <p class="text-justify">
           Tell us about your brand and why you’d like to partner. We’ll get in touch with tailored collaboration options aligned with your goals.
         </p>
+
       </div>
 
       <!-- Right: Form -->
@@ -103,6 +104,49 @@
         </div>
       </div>
     </div>
+
+            <!-- Our Products -->
+        <section class="mt-10">
+            <h1 class="lg:text-4xl text-3xl mt-4 text-black dark:text-white font-extrabold tracking-widest uppercase text-center mb-8">
+            Our Products
+            </h1>
+
+          <div class="grid grid-cols-1 sm:grid-cols-4 gap-6">
+            <article
+              v-for="p in products"
+              :key="p.key"
+              class="group border rounded-lg overflow-hidden bg-white dark:bg-gray-800 shadow hover:shadow-xl transition"
+            >
+              <!-- Video with fixed aspect ratio (16:9) -->
+              <div class="relative pt-[56.25%] bg-white">
+                <video
+                  class="absolute inset-0 w-40 h-40 mx-auto my-auto object-contain"
+                  :poster="p.poster || ''"
+                  :aria-label="p.title"
+                  playsinline
+                  muted
+                  loop
+                  autoplay
+                  preload="none"
+                  disablepictureinpicture
+                  controlslist="nodownload noplaybackrate noremoteplayback"
+                >
+                  <source :src="p.video" type="video/webm" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+
+              <div class="p-4">
+                <h3 class="font-semibold text-gray-900 dark:text-white text-lg">
+                  {{ p.title }}
+                </h3>
+                <p class="mt-1 text-sm text-gray-700 dark:text-gray-200">
+                  {{ p.description }}
+                </p>
+              </div>
+            </article>
+          </div>
+        </section>
   </div>
 </template>
 
@@ -117,7 +161,43 @@ const toast = useToast()
 const submitting = ref(false)
 const telRef = ref(null)
 
-/* Form state */
+/* --- Our Products (videos under /public/videos, posters under /public/images/products) --- */
+const products = ref([
+  {
+    key: 'writing-lab',
+    title: 'The Writing Lab',
+    video: '/assets/img/writinglab.webm',
+    poster: '/images/products/writing-lab.jpg',
+    description:
+      'A story-crafting studio that mentors new voices, refines narratives, and helps brands and artists communicate with clarity and heart.'
+  },
+  {
+    key: 'kipenzi',
+    title: 'Kipenzi',
+    video: '/assets/img/kipenzigirl.webm',
+    poster: '/images/products/kipenzi.jpg',
+    description:
+      'A living-heritage platform celebrating diverse cultures through performances, workshops, and immersive experiences.'
+  },
+  {
+    key: 'kipenzi-toys-books',
+    title: 'Kipenzi Toys & Books',
+    video: '/assets/img/kipenzytoys.webm',
+    poster: '/images/products/kipenzi-toys-books.jpg',
+    description:
+      'Playful learning tools that bring folklore and tradition to life—designed for curious minds at home and in the classroom.'
+  },
+  {
+    key: 'purple-umbrella',
+    title: 'Purple Umbrella Franchise',
+    video: '/assets/img/umbrella.webm',
+    poster: '/images/products/purple-umbrella.jpg',
+    description:
+      'A community-first franchise model that empowers local partners to host cultural events and micro-festivals under one vibrant umbrella.'
+  }
+])
+
+/* --- Form state --- */
 const form = ref({
   first_name: '',
   last_name: '',
