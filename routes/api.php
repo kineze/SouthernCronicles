@@ -116,8 +116,6 @@ Route::prefix('volunteer-applications')->group(function () {
 });
 
 
-
-
 // for web view
 Route::get('/speakers/home', [SpeakersController::class, 'homeSpeakers']);
 Route::get('/custom-speaker-types', [SpeakersController::class, 'types']);
