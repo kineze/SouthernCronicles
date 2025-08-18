@@ -2,6 +2,7 @@
 
 @section('content')
 
+
 <section class="w-full hidden md:block max-w-screen-2xl -mt-6 mx-auto relative">
 
   <div class="relative w-full z-0 mb-12 rounded-3 min-h-[130vh]">
@@ -496,17 +497,20 @@
   ></vision-mission>
 </section>
 
+
 <section class="relative w-full max-w-screen-2xl mx-auto">
 
     <festival-locations></festival-locations>
 
 </section>
 
+
 <section class="relative w-full max-w-screen-2xl mx-auto">
 
     <speakers-carousel></speakers-carousel>
 
 </section>
+
 
 <section class="relative w-full max-w-screen-2xl mx-auto">
 
@@ -534,6 +538,7 @@
 
 </section>
 
+
 <section class="w-full max-w-screen-2xl  mt-6 mx-auto">
 
     <div class=" px-4 py-2 mb-5">
@@ -545,9 +550,6 @@
     <our-ecosystem></our-ecosystem>
    
 </section>
-
-
-
 
 
 <section class="w-full max-w-screen-2xl mx-auto">
