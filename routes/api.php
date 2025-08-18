@@ -115,6 +115,10 @@ Route::prefix('volunteer-applications')->group(function () {
     Route::delete('{id}',        [VolunteerApplicationController::class, 'destroy']); 
 });
 
+Route::get('/partner-inquiries', [PartnerInquiryController::class, 'index']);
+Route::patch('/partner-inquiries/{partnerInquiry}/status', [PartnerInquiryController::class, 'updateStatus']);
+Route::delete('/partner-inquiries/{partnerInquiry}', [PartnerInquiryController::class, 'destroy']);
+
 
 // for web view
 Route::get('/speakers/home', [SpeakersController::class, 'homeSpeakers']);
@@ -145,4 +149,5 @@ Route::post('/internships', [InternshipController::class, 'store']);
 Route::post('/volunteers',  [VolunteerApplicationController::class, 'store']);
 
 Route::post('/partner-inquiries', [PartnerInquiryController::class, 'store']);
+
 

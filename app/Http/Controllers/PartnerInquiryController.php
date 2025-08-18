@@ -7,6 +7,13 @@ use App\Models\PartnerInquiry;
 
 class PartnerInquiryController extends Controller
 {
+    // Page render (Blade)
+    public function managePartnerInquiries()
+    {
+        return view('dashboards.admin.managePartnerInquiries');
+    }
+
+    // Create (unchanged from your version)
     public function store(Request $request)
     {
         $data = $request->validate([
@@ -20,20 +27,17 @@ class PartnerInquiryController extends Controller
             'description'  => ['nullable','string'],
         ]);
 
-
+        // normalize phone to E.164 if possible
         $digits = preg_replace('/\D+/', '', $data['phone']);
         if (!empty($digits)) {
-
             if (!empty($data['dial_code'])) {
                 $dcDigits = preg_replace('/\D+/', '', $data['dial_code']);
- 
                 if (str_starts_with($digits, $dcDigits)) {
                     $data['phone'] = '+' . $digits;
                 } else {
                     $data['phone'] = '+' . $dcDigits . $digits;
                 }
             } else {
-
                 $data['phone'] = (str_starts_with($data['phone'], '+')) ? $data['phone'] : '+' . $digits;
             }
         }
@@ -46,18 +50,19 @@ class PartnerInquiryController extends Controller
         ], 201);
     }
 
-
+    // List with filters + pagination (accepts ?q= or ?search=)
     public function index(Request $request)
     {
         $q = PartnerInquiry::query()->latest();
 
-        if ($search = $request->get('q')) {
-            $q->where(function ($qq) use ($search) {
-                $qq->where('first_name', 'like', "%$search%")
-                    ->orWhere('last_name', 'like', "%$search%")
-                    ->orWhere('brand_name', 'like', "%$search%")
-                    ->orWhere('email', 'like', "%$search%")
-                    ->orWhere('phone', 'like', "%$search%");
+        $term = $request->get('q', $request->get('search')); // support both keys
+        if ($term) {
+            $q->where(function ($qq) use ($term) {
+                $qq->where('first_name', 'like', "%$term%")
+                   ->orWhere('last_name', 'like', "%$term%")
+                   ->orWhere('brand_name', 'like', "%$term%")
+                   ->orWhere('email', 'like', "%$term%")
+                   ->orWhere('phone', 'like', "%$term%");
             });
         }
 
@@ -68,7 +73,7 @@ class PartnerInquiryController extends Controller
         return $q->paginate($request->integer('per_page', 20));
     }
 
-
+    // Update status (pending|contacted|closed)
     public function updateStatus(Request $request, PartnerInquiry $partnerInquiry)
     {
         $data = $request->validate([
@@ -76,6 +81,13 @@ class PartnerInquiryController extends Controller
         ]);
         $partnerInquiry->update($data);
 
-        return response()->json(['message' => 'Status updated.','data' => $partnerInquiry]);
+        return response()->json(['message' => 'Status updated.', 'data' => $partnerInquiry]);
+    }
+
+    // Delete
+    public function destroy(PartnerInquiry $partnerInquiry)
+    {
+        $partnerInquiry->delete();
+        return response()->json(['message' => 'Inquiry deleted.']);
     }
 }

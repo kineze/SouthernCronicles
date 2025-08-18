@@ -24,6 +24,7 @@ use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\BookingManageController;
 use App\Http\Controllers\MemorySubmissionController;
 use App\Http\Controllers\CareerApplicationController;
+use App\Http\Controllers\PartnerInquiryController;
 use App\Http\Controllers\VolunteerApplicationController;
 
 Route::controller(GenaralController::class)->group( function (){
@@ -214,6 +215,16 @@ Route::middleware(['permission:Manage Careers', config('jetstream.auth_session')
     Route::controller(VolunteerApplicationController::class)->group(function () {
 
         Route::get('/volunteer-applications','volunteerApplications')->name('volunteerApplications');
+
+    });
+
+});
+
+Route::middleware(['permission:Manage Partner Inquiries', config('jetstream.auth_session'), 'verified',])->group( function (){
+
+    Route::controller(PartnerInquiryController::class)->group(function () {
+
+        Route::get('/manage-partner-inquiries','managePartnerInquiries')->name('managePartnerInquiries');
 
     });
 
