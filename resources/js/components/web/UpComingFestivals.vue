@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-screen-2xl bg-gray-100 mx-auto p-4 my-12 rou dark:bg-gray-900 py-10">
+  <div class="max-w-screen-2xl bg-gray-100 mx-auto p-4 my-12 dark:bg-gray-900 py-10">
     <h1 class="lg:text-6xl text-3xl mt-4 text-black dark:text-white rounded-xl font-extrabold tracking-widest uppercase text-center mb-8">
       Upcoming Festivals
     </h1>
@@ -8,26 +8,27 @@
       <article
         v-for="ev in events"
         :key="ev.id"
-        class="rounded  bg-white dark:bg-gray-800 hover:shadow-md transition-all"
+        class="rounded bg-white dark:bg-gray-800 hover:shadow-md transition-all"
       >
         <div class="flex items-start justify-between p-4">
           <div class="text-sm">
             <div class="font-semibold text-gray-900 dark:text-white">
-              {{ formatDate(ev) }}
+              {{ formatDate(ev.start_at, ev.end_at) }}
             </div>
-            <div v-if="formatTime(ev)" class="mt-1 flex items-center gap-2 text-gray-600 dark:text-gray-300 text-sm">
+            <div v-if="formatTime(ev.start_at)" class="mt-1 flex items-center gap-2 text-gray-600 dark:text-gray-300 text-sm">
               <i class="fa-regular fa-clock"></i>
-              <span>{{ formatTime(ev) }}</span>
+              <span>{{ formatTime(ev.start_at) }}</span>
             </div>
           </div>
 
           <div class="flex items-center gap-3">
-            <span v-if="ev.format" class="inline-block rounded-full px-3 py-1 text-xs font-bold text-white bg-gradient-to-r from-red-600 to-pink-600">
+            <!-- example “format” badge if you add one later -->
+            <!-- <span v-if="ev.format" class="inline-block rounded-full px-3 py-1 text-xs font-bold text-white bg-gradient-to-r from-red-600 to-pink-600">
               {{ ev.format }}
-            </span>
+            </span> -->
             <div class="flex items-center gap-2 text-gray-600 dark:text-gray-300 text-sm">
               <i class="fa-solid fa-location-dot"></i>
-              <span class="truncate max-w-[140px]">{{ ev.venue }}</span>
+              <span class="truncate max-w-[140px]">{{ ev.location }}</span>
             </div>
           </div>
         </div>
@@ -35,13 +36,13 @@
         <hr class="border-t border-black/30" />
 
         <div class="p-4">
-          <h3 class="text-xl font-extrabold tracking-tight text-black dark:text-white">
-            {{ ev.title }}
-          </h3>
-          <!-- <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">
-            <span class="font-semibold">Speakers:</span>
-            <span>{{ (ev.speakers || []).join(', ') }}</span>
-          </p> -->
+
+          <a v-if="ev.site_url" :href="ev.site_url" target="_blank" rel="noopener">
+            <h3 class="text-xl font-extrabold tracking-tight text-black dark:text-white">
+              {{ ev.name }}
+            </h3>
+          </a>
+          
         </div>
       </article>
     </div>
@@ -49,79 +50,28 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import axios from 'axios'
 
-const events = ref([
-  {
-    id: 1,
-    starts_at: '2025-10-03T08:00:00',
-    ends_at:   '2025-10-05T18:00:00',
-    title: 'The Asian Literary Festival 2025',
-    // speakers: ['Student Ensembles'],
-    venue: 'Brussels',
-    // format: 'FESTIVAL',
-  },
-   {
-    id: 1,
-    starts_at: '2025-11-21T08:00:00',
-    ends_at:   '2025-11-23T18:00:00',
-    title: 'Ai brain science creativity festival',
-    // speakers: ['Student Ensembles'],
-    venue: 'Abu Dhabi',
-    // format: 'FESTIVAL',
-  },
-   {
-    id: 2,
-    starts_at: '2026-01-03T08:00:00',
-    ends_at:   '2026-01-44T18:00:00',
-    title: 'Kerala Chronicles 2026',
-    // speakers: ['Student Ensembles'],
-    venue: 'Kerala',
-    // format: 'FESTIVAL',
-  },
-  {
-    id: 2,
-    starts_at: '2026-01-21T08:00:00',
-    ends_at:   '2026-01-24T18:00:00',
-    title: 'Southern Chronicles 2026',
-    // speakers: ['Student Ensembles'],
-    venue: 'Abu Dhabi',
-    // format: 'FESTIVAL',
-  },
-   {
-    id: 1,
-    starts_at: '2026-04-30T08:00:00',
-    title: 'The Asian Literary Festival 2025',
-    // speakers: ['Student Ensembles'],
-    venue: 'Nairobi',
-    // format: 'FESTIVAL',
-  }, 
-  {
-    id: 1,
-    starts_at: '2026-06-30T08:00:00',
-    title: 'The Asian Prizes 2025',
-    // speakers: ['Student Ensembles'],
-    venue: 'Global',
-    // format: 'FESTIVAL',
-  },
-  
-])
+const events = ref([])
 
 const dFmt = new Intl.DateTimeFormat(undefined, { year: 'numeric', month: 'short', day: 'numeric' })
 const tFmt = new Intl.DateTimeFormat(undefined, { hour: 'numeric', minute: '2-digit' })
 
-const sameDay = (a, b) => a.getFullYear()===b.getFullYear() && a.getMonth()===b.getMonth() && a.getDate()===b.getDate()
+const sameDay = (a, b) =>
+  a.getFullYear() === b.getFullYear() &&
+  a.getMonth() === b.getMonth() &&
+  a.getDate() === b.getDate()
 
-const formatDate = (ev) => {
-  const start = new Date(ev.starts_at)
+const formatDate = (startISO, endISO) => {
+  const start = new Date(startISO)
   if (isNaN(start)) return ''
-  if (!ev.ends_at) return dFmt.format(start)
+  if (!endISO) return dFmt.format(start)
 
-  const end = new Date(ev.ends_at)
+  const end = new Date(endISO)
   if (isNaN(end) || sameDay(start, end)) return dFmt.format(start)
 
-  // e.g., "Oct 3–5, 2025" or "Oct 31 – Nov 2, 2025"
-  const sameMonth = start.getFullYear()===end.getFullYear() && start.getMonth()===end.getMonth()
+  const sameMonth = start.getFullYear() === end.getFullYear() && start.getMonth() === end.getMonth()
   const y = start.getFullYear()
   if (sameMonth) {
     const m = new Intl.DateTimeFormat(undefined, { month: 'short' }).format(start)
@@ -129,12 +79,23 @@ const formatDate = (ev) => {
   } else {
     const m1 = new Intl.DateTimeFormat(undefined, { month: 'short', day: 'numeric' }).format(start)
     const m2 = new Intl.DateTimeFormat(undefined, { month: 'short', day: 'numeric' }).format(end)
-    return `${m1} – ${m2}, ${y}`
+    // If the year spills over, show both years explicitly:
+    const y2 = end.getFullYear() !== y ? `, ${end.getFullYear()}` : ''
+    return `${m1}, ${y} – ${m2}${y2}`
   }
 }
 
-const formatTime = (ev) => {
-  const start = new Date(ev.starts_at)
+const formatTime = (startISO) => {
+  const start = new Date(startISO)
   return isNaN(start) ? '' : tFmt.format(start)
 }
+
+onMounted(async () => {
+  try {
+    const { data } = await axios.get('/api/festivals/upcoming') // see controller below
+    events.value = Array.isArray(data) ? data : []
+  } catch (e) {
+    console.error(e.response?.data || e.message)
+  }
+})
 </script>

@@ -7,13 +7,15 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
         
         <div class="w-full h-full lg:px-2">
-            <iframe
+            <!-- <iframe
                 class="w-full h-full"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.873008833078!2d79.99318437499782!3d7.089728115005731!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2f8a178f8f4c3%3A0x123456789abcdef!2sThe%20Asian%20Literary%20Agency%2C%2016%20Vishaka%20Road%2C%20Medagama%2C%20Gampaha!5e0!3m2!1sen!2slk!4v1753439188989!5m2!1sen!2slk"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.873008833078!2d79.99318437499782!3d7.089728115005731!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2f8a178f8f4c3%3A0x123456789abcdef!2sThe%20Asian%20Literary%20Agency%2C%2016%20Vishaka%20Road%2C%20Medagama%2C%!5e0!3m2!1sen!2slk!4v1753439188989!5m2!1sen!2slk"
                 allowfullscreen=""
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
+            ></iframe> -->
+
+            <iframe class="w-full h-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d465130.67125403904!2d54.22896150671022!3d24.387099420441903!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5e440f723ef2b9%3A0xc7cc2e9341971108!2sAbu%20Dhabi%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2slk!4v1755593295795!5m2!1sen!2slk" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
 
 
@@ -138,9 +140,9 @@
     </div>
 
     <div class="mt-8 text-center text-base text-gray-900 dark:text-gray-300 leading-relaxed">
-        <p class="font-semibold text-lg">The Asian Literary Festival, Gampaha</p>
+        <p class="font-semibold text-lg">The Asian Literary Festival</p>
         <p>The Asian Literary Agency,</p>
-        <p>16 Vishaka Road, Medagama, Gampaha</p>
+        <p>16 Vishaka Road, Medagama, </p>
         <p>+94 77 556 4255</p>
         <p>info@theasianliteraryfestival.com</p>
     </div>

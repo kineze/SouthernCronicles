@@ -2,9 +2,9 @@
 
 @section('content')
 
-<section class="w-full max-w-screen-2xl  -mt-6 mx-auto p-3">
-   
-   <div class="w-full rounded-xl bg-cover bg-top">
+<section class="w-full max-w-screen-2xl mx-auto lg:p-3">
+
+    <div class="w-full rounded-xl bg-cover bg-top">
       <div class='w-full rounded-xl rounded-bl-none  bg-transparent flex bg-cover items-start'>
         <div class="relative z-30 flex flex-col items-start justify-center  pt-5">
             <h2 class="font-semibold text-black uppercase text-7xl">2025</h2>
@@ -16,9 +16,9 @@
       </div>
 
 
-        <view-news :news-id="{{ $news->id }}"></view-news>
 
-    </div>
+    <the-purple-umbrella></the-purple-umbrella>
+
 </section>
 
 @endsection

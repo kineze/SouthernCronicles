@@ -30,9 +30,27 @@
         :key="partner.id"
         class="overflow-hidden rounded bg-white"
       >
-        <img :src="`/storage/${partner.image}`" alt="Partner" class="w-full h-36 object-contain p-2" />
+        <a
+          v-if="partner.site_url"
+          :href="partner.site_url"
+          target="_blank"
+          rel="noopener"
+        >
+          <img
+            :src="`/storage/${partner.image}`"
+            :alt="partner.title"
+            class="w-full h-36 object-contain p-2 hover:scale-105 transition-transform"
+          />
+        </a>
+        <img
+          v-else
+          :src="`/storage/${partner.image}`"
+          :alt="partner.title"
+          class="w-full h-36 object-contain p-2"
+        />
       </div>
     </div>
+
 
     <!-- Load More -->
     <div class="text-center mt-10" v-if="visiblePartners.length < filteredPartners.length">

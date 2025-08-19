@@ -69,9 +69,9 @@
 
       <!-- Footer -->
       <div class="mt-8 text-center text-base text-gray-900 dark:text-gray-300 leading-relaxed">
-        <p class="font-semibold text-lg">The Asian Literary Festival, Gampaha</p>
+        <p class="font-semibold text-lg">The Asian Literary Festival, </p>
         <p>The Asian Literary Agency,</p>
-        <p>16 Vishaka Road, Medagama, Gampaha</p>
+        <p>16 Vishaka Road, Medagama, </p>
         <p>+94 77 556 4255</p>
         <p>info@theasianliteraryfestival.com</p>
       </div>

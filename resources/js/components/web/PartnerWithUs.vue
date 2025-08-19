@@ -137,12 +137,22 @@
               </div>
 
               <div class="p-4">
+
+                <a
+                    :href="p.url"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="hover:underline hover:text-blue-600 dark:hover:text-blue-400 transition"
+                  >
                 <h3 class="font-semibold text-gray-900 dark:text-white text-lg">
                   {{ p.title }}
                 </h3>
+
+                </a>
                 <p class="mt-1 text-sm text-gray-700 dark:text-gray-200">
                   {{ p.description }}
                 </p>
+
               </div>
             </article>
           </div>
@@ -169,25 +179,26 @@ const products = ref([
     video: '/assets/img/writinglab.webm',
     poster: '/images/products/writing-lab.jpg',
     description:
-      'A collective dedicated to celebrating Asian literature—mentoring emerging writers, nurturing diverse narratives, and amplifying voices across cultures.'
+      'A collective dedicated to celebrating Asian literature—mentoring emerging writers, nurturing diverse narratives, and amplifying voices across cultures.',
+    url: '/asian-group-of-literature'   // ✅ Add URL here
   },
-  
   {
     key: 'kipenzi',
     title: 'Kipenzi',
     video: '/assets/img/kipenzigirl.webm',
     poster: '/images/products/kipenzi.jpg',
     description:
-      'A living-heritage platform celebrating diverse cultures through performances, workshops, and immersive experiences.'
+      'A living-heritage platform celebrating diverse cultures through performances, workshops, and immersive experiences.',
+    url: '/the-kipenzi'
   },
-
   {
     key: 'kipenzi-toys-books',
     title: 'Kipenzi Toys & Books',
     video: '/assets/img/kipenzytoys.webm',
     poster: '/images/products/kipenzi-toys-books.jpg',
     description:
-      'Playful learning tools that bring folklore and tradition to life—designed for curious minds at home and in the classroom.'
+      'Playful learning tools that bring folklore and tradition to life—designed for curious minds at home and in the classroom.',
+    url: '#'
   },
   {
     key: 'purple-umbrella',
@@ -195,9 +206,11 @@ const products = ref([
     video: '/assets/img/umbrella.webm',
     poster: '/images/products/purple-umbrella.jpg',
     description:
-      'A community-first franchise model that empowers local partners to host cultural events and micro-festivals under one vibrant umbrella.'
+      'A community-first franchise model that empowers local partners to host cultural events and micro-festivals under one vibrant umbrella.',
+    url: '/the-purple-umbrella'
   }
 ])
+
 
 /* --- Form state --- */
 const form = ref({

@@ -35,7 +35,7 @@
           <div class="w-full lg:w-5/12">
             <div class="relative h-48 lg:h-full">
               <div class="aspect-w-1 aspect-h-1 w-full max-w-md">
-                <video autoplay muted loop playsinline class="w-full p-6 h-full object-cover bg-white rounded-xl">
+                <video autoplay muted loop playsinline class="lg:w-full lg:h-full lg:mx-0 lg:mt-0 mx-auto mt-6 object-cover bg-white rounded-xl">
                     <source src="/public/assets/img/Idea_Bulb.webm" type="video/webm">
                     Your browser does not support the video tag.
                 </video>
@@ -44,9 +44,10 @@
           </div>
 
           <!-- Copy -->
-          <div class="w-full lg:w-7/12 p-6">
+          <div class="w-full lg:w-7/12 p-6 lg:p-8 lg:mt-0 mt-6">
             <h3 class="uppercase text-3xl lg:text-4xl font-extrabold tracking-widest text-black flex items-center gap-3">
-              <span class="inline-block">Vision</span>
+              <span class="inline-block mx-auto lg:mx-0">Vision</span>
+              <span class="h-[10px] w-[10px] rounded-full" :class="accentDotClass"></span>
             </h3>
 
             <p class="mt-4 text-gray-700 leading-relaxed">
@@ -65,7 +66,7 @@
           <div class="w-full lg:w-5/12">
             <div class="relative h-24 lg:h-full">
               <div class="aspect-w-1 aspect-h-1 w-full max-w-md">
-                <video autoplay muted loop playsinline class="w-full h-full object-cover bg-white rounded-xl">
+                <video autoplay muted loop playsinline class="lg:w-full lg:h-full lg:mx-0 lg:my-0 mx-auto object-cover bg-white rounded-xl">
                     <source src="/public/assets/img/target-new.webm" type="video/webm">
                     Your browser does not support the video tag.
                 </video>
@@ -74,14 +75,14 @@
           </div>
 
           <!-- Copy -->
-          <div class="w-full lg:w-7/12 p-6 lg:p-8">
+          <div class="w-full lg:w-7/12 p-6 lg:p-8 lg:mt-0 mt-6">
             <h3 class="uppercase text-3xl lg:text-4xl font-extrabold tracking-widest text-black flex items-center gap-3">
-              <span class="inline-block">Vision</span>
+              <span class="inline-block mx-auto lg:mx-0">Mission</span>
               <span class="h-[10px] w-[10px] rounded-full" :class="accentDotClass"></span>
             </h3>
 
             <p class="mt-4 text-gray-700 leading-relaxed">
-              {{ visionText }}
+              {{ missionText }}
             </p>
           </div>
         </div>

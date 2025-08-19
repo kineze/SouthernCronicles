@@ -2,7 +2,9 @@
   <div>
     <div class="flex justify-between p-4 bg-white dark:bg-gray-800 dark:shadow-soft-dark-xl shadow rounded-xl">
       <h4 class="text-lg font-semibold dark:text-white">Partners</h4>
-      <button @click="openDrawer"  class="px-4 py-1.5 bg-gray-800 text-white dark:bg-green-500 rounded-full text-sm font-semibold">Add Partner</button>
+      <button @click="openDrawer" class="px-4 py-1.5 bg-gray-800 text-white dark:bg-green-500 rounded-full text-sm font-semibold">
+        Add Partner
+      </button>
     </div>
 
     <div class="relative overflow-x-auto mt-6 sm:rounded-lg px-4">
@@ -17,32 +19,45 @@
       >
         <template #item="{ element: partner }">
           <div class="relative bg-white dark:bg-gray-800 shadow rounded-xl overflow-hidden">
-            <!-- drag handle -->
             <div class="absolute top-2 left-2 z-10 cursor-move drag-handle text-gray-600 dark:text-gray-300">
               <i class="fa-solid fa-up-down"></i>
             </div>
 
-            <img :src="`/storage/${partner.image}`" alt="Partner"
-                 class="w-full h-40 object-cover bg-white" />
+            <!-- Clickable logo if site_url exists -->
+            <component :is="partner.site_url ? 'a' : 'div'"
+                       :href="partner.site_url || undefined"
+                       target="_blank" rel="noopener"
+            >
+              <img :src="`/storage/${partner.image}`" alt="Partner" class="w-full h-40 object-cover bg-white" />
+            </component>
+
             <div class="p-4 text-center">
               <p v-if="partner.partner_type?.name" class="text-xs text-gray-500 mt-1">
                 {{ partner.partner_type.name }}
               </p>
-              <h5 class="font-medium dark:text-white">{{ partner.title }}</h5>
+
+              <component :is="partner.site_url ? 'a' : 'span'"
+                         :href="partner.site_url || undefined"
+                         target="_blank" rel="noopener"
+                         class="font-medium dark:text-white"
+              >
+                {{ partner.title }}
+              </component>
 
               <div class="flex justify-center mt-2 gap-3">
                 <button @click="editPartner(partner)" class="text-green-600"><i class="fa fa-pen"></i></button>
                 <button @click="confirmDelete(partner)" class="text-red-600"><i class="fa fa-trash"></i></button>
               </div>
-
             </div>
           </div>
         </template>
       </draggable>
     </div>
 
+    <!-- Backdrop -->
+    <div v-if="drawerOpen" class="fixed inset-0 z-[990] bg-black bg-opacity-40" @click="closeDrawer"></div>
+
     <!-- Drawer -->
-     <div v-if="drawerOpen" class="fixed inset-0 z-[990] bg-black bg-opacity-40" @click="closeDrawer"></div>
     <div :class="['fixed top-0 right-0 w-96 h-screen z-[990] bg-white dark:bg-gray-800 shadow-lg transform transition-transform overflow-y-auto p-6', drawerOpen ? 'translate-x-0' : 'translate-x-full']">
       <div class="flex justify-between items-center mb-4">
         <h3 class="text-lg font-bold dark:text-white">{{ editingId ? 'Edit Partner' : 'Add Partner' }}</h3>
@@ -50,13 +65,15 @@
       </div>
 
       <form @submit.prevent="savePartner">
-
+        <!-- Logo -->
         <div class="mb-5">
           <label class="block text-sm font-medium dark:text-white mb-1">Logo</label>
           <div class="relative w-32 h-32 border border-dashed rounded bg-gray-50 dark:bg-gray-700 cursor-pointer flex items-center justify-center" @click="$refs.imageInput.click()">
             <template v-if="previewImage">
               <img :src="previewImage" class="w-full h-full object-contain" />
-              <button @click.stop="removeImage" class="absolute top-0 right-0 bg-red-600 text-white p-1 rounded-full text-xs"><i class="fa fa-xmark"></i></button>
+              <button @click.stop="removeImage" type="button" class="absolute top-0 right-0 bg-red-600 text-white p-1 rounded-full text-xs">
+                <i class="fa fa-xmark"></i>
+              </button>
             </template>
             <template v-else>
               <span class="text-sm text-gray-400">Click to upload</span>
@@ -65,40 +82,40 @@
           <input ref="imageInput" type="file" class="hidden" @change="handleImageUpload" accept="image/*" />
         </div>
 
+        <!-- Partner Type -->
         <div class="mb-5">
           <label class="block text-sm font-medium dark:text-white mb-1">Partner Type</label>
-          <select
-            v-model="form.partner_type_id"
-            class="w-full px-3 py-2 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 dark:text-white"
-          >
-            <option disabled class="text-black dark:text-white">Select Type</option>
-            <option v-for="t in types" :key="t.id" :value="String(t.id)">
-              {{ t.name }}
-            </option>
+          <select v-model.number="form.partner_type_id" class="w-full px-3 py-2 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 dark:text-white">
+            <option :value="null">Select Type</option>
+            <option v-for="t in types" :key="t.id" :value="t.id">{{ t.name }}</option>
           </select>
         </div>
 
+        <!-- Title -->
         <div class="relative mb-5">
-        <input
-            v-model="form.title"
-            type="text"
-            id="title"
-            placeholder=" "
-            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
-            required
-        />
-        <label
-            for="title"
-            class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2 
-            peer-focus:px-2 peer-focus:text-green-600 peer-focus:dark:text-green-500 
-            peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 
-            peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
-        >
+          <input v-model="form.title" type="text" id="title" placeholder=" " class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer" required />
+          <label for="title" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2
+                 peer-focus:px-2 peer-focus:text-green-600 peer-focus:dark:text-green-500
+                 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2
+                 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1">
             Title
-        </label>
+          </label>
         </div>
 
-        <button type="submit" class="w-full bg-green-600 text-white py-2 rounded">{{ editingId ? 'Update' : 'Create' }}</button>
+        <!-- Website URL -->
+        <div class="relative mb-5">
+          <input v-model="form.site_url" type="url" id="site_url" placeholder=" " class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer" />
+          <label for="site_url" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2
+                 peer-focus:px-2 peer-focus:text-green-600 peer-focus:dark:text-green-500
+                 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2
+                 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1">
+            Website URL
+          </label>
+        </div>
+
+        <button type="submit" class="w-full bg-green-600 text-white py-2 rounded">
+          {{ editingId ? 'Update' : 'Create' }}
+        </button>
       </form>
     </div>
 
@@ -125,16 +142,25 @@ import draggable from 'vuedraggable'
 const toast = useToast()
 
 const partners = ref([])
-const drawerOpen = ref(false)
-const editingId = ref(null)
-const showDeleteModal = ref(false)
-const partnerToDelete = ref(null)
-const previewImage = ref(null)
-const form = ref({ title: '', image: null, partner_type_id: null })
-
 const types = ref([])
 
+const drawerOpen = ref(false)
+const editingId = ref(null)
 
+const showDeleteModal = ref(false)
+const partnerToDelete = ref(null)
+
+const previewImage = ref(null)
+const form = ref({ title: '', image: null, partner_type_id: null, site_url: '' })
+
+/* Helpers */
+const ensureProtocol = (u) => {
+  if (!u) return u
+  if (/^[a-z][a-z0-9+.-]*:\/\//i.test(u)) return u
+  return `https://${u}`
+}
+
+/* API */
 const fetchTypes = async () => {
   try {
     const { data } = await axios.get('/api/partner-types?ordered=true')
@@ -144,10 +170,13 @@ const fetchTypes = async () => {
   }
 }
 
-
 const fetchPartners = async () => {
-  const { data } = await axios.get('/api/partners?ordered=true') // ordered fetch
-  partners.value = data
+  try {
+    const { data } = await axios.get('/api/partners?ordered=true')
+    partners.value = data
+  } catch (e) {
+    console.error(e.response?.data || e.message)
+  }
 }
 
 const onDragEnd = async () => {
@@ -156,10 +185,12 @@ const onDragEnd = async () => {
     await axios.post('/api/partners/reorder', { order: ordered })
     toast.success('Reordered successfully')
   } catch (e) {
+    console.error(e.response?.data || e.message)
     toast.error('Error saving order')
   }
 }
 
+/* Drawer / Form */
 const openDrawer = () => {
   resetForm()
   drawerOpen.value = true
@@ -171,14 +202,13 @@ const closeDrawer = () => {
 }
 
 const resetForm = () => {
-  form.value = { title: '', image: null, partner_type_id: null }
+  form.value = { title: '', image: null, partner_type_id: null, site_url: '' }
   previewImage.value = null
   editingId.value = null
 }
 
-
 const handleImageUpload = (e) => {
-  const file = e.target.files[0]
+  const file = e.target.files?.[0]
   if (file) {
     form.value.image = file
     previewImage.value = URL.createObjectURL(file)
@@ -191,26 +221,37 @@ const removeImage = () => {
 }
 
 const savePartner = async () => {
-  const formData = new FormData()
-  for (const key in form.value) {
-    // include null as empty string so backend sees the key
-    const v = form.value[key]
-    formData.append(key, v == null ? '' : v)
+  const fd = new FormData()
+  fd.append('title', form.value.title)
+
+  if (form.value.partner_type_id !== null && form.value.partner_type_id !== undefined) {
+    fd.append('partner_type_id', Number(form.value.partner_type_id))
+  }
+
+  // send site_url only if user entered something
+  const url = (form.value.site_url || '').trim()
+  if (url !== '') {
+    fd.append('site_url', ensureProtocol(url))
+  }
+
+  if (form.value.image instanceof File) {
+    fd.append('image', form.value.image)
   }
 
   try {
     if (editingId.value) {
-      formData.append('_method', 'PUT')
-      await axios.post(`/api/partners/${editingId.value}`, formData)
+      fd.append('_method', 'PUT')
+      await axios.post(`/api/partners/${editingId.value}`, fd, { headers: { 'Content-Type': 'multipart/form-data' } })
       toast.success('Partner updated')
     } else {
-      await axios.post('/api/partners', formData)
+      await axios.post('/api/partners', fd, { headers: { 'Content-Type': 'multipart/form-data' } })
       toast.success('Partner created')
     }
-    fetchPartners()
+    await fetchPartners()
     closeDrawer()
   } catch (error) {
-    toast.error('Error saving partner')
+    console.error(error.response?.data || error.message)
+    toast.error(error.response?.data?.message || 'Error saving partner')
   }
 }
 
@@ -219,13 +260,14 @@ const editPartner = (partner) => {
   form.value = {
     title: partner.title,
     image: null,
-    partner_type_id: partner.partner_type_id ?? null
+    partner_type_id: partner.partner_type_id ?? null,
+    site_url: partner.site_url ?? ''
   }
   previewImage.value = `/storage/${partner.image}`
   drawerOpen.value = true
 }
 
-
+/* Delete */
 const confirmDelete = (partner) => {
   partnerToDelete.value = partner
   showDeleteModal.value = true
@@ -235,8 +277,9 @@ const deletePartner = async () => {
   try {
     await axios.delete(`/api/partners/${partnerToDelete.value.id}`)
     toast.success('Partner deleted')
-    fetchPartners()
-  } catch {
+    await fetchPartners()
+  } catch (e) {
+    console.error(e.response?.data || e.message)
     toast.error('Error deleting partner')
   } finally {
     showDeleteModal.value = false
@@ -247,5 +290,4 @@ onMounted(() => {
   fetchPartners()
   fetchTypes()
 })
-
 </script>
