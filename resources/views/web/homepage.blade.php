@@ -416,7 +416,7 @@
 
     <!-- Foreground Content -->
     <div class="relative z-60 flex flex-col items-start justify-center p-3 pt-20 lg:pt-28">
-      <h2 class="font-semibold text-black uppercase text-8xl">2025</h2>
+      <h2 class="font-semibold text-black uppercase text-8xl">2026</h2>
       <h1 class="tracking-[5px] text-5xl uppercase font-bold text-black leading-tight">
         The Asian Literary <br> Festival
       </h1>

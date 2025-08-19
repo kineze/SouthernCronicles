@@ -6,7 +6,7 @@
     <link rel="icon" type="image/png" href="{{asset('assets/img/logo.webp')}}">
 
 
-    <meta property="og:title" content="ALF - 2025" />
+    <meta property="og:title" content="ALF - 2026" />
     <meta property="og:description" content="Bridging Worlds Through Words" />
     <meta property="og:image" content="{{ asset('assets/img/og-image.webp') }}" />
     <meta property="og:type" content="website" />
@@ -32,13 +32,7 @@
   pointer-events: none;
   user-select: none;
 }
-
-/* =========================================
-   Layer 3: left → right infinite marquee
-   Starts with first slide fully on screen
-   ========================================= */
 :root{
-  /* Tweak these to taste */
   --marquee-speed: 120s;                 /* total time for one cycle  */
   --l3-height: clamp(140px, 22vw, 320px);/* visible height for layer 3 */
 }
