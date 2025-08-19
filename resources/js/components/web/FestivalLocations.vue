@@ -10,9 +10,8 @@
     </header>
 
 
-    <div class=""> 
-      <div ref="mapEl" class="w-full p-3 border border-black  h-full"></div>
-    </div>
+
+    <div ref="mapEl" class="w-full h-full"></div>
   </div>
 </template>
 
