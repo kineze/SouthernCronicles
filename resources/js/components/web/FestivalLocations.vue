@@ -1,7 +1,7 @@
 <template>
   <div class="w-full h-[60vh] lg:h-[100vh] overflow-hidden py-10 relative z-50">
 
-    <header class="text-center mb-10 lg:mb-14">
+    <header class="text-center mb-10 ">
 
       <h2 id="vm-title" class="mt-2 uppercase font-extrabold text-black tracking-widest text-3xl lg:text-6xl " >
         Festival Locations
@@ -9,9 +9,7 @@
 
     </header>
 
-
-
-    <div class=" p-4 border h-[60vh] lg:h-[100vh] border-black">
+    <div class=" p-4 border h-[620px] border-black">
       <div ref="mapEl" class="w-full  h-full"></div>
     </div>
   </div>
