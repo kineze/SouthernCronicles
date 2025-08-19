@@ -11,7 +11,9 @@
 
 
 
-    <div ref="mapEl" class="w-full h-full"></div>
+    <div class=" p-4 border border-black">
+      <div ref="mapEl" class="w-full h-full"></div>
+    </div>
   </div>
 </template>
 
