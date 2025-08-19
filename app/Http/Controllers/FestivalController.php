@@ -73,4 +73,40 @@ class FestivalController extends Controller
     public function show(Festival $festival) {
         return $festival;
     }
+
+
+    public function upcoming(Request $request)
+    {
+        $limit = (int) $request->get('limit', 50);
+
+        $from = $request->get('from');
+        $fromDate = $from ? date('Y-m-d H:i:s', strtotime($from)) : now()->startOfDay();
+
+        $q = Festival::query()
+            ->where(function ($q) use ($fromDate) {
+                $q->where('start_at', '>=', $fromDate)
+                  ->orWhere(function ($q2) use ($fromDate) {
+                      $q2->whereNotNull('end_at')->where('end_at', '>=', $fromDate);
+                  });
+            })
+            ->orderBy('start_at')
+            ->select([
+                'id',
+                'name',
+                'start_at',
+                'end_at',
+                'location',
+                'location_place_id',
+                'location_lat',
+                'location_lng',
+                'image',
+                'site_url',
+            ]);
+
+        if ($limit > 0) {
+            $q->limit($limit);
+        }
+
+        return $q->get();
+    }
 }

@@ -9,7 +9,7 @@ class Partner extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'image', 'order','partner_type_id'];
+    protected $fillable = ['title', 'image', 'order','partner_type_id','site_url'];
 
     public function partnerType()
     {
