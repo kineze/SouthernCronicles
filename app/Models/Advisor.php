@@ -18,12 +18,12 @@ class Advisor extends Model
         'instagram',
         'linkedin',
         'show_on_home',
-        'position',      // ← add
+        'position', 
     ];
 
     protected $casts = [
         'show_on_home' => 'boolean',
-        'position'     => 'integer', // ← add
+        'position'     => 'integer',
     ];
 
     public function type()

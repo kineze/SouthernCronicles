@@ -71,6 +71,7 @@ Route::controller(PagesController::class)->group( function (){
     Route::get('/view-career/{id}', 'viewCareer')->name('viewCareer');
 
     Route::get('/partner-with-us','partnerWithUs')->name('partnerWithUs');
+    Route::get('/advisors-list','advisorsList')->name('advisorsList');
 });
 
 

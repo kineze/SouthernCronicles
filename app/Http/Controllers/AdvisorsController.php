@@ -22,7 +22,7 @@ class AdvisorsController extends Controller
         $q = Advisor::with('type');
 
         if ($ordered) {
-            // simple, reliable manual order by position then id
+
             return $q->orderBy('position')->orderBy('id')->get();
         }
 

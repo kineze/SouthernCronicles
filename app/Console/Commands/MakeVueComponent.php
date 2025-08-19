@@ -125,9 +125,9 @@ VUE;
 
         $contents = $files->get($appJs);
 
-        $importPath      = './components' . ($relativeDir ? '/' . str_replace('\\', '/', $relativeDir) : '') . '/' . $studly . '.vue';
-        $importLine      = "import {$studly} from '{$importPath}';";
-        $registrationLine= "  .component('{$kebab}', {$studly})";
+        $importPath       = './components' . ($relativeDir ? '/' . str_replace('\\', '/', $relativeDir) : '') . '/' . $studly . '.vue';
+        $importLine       = "import {$studly} from '{$importPath}';";
+        $registrationLine = "  .component('{$kebab}', {$studly})";
 
         if (str_contains($contents, $importLine) && str_contains($contents, $registrationLine)) {
             $this->info('app.js already has import & registration; no changes made.');
@@ -146,60 +146,60 @@ VUE;
         }
     }
 
-/**
- * APPEND import to the BOTTOM of the group’s import block.
- * If the group section is missing, create it and place the import
- * AFTER the last existing components section (not just after its marker).
- */
-protected function insertImport(string $contents, string $importLine, string $group): string
-{
-    $groupMarker = '/^\/\/\s*' . preg_quote($group, '/') . '\s*components\s*$/im';
-    $anyMarker   = '/^\/\/\s*([a-z0-9_-]+)\s*components\s*$/im';
-    $constAppRx  = '/^\s*const\s+app\s*=\s*createApp\(\{\}\);/m';
+    /**
+     * APPEND import to the BOTTOM of the group’s import block.
+     * If the group section is missing, create it and place the import
+     * AFTER the last existing components section (not just after its marker).
+     */
+    protected function insertImport(string $contents, string $importLine, string $group): string
+    {
+        // Tolerant markers (allow "components" optional + trailing dashes/lines)
+        $groupMarker = '/^\/\/\s*' . preg_quote($group, '/') . '\s*(?:components?)?\s*(?:[-–—_=]{3,}.*)?$/im';
+        $anyMarker   = '/^\/\/\s*[a-z0-9_-]+\s*(?:components?)?\s*(?:[-–—_=]{3,}.*)?$/im';
+        $constAppRx  = '/^\s*const\s+app\s*=\s*createApp\(\{\}\);/m';
 
-    // If the group's section exists → append to its bottom
-    if (preg_match($groupMarker, $contents, $m, PREG_OFFSET_CAPTURE)) {
-        return $this->appendImportIntoSection($contents, $m[0][1], $importLine, [$anyMarker, $constAppRx]);
+        // If the group's section exists → append to its bottom
+        if (preg_match($groupMarker, $contents, $m, PREG_OFFSET_CAPTURE)) {
+            return $this->appendImportIntoSection($contents, $m[0][1], $importLine, [$anyMarker, $constAppRx]);
+        }
+
+        // Otherwise, create a new section.
+        // Prefer to insert it AFTER the entire last components section (not just after its marker).
+        $insertionPos = null;
+
+        // 1) After the last "// * components" SECTION (end of that section)
+        if (preg_match_all($anyMarker, $contents, $all, PREG_OFFSET_CAPTURE)) {
+            $lastMarker = end($all[0]); // [text, offset]
+            $lastOffset = $lastMarker[1];
+            // compute end of that section (next components marker OR const app)
+            $sectionEnd = $this->findSectionEnd($contents, $lastOffset, [$anyMarker, $constAppRx]);
+            $insertionPos = $sectionEnd; // <-- place AFTER previous section
+        }
+
+        // 2) After the top-level import block (fallback if no components marker exists at all)
+        if ($insertionPos === null && preg_match('/\A(?:(?:\s*import\s.+?;)\s*)+/m', $contents, $m, PREG_OFFSET_CAPTURE)) {
+            $blockEnd = $this->lineEndFrom($contents, $m[0][1] + strlen($m[0][0]) - 1);
+            $insertionPos = $blockEnd;
+        }
+
+        // 3) Before const app
+        if ($insertionPos === null && preg_match($constAppRx, $contents, $m, PREG_OFFSET_CAPTURE)) {
+            $insertionPos = $m[0][1];
+        }
+
+        // 4) Start of file
+        if ($insertionPos === null) {
+            $insertionPos = 0;
+        }
+
+        $markerLine = "// {$group} components------------------------------------------------------------------------------------------------\n";
+        $new = substr($contents, 0, $insertionPos)
+             . $markerLine
+             . $importLine . "\n"
+             . substr($contents, $insertionPos);
+
+        return $new;
     }
-
-    // Otherwise, create a new section.
-    // Prefer to insert it AFTER the entire last components section (not just after its marker).
-    $insertionPos = null;
-
-    // 1) After the last "// * components" SECTION (end of that section)
-    if (preg_match_all($anyMarker, $contents, $all, PREG_OFFSET_CAPTURE)) {
-        $lastMarker = end($all[0]);                 // [0] => matched text, [1] => offset
-        $lastOffset = $lastMarker[1];
-        // compute end of that section (next components marker OR const app)
-        $sectionEnd = $this->findSectionEnd($contents, $lastOffset, [$anyMarker, $constAppRx]);
-        $insertionPos = $sectionEnd;                // <-- place AFTER previous section
-    }
-
-    // 2) After the top-level import block (fallback if no components marker exists at all)
-    if ($insertionPos === null && preg_match('/^(?:\s*import\s.+?;\s*)+/m', $contents, $m, PREG_OFFSET_CAPTURE)) {
-        $blockEnd = $this->lineEndFrom($contents, $m[0][1] + strlen($m[0][0]) - 1);
-        $insertionPos = $blockEnd;
-    }
-
-    // 3) Before const app
-    if ($insertionPos === null && preg_match($constAppRx, $contents, $m, PREG_OFFSET_CAPTURE)) {
-        $insertionPos = $m[0][1];
-    }
-
-    // 4) Start of file
-    if ($insertionPos === null) {
-        $insertionPos = 0;
-    }
-
-    $markerLine = "// {$group} components\n";
-    $new = substr($contents, 0, $insertionPos)
-         . $markerLine
-         . $importLine . "\n"
-         . substr($contents, $insertionPos);
-
-    return $new;
-}
-
 
     protected function appendImportIntoSection(string $contents, int $markerOffset, string $importLine, array $endMarkers): string
     {
@@ -228,28 +228,37 @@ protected function insertImport(string $contents, string $importLine, string $gr
     }
 
     /**
-     * Insert registration inside `// {group}` section,
+     * Insert registration inside `// {group}` section (tolerant),
      * or create that section right before `.mount('#app')` if missing.
      */
     protected function insertRegistration(string $contents, string $registrationLine, string $group): string
     {
-        $groupRegMarker = '/^(\s*)\/\/\s*' . preg_quote($group, '/') . '\s*$/im';
+        // Accept: // web, // web registrations, // web ----, // web registrations----, etc.
+        $groupRegMarker = '/^(\s*)\/\/\s*' . preg_quote($group, '/') . '\s*(?:registrations?)?\s*(?:[-–—_=]{3,}.*)?$/im';
 
         // If group section exists → append at bottom of that section (before next group or before mount)
         if (preg_match($groupRegMarker, $contents, $m, PREG_OFFSET_CAPTURE)) {
-            $blockEnd = $this->findSectionEnd($contents, $m[0][1], ['/^(\s*)\/\/\s*[a-z0-9_-]+\s*$/im', '/\.mount\s*\(/']);
+            $blockEnd = $this->findSectionEnd(
+                $contents,
+                $m[0][1],
+                [
+                    // next group header (with or without 'registrations') or the mount
+                    '/^(\s*)\/\/\s*[a-z0-9_-]+\s*(?:registrations?)?\s*(?:[-–—_=]{3,}.*)?$/im',
+                    '/\.mount\s*\(/'
+                ]
+            );
             return substr($contents, 0, $blockEnd) . $registrationLine . "\n" . substr($contents, $blockEnd);
         }
 
         // Otherwise create the section right before .mount('#app')
         if (preg_match('/\.mount\s*\(\s*[\'"]#app[\'"]\s*\)/', $contents, $m, PREG_OFFSET_CAPTURE)) {
             $pos = $m[0][1];
-            $marker = "  // {$group}\n";
+            $marker = "  // {$group}------------------------------------------------------------------------------------------------\n";
             return substr($contents, 0, $pos) . $marker . $registrationLine . "\n" . substr($contents, $pos);
         }
 
         // Fallback: append at end
-        return rtrim($contents) . "\n" . "  // {$group}\n" . $registrationLine . "\n";
+        return rtrim($contents) . "\n" . "// {$group}------------------------------------------------------------------------------------------------\n" . $registrationLine . "\n";
     }
 
     protected function findSectionEnd(string $contents, int $startOffset, array $endPatterns): int

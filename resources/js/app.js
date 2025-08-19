@@ -35,7 +35,6 @@ import VolunteerApplications from './components/admin/VolunteerApplications.vue'
 import ManagePartnerInquiries from './components/admin/ManagePartnerInquiries.vue';
 import AdvisorTypes from './components/admin/AdvisorTypes.vue';
 import ManageAdvisors from './components/admin/ManageAdvisors.vue';
-
 // web components
 import WebNav from './components/web/webNav.vue';
 import SpeakersCarousel from './components/web/SpeakersCarousel.vue';
@@ -67,6 +66,8 @@ import VisionMission from './components/web/VisionMission.vue';
 import Careers from './components/web/Careers.vue';
 import CareerView from './components/web/CareerView.vue';
 import PartnerWithUs from './components/web/PartnerWithUs.vue';
+import AdvisorCarousel from './components/web/AdvisorCarousel.vue';
+import AdvisorsList from './components/web/AdvisorsList.vue';
 
 const app = createApp({});
 
@@ -124,7 +125,6 @@ app
   .component('manage-partner-inquiries', ManagePartnerInquiries)
   .component('advisor-types', AdvisorTypes)
   .component('manage-advisors', ManageAdvisors)
-
   // web
   .component('web-nav',WebNav)
   .component('speakers-carousel',SpeakersCarousel)
@@ -155,5 +155,7 @@ app
   .component('careers', Careers)
   .component('career-view', CareerView)
   .component('partner-with-us',PartnerWithUs)
+  .component('advisor-carousel', AdvisorCarousel)
+  .component('advisors-list', AdvisorsList)
 
 .mount('#app')

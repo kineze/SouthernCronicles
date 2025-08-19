@@ -18,7 +18,7 @@ return new class extends Migration {
 
             $table->string('name', 255);
             $table->text('description')->nullable();
-            $table->string('image')->nullable(); // storage path
+            $table->string('image')->nullable();
             $table->string('facebook')->nullable();
             $table->string('instagram')->nullable();
             $table->string('linkedin')->nullable();
