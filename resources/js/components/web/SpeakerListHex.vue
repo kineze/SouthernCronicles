@@ -6,9 +6,8 @@
     aria-label="Speakers honeycomb"
     preserveAspectRatio="xMidYMid meet"
   >
-    <!-- responsive, no fixed heights -->
     <defs>
-      <clipPath v-for="(g, i) in gridToShow" :key="i" :id="clipId(i)">
+      <clipPath v-for="(g, i) in gridToShow" :key="`clip-${i}`" :id="clipId(i)">
         <polygon :points="hexPointsPointy(g.x, g.y, R)" />
       </clipPath>
     </defs>
@@ -47,13 +46,21 @@
         />
       </g>
 
-      <!-- stroke on top -->
+      <!-- stroke -->
       <polygon
         :points="hexPointsPointy(g.x, g.y, R)"
         fill="none"
         :stroke="strokeColor"
         :stroke-width="strokeWidth"
         stroke-linejoin="round"
+      />
+
+      <!-- hit-area for clicks -->
+      <polygon
+        v-if="interactive"
+        class="hit"
+        :points="hexPointsPointy(g.x, g.y, R)"
+        @click="onHexClick(i)"
       />
     </g>
   </svg>
@@ -62,10 +69,13 @@
 <script setup>
 import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue'
 
+const emit = defineEmits(['hex-click'])
+
 /* ---- Props ---- */
 const props = defineProps({
   images: { type: Array, required: true },
 
+  // visuals
   radius: { type: Number, default: 100 },
   strokeColor: { type: String, default: '#ffffff' },
   strokeWidth: { type: Number, default: 2 },
@@ -76,24 +86,23 @@ const props = defineProps({
   intervalMs: { type: Number, default: 2400 },
   fadeMs: { type: Number, default: 1200 },
   overlayOpacity: { type: Number, default: 0.45 },
-  batchSize: { type: Number, default: 1 },
+  batchSize: { type: Number, default: 1 }, // respected
 
   // uniqueness
-  avoidDuplicates: { type: Boolean, default: true },
-  dedupeKey: { type: String, default: 'filename' }, // 'filename'|'path'|'exact'
+  avoidDuplicates: { type: Boolean, default: false },
+  dedupeKey: { type: String, default: 'exact' }, // 'filename'|'path'|'exact'
 
-  // responsive
-  mobileBreakpoint: { type: Number, default: 768 }, // px
+  // responsive + layout
+  mobileBreakpoint: { type: Number, default: 768 },
+  rowsDesktop: { type: Array, default: () => [14, 13, 14, 13, 14, 13, 14, 13, 14, 13, 14, 13] },
+  rowsMobile:  { type: Array, default: () => [3, 2, 3, 2, 3, 2, 3, 2] },
+  pad: { type: Number, default: 12 },
 
-  // optional: override rows
-  rowsDesktop: { type: Array, default: () => [10, 10, 6, 7, 9, 10,11.] },
-  rowsMobile:  { type: Array, default: () => [2, 3, 2, 3, 2] },
-
-  // optional padding around grid (SVG units)
-  pad: { type: Number, default: 8 }
+  // interaction
+  interactive: { type: Boolean, default: false }
 })
 
-/* ---- Responsive flag ---- */
+/* ---- Responsive ---- */
 const isMobile = ref(false)
 let mql = null, mqlHandler = null
 onMounted(() => {
@@ -106,32 +115,28 @@ onMounted(() => {
   }
 })
 onBeforeUnmount(() => {
-  if (mql) {
-    if (mql.removeEventListener) mql.removeEventListener('change', mqlHandler)
-    else mql.removeListener(mqlHandler)
-  }
+  if (!mql) return
+  if (mql.removeEventListener) mql.removeEventListener('change', mqlHandler)
+  else mql.removeListener(mqlHandler)
 })
 
-/* ---- Geometry (pointy-top hex) ---- */
+/* ---- Geometry ---- */
 const R = computed(() => props.radius)
-const STEP_X = computed(() => Math.sqrt(3) * R.value) // horizontal center distance
-const STEP_Y = computed(() => 1.5 * R.value)          // vertical center distance
+const STEP_X = computed(() => Math.sqrt(3) * R.value)
+const STEP_Y = computed(() => 1.5 * R.value)
 
 const rows = computed(() => (isMobile.value ? props.rowsMobile : props.rowsDesktop))
-
-// Grid outer size (tight bounding box, then add pad)
 const widest = computed(() => Math.max(...rows.value))
-const tightW = computed(() => (widest.value > 1 ? (widest.value - 1) * STEP_X.value + 2 * R.value : 2 * R.value))
-const tightH = computed(() => (rows.value.length > 1 ? (rows.value.length - 1) * STEP_Y.value + 2 * R.value : 2 * R.value))
+const tightW = computed(() => (Math.max(widest.value - 1, 0)) * STEP_X.value + 2 * R.value)
+const tightH = computed(() => (Math.max(rows.value.length - 1, 0)) * STEP_Y.value + 2 * R.value)
 const boxW = computed(() => tightW.value + 2 * props.pad)
 const boxH = computed(() => tightH.value + 2 * props.pad)
 
-// centers for each hex (centered per row)
 const grid = computed(() => {
   const out = []
   rows.value.forEach((count, row) => {
     const y = props.pad + R.value + row * STEP_Y.value
-    const rowW = (count > 1 ? (count - 1) * STEP_X.value + 2 * R.value : 2 * R.value)
+    const rowW = Math.max(count - 1, 0) * STEP_X.value + 2 * R.value
     const startX = props.pad + (boxW.value - 2 * props.pad - rowW) / 2 + R.value
     for (let col = 0; col < count; col++) {
       out.push({ x: startX + col * STEP_X.value, y, row, col })
@@ -140,43 +145,48 @@ const grid = computed(() => {
   return out
 })
 
-/* ---- Canonicalize + Dedupe ---- */
-function canonicalKey(url, mode = 'filename') {
+/* ---- Pool + Dedupe ---- */
+function canonicalKey(url, mode = 'exact') {
   let original = String(url || '').trim()
   if (!original) return ''
+  if (mode === 'exact') return original.toLowerCase()
+
   let path = original
   try { if (path.startsWith('http')) path = new URL(path).pathname } catch {}
   path = path.split('#')[0].split('?')[0]
   try { path = decodeURIComponent(path) } catch {}
   path = path.toLowerCase()
-  if (mode === 'exact') return original.toLowerCase()
+
   if (mode === 'path') return path
-  const seg = path.split('/').filter(Boolean).pop() || path
-  return seg
-    .replace(/\.[a-z0-9]+$/i,'')
-    .replace(/-\d+x\d+$/,'')
-    .replace(/@2x|@3x|_2x|_3x/gi,'')
-    .replace(/\((\d+)\)$/,'')
-    .replace(/[-_ ]copy(\s*\d+)?/i,'')
-    .trim()
+  if (mode === 'filename') {
+    const seg = path.split('/').filter(Boolean).pop() || path
+    return seg
+      .replace(/\.[a-z0-9]+$/i,'')
+      .replace(/-\d+x\d+$/,'')
+      .replace(/@2x|@3x|_2x|_3x/gi,'')
+      .replace(/\((\d+)\)$/,'')
+      .replace(/[-_ ]copy(\s*\d+)?/i,'')
+      .trim()
+  }
+  return original.toLowerCase()
 }
 
 const pool = computed(() => {
   const seen = new Set(), out = []
   for (const src of props.images || []) {
     const key = canonicalKey(src, props.dedupeKey)
-    if (!key || seen.has(key)) continue
+    if (props.avoidDuplicates && seen.has(key)) continue
     seen.add(key); out.push({ src, key })
   }
   return out
 })
 const POOL_LEN = computed(() => pool.value.length)
-
-// only render as many hexes as unique images
 const visibleCount = computed(() => Math.min(grid.value.length, POOL_LEN.value))
-const gridToShow   = computed(() => grid.value.slice(0, visibleCount.value))
+const gridToShow = computed(() => grid.value.slice(0, visibleCount.value))
 
-/* ---- Helpers ---- */
+/* ===========================================================
+   🔀 Shuffle logic (rotation-queue + adjacency constraints)
+   =========================================================== */
 function hexPointsPointy(cx, cy, r) {
   const pts = []
   for (let i = 0; i < 6; i++) {
@@ -185,9 +195,8 @@ function hexPointsPointy(cx, cy, r) {
   }
   return pts.join(' ')
 }
-function clipId(i){ return `hexclip-${props.uid}-${i}` }
+function clipId(i) { return `hexclip-${props.uid}-${i}` }
 function randInt(max){ return Math.floor(Math.random() * max) }
-/* FIXED: proper swap */
 function shuffleInPlace(a){
   for (let i = a.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -235,7 +244,7 @@ function takeFromQueue(excludeKeys){
   return null
 }
 
-/* ---- Animation state ---- */
+/* ---- State + Animation ---- */
 const state = ref([]) // [{ currIdx, nextIdx, prevIdx, overlay, showNext, busy }]
 let timer = null
 const t1 = new Map(), t2 = new Map()
@@ -266,7 +275,6 @@ function initState(){
 
 function animateTo(i, nextIdx){
   const s = state.value[i]; if (!s || s.busy) return
-  // guard against bad indices
   if (nextIdx == null || !pool.value[nextIdx]) return
   s.busy = true; s.prevIdx = s.currIdx; s.nextIdx = nextIdx; s.overlay = true; s.showNext = false
   const half = Math.max(1, Math.floor(props.fadeMs/2))
@@ -346,16 +354,25 @@ function tick(){
   }
 }
 
-function startShuffler(){ stopShuffler(); timer = setInterval(tick, props.intervalMs) }
+function startShuffler(){ stopShuffler(); if (props.shuffle) timer = setInterval(tick, props.intervalMs) }
 function stopShuffler(){
   if (timer){ clearInterval(timer); timer = null }
   t1.forEach(clearTimeout); t2.forEach(clearTimeout)
   t1.clear(); t2.clear()
 }
 
-watch([pool, gridToShow], () => { initState(); if (props.shuffle) startShuffler() }, { immediate:true })
-onMounted(()=>{ if (props.shuffle) startShuffler() })
+watch([pool, gridToShow], () => { initState(); startShuffler() }, { immediate:true })
+watch(() => [props.shuffle, props.intervalMs, props.batchSize, props.fadeMs], () => { startShuffler() })
+onMounted(()=> startShuffler())
 onBeforeUnmount(()=> stopShuffler())
+
+/* ---- Click ---- */
+function onHexClick(i) {
+  const s = state.value[i]
+  if (!s) return
+  const curr = pool.value[s.currIdx]
+  emit('hex-click', { index: i, poolIndex: s.currIdx, src: curr?.src })
+}
 </script>
 
 <style scoped>
@@ -366,4 +383,6 @@ onBeforeUnmount(()=> stopShuffler())
 
 .overlay { fill: #000; opacity: 0; transition: opacity var(--fade-ms) ease; }
 .overlay.show { opacity: var(--overlay-opacity); }
+
+.hit { fill: transparent; cursor: pointer; }
 </style>

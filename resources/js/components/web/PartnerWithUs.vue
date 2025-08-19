@@ -165,12 +165,13 @@ const telRef = ref(null)
 const products = ref([
   {
     key: 'writing-lab',
-    title: 'The Writing Lab',
+    title: 'The Asian group of Literature',
     video: '/assets/img/writinglab.webm',
     poster: '/images/products/writing-lab.jpg',
     description:
-      'A story-crafting studio that mentors new voices, refines narratives, and helps brands and artists communicate with clarity and heart.'
+      'A collective dedicated to celebrating Asian literature—mentoring emerging writers, nurturing diverse narratives, and amplifying voices across cultures.'
   },
+  
   {
     key: 'kipenzi',
     title: 'Kipenzi',
@@ -179,6 +180,7 @@ const products = ref([
     description:
       'A living-heritage platform celebrating diverse cultures through performances, workshops, and immersive experiences.'
   },
+
   {
     key: 'kipenzi-toys-books',
     title: 'Kipenzi Toys & Books',

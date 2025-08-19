@@ -111,4 +111,9 @@ class PagesController extends Controller
 
         return view('web.partnerWithUs');
     }
+
+    public function advisorsList(){
+
+        return view('web.advisorsList');
+    }
 }
