@@ -303,11 +303,11 @@
 
 
     <div class="relative z-60  flex flex-col items-start justify-center pt-5 p-3">
-      <h2 class="font-semibold text-black uppercase text-8xl">2025</h2>
+      <h2 class="font-semibold text-black uppercase text-8xl">2026</h2>
       <h1 class="tracking-[5px] text-5xl uppercase font-bold text-black leading-tight">
         The Asian Literary <br> Festival
       </h1>
-      {{-- <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl">Gampaha</h2> --}}
+      <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl">global summit</h2>
     </div>
 
   </div>
