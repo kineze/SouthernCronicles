@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 class="lg:text-6xl text-3xl mt-12 lg:mt-4 text-black font-extrabold tracking-widest uppercase text-center">
-      Speakers
+      Theasian galaxy
     </h1>
 
     <!-- Filters -->

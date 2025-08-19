@@ -175,12 +175,12 @@ const telRef = ref(null)
 const products = ref([
   {
     key: 'writing-lab',
-    title: 'The Asian group of Literature',
+    title: 'The Asian Review',
     video: '/assets/img/writinglab.webm',
     poster: '/images/products/writing-lab.jpg',
     description:
       'A collective dedicated to celebrating Asian literature—mentoring emerging writers, nurturing diverse narratives, and amplifying voices across cultures.',
-    url: '/asian-group-of-literature'   // ✅ Add URL here
+    url: '/asian-group-of-literature'
   },
   {
     key: 'kipenzi',
