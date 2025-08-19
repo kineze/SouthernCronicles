@@ -516,7 +516,7 @@
 
     <div class="w-full bg-white border-black border p-3 flex items-center flex-wrap">
         <div class="lg:w-2/12 w-full">
-            <div class="aspect-w-1 aspect-h-1  w-full h-56">
+            <div class="aspect-w-1 aspect-h-1  w-full h-56 p-6">
                 <video autoplay muted loop playsinline class="w-full  h-full object-contain rounded-xl">
                     <source src="{{ asset('/assets/img/dog.webm') }}" type="video/webm">
                     Your browser does not support the video tag.

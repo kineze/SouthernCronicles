@@ -68,6 +68,7 @@ import CareerView from './components/web/CareerView.vue';
 import PartnerWithUs from './components/web/PartnerWithUs.vue';
 import AdvisorCarousel from './components/web/AdvisorCarousel.vue';
 import AdvisorsList from './components/web/AdvisorsList.vue';
+import SpeakerListHex from './components/web/SpeakerListHex.vue';
 
 const app = createApp({});
 
@@ -158,4 +159,5 @@ app
   .component('advisor-carousel', AdvisorCarousel)
   .component('advisors-list', AdvisorsList)
 
+  .component('speaker-list-hex', SpeakerListHex)
 .mount('#app')
