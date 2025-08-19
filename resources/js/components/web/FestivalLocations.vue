@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full overflow-hidden py-10 relative z-50">
+  <div class="w-full overflow-hidden px-4 py-10 relative z-50">
 
     <header class="text-center mb-10 ">
 
