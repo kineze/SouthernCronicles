@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-[60vh] lg:h-[100vh] px-4 overflow-hidden py-10 relative z-50">
+  <div class="w-full h-[60vh] lg:h-[100vh] overflow-hidden py-10 relative z-50">
 
     <header class="text-center mb-10 lg:mb-14">
 
@@ -10,9 +10,9 @@
     </header>
 
 
-
-
-      <div ref="mapEl" class="w-full h-full"></div>
+    <div class=""> 
+      <div ref="mapEl" class="w-full p-3 border border-black  h-full"></div>
+    </div>
   </div>
 </template>
 
