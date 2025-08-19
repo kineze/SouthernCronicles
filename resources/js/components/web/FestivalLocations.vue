@@ -9,7 +9,7 @@
 
     </header>
 
-    <div class=" p-4 border-4 rounded-xl h-[320px] lg:h-[820px] border-black">
+    <div class=" p-2 border-4 rounded-xl h-[320px] lg:h-[820px] border-black">
       <div ref="mapEl" class="w-full  h-full"></div>
     </div>
   </div>
