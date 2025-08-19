@@ -86,8 +86,14 @@
           <a href="/team-list" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
             <!-- <svg class="w-6 h-6" fill="#000" viewBox="0 0 92.365 92.365"><path d="M66.761 42.935v12.532l-.086.001-.809.407c-.406.206-6.99 3.444-18.352 3.444-3.002 0-6.348-.231-9.992-.802l-3.311-.604c-2.453-.5-5.018-1.14-7.711-1.981l-.865-.271-.031-.192V42.935c0-7.158 4.9-13.18 11.52-14.929 2.377 2.219 5.557 3.588 9.059 3.588s6.68-1.37 9.06-3.588c5.146 1.36 9.241 5.307 10.813 10.36l.643 3.207c.022.449.044.903.044 1.362zM46.184 28.007c7.733 0 14.004-6.27 14.004-14.003C60.188 6.27 53.917 0 46.184 0 38.449 0 32.18 6.27 32.18 14.004c0 7.733 6.268 14.003 14.004 14.003zM63.518 58.225c-.358.181-6.188 3.049-16.246 3.049-2.658 0-5.619-.205-8.848-.709l-2.932-.536c-2.172-.443-4.441-1.009-6.826-1.753l-.637-.2c-.076.254-.129.519-.129.795l5.85 30.71c0 1.539 1.246 2.785 2.785 2.785h7.301V75.723c0-.949.77-1.717 1.719-1.717.949 0 1.717.77 1.717 1.717v16.643h7.623c1.537 0 2.785-1.246 2.785-2.785l6.631-30.71c0-.337-.07-.657-.181-.956l-1.692-1.19z"/></svg> -->
             <i class="fa-solid fa-people-group"></i>
-            <span class="ms-3 font-semibold">Our Teams</span>
+            <span class="ms-3 font-semibold">Our Team</span>
           </a>
+
+            <a href="/partner-with-us" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <i class="fa-solid fa-handshake text-xl"></i>
+            <span class="ms-3 font-semibold">Partner With Us</span>
+          </a>
+
 
           <!-- <a href="/the-writing-lab" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
             <i class="fa-solid fa-feather-alt text-xl"></i>
@@ -114,11 +120,7 @@
             <span class="ms-3 font-semibold">Careers</span>
           </a>
 
-          <a href="/partner-with-us" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-            <i class="fa-solid fa-handshake text-xl"></i>
-            <span class="ms-3 font-semibold">Partner With Us</span>
-          </a>
-
+        
           <a href="/contact-us" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
             <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none"><path d="M17.523 19.897C9.848 18.898 4.509 13.455 4.034 6.23A.83.83 0 0 1 4.957 5.225l3.847-.19c.43-.021.825.235.981.636l.693 1.778c.18.464-.008.99-.441 1.235l-2.225 1.254c-.573.323-.684 1.101-.224 1.571l4.763 4.867c.456.466 1.229.378 1.568-.178l1.389-2.277c.251-.412.761-.586 1.212-.413l1.775.681c.417.16.677.577.638 1.022l-.337 3.805c-.049.546-.53.954-1.074.883z" fill="#000" stroke="#000" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <span class="ms-3 font-semibold">Contact Us</span>
