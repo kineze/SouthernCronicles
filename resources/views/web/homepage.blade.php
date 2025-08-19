@@ -557,17 +557,17 @@
    
 </section>
 
-<section class="w-full max-w-screen-2xl  mt-6 mx-auto">
+{{-- <section class="w-full max-w-screen-2xl  mt-6 mx-auto">
 
-    {{-- <div class=" px-4 py-2 mb-5">
+    <div class=" px-4 py-2 mb-5">
       <h1 class="lg:text-6xl text-3xl text-black font-extrabold tracking-widest uppercase text-center">
         Our Ecosystem
       </h1>
-    </div> --}}
+    </div>
 
     <advisor-carousel></advisor-carousel>
    
-</section>
+</section> --}}
 
 
 <section class="w-full max-w-screen-2xl mx-auto">

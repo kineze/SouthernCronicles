@@ -69,6 +69,8 @@ import PartnerWithUs from './components/web/PartnerWithUs.vue';
 import AdvisorCarousel from './components/web/AdvisorCarousel.vue';
 import AdvisorsList from './components/web/AdvisorsList.vue';
 import SpeakerListHex from './components/web/SpeakerListHex.vue';
+import AsianGroupOfLiterature from './components/web/AsianGroupOfLiterature.vue';
+import ThePurpleUmbrella from './components/web/ThePurpleUmbrella.vue';
 
 const app = createApp({});
 
@@ -160,4 +162,6 @@ app
   .component('advisors-list', AdvisorsList)
 
   .component('speaker-list-hex', SpeakerListHex)
+  .component('asian-group-of-literature', AsianGroupOfLiterature)
+  .component('the-purple-umbrella', ThePurpleUmbrella)
 .mount('#app')

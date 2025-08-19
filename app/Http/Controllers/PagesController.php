@@ -116,4 +116,16 @@ class PagesController extends Controller
 
         return view('web.advisorsList');
     }
+
+    public function asianGroupOfLiterature(){
+
+        return view('web.asianGroupOfLiterature');
+    }
+
+    public function thePurpleUmbrella(){
+
+        return view('web.thePurpleUmbrella');
+    }
+
 }
+

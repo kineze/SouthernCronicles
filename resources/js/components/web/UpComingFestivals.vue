@@ -36,12 +36,12 @@
         <hr class="border-t border-black/30" />
 
         <div class="p-4">
-          <a v-if="ev.site_url" :href="ev.site_url" target="_blank" rel="noopener">
-          <h3 class="text-xl font-extrabold tracking-tight text-black dark:text-white">
-            {{ ev.name }}
-          </h3>
-          </a>
 
+          <a v-if="ev.site_url" :href="ev.site_url" target="_blank" rel="noopener">
+            <h3 class="text-xl font-extrabold tracking-tight text-black dark:text-white">
+              {{ ev.name }}
+            </h3>
+          </a>
           
         </div>
       </article>

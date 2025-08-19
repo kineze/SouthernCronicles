@@ -72,6 +72,9 @@ Route::controller(PagesController::class)->group( function (){
 
     Route::get('/partner-with-us','partnerWithUs')->name('partnerWithUs');
     Route::get('/advisors-list','advisorsList')->name('advisorsList');
+    Route::get('/asian-group-of-literature','asianGroupOfLiterature')->name('asianGroupOfLiterature');
+    Route::get('/the-purple-umbrella','thePurpleUmbrella')->name('thePurpleUmbrella');
+
 });
 
 
