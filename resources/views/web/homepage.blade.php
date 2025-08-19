@@ -302,7 +302,7 @@
     </div>
 
 
-    <div class="relative z-60  flex flex-col items-start justify-center pt-16 p-3">
+    <div class="relative z-60  flex flex-col items-start justify-center pt-5 p-3">
       <h2 class="font-semibold text-black uppercase text-8xl">2025</h2>
       <h1 class="tracking-[5px] text-5xl uppercase font-bold text-black leading-tight">
         The Asian Literary <br> Festival
@@ -415,7 +415,7 @@
     </div>
 
     <!-- Foreground Content -->
-    <div class="relative z-60 flex flex-col items-start justify-center p-3 pt-32 lg:pt-28">
+    <div class="relative z-60 flex flex-col items-start justify-center p-3 pt-20 lg:pt-28">
       <h2 class="font-semibold text-black uppercase text-8xl">2025</h2>
       <h1 class="tracking-[5px] text-5xl uppercase font-bold text-black leading-tight">
         The Asian Literary <br> Festival
@@ -504,6 +504,12 @@
 
 </section>
 
+<section class="w-full max-w-screen-2xl mx-auto">
+
+    <up-coming-festivals></up-coming-festivals>
+
+</section>
+
 
 <section class="relative w-full max-w-screen-2xl mx-auto">
 
@@ -567,12 +573,6 @@
 <section class="w-full max-w-screen-2xl mx-auto">
 
     <our-partners></our-partners>
-
-</section>
-
-<section class="w-full max-w-screen-2xl mx-auto">
-
-    <up-coming-festivals></up-coming-festivals>
 
 </section>
 

@@ -22,14 +22,14 @@
           <a href="/">
             <img
               :src="trogonUrl"
-              class="inline-block max-w-full transition-all w-36 h-36 p-4 duration-200 ease-soft-in-out"
+              class="inline-block max-w-full transition-all lg:w-36 lg:h-36 h-24 w-24 p-4 duration-200 ease-soft-in-out"
               alt="main_logo"
             />
           </a>
            <a href="/">
             <img
               :src="logoUrl"
-              class="inline-block max-w-full transition-all  w-44 h-44 aspect-square duration-200 ease-soft-in-out "
+              class="inline-block max-w-full transition-all  lg:w-44 lg:h-44 w-24 h-24 aspect-square duration-200 ease-soft-in-out "
               alt="main_logo"
             />  
           </a>
@@ -89,7 +89,7 @@
             <span class="ms-3 font-semibold">Our Teams</span>
           </a>
 
-          <a href="/the-writing-lab" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+          <!-- <a href="/the-writing-lab" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
             <i class="fa-solid fa-feather-alt text-xl"></i>
             <span class="ms-3 font-semibold">The Writing Lab</span>
           </a>
@@ -97,17 +97,17 @@
           <a href="/the-kipenzi" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
             <img :src="kipenziIcon" class="w-6 h-6" alt="The Kipenzi" />
             <span class="ms-3 font-semibold">Kipenzi ALF Kids</span>
-          </a>
+          </a> -->
 
           <a href="/events-schedule" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
             <svg class="w-6 h-6" viewBox="0 0 32 32" fill="#000"><path d="M24 8V4h-4v4h-8V4H8v4H4v20h24V8h-4zm-4 16h-4v-8h-4v-4h8v12z"/></svg>
             <span class="ms-3 font-semibold">Events Schedule</span>
           </a>
 
-          <a href="/volunteer-with-us" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+          <!-- <a href="/volunteer-with-us" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
             <i class="fa-solid fa-hand-holding-heart text-xl"></i>
             <span class="ms-3 font-semibold">Volunteer With Us</span>
-          </a>
+          </a> -->
 
           <a href="/careers" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
             <i class="fa-solid fa-id-badge text-xl"></i>
