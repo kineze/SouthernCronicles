@@ -318,7 +318,7 @@
           
           <div class="w-full flex flex-col items-center">
             <h2 class="font-bold mb-4 text-black uppercase text-start text-6xl">Every Voice Matters</h2>
-              <h1 class="tracking-[10px] text-2xl uppercase  items-center font-bold text-black leading-tight">
+              <h1 class="tracking-[10px] text-2xl uppercase text-center items-center font-bold text-black leading-tight">
                   Welcome to The Global Summit of The Asian Literary Festival
               </h1>
             <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl mt-5"></h2>
