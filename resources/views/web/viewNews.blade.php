@@ -6,7 +6,7 @@
    
    <div class="w-full rounded-xl bg-cover bg-top">
       <div class='w-full rounded-xl rounded-bl-none  bg-transparent flex bg-cover items-start'>
-        <div class="relative z-30 flex flex-col items-start justify-center  pt-5">
+        <div class="relative z-30 flex flex-col items-start justify-center  pt-12">
             <h2 class="font-semibold text-black uppercase text-7xl">2026</h2>
             <h1 class="tracking-[10px] text-4xl uppercase font-bold text-black leading-tight">
                 The Asian Literary <br> Festival

@@ -5,18 +5,15 @@
 <section class="w-full max-w-screen-2xl  -mt-6 mx-auto p-3">
    
    <div class="w-full rounded-xl bg-cover bg-top">
-      <div class='w-full rounded-xl rounded-bl-none  bg-transparent flex bg-cover items-start'>
-        <div class="relative z-30 flex flex-col items-start justify-center  pt-5">
-            <h2 class="font-semibold text-black uppercase text-7xl">2026</h2>
-            <h1 class="tracking-[10px] text-4xl uppercase font-bold text-black leading-tight">
-                The Asian Literary <br> Festival
-            </h1>
-            <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl">global summit</h2>
+        <div class='w-full rounded-xl rounded-bl-none  bg-transparent flex bg-cover items-start'>
+            <div class="relative z-30 flex flex-col items-start justify-center  pt-12">
+                <h2 class="font-semibold text-black uppercase text-7xl">2026</h2>
+                <h1 class="tracking-[10px] text-4xl uppercase font-bold text-black leading-tight">
+                    The Asian Literary <br> Festival
+                </h1>
+                <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl">global summit</h2>
+            </div>
         </div>
-    </div>
-
-
-
     </div>
 
  
@@ -66,17 +63,17 @@
            </div>
            
             <div class="w-full px-6 lg:w-6/12">
-             <h2 class="font-semibold text-black uppercase text-start text-8xl">About</h2>
+             <h2 class="font-semibold text-black uppercase text-start text-8xl">Our Story</h2>
                 <h1 class="tracking-[10px] text-4xl uppercase font-bold text-black leading-tight">
                     The Fastest Growing Global Network of Festivals
                 </h1>
             <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl mt-5"></h2>
-                <p class="text-gray-700 py-3">The Asian Literary Festivals: Where Stories Unite the World Creative expression is humanity's most profound manifestation of diversity—a mirror reflecting our heritage, our souls, and the rich tapestry of human experience. The Asian Literary Festivals serve as the crucible where this diversity fuses into one shared humanity, creating a global stage that celebrates both our unity and our beautiful differences within the human race.</p>
-                <p class="text-gray-700 py-3">Co-created by The Asian Group of Literature and Trogon Global, The Asian Literary Festivals represent an inclusive ecosystem anchored by our flagship festival in Abu Dhabi, with satellite festivals flourishing in major cultural centres worldwide. This network creates a year-round celebration of literary and cultural exchange.</p>
-                <p class="text-gray-700 py-3">Whether you hail from East or West, North or South, this is your space.</p>
-                <p class="text-gray-700 py-3">The Asian Literary Festivals don't just showcase literature—they celebrate the full spectrum of human creativity and connection, and each festival is proudly local in its international network.</p>
-                <p class="text-gray-700 py-3">Join us in writing the next chapter of global literary dialogue, where every story matters and every voice contributes to our collective human narrative. The Asian Literary Festival, Gampaha Edition, co-created by The Asian/Trogon festival ecosystem and The Philippine Art and Culture Exchange (PACE), weaves creative expression from the global majority into this vibrant tapestry, transforming the European capital into an unparalleled sanctuary of cultural exchange and cross-fertilisation.</p>
-                <p class="text-gray-700 py-3">This festival revives the historical exchanges between East and West, breathing new life into ancient dialogues as literary traditions converge and contemporary voices rise, creating a dynamic crossroads where stories transcend borders and new cultural conversations bloom in this remarkable intersection of civilisations.</p>
+                <p class="text-gray-700 py-3">What began as a humble network of creative social enterprises has blossomed into something extraordinary—a literary revolution that transcends borders, cultures, and conventions. At the heart of this remarkable journey stands The Asian Review, a Sri Lankan literary magazine that dared to dream beyond the traditional confines of literature and culture as a luxury.</p>
+                <p class="text-gray-700 py-3">From this foundation emerged The Asian Group of Literature, now recognized as Asia's largest creative enterprise network, comprising six distinct creative social enterprises. Each venture carries forward a singular vision: every voice matters.</p>
+                <p class="text-gray-700 py-3">The transformation from magazine to movement crystallized through a partnership with Trogon Global, the UAE-based cultural curation enterprise. Together, they co-created The Asian Literary Festival—not merely as an event, but as a testament to the boundless power of collaborative creativity across continents.</p>
+                <p class="text-gray-700 py-3">Three extraordinary minds converged to shepherd this vision into reality. Sabin Iqbal, a journalist-turned-literary curator and novelist, brought his experience creating South India's largest literary festival, the acclaimed Mathrubhumi International Festival of Letters. Pramudith D Rupasinghe, a humanitarian diplomat who turned a fiction writer after two decades of service across Africa, Asia, and Europe. MK Ajay, a celebrated poet with corporate leadership experience spanning East and South Asia, added the bridge between artistic expression and practical vision.</p>
+                <p class="text-gray-700 py-3">United by purpose, these founders gathered thinkers, writers, artists and entrepreneurs from around the world, creating a counter-current to the notion that literature and culture belong only to privileged circles. The Asian Literary Festival became a movement extending far beyond like-minded communities—a global story birthed among the people of the global majority, open for the entire world.</p>
+                <p class="text-gray-700 py-3">Today, this vision continues to expand, evolving into what promises to become the fastest-growing literary festival network worldwide. Each year, The Asian Literary Festival’s Global Summit is held in Abu-Dabhi concluding its annual roadmap in cities across Asia, Europe, Africa and Americas.</p>
             </div>
         </div>
     </div>

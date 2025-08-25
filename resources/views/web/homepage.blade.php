@@ -302,7 +302,7 @@
     </div>
 
 
-    <div class="relative z-60  flex flex-col items-start justify-center pt-5 p-3">
+    <div class="relative z-60  flex flex-col items-start justify-center pt-12 p-3">
       <h2 class="font-semibold text-black uppercase text-8xl">2026</h2>
       <h1 class="tracking-[5px] text-5xl uppercase font-bold text-black leading-tight">
         The Asian Literary <br> Festival
@@ -314,60 +314,68 @@
   
    <div class="bg-transparent">
         <div  class=" relative flex pb-12 flex-wrap bg-white z-[1000] bg-opacity-50 backdrop-blur-xl bg-transparent items-start justify-end px-6 pt-24 ">
-          <div class="w-full lg:w-6/12">
-              <div class="">
-                  <div class=" mx-auto px-4 text-center py-6">
-                          @if($nextFestival)
-                              <h1 class="text-4xl md:text-5xl uppercase font-extrabold text-active-purple mb-4 animate-pulse">{{$nextFestival->title}}</h1>
-                              <p class="text-xl md:text-xl uppercase font-extrabold text-active-purple mb-4 animate-pulse"></p>
-                              <h2 class="font-semibold text-black uppercase text-3xl">
-                                  {{ \Carbon\Carbon::parse($nextFestival->start_at)->format('jS F Y') }}
-                              </h2>
-
-                              <h1 class="tracking-[10px] text-3xl uppercase font-bold text-black leading-tight">
-                                    {{ $nextFestival->location }}
-                              </h1>
-                              <div class="flex flex-wrap justify-center gap-4 py-12" id="countdown">
-                                  <div class="bg-white/50 backdrop-blur-sm rounded-xl p-4">
-                                      <span class="text-5xl font-bold text-black" id="days"></span>
-                                      <p class="text-black mb-0">Days</p>
-                                  </div>
-                                  <div class="bg-white/50 backdrop-blur-sm rounded-xl p-4">
-                                      <span class="text-5xl font-bold text-black" id="hours"></span>
-                                      <p class="text-black mb-0">Hours</p>
-                                  </div>
-                                  <div class="bg-white/50 backdrop-blur-sm rounded-xl p-4">
-                                      <span class="text-5xl font-bold text-black" id="minutes"></span>
-                                      <p class="text-black mb-0">Minutes</p>
-                                  </div>
-                                  <div class="bg-white/50 backdrop-blur-sm rounded-xl p-4">
-                                      <span class="text-5xl font-bold text-black" id="seconds"></span>
-                                      <p class="text-black mb-0">Seconds</p>
-                                  </div>
-                              </div>
-                          @else
-                              <h2 class="text-active-purple uppercase text-5xl">Coming Soon</h2>
-                          @endif
-
-                          <div class="flex justify-center items-center lg:mt-6">
-                              <register-now-modal></register-now-modal>
-                          </div>
-                          
-                      </div>
-              </div>
-          </div>
+         
           
-          <div class="w-full lg:w-6/12">
-            <h2 class="font-semibold text-black uppercase text-start text-7xl">It Isn't a Luxury…</h2>
-              <h1 class="tracking-[10px] text-4xl uppercase font-bold text-black leading-tight">
-                  Bridging Worlds Through Words
+          <div class="w-full flex flex-col items-center">
+            <h2 class="font-bold mb-4 text-black uppercase text-start text-6xl">Every Voice Matters</h2>
+              <h1 class="tracking-[10px] text-2xl uppercase  items-center font-bold text-black leading-tight">
+                  Welcome to The Global Summit of The Asian Literary Festival
               </h1>
             <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl mt-5"></h2>
-            <p class="text-gray-700 text-justify">Literature is the lifeblood of human understanding, the bridge between hearts and minds across all divides. The Asian Literary Festival Gampaha, the island's first free literary celebration, serves as the epicentre where writers, thinkers, and artists from across the globe converge with Sri Lanka's local literary voices, fostering dynamic cross-fertilisation.
-                    Set in Gampaha—birthplace of numerous Sri Lankan creative luminaries—this festival transforms literary engagement from privilege to public right, celebrating the power of storytelling to unite, inspire, and transform communities across cultural and linguistic boundaries.
-                </p>
-          </div>
+            <p class="text-gray-700 mb-2 text-justify">The world's most expansive celebration of creativity awaits you. Here, at the pinnacle of artistic and intellectual expression, over 1,000 distinguished writers, thinkers, artists, social entrepreneurs, and creative visionaries from across the globe gather in Abu Dhabi for an extraordinary convergence of voices, ideas, and transformative vision.</p>
+            <p class="text-gray-700 mb-2 text-justify">The Asian Literary Festival, Global Summit is the culmination of our year-long cultural odyssey—a finale to The Asian Literary Festival's global tour that spans continents and cultures. This is where creativity transcends borders, where diverse narratives and innovative ideas find their ultimate stage.</p>
+            <p class="text-gray-700 mb-2 text-justify">At the heart of our celebration is The Asian Prizes—among the most prestigious honors in the world of literature. These prize is the ultimate recognition from the global majority to the extraordinary talent that defines contemporary creative expression and celebrating the voices that shape our collective human experience through words, art, and transformative action.</p>
+            <p class="text-gray-700 mb-2 text-justify">Join us as we transform Abu Dhabi into the global epicenter of creative and intellectual achievement. Here, in this historic convergence of minds, hearts, and revolutionary spirits, witness the power of creative expression and visionary thinking to unite, inspire, and elevate humanity. This is more than a festival—it is a testament to the enduring strength of creativity to bridge cultures, challenge perspectives, spark innovation, and create lasting change.</p>
+            <p class="text-gray-700 mb-2 w-full text-start">The Global Summit of The Asian Literary Festival: Where every voice matters, every story resonates, every idea flourishes, and creative excellence finds its home.</p>
+          
+        </div>
       </div>
+    </div>
+
+    <div class="w-full ">
+        <div class="px-4"> 
+            <div class=" px-12 flex items-center bg-black justify-between text-center p-6">
+                    @if($nextFestival)
+                    
+                       
+                        <div class="flex flex-col items-start">
+                            <h2 class="font-semibold text-white uppercase text-3xl">
+                                {{ \Carbon\Carbon::parse($nextFestival->start_at)->format('jS F Y') }}
+                            </h2>
+
+                            <h1 class="tracking-[10px] text-3xl uppercase font-bold text-white leading-tight">
+                                    {{ $nextFestival->location }}
+                            </h1>
+                        </div>
+                        
+                        <div class="flex flex-wrap justify-center gap-4 py-6" id="countdown">
+                            <div class="bg-white/20 backdrop-blur-sm rounded-xl p-4">
+                                <span class="text-2xl font-bold text-white" id="days"></span>
+                                <p class="text-white text-sm mb-0">Days</p>
+                            </div>
+                            <div class="bg-white/20 backdrop-blur-sm rounded-xl p-4">
+                                <span class="text-2xl font-bold text-white" id="hours"></span>
+                                <p class="text-white text-sm mb-0">Hours</p>
+                            </div>
+                            <div class="bg-white/20 backdrop-blur-sm rounded-xl p-4">
+                                <span class="text-2xl font-bold text-white" id="minutes"></span>
+                                <p class="text-white text-sm mb-0">Minutes</p>
+                            </div>
+                            <div class="bg-white/20 backdrop-blur-sm rounded-xl p-4">
+                                <span class="text-2xl font-bold text-white" id="seconds"></span>
+                                <p class="text-white text-sm mb-0">Seconds</p>
+                            </div>
+                        </div>
+                    @else
+                        <h2 class="text-active-purple uppercase text-5xl">Coming Soon</h2>
+                    @endif
+
+                    <div class="flex justify-center items-center lg:mt-6">
+                        <register-now-modal></register-now-modal>
+                    </div>
+                    
+                </div>
+        </div>
     </div>
 
 </section>
@@ -727,7 +735,7 @@
           </div>
           
           <div class="w-full lg:w-6/12">
-            <h2 class="font-semibold text-black uppercase text-start text-7xl">It Isn't a Luxury…</h2>
+            <h2 class="font-semibold text-black uppercase text-start text-7xl">Every Voice Matters</h2>
               <h1 class="tracking-[10px] text-4xl uppercase font-bold text-black leading-tight">
                   Bridging Worlds Through Words
               </h1>
