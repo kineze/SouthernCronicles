@@ -47,25 +47,31 @@
           class="relative group rounded-lg overflow-hidden shadow-lg bg-white dark:bg-gray-800"
         >
 
-          <div class="absolute top-56 right-4 z-[990]">
-            <label class="inline-flex items-center cursor-pointer">
-              <input
-                type="checkbox"
-                :checked="item.status"
-                @change="toggleStatus(item)"
-                class="sr-only peer"
-              />
-              <div
-                class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300
-                       dark:peer-focus:ring-green-800 rounded peer dark:bg-gray-700
-                       peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full
-                       peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px]
-                       after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded
-                       after:h-5 after:w-5 after:transition-all dark:border-gray-600
-                       peer-checked:bg-green-600 dark:peer-checked:bg-green-600"
-              ></div>
-            </label>
-          </div>
+
+            <div class="flex space-x-6 text-lg top-3 mb-3 justify-end right-4 items-center relative">
+              <div class="relative -mb-2 z-[990]">
+                <label class="inline-flex items-center cursor-pointer">
+                  <input
+                    type="checkbox"
+                    :checked="item.status"
+                    @change="toggleStatus(item)"
+                    class="sr-only peer"
+                  />
+                  <div
+                    class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300
+                          dark:peer-focus:ring-green-800 rounded peer dark:bg-gray-700
+                          peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full
+                          peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px]
+                          after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded
+                          after:h-5 after:w-5 after:transition-all dark:border-gray-600
+                          peer-checked:bg-green-600 dark:peer-checked:bg-green-600"
+                  ></div>
+                </label>
+              </div>
+              <button @click="editNews(item)" class="hover:text-green-400"><i class="fa-solid fa-pen"></i></button>
+              <button @click="showDeleteConfirmation(item)" class="text-rose-500 hover:text-rose-400"><i class="fa-solid fa-trash"></i></button>
+            </div>
+
 
           <!-- Content -->
           <div class="p-4">
@@ -100,10 +106,7 @@
 
           <!-- Hover actions -->
           <!-- <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-white"> -->
-            <div class="flex space-x-6 text-lg absolute top-56 right-20">
-              <button @click="editNews(item)" class="hover:text-green-400"><i class="fa-solid fa-pen"></i></button>
-              <button @click="showDeleteConfirmation(item)" class="text-rose-500 hover:text-rose-400"><i class="fa-solid fa-trash"></i></button>
-            </div>
+
           <!-- </div> -->
         </div>
       </div>
@@ -288,7 +291,16 @@
         <!-- News Content (Quill) -->
         <div class="mb-6">
           <label class="block text-sm font-medium dark:text-white mb-2">News Content</label>
+          <!-- <QuillEditor
+            theme="snow"
+            v-model:content="form.content"
+            contentType="html"
+            toolbar="full"
+            class="bg-white dark:bg-gray-900 dark:text-white rounded-lg"
+          /> -->
+
           <QuillEditor
+            :key="editorKey"
             theme="snow"
             v-model:content="form.content"
             contentType="html"
@@ -324,7 +336,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch, computed } from 'vue'
+import { ref, onMounted, watch, computed , nextTick} from 'vue'
 import axios from 'axios'
 import { useToast } from 'vue-toastification'
 import { QuillEditor } from '@vueup/vue-quill'
@@ -343,6 +355,8 @@ const page = ref(1)
 const perPage = ref(12)
 const meta = ref(null)
 
+const editorKey = ref(0)
+
 const form = ref({
   title: '',
   small_description: '', 
@@ -352,6 +366,13 @@ const form = ref({
   status: true,
   image: null
 })
+
+const forceResetEditor = async () => {
+  // Clear the bound model, then remount the editor
+  form.value.content = ''
+  await nextTick()
+  editorKey.value++
+}
 
 const expanded = ref(new Set())
 const isExpanded = (id) => expanded.value.has(id)
@@ -502,6 +523,7 @@ const resetForm = () => {
   }
   previewImage.value = null
   editingId.value = null
+  editorKey.value++ 
 }
 
 const saveNews = async () => {
@@ -528,6 +550,7 @@ const saveNews = async () => {
     toast.success('News created')
     }
     await fetchNews()
+    await forceResetEditor()
     closeDrawer()
   } catch (e) {
     if (e.response?.status === 422) {
@@ -551,6 +574,7 @@ const editNews = (item) => {
     image: null
   }
   previewImage.value = item.image ? `/storage/${item.image}` : null
+  editorKey.value++  
   drawerOpen.value = true
 }
 
@@ -602,6 +626,7 @@ watch(perPage, () => {
 })
 
 onMounted(fetchNews)
+
 </script>
 
 <style>
