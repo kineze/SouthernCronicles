@@ -111,11 +111,11 @@
             Our Products
             </h1>
 
-          <div class="grid grid-cols-1 sm:grid-cols-4 gap-6">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
             <article
               v-for="p in products"
               :key="p.key"
-              class="group border rounded-lg overflow-hidden bg-white dark:bg-gray-800 shadow hover:shadow-xl transition"
+              class="group rounded-lg overflow-hidden bg-white dark:bg-gray-800 shadow hover:shadow-xl transition"
             >
               <!-- Video with fixed aspect ratio (16:9) -->
               <div class="relative pt-[56.25%] bg-white">
@@ -149,9 +149,19 @@
                 </h3>
 
                 </a>
-                <p class="mt-1 text-sm text-gray-700 dark:text-gray-200">
-                  {{ p.description }}
+                <p
+                  class="mt-1 text-sm text-gray-700 text-justify dark:text-gray-200 whitespace-pre-line"
+                >
+                  {{ displayedDesc(p) }}
                 </p>
+
+                <button
+                  v-if="isLong(p)"
+                  @click="toggleExpanded(p.key)"
+                  class="mt-2 text-xs font-semibold underline text-blue-700 dark:text-blue-300 hover:opacity-80"
+                >
+                  {{ isExpanded(p.key) ? 'Show less' : 'Read more' }}
+                </button>
 
               </div>
             </article>
@@ -171,43 +181,125 @@ const toast = useToast()
 const submitting = ref(false)
 const telRef = ref(null)
 
-/* --- Our Products (videos under /public/videos, posters under /public/images/products) --- */
+const WORD_LIMIT = 50                      // << adjust as you like
+const expanded = ref(new Set()) 
+
+const normalizeDesc = (d) =>
+  (d ?? '').toString().replace(/\s+/g, ' ').trim()
+
+const splitWords = (d) => normalizeDesc(d).split(' ').filter(Boolean)
+
+const isLong = (p) => splitWords(p.description).length > WORD_LIMIT
+
+const isExpanded = (key) => expanded.value.has(key)
+
+const toggleExpanded = (key) => {
+  const s = new Set(expanded.value)
+  s.has(key) ? s.delete(key) : s.add(key)
+  expanded.value = s  // reassign to keep Vue reactivity with Set
+}
+
+const displayedDesc = (p) => {
+  const desc = normalizeDesc(p.description)
+  if (!isLong(p) || isExpanded(p.key)) return desc
+  return splitWords(desc).slice(0, WORD_LIMIT).join(' ') + '…'
+}
+
 const products = ref([
-  {
-    key: 'writing-lab',
-    title: 'The Asian Review',
-    video: '/assets/img/writinglab.webm',
-    poster: '/images/products/writing-lab.jpg',
-    description:
-      'A collective dedicated to celebrating Asian literature—mentoring emerging writers, nurturing diverse narratives, and amplifying voices across cultures.',
+{
+  key: 'writing-lab',
+  title: 'The Asian Review',
+  video: '/assets/img/writinglab.webm',
+  poster: '/images/products/writing-lab.jpg',
+  description: `Do you dream of launching a prestigious literary magazine in your country and language? Partner with The Asian Review, ranked among the world's top 10 literary publications by Feedspot and read by over 75,000 daily readers globally. 
+  We're more than just a magazine – we're part of a dynamic literary social enterprise network expanding worldwide. Our franchise model is tailored to your local scale, market size, population, and language reach, ensuring sustainable growth in your unique cultural context.
+
+  Special Opportunity for Global Majority Nations  
+  We offer accessible franchise packages specifically designed for partners from developing nations, making literary excellence achievable regardless of economic barriers.  
+
+  Transform your literary passion into a thriving business venture. Connect with established writers, emerging voices, and engaged readers while building a sustainable cultural enterprise in your community.  
+
+  Ready to become the literary voice of your nation?  
+  Join the world's fastest-growing literary social enterprise network. Your story starts here.`,
     url: '/asian-group-of-literature'
   },
+
+  {
+  key: 'literary-hub',
+  title: 'Transform Your City into a Global Literary Hub',
+  video: '/assets/img/Writingnew.webm',
+  poster: '/images/products/writing-lab.jpg',
+  description: `You've been thinking of launching a literary festival in your city, your country—but nothing matched your expectations?
+      Now you can partner with The Asian Literary Festival Network, the world's fastest-growing literary festival platform that connects cities, people, and cultures worldwide through our revolutionary global roadmap.
+      Our proven network spans continents with thriving franchisees in Kenya, Sri Lanka, India, Belgium, and many more locations. Each partner festival becomes part of something extraordinary—a unified platform that culminates in The Global Summit in Abu Dhabi, where over 1,000 writers, thinkers, artists, and creative entrepreneurs compete for the prestigious Asian Prizes.
+      Why start from scratch when you can join a network that ensures equitable access to creative expression while amplifying diverse voices globally? Our franchisees don't just host events—they become vital nodes in the world's most influential literary ecosystem.
+      Ready to make your city the next destination for literary excellence?
+      Join The Asian Literary Festival Network today.`,
+    url: '#'
+  },
+
+  
   {
     key: 'kipenzi',
-    title: 'Kipenzi',
+    title: 'The Children’s Fest, Kepenzi',
     video: '/assets/img/kipenzigirl.webm',
     poster: '/images/products/kipenzi.jpg',
     description:
-      'A living-heritage platform celebrating diverse cultures through performances, workshops, and immersive experiences.',
-    url: '/the-kipenzi'
-  },
-  {
-    key: 'kipenzi-toys-books',
-    title: 'Kipenzi Toys & Books',
-    video: '/assets/img/kipenzytoys.webm',
-    poster: '/images/products/kipenzi-toys-books.jpg',
-    description:
-      'Playful learning tools that bring folklore and tradition to life—designed for curious minds at home and in the classroom.',
+      `The Children’s Fest, Kepenzi
+      You've been thinking of launching a children's literary festival in your city, your country—but nothing matched your expectations?
+      Now you can partner with Kepenzy, The Asian Literary Festival's Children's Fest—the world's most innovative children's storytelling platform leading the digital age storytelling revolution.
+      Kepenzy represents the ultimate innovation in storytelling for young minds, reimagining how children connect with narratives in our digital era. We're pioneering the refamiliarization of lost stories, bringing reading back to the epicenter of childhood growth and development. Our thriving franchisees in Kenya, Sri Lanka, India, Belgium, and beyond have discovered that Kepenzy doesn't just entertain—it revolutionizes how young minds engage with literature.
+      Through cutting-edge storytelling techniques and immersive experiences, we're reversing the digital disconnect, making books and stories irresistible to the YouTube generation. Your Kepenzy festival becomes part of a global movement ensuring equitable access to transformative literary experiences for children worldwide.
+      Why start from scratch when you can lead the storytelling revolution that's already proven worldwide?
+      Franchise Kepenzy today and reignite young imaginations in your city.`,
     url: '#'
   },
   {
+    key: 'climateaction',
+    title: 'Creative Expression for Climate Action',
+    video: '/assets/img/climate.webm',
+    poster: '/images/products/kipenzi-toys-books.jpg',
+    description:
+      `
+      You've been thinking of launching an impactful youth festival in your city, your country—but nothing matched your vision for meaningful change?
+      Now you can partner with The Purple Umbrella Festival—India's largest multidisciplinary festival empowering young people to engage with the world's most pressing challenges through creativity and collective action.
+      What began as a theatre festival has revolutionized into a dynamic platform where storytelling meets solutions, giving youth the stage, screen, and spotlight to express their hopes, fears, and climate solutions. Our proven model believes creativity isn't a luxury—it's a necessity for change.
+      Through three transformative tracks, Purple Umbrella nurtures environmentally-conscious artists who inspire climate action through performance, purpose, and passion. We're building spaces where theatre sparks climate dialogue, incubates ideas, and builds collective voices for the future.
+      Why start from scratch when you can join a movement that's already empowering communities to think critically, act collectively, and imagine courageously?
+      Franchise Purple Umbrella Festival today and spark change in your community.`,
+    url: '#'
+  },
+
+  {
+    key: 'asian-writer',
+    title: 'The Asian Writer Retreat and Residencies - Open Call',
+    video: '/assets/img/writer.webm',
+    poster: '/images/products/kipenzi-toys-books.jpg',
+    description:
+      `Transform Your Writing. Transform Your Future.
+      Are you ready to elevate your craft to extraordinary heights?
+      The Asian Writer Retreat and Residencies invite you to join one of the world's most iconic writing programs, hosted by the largest creative social enterprise from the Global South.
+      Set against the inspiring landscapes of India and Sri Lanka, our exclusive retreats offer the ultimate refinement of your writing through cross-fertilization with the industry's most acclaimed individuals. This isn't just a workshop—it's a transformative journey where emerging and established writers converge to push creative boundaries.
+      Experience intensive mentorship, collaborative workshops, and immersive cultural exchanges that will reshape your literary voice. Our residencies provide the perfect synthesis of focused writing time, expert guidance, and meaningful connections with fellow writers from around the globe.
+      Whether you're crafting your first novel or refining your literary masterpiece, our program offers the space, support, and inspiration you need.
+      Apply now and become part of writing history.`,
+    url: '#'
+  },
+
+  {
     key: 'purple-umbrella',
-    title: 'Purple Umbrella Franchise',
-    video: '/assets/img/umbrella.webm',
+    title: 'The ALF Curation Package - Festival Curation Services',
+    video: '/assets/img/festival.webm',
     poster: '/images/products/purple-umbrella.jpg',
     description:
-      'A community-first franchise model that empowers local partners to host cultural events and micro-festivals under one vibrant umbrella.',
-    url: '/the-purple-umbrella'
+      `Your Vision. Our Expertise. Extraordinary Results.
+      Have an idea for a literary and art festival but need world-class execution?
+      The Asian Literary Festival Curation Package transforms your vision into an unforgettable cultural experience. Our top-tier curation team doesn't just manage and administer festivals—we elevate them to extraordinary heights that exceed every expectation.
+      Backed by our proven global network spanning over 10 cities currently, with expansion to 15 cities next year, we bring unparalleled expertise in connecting cities, people, and cultures through transformative events. Our curators have mastered the art of creating festivals that resonate deeply with audiences while achieving measurable impact.
+      From concept development to flawless execution, we handle every detail: programming, artist coordination, logistics, marketing, and audience engagement. Your festival becomes part of our prestigious network, gaining access to our international roster of writers, thinkers, artists, and creative entrepreneurs.
+      Why settle for ordinary when you can create legendary?
+      Choose The ALF Curation Package and watch your festival become extraordinary.`,
+    url: '#'
   }
 ])
 
