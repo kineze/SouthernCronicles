@@ -89,7 +89,7 @@
     </div>
 
       <div class="text-center mt-6 pb-6">
-        <a href="/speakers-list" class="px-6 py-3 bg-black text-white font-bold">VIEW MORE</a>
+        <a href="/galaxy-list" class="px-6 py-3 bg-black text-white font-bold">VIEW MORE</a>
       </div>
 
     <!-- Modal -->
