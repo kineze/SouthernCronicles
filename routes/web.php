@@ -27,6 +27,7 @@ use App\Http\Controllers\BookingManageController;
 use App\Http\Controllers\PartnerInquiryController;
 use App\Http\Controllers\MemorySubmissionController;
 use App\Http\Controllers\CareerApplicationController;
+use App\Http\Controllers\GalaxyApplicationController;
 use App\Http\Controllers\VolunteerApplicationController;
 
 Route::controller(GenaralController::class)->group( function (){
@@ -49,7 +50,7 @@ Route::controller(PagesController::class)->group( function (){
 
     Route::get('/the-writing-lab', 'writingLab')->name('writingLab');
     Route::get('/about-us', 'aboutUs')->name('aboutUs');
-    Route::get('/speakers-list','speakersList')->name('speakersList');
+    Route::get('/galaxy-list','speakersList')->name('speakersList');
     Route::get('/our-partners','ourPartners')->name('ourPartners');
     Route::get('/contact-us','contactus')->name('contactus');
     Route::get('/events-schedule','eventsSchedule')->name('eventsSchedule');
@@ -242,6 +243,11 @@ Route::middleware(['permission:Manage Careers', config('jetstream.auth_session')
 
         Route::get('/volunteer-applications','volunteerApplications')->name('volunteerApplications');
 
+    });
+
+    Route::controller(GalaxyApplicationController::class)->group(function () {
+
+        Route::get('/galaxy-applications','galaxyApplications')->name('galaxyApplications');
     });
 
 });

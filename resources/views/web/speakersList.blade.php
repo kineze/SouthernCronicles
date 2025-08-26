@@ -18,6 +18,8 @@
 
         <speakers-list></speakers-list>
 
+        <galaxy-apply></galaxy-apply>
+
     </div>
 </section>
 

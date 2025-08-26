@@ -146,8 +146,8 @@
     eyebrow="Who We Are"
     title="Our Vision & Mission"
     subtitle="Bridging worlds through words."
-    vision-image="{{ asset('assets/img/kipenzi-art.webp') }}"
-    mission-image="{{ asset('assets/img/story.webp') }}"
+    {{-- vision-image="{{ asset('assets/img/kipenzi-art.webp') }}" --}}
+    {{-- mission-image="{{ asset('assets/img/story.webp') }}" --}}
     :vision-points="['Champion free access', 'Inspire cross-cultural dialogue', 'Nurture future storytellers']"
     :mission-points="['Inclusive programs & workshops', 'Multilingual participation', 'Community-driven initiatives']"
     accent="active-purple"
