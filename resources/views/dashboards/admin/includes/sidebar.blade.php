@@ -82,7 +82,8 @@
             {"label":"Career Posts","href":"{{ route('manageCareers') }}"},
             {"label":"Career Applications","href":"{{ route('careerApplications') }}"},
             {"label":"Internship Applications","href":"{{ route('internshipApplications') }}"},
-            {"label":"Volunteer Applications","href":"{{ route('volunteerApplications') }}"}
+            {"label":"Volunteer Applications","href":"{{ route('volunteerApplications') }}"},
+            {"label":"Galaxy Applications","href":"{{ route('galaxyApplications') }}"}
           ]'>
 
         <button class="dropdown-toggle w-full flex items-center gap-3 p-2 rounded-lg dark:hover:bg-slate-800 transition-all">
@@ -112,6 +113,10 @@
 
           <a href="{{ route('volunteerApplications') }}" class="block px-4 py-2 text-xs font-semibold text-black dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-md">
             Volunteer Applications
+          </a>
+
+          <a href="{{ route('galaxyApplications') }}" class="block px-4 py-2 text-xs font-semibold text-black dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-md">
+            Galaxy Applications
           </a>
 
           

@@ -1,7 +1,7 @@
 <template>
   <div class="max-w-screen-2xl bg-gray-100 mx-auto p-4 my-12 dark:bg-gray-900 py-10">
     <h1 class="lg:text-6xl text-3xl mt-4 text-black dark:text-white rounded-xl font-extrabold tracking-widest uppercase text-center mb-8">
-      Upcoming Festivals
+      Our Festivals
     </h1>
 
     <div class="grid grid-cols-1 py-3 gap-6 sm:grid-cols-2 lg:grid-cols-3">

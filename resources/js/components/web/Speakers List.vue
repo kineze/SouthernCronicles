@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 class="lg:text-6xl text-3xl mt-12 lg:mt-4 text-black font-extrabold tracking-widest uppercase text-center">
-      Theasian galaxy
+      The asian galaxy
     </h1>
 
     <!-- Filters -->
@@ -21,7 +21,7 @@
         </div>
       </div>
 
-      <div class="lg:w-auto w-full mt-4 lg:mt-0">
+      <!-- <div class="lg:w-auto w-full mt-4 lg:mt-0">
         <div class="px-2.5 py-2.5 border rounded-full border-1 border-gray-300 flex flex-wrap gap-2">
           <button
             @click="filterByType(null)"
@@ -36,7 +36,7 @@
             {{ type.name }}
           </button>
         </div>
-      </div>
+      </div> -->
     </div>
 
     <!-- Honeycomb Grid -->

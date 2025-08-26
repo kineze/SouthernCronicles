@@ -25,6 +25,7 @@ use App\Http\Controllers\BookingManageController;
 use App\Http\Controllers\PartnerInquiryController;
 use App\Http\Controllers\MemorySubmissionController;
 use App\Http\Controllers\CareerApplicationController;
+use App\Http\Controllers\GalaxyApplicationController;
 use App\Http\Controllers\VolunteerApplicationController;
 
 // for admin view
@@ -138,6 +139,9 @@ Route::delete('/advisors/{advisor}',             [AdvisorsController::class, 'de
 Route::put   ('/advisors/{advisor}/toggle-status', [AdvisorsController::class, 'toggleStatus']);
 Route::post  ('/advisors/reorder',               [AdvisorsController::class, 'reorder']);
 
+Route::get('/galaxy-applications', [GalaxyApplicationController::class, 'index']);
+Route::patch('/galaxy-applications/{galaxyApplication}/status', [GalaxyApplicationController::class, 'updateStatus']);
+
 
 // for web view
 Route::get('/speakers/home', [SpeakersController::class, 'homeSpeakers']);
@@ -168,5 +172,8 @@ Route::post('/internships', [InternshipController::class, 'store']);
 Route::post('/volunteers',  [VolunteerApplicationController::class, 'store']);
 
 Route::post('/partner-inquiries', [PartnerInquiryController::class, 'store']);
+
+Route::post('/galaxy-applications', [GalaxyApplicationController::class, 'store']);
+
 
 

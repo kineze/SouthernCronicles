@@ -35,6 +35,7 @@ import VolunteerApplications from './components/admin/VolunteerApplications.vue'
 import ManagePartnerInquiries from './components/admin/ManagePartnerInquiries.vue';
 import AdvisorTypes from './components/admin/AdvisorTypes.vue';
 import ManageAdvisors from './components/admin/ManageAdvisors.vue';
+import GalaxyApplications from './components/admin/GalaxyApplications.vue';
 // web components
 import WebNav from './components/web/webNav.vue';
 import SpeakersCarousel from './components/web/SpeakersCarousel.vue';
@@ -71,6 +72,7 @@ import AdvisorsList from './components/web/AdvisorsList.vue';
 import SpeakerListHex from './components/web/SpeakerListHex.vue';
 import AsianGroupOfLiterature from './components/web/AsianGroupOfLiterature.vue';
 import ThePurpleUmbrella from './components/web/ThePurpleUmbrella.vue';
+import GalaxyApply from './components/web/GalaxyApply.vue';
 
 const app = createApp({});
 
@@ -101,8 +103,6 @@ app
       showSearchBox: true,
     },
   })
-
-  
   // admin
   .component('dark-mode-toggle', DarkModeToggle)
   .component('festivals', Festivals)
@@ -128,6 +128,7 @@ app
   .component('manage-partner-inquiries', ManagePartnerInquiries)
   .component('advisor-types', AdvisorTypes)
   .component('manage-advisors', ManageAdvisors)
+  .component('galaxy-applications', GalaxyApplications)
   // web
   .component('web-nav',WebNav)
   .component('speakers-carousel',SpeakersCarousel)
@@ -164,4 +165,5 @@ app
   .component('speaker-list-hex', SpeakerListHex)
   .component('asian-group-of-literature', AsianGroupOfLiterature)
   .component('the-purple-umbrella', ThePurpleUmbrella)
+  .component('galaxy-apply', GalaxyApply)
 .mount('#app')

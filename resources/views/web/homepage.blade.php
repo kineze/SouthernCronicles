@@ -750,7 +750,7 @@
 </section>
 
 <section class="w-full max-w-screen-2xl mx-auto">
-  <vision-mission
+  {{-- <vision-mission
     eyebrow="Who We Are"
     title="Our Vision & Mission"
     subtitle="Bridging worlds through words."
@@ -759,7 +759,7 @@
     :vision-points="['Champion free access', 'Inspire cross-cultural dialogue', 'Nurture future storytellers']"
     :mission-points="['Inclusive programs & workshops', 'Multilingual participation', 'Community-driven initiatives']"
     accent="active-purple"
-  ></vision-mission>
+  ></vision-mission> --}}
 </section>
 
 
@@ -810,17 +810,16 @@
    
 </section> --}}
 
+<section class="w-full max-w-screen-2xl  mt-6 mx-auto">
+
+    <latest-news></latest-news>
+   
+</section>
 
 <section class="w-full max-w-screen-2xl mx-auto">
 
     <our-partners></our-partners>
 
-</section>
-
-<section class="w-full max-w-screen-2xl  mt-6 mx-auto">
-
-    <latest-news></latest-news>
-   
 </section>
 
 <section class="relative w-full max-w-screen-2xl mx-auto">
