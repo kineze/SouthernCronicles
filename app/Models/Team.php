@@ -13,7 +13,8 @@ class Team extends Model
         'name', 'description', 'image',
         'facebook', 'instagram', 'linkedin',
         'show_on_home',
-        'team_type_id', // ← add this
+        'team_type_id',
+        'is_main',
     ];
 
     public function type()

@@ -41,11 +41,33 @@
       </div>
     </div>
 
-    <!-- Cards -->
+    <!-- Main Teams (centered row) -->
+    <div v-if="mainTeamsFiltered.length" class="mt-10">
+      <!-- <h5 class="text-sm font-semibold text-gray-600 mb-3">Main Teams</h5> -->
+
+      <!-- mirror a 2/3/4-col grid with gap-6 but centered -->
+      <div class="flex flex-wrap justify-center gap-6 items-start">
+        <div
+          v-for="team in mainTeamsFiltered"
+          :key="`main-${team.id}`"
+          @click="openModal(team)"
+          class="text-black font-semibold cursor-pointer transition duration-300 hover:bg-black hover:text-white overflow-hidden flex flex-col items-start h-full
+                 w-full sm:w-[calc(50%-0.75rem)] md:w-[calc(33.333%-0.75rem)] lg:w-[calc(25%-0.75rem)]"
+        >
+          <img :src="`/storage/${team.image}`" class="w-full lg:h-80 h-96 object-cover" />
+          <div class="p-4 w-full text-center">
+            <h3 class="font-bold uppercase text-lg">{{ team.name }}</h3>
+            <p v-if="team.type" class="text-xs uppercase tracking-wide text-gray-500">{{ team.type.name }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Other Teams (regular grid) -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10 items-start">
       <div
-        v-for="team in filteredTeams"
-        :key="team.id"
+        v-for="team in otherTeamsFiltered"
+        :key="`other-${team.id}`"
         @click="openModal(team)"
         class="text-black font-semibold cursor-pointer transition duration-300 hover:bg-black hover:text-white overflow-hidden flex flex-col items-start h-full"
       >
@@ -55,6 +77,11 @@
           <p v-if="team.type" class="text-xs uppercase tracking-wide text-gray-500">{{ team.type.name }}</p>
         </div>
       </div>
+    </div>
+
+    <!-- Empty state -->
+    <div v-if="!mainTeamsFiltered.length && !otherTeamsFiltered.length" class="mt-10 text-center text-gray-500">
+      No teams found.
     </div>
 
     <!-- Modal -->
@@ -95,38 +122,35 @@ const searchQuery = ref('')
 const selectedTeam = ref(null)
 const showModal = ref(false)
 
-const openModal = (team) => {
-  selectedTeam.value = team
-  showModal.value = true
-}
-const closeModal = () => {
-  selectedTeam.value = null
-  showModal.value = false
-}
+const openModal = (team) => { selectedTeam.value = team; showModal.value = true }
+const closeModal = () => { selectedTeam.value = null; showModal.value = false }
 
 const fetchTypes = async () => {
   const { data } = await axios.get('/api/team-types')
   types.value = data
 }
 
-// For public web view, this returns only teams with show_on_home=1 (and already includes type via controller)
+// Public web view: returns show_on_home=1, ordered with mains first (as per your controller)
 const fetchTeams = async () => {
   const { data } = await axios.get('/api/get-teams')
   teams.value = data
 }
 
-const filterByType = (typeId) => {
-  activeType.value = typeId
-}
+const filterByType = (typeId) => { activeType.value = typeId }
 
+// Base filtered list (search + type)
 const filteredTeams = computed(() => {
   const q = searchQuery.value.trim().toLowerCase()
-  return teams.value.filter(t => {
+  return (teams.value || []).filter(t => {
     const matchType = activeType.value === null || t.team_type_id === activeType.value
     const matchSearch = !q || (t.name?.toLowerCase().includes(q) || t.description?.toLowerCase().includes(q))
     return matchType && matchSearch
   })
 })
+
+// Split mains and others, after filters
+const mainTeamsFiltered  = computed(() => filteredTeams.value.filter(t => !!t.is_main))
+const otherTeamsFiltered = computed(() => filteredTeams.value.filter(t => !t.is_main))
 
 onMounted(async () => {
   await Promise.all([fetchTypes(), fetchTeams()])

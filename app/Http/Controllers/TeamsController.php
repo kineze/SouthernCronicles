@@ -20,6 +20,7 @@ class TeamsController extends Controller
         if ($request->boolean('ordered')) {
             $query->leftJoin('team_types', 'team_types.id', '=', 'teams.team_type_id')
                 ->select('teams.*')
+                ->orderByDesc('is_main')
                 ->orderByRaw('team_types.position IS NULL, team_types.position ASC')
                 ->orderBy('teams.name');
             return $query->get();
@@ -39,10 +40,12 @@ class TeamsController extends Controller
             'instagram'   => ['nullable','url'],
             'linkedin'    => ['nullable','url'],
             'show_on_home'=> ['nullable','boolean'],
-            'team_type_id'=> ['required','exists:team_types,id'], // ← required select
+            'team_type_id'=> ['required','exists:team_types,id'],
+            'is_main'      => ['nullable','boolean'], 
         ]);
 
         $validated['show_on_home'] = $request->boolean('show_on_home');
+        $validated['is_main']      = $request->boolean('is_main');
 
         if ($request->hasFile('image')) {
             $validated['image'] = $request->file('image')->store('teams', 'public');
@@ -62,12 +65,15 @@ class TeamsController extends Controller
             'instagram'   => ['nullable','url'],
             'linkedin'    => ['nullable','url'],
             'show_on_home'=> ['nullable','boolean'],
-            'team_type_id'=> ['required','exists:team_types,id'], // ← required select
+            'team_type_id'=> ['required','exists:team_types,id'],
+            'is_main'      => ['nullable','boolean'],  
         ]);
 
         if ($request->has('show_on_home')) {
             $validated['show_on_home'] = $request->boolean('show_on_home');
         }
+
+        if ($request->has('is_main'))      $validated['is_main']      = $request->boolean('is_main');
 
         if ($request->hasFile('image')) {
             if ($team->image) {
@@ -95,8 +101,14 @@ class TeamsController extends Controller
         return response()->json(['status' => 'success', 'show_on_home' => $team->show_on_home]);
     }
 
+    public function toggleMain(Team $team)
+    {
+        $team->update(['is_main' => !$team->is_main]);
+        return response()->json(['status' => 'success', 'is_main' => $team->is_main]);
+    }
+
     public function getTeams()
     {
-        return Team::with('type')->where('show_on_home', 1)->get();
+        return Team::with('type')->where('show_on_home', 1)->orderByDesc('is_main')->orderBy('name')->get();
     }
 }

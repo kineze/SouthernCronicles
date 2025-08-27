@@ -14,17 +14,17 @@
         :key="n.id"
         class="bg-white rounded shadow hover:shadow-lg transition p-3 flex flex-col"
       >
-        <a :href="newsUrl(n)" class="block overflow-hidden rounded">
+        <a :href="newsUrl(n)" class="block overflow-hidden bg-gray-100 w-full rounded">
           <img
             v-if="n.image"
             :src="imageUrl(n.image)"
             :alt="n.title"
-            class="w-full h-44 object-cover"
+            class="w-full h-48 bg-cover"
             loading="lazy"
           />
           <div
             v-else
-            class="w-full h-44 bg-gray-100 grid place-items-center text-gray-400 text-sm"
+            class="w-full h-48 bg-gray-100 grid place-items-center text-gray-400 text-sm"
           >
             No image
           </div>

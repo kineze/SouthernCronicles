@@ -62,6 +62,7 @@ Route::post('/teams', [TeamsController::class, 'store']);
 Route::put('/teams/{team}', [TeamsController::class, 'update']);
 Route::delete('/teams/{team}', [TeamsController::class, 'destroy']);
 Route::put('/teams/{team}/toggle-status', [TeamsController::class, 'toggleStatus']);
+Route::put('/teams/{team}/toggle-main',   [TeamsController::class, 'toggleMain']); 
 
 Route::delete('/time-slots/by-date', [TimeSlotController::class, 'destroyByDate']);
 Route::apiResource('time-slots', TimeSlotController::class);
