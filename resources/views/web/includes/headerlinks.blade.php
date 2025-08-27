@@ -8,7 +8,7 @@
 
     <meta property="og:title" content="ALF - 2026" />
     <meta property="og:description" content="Bridging Worlds Through Words" />
-    <meta property="og:image" content="{{ asset('assets/img/og-image.webp') }}" />
+    <meta property="og:image" content="{{ asset('assets/img/og-live-img.webp') }}" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="{{ url()->current() }}" />
     
