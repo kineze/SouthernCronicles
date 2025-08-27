@@ -24,7 +24,6 @@
         <p class="text-justify">
           Tell us about your brand and why you’d like to partner. We’ll get in touch with tailored collaboration options aligned with your goals.
         </p>
-
       </div>
 
       <!-- Right: Form -->
@@ -105,68 +104,58 @@
       </div>
     </div>
 
-            <!-- Our Products -->
-        <section class="mt-10">
-            <h1 class="lg:text-4xl text-3xl mt-4 text-black dark:text-white font-extrabold tracking-widest uppercase text-center mb-8">
-            Our Products
-            </h1>
+    <!-- Our Products -->
+    <section class="mt-10">
+      <h1 class="lg:text-4xl text-3xl mt-4 text-black dark:text-white font-extrabold tracking-widest uppercase text-center mb-8">
+        Our Products
+      </h1>
 
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <article
-              v-for="p in products"
-              :key="p.key"
-              class="group rounded-lg overflow-hidden bg-white dark:bg-gray-800 shadow hover:shadow-xl transition"
-            >
-              <!-- Video with fixed aspect ratio (16:9) -->
-              <div class="relative pt-[56.25%] bg-white">
-                <video
-                  class="absolute inset-0 w-40 h-40 mx-auto my-auto object-contain"
-                  :poster="p.poster || ''"
-                  :aria-label="p.title"
-                  playsinline
-                  muted
-                  loop
-                  autoplay
-                  preload="none"
-                  disablepictureinpicture
-                  controlslist="nodownload noplaybackrate noremoteplayback"
-                >
-                  <source :src="p.video" type="video/webm" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-
-              <div class="p-4">
-
-                <a
-                    :href="p.url"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="hover:underline hover:text-blue-600 dark:hover:text-blue-400 transition"
-                  >
-                <h3 class="font-semibold text-gray-900 dark:text-white text-lg">
-                  {{ p.title }}
-                </h3>
-
-                </a>
-                <p
-                  class="mt-1 text-sm text-gray-700 text-justify dark:text-gray-200 whitespace-pre-line"
-                >
-                  {{ displayedDesc(p) }}
-                </p>
-
-                <button
-                  v-if="isLong(p)"
-                  @click="toggleExpanded(p.key)"
-                  class="mt-2 text-xs font-semibold underline text-blue-700 dark:text-blue-300 hover:opacity-80"
-                >
-                  {{ isExpanded(p.key) ? 'Show less' : 'Read more' }}
-                </button>
-
-              </div>
-            </article>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <article
+          v-for="p in products"
+          :key="p.key"
+          class="group rounded-lg overflow-hidden bg-white dark:bg-gray-800 shadow hover:shadow-xl transition"
+        >
+          <!-- Image with fixed aspect ratio (16:9) -->
+          <div class="relative pt-[56.25%] bg-white">
+            <a :href="p.url" target="_blank" rel="noopener" class="absolute inset-0 block">
+              <img
+                :src="coverImage(p)"
+                :alt="p.title"
+                class="w-full h-full object-contain"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
           </div>
-        </section>
+
+          <div class="p-4">
+            <a
+              :href="p.url"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:underline hover:text-blue-600 dark:hover:text-blue-400 transition"
+            >
+              <h3 class="font-semibold text-gray-900 dark:text-white text-lg">
+                {{ p.title }}
+              </h3>
+            </a>
+
+            <p class="mt-1 text-sm text-gray-700 text-justify dark:text-gray-200 whitespace-pre-line">
+              {{ displayedDesc(p) }}
+            </p>
+
+            <button
+              v-if="isLong(p)"
+              @click="toggleExpanded(p.key)"
+              class="mt-2 text-xs font-semibold underline text-blue-700 dark:text-blue-300 hover:opacity-80"
+            >
+              {{ isExpanded(p.key) ? 'Show less' : 'Read more' }}
+            </button>
+          </div>
+        </article>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -181,68 +170,63 @@ const toast = useToast()
 const submitting = ref(false)
 const telRef = ref(null)
 
-const WORD_LIMIT = 50                      // << adjust as you like
-const expanded = ref(new Set()) 
+/* --------- Product helpers (read-more) --------- */
+const WORD_LIMIT = 50
+const expanded = ref(new Set())
 
-const normalizeDesc = (d) =>
-  (d ?? '').toString().replace(/\s+/g, ' ').trim()
-
+const normalizeDesc = (d) => (d ?? '').toString().replace(/\s+/g, ' ').trim()
 const splitWords = (d) => normalizeDesc(d).split(' ').filter(Boolean)
-
 const isLong = (p) => splitWords(p.description).length > WORD_LIMIT
-
 const isExpanded = (key) => expanded.value.has(key)
-
 const toggleExpanded = (key) => {
   const s = new Set(expanded.value)
   s.has(key) ? s.delete(key) : s.add(key)
-  expanded.value = s  // reassign to keep Vue reactivity with Set
+  expanded.value = s
 }
-
 const displayedDesc = (p) => {
   const desc = normalizeDesc(p.description)
   if (!isLong(p) || isExpanded(p.key)) return desc
   return splitWords(desc).slice(0, WORD_LIMIT).join(' ') + '…'
 }
 
+/* --------- Products now using WEBP images --------- */
+const coverImage = (p) => p.image || p.poster || '/images/placeholder.webp'
+
 const products = ref([
-{
-  key: 'writing-lab',
-  title: 'The Asian Review',
-  video: '/assets/img/writinglab.webm',
-  poster: '/images/products/writing-lab.jpg',
-  description: `Do you dream of launching a prestigious literary magazine in your country and language? Partner with The Asian Review, ranked among the world's top 10 literary publications by Feedspot and read by over 75,000 daily readers globally. 
-  We're more than just a magazine – we're part of a dynamic literary social enterprise network expanding worldwide. Our franchise model is tailored to your local scale, market size, population, and language reach, ensuring sustainable growth in your unique cultural context.
+  {
+    key: 'writing-lab',
+    title: 'The Asian Review',
+    image: '/assets/img/productone.webp',     // <-- webp
+    poster: '/images/products/writing-lab.jpg',
+    description: `Do you dream of launching a prestigious literary magazine in your country and language? Partner with The Asian Review, ranked among the world's top 10 literary publications by Feedspot and read by over 75,000 daily readers globally. 
+    We're more than just a magazine – we're part of a dynamic literary social enterprise network expanding worldwide. Our franchise model is tailored to your local scale, market size, population, and language reach, ensuring sustainable growth in your unique cultural context.
 
-  Special Opportunity for Global Majority Nations  
-  We offer accessible franchise packages specifically designed for partners from developing nations, making literary excellence achievable regardless of economic barriers.  
+    Special Opportunity for Global Majority Nations  
+    We offer accessible franchise packages specifically designed for partners from developing nations, making literary excellence achievable regardless of economic barriers.  
 
-  Transform your literary passion into a thriving business venture. Connect with established writers, emerging voices, and engaged readers while building a sustainable cultural enterprise in your community.  
+    Transform your literary passion into a thriving business venture. Connect with established writers, emerging voices, and engaged readers while building a sustainable cultural enterprise in your community.  
 
-  Ready to become the literary voice of your nation?  
-  Join the world's fastest-growing literary social enterprise network. Your story starts here.`,
+    Ready to become the literary voice of your nation?  
+    Join the world's fastest-growing literary social enterprise network. Your story starts here.`,
     url: '/asian-group-of-literature'
   },
-
   {
-  key: 'literary-hub',
-  title: 'Transform Your City into a Global Literary Hub',
-  video: '/assets/img/Writingnew.webm',
-  poster: '/images/products/writing-lab.jpg',
-  description: `You've been thinking of launching a literary festival in your city, your country—but nothing matched your expectations?
-      Now you can partner with The Asian Literary Festival Network, the world's fastest-growing literary festival platform that connects cities, people, and cultures worldwide through our revolutionary global roadmap.
-      Our proven network spans continents with thriving franchisees in Kenya, Sri Lanka, India, Belgium, and many more locations. Each partner festival becomes part of something extraordinary—a unified platform that culminates in The Global Summit in Abu Dhabi, where over 1,000 writers, thinkers, artists, and creative entrepreneurs compete for the prestigious Asian Prizes.
-      Why start from scratch when you can join a network that ensures equitable access to creative expression while amplifying diverse voices globally? Our franchisees don't just host events—they become vital nodes in the world's most influential literary ecosystem.
-      Ready to make your city the next destination for literary excellence?
-      Join The Asian Literary Festival Network today.`,
+    key: 'literary-hub',
+    title: 'Transform Your City into a Global Literary Hub',
+    image: '/assets/img/producttwo.webp',     // <-- webp
+    poster: '/images/products/writing-lab.jpg',
+    description: `You've been thinking of launching a literary festival in your city, your country—but nothing matched your expectations?
+        Now you can partner with The Asian Literary Festival Network, the world's fastest-growing literary festival platform that connects cities, people, and cultures worldwide through our revolutionary global roadmap.
+        Our proven network spans continents with thriving franchisees in Kenya, Sri Lanka, India, Belgium, and many more locations. Each partner festival becomes part of something extraordinary—a unified platform that culminates in The Global Summit in Abu Dhabi, where over 1,000 writers, thinkers, artists, and creative entrepreneurs compete for the prestigious Asian Prizes.
+        Why start from scratch when you can join a network that ensures equitable access to creative expression while amplifying diverse voices globally? Our franchisees don't just host events—they become vital nodes in the world's most influential literary ecosystem.
+        Ready to make your city the next destination for literary excellence?
+        Join The Asian Literary Festival Network today.`,
     url: '#'
   },
-
-  
   {
     key: 'kipenzi',
     title: 'The Children’s Fest, Kepenzi',
-    video: '/assets/img/kipenzigirl.webm',
+    image: '/assets/img/productthree.webp',    // <-- webp
     poster: '/images/products/kipenzi.jpg',
     description:
       `The Children’s Fest, Kepenzi
@@ -257,7 +241,7 @@ const products = ref([
   {
     key: 'climateaction',
     title: 'Creative Expression for Climate Action',
-    video: '/assets/img/climate.webm',
+    image: '/assets/img/productfour.webp',        // <-- webp
     poster: '/images/products/kipenzi-toys-books.jpg',
     description:
       `
@@ -269,11 +253,10 @@ const products = ref([
       Franchise Purple Umbrella Festival today and spark change in your community.`,
     url: '#'
   },
-
   {
     key: 'asian-writer',
     title: 'The Asian Writer Retreat and Residencies - Open Call',
-    video: '/assets/img/writer.webm',
+    image: '/assets/img/productsix.webp',         // <-- webp
     poster: '/images/products/kipenzi-toys-books.jpg',
     description:
       `Transform Your Writing. Transform Your Future.
@@ -285,11 +268,10 @@ const products = ref([
       Apply now and become part of writing history.`,
     url: '#'
   },
-
   {
     key: 'purple-umbrella',
     title: 'The ALF Curation Package - Festival Curation Services',
-    video: '/assets/img/festival.webm',
+    image: '/assets/img/productfive.webp',       // <-- webp
     poster: '/images/products/purple-umbrella.jpg',
     description:
       `Your Vision. Our Expertise. Extraordinary Results.
@@ -303,21 +285,20 @@ const products = ref([
   }
 ])
 
-
-/* --- Form state --- */
+/* --------- Form state --------- */
 const form = ref({
   first_name: '',
   last_name: '',
   brand_name: '',
   email: '',
-  phoneRaw: '',            // v-model for the component (can be string or object)
-  phone_normalized: '',    // best normalized value (E.164 if available)
+  phoneRaw: '',
+  phone_normalized: '',
   country_iso2: '',
   dial_code: '',
   description: ''
 })
 
-/* Normalize helper (resilient to lib variations) */
+/* Phone helpers */
 function normalizePhone(val) {
   if (typeof val === 'string') return val.replace(/\s+/g, '')
   if (val && typeof val === 'object') {
@@ -329,14 +310,12 @@ function normalizePhone(val) {
   return ''
 }
 
-/* vue-tel-input events */
 function onCountry(c){
   form.value.country_iso2 = c?.iso2 ? String(c.iso2).toUpperCase() : ''
   form.value.dial_code = c?.dialCode ? `+${String(c.dialCode).replace(/^\+/, '')}` : ''
 }
 
 function onValidate(payload){
-  // New signature payload object
   if (payload && typeof payload === 'object') {
     const { country } = payload
     if (country?.iso2) form.value.country_iso2 = String(country.iso2).toUpperCase()
@@ -349,7 +328,6 @@ function onValidate(payload){
       form.value.phoneRaw
     return
   }
-  // Legacy signature: (phone, isValid, country)
   const [phone, , country] = arguments
   if (country?.iso2) form.value.country_iso2 = String(country.iso2).toUpperCase()
   if (country?.dialCode) form.value.dial_code = `+${String(country.dialCode).replace(/^\+/, '')}`
@@ -371,7 +349,6 @@ const clearForm = () => {
 }
 
 const submitForm = async () => {
-  // Build best phone value: normalized -> model -> getNumber()
   let phoneFull = (form.value.phone_normalized || normalizePhone(form.value.phoneRaw) || '').trim()
   try {
     const api = telRef.value
