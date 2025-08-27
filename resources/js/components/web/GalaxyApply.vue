@@ -12,7 +12,7 @@
 
     <div class="flex flex-wrap px-4 w-full lg:px-6 gap-6">
       <!-- Left: Content -->
-      <div class="w-full lg:w-6/12 mt-8 space-y-5 text-gray-700 dark:text-gray-300 leading-relaxed">
+      <div class="w-full lg:w-6/12 mt-8 space-y-5 text-gray-700 dark:text-gray-300 text-justify leading-relaxed">
 
         <h2 class="text-xl font-semibold text-black dark:text-white mt-4">Ready to Join Our Galaxy?</h2>
         <p>
