@@ -11,7 +11,7 @@
             v-if="article.image"
             :src="imageUrl(article.image)"
             :alt="article.title"
-            class="w-full max-h-[480px] object-cover rounded"
+            class="w-full max-h-[600px] bg-cover rounded"
             loading="lazy"
           />
 

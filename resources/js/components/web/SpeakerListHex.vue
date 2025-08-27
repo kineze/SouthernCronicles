@@ -121,25 +121,55 @@ onBeforeUnmount(() => {
 })
 
 /* ---- Geometry ---- */
+// const R = computed(() => props.radius)
+// const STEP_X = computed(() => Math.sqrt(3) * R.value)
+// const STEP_Y = computed(() => 1.5 * R.value)
+
 const R = computed(() => props.radius)
 const STEP_X = computed(() => Math.sqrt(3) * R.value)
 const STEP_Y = computed(() => 1.5 * R.value)
 
 const rows = computed(() => (isMobile.value ? props.rowsMobile : props.rowsDesktop))
-const widest = computed(() => Math.max(...rows.value))
-const tightW = computed(() => (Math.max(widest.value - 1, 0)) * STEP_X.value + 2 * R.value)
-const tightH = computed(() => (Math.max(rows.value.length - 1, 0)) * STEP_Y.value + 2 * R.value)
-const boxW = computed(() => tightW.value + 2 * props.pad)
-const boxH = computed(() => tightH.value + 2 * props.pad)
+
+const targetCount = computed(() => {
+  const capacity = (rows.value || []).reduce((a, c) => a + (c || 0), 0)
+  return Math.min((props.images?.length || 0), capacity)
+})
+
+const rowsUsed = computed(() => {
+  const out = []
+  let remaining = targetCount.value
+  for (const cnt of rows.value) {
+    if (remaining <= 0) break
+    const take = Math.min(cnt, remaining)
+    out.push(take)
+    remaining -= take
+  }
+  return out
+})
+
+
+
+// const rows = computed(() => (isMobile.value ? props.rowsMobile : props.rowsDesktop))
+const widestUsed = computed(() => Math.max(0, ...rowsUsed.value))
+const innerW = computed(() => (Math.max(widestUsed.value - 1, 0)) * STEP_X.value + 2 * R.value)
+const innerH = computed(() => (Math.max(rowsUsed.value.length - 1, 0)) * STEP_Y.value + 2 * R.value)
+const boxW = computed(() => innerW.value + 2 * props.pad)
+const boxH = computed(() => innerH.value + 2 * props.pad)
 
 const grid = computed(() => {
   const out = []
-  rows.value.forEach((count, row) => {
-    const y = props.pad + R.value + row * STEP_Y.value
+  let placed = 0
+
+  rowsUsed.value.forEach((count, rowIdx) => {
+    const y = props.pad + R.value + rowIdx * STEP_Y.value
     const rowW = Math.max(count - 1, 0) * STEP_X.value + 2 * R.value
     const startX = props.pad + (boxW.value - 2 * props.pad - rowW) / 2 + R.value
+
     for (let col = 0; col < count; col++) {
-      out.push({ x: startX + col * STEP_X.value, y, row, col })
+      if (placed >= targetCount.value) break
+      out.push({ x: startX + col * STEP_X.value, y, row: rowIdx, col })
+      placed++
     }
   })
   return out
@@ -177,6 +207,7 @@ const pool = computed(() => {
     const key = canonicalKey(src, props.dedupeKey)
     if (props.avoidDuplicates && seen.has(key)) continue
     seen.add(key); out.push({ src, key })
+    if (out.length >= targetCount.value) break
   }
   return out
 })

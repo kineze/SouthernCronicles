@@ -241,7 +241,7 @@ async function fetchPage(p = 1) {
 function goPrev(){ if (canPrev.value) fetchPage((meta.value.current_page || 2) - 1) }
 function goNext(){ if (canNext.value) fetchPage((meta.value.current_page || 0) + 1) }
 
-/* Status chips */
+
 const STATUS_VIEW = {
   pending:  { label:'pending',  cls:'bg-amber-100 text-amber-800 ring-1 ring-amber-300/60 dark:bg-amber-500/15 dark:text-amber-300',   dot:'bg-amber-500' },
   approved: { label:'approved', cls:'bg-emerald-100 text-emerald-800 ring-1 ring-emerald-300/60 dark:bg-emerald-500/15 dark:text-emerald-300', dot:'bg-emerald-500' },
@@ -252,7 +252,7 @@ function chipClass(s){ const v=STATUS_VIEW[s]||STATUS_VIEW.default; return `inli
 function chipDotClass(s){ const v=STATUS_VIEW[s]||STATUS_VIEW.default; return `w-1.5 h-1.5 rounded-full ${v.dot}` }
 function chipLabel(s){ return (STATUS_VIEW[s]||STATUS_VIEW.default).label }
 
-/* Confirm toast (same pattern as your other component) */
+
 function confirmToast(message, { variant = 'info' } = {}) {
   const cfg = {
     success: { toastClass: ['!bg-emerald-600','!text-white','border','border-emerald-700','shadow-lg'], bodyClass: ['!text-white'], icon: h('i',{ class:'fa-solid fa-circle-check me-2' }) },
@@ -276,7 +276,7 @@ function confirmToast(message, { variant = 'info' } = {}) {
   })
 }
 
-/* Status changes */
+
 async function setStatus(app, next, prev = app.status) {
   if (next === prev) return
   const variant = next === 'approved' ? 'success' : next === 'rejected' ? 'danger' : 'info'
@@ -301,12 +301,12 @@ async function actuallyUpdateStatus(app, next, prev) {
   }
 }
 
-/* Description modal */
+
 const descModal = ref({ open:false, app:null })
 function openDesc(app){ descModal.value = { open:true, app } }
 function closeDesc(){ descModal.value = { open:false, app:null } }
 
-/* React to filter changes */
+
 watch([statusFilter], () => fetchPage(1))
 
 onMounted(() => { fetchPage(1) })

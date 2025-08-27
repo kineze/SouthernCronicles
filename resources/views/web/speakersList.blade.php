@@ -14,13 +14,15 @@
             <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl">global summit</h2>
         </div>
       </div>
+    </div>
 
+</section>
 
-        <speakers-list></speakers-list>
+<section class="w-full max-w-screen-2xl  -mt-6 mx-auto p-3">
+
+      <speakers-list></speakers-list>
 
         <galaxy-apply></galaxy-apply>
-
-    </div>
 </section>
 
 @endsection
