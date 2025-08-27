@@ -13,6 +13,15 @@
     <div class="flex flex-wrap px-4 w-full lg:px-6 gap-6">
       <!-- Left: Content -->
       <div class="w-full lg:w-6/12 mt-8 space-y-5 text-gray-700 dark:text-gray-300 leading-relaxed">
+
+        <h2 class="text-xl font-semibold text-black dark:text-white mt-4">Ready to Join Our Galaxy?</h2>
+        <p>
+          To become part of this extraordinary creative constellation, submit your application using the form. While we
+          cannot respond to every application individually, if you possess the skills and vision we seek, we will surely
+          reach out to you. Your creative journey across the world begins with a single step into The Galaxy.
+        </p>
+
+
         <p>
           The Galaxy is our carefully curated collective of writers, thinkers, and artists—the creative stars who
           illuminate The Asian Literary Festival network. Each year, we roster these exceptional voices to mobilize across
@@ -35,27 +44,30 @@
           programs across our network, and professional development through collaborative projects that span continents
           and cultures.
         </p>
-        <h2 class="text-xl font-semibold text-black dark:text-white mt-4">Ready to Join Our Galaxy?</h2>
-        <p>
-          To become part of this extraordinary creative constellation, submit your application using the form. While we
-          cannot respond to every application individually, if you possess the skills and vision we seek, we will surely
-          reach out to you. Your creative journey across the world begins with a single step into The Galaxy.
-        </p>
 
         <button
           @click="scrollToForm"
           type="button"
-          class="mt-2 inline-flex items-center gap-2 px-5 py-2 rounded bg-black text-white hover:bg-gray-800 transition"
+          class="mt-2 lg:inline-flex items-center hidden gap-2 px-5 py-2  bg-black text-white hover:bg-gray-800 transition"
         >
           Apply Now
-          <i class="fa-solid fa-arrow-right-long"></i>
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+
+        <button
+          @click="scrollToForm"
+          type="button"
+          class="mt-2 inline-flex items-center lg:hidden gap-2 px-5 py-2  bg-black text-white hover:bg-gray-800 transition"
+        >
+          Apply Now
+          <i class="fa-solid fa-chevron-down"></i>
         </button>
       </div>
 
       <!-- Right: Form -->
       <div
         ref="formBox"
-        class="mt-4 w-full lg:w-5/12 lg:p-4 mx-auto bg-white dark:bg-gray-800 rounded-lg shadow space-y-6 lg:sticky lg:top-6"
+        class="mt-4 w-full lg:w-5/12 lg:p-4 mx-auto bg-white dark:bg-gray-800 -lg shadow space-y-6 lg:sticky lg:top-6"
       >
         <h3 class="text-lg font-semibold text-black dark:text-white">Galaxy Application Form</h3>
 
@@ -67,12 +79,12 @@
               type="text"
               id="gal_first_name"
               placeholder=" "
-              class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 dark:text-white bg-transparent border border-gray-400 dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-black dark:focus:border-blue-500 peer rounded"
+              class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 dark:text-white bg-transparent border border-gray-400 dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-black dark:focus:border-blue-500 peer "
               required
             />
             <label
               for="gal_first_name"
-              class="absolute text-sm text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 px-2 duration-300 transform scale-75 -translate-y-4 top-2 z-10 origin-[0]
+              class="absolute text-sm text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 px-2 duration-300 transform scale-75 -translate-y-4 top-2 left-2 z-10 origin-[0]
                      peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
               First name
             </label>
@@ -85,12 +97,12 @@
               type="text"
               id="gal_last_name"
               placeholder=" "
-              class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 dark:text-white bg-transparent border border-gray-400 dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-black dark:focus:border-blue-500 peer rounded"
+              class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 dark:text-white bg-transparent border border-gray-400 dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-black dark:focus:border-blue-500 peer "
               required
             />
             <label
               for="gal_last_name"
-              class="absolute text-sm text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 px-2 duration-300 transform scale-75 -translate-y-4 top-2 z-10 origin-[0]
+              class="absolute text-sm text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 px-2 duration-300 transform scale-75 -translate-y-4 top-2 left-2 z-10 origin-[0]
                      peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
               Last name
             </label>
@@ -103,19 +115,19 @@
               type="email"
               id="gal_email"
               placeholder=" "
-              class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 dark:text-white bg-transparent border border-gray-400 dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-black dark:focus:border-blue-500 peer rounded"
+              class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 dark:text-white bg-transparent border border-gray-400 dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-black dark:focus:border-blue-500 peer "
               required
             />
             <label
               for="gal_email"
-              class="absolute text-sm text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 px-2 duration-300 transform scale-75 -translate-y-4 top-2 z-10 origin-[0]
+              class="absolute text-sm text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 px-2 duration-300 transform scale-75 -translate-y-4 top-2 left-2 z-10 origin-[0]
                      peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
               Email
             </label>
           </div>
 
           <!-- Phone (vue3-tel-input) -->
-          <div class="md:col-span-2">
+          <div class="md:col-span-2 z-[990]">
             <label class="block text-sm text-gray-600 dark:text-gray-300 mb-1">Phone number</label>
             <VueTelInput
               id="gal_phone"
@@ -138,11 +150,11 @@
               id="gal_description"
               rows="4"
               placeholder=" "
-              class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 dark:text-white bg-transparent border border-gray-400 dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-black dark:focus:border-blue-500 peer rounded"
+              class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 dark:text-white bg-transparent border border-gray-400 dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-black dark:focus:border-blue-500 peer"
             ></textarea>
             <label
               for="gal_description"
-              class="absolute text-sm text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 px-2 duration-300 transform scale-75 -translate-y-4 top-2 z-10 origin-[0]
+              class="absolute text-sm text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 px-2 duration-300 transform scale-75 -translate-y-4 top-2 left-2 z-10 origin-[0]
                      peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
               Describe your creative practice / strengths (optional)
             </label>
@@ -153,7 +165,7 @@
             <button
               :disabled="submitting"
               type="submit"
-              class="px-6 py-2 bg-black text-white font-semibold hover:bg-gray-800 transition disabled:opacity-60 rounded"
+              class="px-6 py-2 bg-black text-white font-semibold hover:bg-gray-800 transition disabled:opacity-60 "
             >
               {{ submitting ? 'Submitting…' : 'Submit Application' }}
             </button>

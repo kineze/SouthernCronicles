@@ -41,11 +41,10 @@
       </div>
     </div>
 
-    <!-- Main Teams (centered row) -->
+
     <div v-if="mainTeamsFiltered.length" class="mt-10">
       <!-- <h5 class="text-sm font-semibold text-gray-600 mb-3">Main Teams</h5> -->
 
-      <!-- mirror a 2/3/4-col grid with gap-6 but centered -->
       <div class="flex flex-wrap justify-center gap-6 items-start">
         <div
           v-for="team in mainTeamsFiltered"
