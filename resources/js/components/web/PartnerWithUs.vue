@@ -213,7 +213,7 @@ const products = ref([
   {
     key: 'literary-hub',
     title: 'Transform Your City into a Global Literary Hub',
-    image: '/assets/img/producttwo.webp',     // <-- webp
+    image: '/assets/img/productfive.webp',     // <-- webp
     poster: '/images/products/writing-lab.jpg',
     description: `You've been thinking of launching a literary festival in your city, your country—but nothing matched your expectations?
         Now you can partner with The Asian Literary Festival Network, the world's fastest-growing literary festival platform that connects cities, people, and cultures worldwide through our revolutionary global roadmap.
@@ -271,7 +271,7 @@ const products = ref([
   {
     key: 'purple-umbrella',
     title: 'The ALF Curation Package - Festival Curation Services',
-    image: '/assets/img/productfive.webp',       // <-- webp
+    image: '/assets/img/producttwo.webp',       // <-- webp
     poster: '/images/products/purple-umbrella.jpg',
     description:
       `Your Vision. Our Expertise. Extraordinary Results.

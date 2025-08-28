@@ -5,45 +5,39 @@
     </h1>
 
     <div class="grid grid-cols-1 py-3 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      <article
-        v-for="ev in events"
-        :key="ev.id"
-        class="rounded bg-white dark:bg-gray-800 hover:shadow-md transition-all"
-      >
-        <div class="flex items-start justify-between p-4">
-          <div class="text-sm">
-            <div class="font-semibold text-gray-900 dark:text-white">
-              {{ formatDate(ev.start_at, ev.end_at) }}
-            </div>
-            <div v-if="formatTime(ev.start_at)" class="mt-1 flex items-center gap-2 text-gray-600 dark:text-gray-300 text-sm">
-              <i class="fa-regular fa-clock"></i>
-              <span>{{ formatTime(ev.start_at) }}</span>
-            </div>
+      <article v-for="ev in events" :key="ev.id" class="rounded bg-white dark:bg-gray-800 hover:shadow-md transition-all flex">
+
+        <a v-if="ev.site_url" :href="ev.site_url" target="_blank" rel="noopener" class="flex">
+          <div class="p-2">
+            <img v-if="ev.image" :src="`/storage/${ev.image}`" class="w-28 h-28 rounded object-cover" alt="thumb" />
           </div>
 
-          <div class="flex items-center gap-3">
-            <!-- example “format” badge if you add one later -->
-            <!-- <span v-if="ev.format" class="inline-block rounded-full px-3 py-1 text-xs font-bold text-white bg-gradient-to-r from-red-600 to-pink-600">
-              {{ ev.format }}
-            </span> -->
-            <div class="flex items-center gap-2 text-gray-600 dark:text-gray-300 text-sm">
-              <i class="fa-solid fa-location-dot"></i>
-              <span class="truncate max-w-[140px]">{{ ev.location }}</span>
+          <div>
+            <div class="p-2 space-y-1 flex flex-col items-start justify-center h-full">
+
+              <a v-if="ev.site_url" :href="ev.site_url" target="_blank" rel="noopener">
+                <h3 class="text-xl font-extrabold tracking-tight text-black dark:text-white">
+                  {{ ev.name }}
+                </h3>
+              </a>
+
+              <div class="font-semibold text-gray-900 dark:text-white">
+                {{ formatDate(ev.start_at, ev.end_at) }}
+              </div>
+
+              <div v-if="formatTime(ev.start_at)" class="mt-1 flex items-center gap-2 text-gray-600 dark:text-gray-300 text-sm">
+                <i class="fa-regular fa-clock"></i>
+                <span>{{ formatTime(ev.start_at) }}</span>
+              </div>
+
+              <div class="flex items-center gap-2 text-gray-600 dark:text-gray-300 text-sm">
+                <i class="fa-solid fa-location-dot"></i>
+                <span class="">{{ ev.location }}</span>
+              </div>
             </div>
           </div>
-        </div>
+        </a>
 
-        <hr class="border-t border-black/30" />
-
-        <div class="p-4">
-
-          <a v-if="ev.site_url" :href="ev.site_url" target="_blank" rel="noopener">
-            <h3 class="text-xl font-extrabold tracking-tight text-black dark:text-white">
-              {{ ev.name }}
-            </h3>
-          </a>
-          
-        </div>
       </article>
     </div>
   </div>

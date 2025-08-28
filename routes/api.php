@@ -64,6 +64,9 @@ Route::delete('/teams/{team}', [TeamsController::class, 'destroy']);
 Route::put('/teams/{team}/toggle-status', [TeamsController::class, 'toggleStatus']);
 Route::put('/teams/{team}/toggle-main',   [TeamsController::class, 'toggleMain']); 
 
+Route::post('/teams/reorder', [TeamsController::class, 'reorder']);
+
+
 Route::delete('/time-slots/by-date', [TimeSlotController::class, 'destroyByDate']);
 Route::apiResource('time-slots', TimeSlotController::class);
 Route::post('/time-slots/{timeSlot}/toggle', [TimeSlotController::class, 'toggleStatus']);
@@ -85,6 +88,7 @@ Route::apiResource('news', NewsController::class);
 
 Route::put('news/{news}/toggle-status', [NewsController::class, 'toggleStatus']);
 Route::get('/news/{news}', [NewsController::class, 'show']);
+Route::post('/news/reorder', [NewsController::class, 'reorder']);
 
 Route::apiResource('partner-types', PartnerTypeController::class);
 Route::post('partner-types/reorder', [PartnerTypeController::class, 'reorder']);
