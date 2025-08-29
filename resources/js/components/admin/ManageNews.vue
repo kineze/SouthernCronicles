@@ -32,84 +32,86 @@
       </div>
     </div>
 
-    <!-- News Cards -->
+    <!-- News Grid (Draggable) -->
     <div class="relative overflow-x-auto mt-4 sm:rounded-lg">
       <div v-if="loading" class="py-14 text-center text-gray-500 dark:text-gray-300">Loading…</div>
+      <div v-else-if="news.length === 0" class="py-14 text-center text-gray-500 dark:text-gray-300">No news found.</div>
 
-      <div v-else-if="news.length === 0" class="py-14 text-center text-gray-500 dark:text-gray-300">
-        No news found.
-      </div>
+      <draggable
+        v-else
+        v-model="news"
+        item-key="id"
+        class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3"
+        ghost-class="opacity-60"
+        :animation="180"
+        handle=".drag-handle"
+        @end="persistOrder"
+      >
+        <template #item="{ element: item }">
+          <div class="relative group rounded-lg overflow-hidden shadow-lg bg-white dark:bg-gray-800">
+            <!-- Top row: drag handle + actions -->
+            <div class="flex items-center justify-between px-4 pt-3">
+              <button class="drag-handle text-gray-400 hover:text-gray-600 cursor-grab active:cursor-grabbing" title="Drag to reorder">
+                <i class="fa-solid fa-grip-lines"></i>
+              </button>
 
-      <div v-else class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
-        <div
-          v-for="item in news"
-          :key="item.id"
-          class="relative group rounded-lg overflow-hidden shadow-lg bg-white dark:bg-gray-800"
-        >
-
-
-            <div class="flex space-x-6 text-lg top-3 mb-3 justify-end right-4 items-center relative">
-              <div class="relative -mb-2 z-[990]">
-                <label class="inline-flex items-center cursor-pointer">
-                  <input
-                    type="checkbox"
-                    :checked="item.status"
-                    @change="toggleStatus(item)"
-                    class="sr-only peer"
-                  />
-                  <div
-                    class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300
-                          dark:peer-focus:ring-green-800 rounded peer dark:bg-gray-700
-                          peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full
-                          peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px]
-                          after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded
-                          after:h-5 after:w-5 after:transition-all dark:border-gray-600
-                          peer-checked:bg-green-600 dark:peer-checked:bg-green-600"
-                  ></div>
-                </label>
+              <div class="flex items-center gap-4 text-lg">
+                <div class="relative -mb-2 z-[990]">
+                  <label class="inline-flex items-center cursor-pointer">
+                    <input
+                      type="checkbox"
+                      :checked="item.status"
+                      @change="toggleStatus(item)"
+                      class="sr-only peer"
+                    />
+                    <div
+                      class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300
+                            dark:peer-focus:ring-green-800 rounded peer dark:bg-gray-700
+                            peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full
+                            peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px]
+                            after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded
+                            after:h-5 after:w-5 after:transition-all dark:border-gray-600
+                            peer-checked:bg-green-600 dark:peer-checked:bg-green-600"
+                    ></div>
+                  </label>
+                </div>
+                <button @click="editNews(item)" class="hover:text-green-400"><i class="fa-solid fa-pen"></i></button>
+                <button @click="showDeleteConfirmation(item)" class="text-rose-500 hover:text-rose-400"><i class="fa-solid fa-trash"></i></button>
               </div>
-              <button @click="editNews(item)" class="hover:text-green-400"><i class="fa-solid fa-pen"></i></button>
-              <button @click="showDeleteConfirmation(item)" class="text-rose-500 hover:text-rose-400"><i class="fa-solid fa-trash"></i></button>
             </div>
 
+            <!-- Content -->
+            <div class="p-4">
+              <img v-if="item.image" :src="`/storage/${item.image}`" alt="News" class="w-full h-48 object-cover rounded-lg" />
+              <h3 class="text-base font-semibold text-gray-900 dark:text-white mt-4 line-clamp-2">
+                {{ item.title }}
+              </h3>
+              <p class="text-xs text-gray-500 dark:text-gray-300 mt-1">
+                {{ formatDisplayDate(item.published_at) }} · {{ item.published_by || '—' }}
+              </p>
 
-          <!-- Content -->
-          <div class="p-4">
-            <img v-if="item.image" :src="`/storage/${item.image}`" alt="News" class="w-full h-48 object-cover rounded-lg" />
-            <h3 class="text-base font-semibold text-gray-900 dark:text-white mt-4 line-clamp-2">
-              {{ item.title }}
-            </h3>
-            <p class="text-xs text-gray-500 dark:text-gray-300 mt-1">
-              {{ formatDisplayDate(item.published_at) }} · {{ item.published_by || '—' }}
-            </p>
-            <!-- Collapsed: 100-word plain-text preview -->
-
-                <div
+              <!-- Collapsed: 100-word plain-text preview -->
+              <div
                 v-if="!isExpanded(item.id)"
                 class="mt-3 text-sm text-gray-700 dark:text-gray-200"
                 v-html="truncatedContentWithSeeMore(item.content, item.id, 100)"
                 @click="handleInlineClick"
-                ></div>
+              ></div>
 
-                <!-- Expanded: full content + inline See Less -->
-                <div v-else class="mt-3 text-sm text-gray-700 dark:text-gray-200 news-content">
+              <!-- Expanded: full content + inline See Less -->
+              <div v-else class="mt-3 text-sm text-gray-700 dark:text-gray-200 news-content">
                 <div v-html="item.content"></div>
                 <span
-                    class="text-white font-semibold cursor-pointer hover:underline"
-                    @click="toggleExpanded(item.id)"
+                  class="text-white font-semibold cursor-pointer hover:underline"
+                  @click="toggleExpanded(item.id)"
                 >
-                    See less
+                  See less
                 </span>
-                </div>
-
+              </div>
+            </div>
           </div>
-
-          <!-- Hover actions -->
-          <!-- <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-white"> -->
-
-          <!-- </div> -->
-        </div>
-      </div>
+        </template>
+      </draggable>
 
       <!-- Pagination -->
       <div v-if="meta && meta.total > 0" class="mt-6 flex items-center justify-between flex-wrap gap-3">
@@ -126,7 +128,6 @@
             Prev
           </button>
 
-          <!-- windowed page numbers -->
           <button
             v-for="p in pageWindow"
             :key="p"
@@ -183,13 +184,7 @@
               <span class="text-sm text-gray-400 dark:text-gray-300 text-center px-2">Click to upload</span>
             </template>
           </div>
-          <input
-            type="file"
-            accept="image/*"
-            ref="imageInput"
-            @change="handleImageUpload"
-            class="hidden"
-          />
+          <input type="file" accept="image/*" ref="imageInput" @change="handleImageUpload" class="hidden" />
         </div>
 
         <!-- Title -->
@@ -245,7 +240,7 @@
           />
           <label
             for="published-by"
-            class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2
+            class="absolute text sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2
                    peer-focus:px-2 peer-focus:text-green-600 peer-focus:dark:text-green-500
                    peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2
                    peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
@@ -254,7 +249,7 @@
           </label>
         </div>
 
-
+        <!-- Small Description -->
         <div class="mb-5">
           <div class="flex items-center justify-between mb-1">
             <label class="block text-sm font-medium dark:text-white">Small Description</label>
@@ -262,7 +257,6 @@
               {{ (form.small_description || '').length }} / 200
             </span>
           </div>
-
           <textarea
             v-model="form.small_description"
             @input="enforceCharLimit(200)"
@@ -274,15 +268,12 @@
           <p class="mt-1 text-xs text-gray-500">Max 200 characters.</p>
         </div>
 
-
         <!-- Status -->
         <div class="mb-5">
           <label class="block text-sm font-medium text-gray-700 dark:text-white mb-2">Status (Visible)</label>
           <label class="inline-flex items-center cursor-pointer">
             <input type="checkbox" v-model="form.status" class="sr-only peer" />
-            <div
-              class="relative w-11 h-6 bg-gray-200 rounded-full peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 dark:bg-gray-700 peer-checked:bg-green-600"
-            >
+            <div class="relative w-11 h-6 bg-gray-200 rounded-full peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 dark:bg-gray-700 peer-checked:bg-green-600">
               <div class="absolute top-[2px] left-[2px] bg-white w-5 h-5 rounded-full transition-transform peer-checked:translate-x-full"></div>
             </div>
           </label>
@@ -291,14 +282,6 @@
         <!-- News Content (Quill) -->
         <div class="mb-6">
           <label class="block text-sm font-medium dark:text-white mb-2">News Content</label>
-          <!-- <QuillEditor
-            theme="snow"
-            v-model:content="form.content"
-            contentType="html"
-            toolbar="full"
-            class="bg-white dark:bg-gray-900 dark:text-white rounded-lg"
-          /> -->
-
           <QuillEditor
             :key="editorKey"
             theme="snow"
@@ -336,10 +319,11 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch, computed , nextTick} from 'vue'
+import { ref, onMounted, watch, computed, nextTick } from 'vue'
 import axios from 'axios'
 import { useToast } from 'vue-toastification'
 import { QuillEditor } from '@vueup/vue-quill'
+import draggable from 'vuedraggable'
 import '@vueup/vue-quill/dist/vue-quill.snow.css'
 
 const toast = useToast()
@@ -359,7 +343,7 @@ const editorKey = ref(0)
 
 const form = ref({
   title: '',
-  small_description: '', 
+  small_description: '',
   published_at: '',
   content: '',
   published_by: '',
@@ -367,8 +351,13 @@ const form = ref({
   image: null
 })
 
+const enforceCharLimit = (max) => {
+  if ((form.value.small_description || '').length > max) {
+    form.value.small_description = form.value.small_description.slice(0, max)
+  }
+}
+
 const forceResetEditor = async () => {
-  // Clear the bound model, then remount the editor
   form.value.content = ''
   await nextTick()
   editorKey.value++
@@ -392,13 +381,9 @@ const textFromHtml = (html) => {
 const truncatedContentWithSeeMore = (html, id, limit = 100) => {
   const text = textFromHtml(html)
   const words = text.split(/\s+/).filter(Boolean)
-  if (words.length <= limit) return text // no truncation needed
-
-  return (
-    words.slice(0, limit).join(' ') +
-    '… ' +
+  if (words.length <= limit) return text
+  return words.slice(0, limit).join(' ') + '… ' +
     `<span class="text-gray-300 font-semibold text-xs cursor-pointer hover:underline" data-id="${id}">See more</span>`
-  )
 }
 
 const handleInlineClick = (e) => {
@@ -408,44 +393,21 @@ const handleInlineClick = (e) => {
   }
 }
 
-
-const isTruncatable = (html, limit = 100) => {
-  const text = textFromHtml(html)
-  return text.split(/\s+/).filter(Boolean).length > limit
-}
-
-
 const previewImage = ref(null)
 
-/* ---------- helpers ---------- */
+/* helpers */
 const pad = (n) => String(n).padStart(2, '0')
-
 const toServerDate = (val) => {
   const d = new Date(val)
-  const yyyy = d.getFullYear()
-  const mm = pad(d.getMonth() + 1)
-  const dd = pad(d.getDate())
-  const hh = pad(d.getHours())
-  const mi = pad(d.getMinutes())
-  return `${yyyy}-${mm}-${dd} ${hh}:${mi}:00`
+  return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}:00`
 }
-
 const formatForInput = (dateish) => {
   const d = new Date(dateish)
-  const yyyy = d.getFullYear()
-  const mm = pad(d.getMonth() + 1)
-  const dd = pad(d.getDate())
-  const hh = pad(d.getHours())
-  const mi = pad(d.getMinutes())
-  return `${yyyy}-${mm}-${dd}T${hh}:${mi}`
+  return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`
 }
+const formatDisplayDate = (dateish) => new Date(dateish).toLocaleString()
 
-const formatDisplayDate = (dateish) => {
-  const d = new Date(dateish)
-  return d.toLocaleString()
-}
-
-/* ---------- image handlers ---------- */
+/* image handlers */
 const handleImageUpload = (e) => {
   const file = e.target.files[0]
   if (file) {
@@ -453,13 +415,12 @@ const handleImageUpload = (e) => {
     previewImage.value = URL.createObjectURL(file)
   }
 }
-
 const removeImage = () => {
   form.value.image = null
   previewImage.value = null
 }
 
-/* ---------- pagination helpers ---------- */
+/* pagination helpers */
 const pageWindow = computed(() => {
   if (!meta.value) return []
   const total = meta.value.last_page
@@ -481,16 +442,12 @@ const goToPage = (p) => {
   }
 }
 
-/* ---------- crud ---------- */
+/* API */
 const fetchNews = async () => {
   loading.value = true
   try {
     const res = await axios.get('/api/news', {
-      params: {
-        search: search.value || undefined,
-        page: page.value,
-        per_page: perPage.value
-      }
+      params: { search: search.value || undefined, page: page.value, per_page: perPage.value }
     })
     news.value = res.data.data || []
     meta.value = res.data.meta || null
@@ -501,16 +458,30 @@ const fetchNews = async () => {
   }
 }
 
+const persistOrder = async () => {
+  try {
+    const offset = meta.value ? (meta.value.current_page - 1) * perPage.value : 0
+    const ordered_ids = news.value.map(n => n.id)
+
+    // Optimistic UI: array already re-ordered in memory by v-model
+    await axios.post('/api/news/reorder', { ordered_ids, offset })
+    toast.success('Order saved')
+    // IMPORTANT: Do NOT refetch here—keeps it live/smooth
+  } catch (e) {
+    toast.error('Failed to save order')
+    // If you want to hard-rollback visually, uncomment:
+    // await fetchNews()
+  }
+}
+
 const openDrawer = () => {
   resetForm()
   drawerOpen.value = true
 }
-
 const closeDrawer = () => {
   drawerOpen.value = false
   editingId.value = null
 }
-
 const resetForm = () => {
   form.value = {
     title: '',
@@ -523,14 +494,14 @@ const resetForm = () => {
   }
   previewImage.value = null
   editingId.value = null
-  editorKey.value++ 
+  editorKey.value++
 }
 
 const saveNews = async () => {
   try {
     const fd = new FormData()
     fd.append('title', form.value.title)
-    fd.append('small_description', form.value.small_description || '') 
+    fd.append('small_description', form.value.small_description || '')
     fd.append('published_at', toServerDate(form.value.published_at))
     fd.append('content', form.value.content || '')
     fd.append('published_by', form.value.published_by || '')
@@ -538,18 +509,14 @@ const saveNews = async () => {
     if (form.value.image) fd.append('image', form.value.image)
 
     if (editingId.value) {
-    fd.append('_method', 'PUT') // method override in body
-    await axios.post(`/api/news/${editingId.value}`, fd, {
-        headers: { 'Content-Type': 'multipart/form-data' }
-    })
-    toast.success('News updated')
+      fd.append('_method', 'PUT')
+      await axios.post(`/api/news/${editingId.value}`, fd, { headers: { 'Content-Type': 'multipart/form-data' } })
+      toast.success('News updated')
     } else {
-    await axios.post('/api/news', fd, {
-        headers: { 'Content-Type': 'multipart/form-data' }
-    })
-    toast.success('News created')
+      await axios.post('/api/news', fd, { headers: { 'Content-Type': 'multipart/form-data' } })
+      toast.success('News created')
     }
-    await fetchNews()
+    await fetchNews() // refresh list after create/update
     await forceResetEditor()
     closeDrawer()
   } catch (e) {
@@ -574,7 +541,7 @@ const editNews = (item) => {
     image: null
   }
   previewImage.value = item.image ? `/storage/${item.image}` : null
-  editorKey.value++  
+  editorKey.value++
   drawerOpen.value = true
 }
 
@@ -608,7 +575,7 @@ const confirmDelete = async () => {
   }
 }
 
-/* ---------- reactive triggers ---------- */
+/* reactive triggers */
 // debounce search
 let searchTimer = null
 watch(search, () => {
@@ -618,7 +585,6 @@ watch(search, () => {
     fetchNews()
   }, 400)
 })
-
 // per-page change resets to first page
 watch(perPage, () => {
   page.value = 1
@@ -626,16 +592,12 @@ watch(perPage, () => {
 })
 
 onMounted(fetchNews)
-
 </script>
 
 <style>
-/* Apply Quill’s alignment outside the editor */
 .news-content .ql-align-center { text-align: center; }
 .news-content .ql-align-right  { text-align: right; }
 .news-content .ql-align-justify{ text-align: justify; }
-
-/* Optional: handle indentation if you use it */
 .news-content .ql-indent-1 { margin-left: 3em; }
 .news-content .ql-indent-2 { margin-left: 6em; }
 </style>

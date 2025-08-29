@@ -8,147 +8,77 @@
       </button>
     </div>
 
-    <!-- Team Cards -->
-<!-- Team Cards -->
-<div class="relative overflow-x-auto mt-7 sm:rounded-lg">
-  <!-- Main teams row (centered) -->
-  <div v-if="mainTeams.length" class="mb-8">
-    <h5 class="text-sm font-semibold text-gray-600 mb-3">Main Teams</h5>
+    <!-- Grouped + Draggable -->
+    <div class="relative overflow-x-auto mt-7 sm:rounded-lg">
+      <div v-if="!groups.length" class="text-center text-gray-500 dark:text-gray-300 py-14">
+        No teams found.
+      </div>
 
-    <!-- widths mirror a 2/3/4-col grid with gap-6 -->
-    <div class="flex flex-wrap justify-center gap-6">
-      <div
-        v-for="team in mainTeams"
-        :key="`main-${team.id}`"
-        class="relative group rounded-lg overflow-hidden shadow-lg
-               w-full sm:w-[calc(50%-0.75rem)] md:w-[calc(33.333%-0.75rem)] lg:w-[calc(25%-0.75rem)]"
-      >
-        <!-- switches -->
-        <div class="absolute top-2 right-2 z-[990] flex gap-2">
-          <!-- Show on home -->
-          <label class="inline-flex items-center cursor-pointer" aria-label="Show on home">
-            <input
-              type="checkbox"
-              :checked="team.show_on_home"
-              @change="toggleShowOnHome(team)"
-              class="sr-only peer"
-            />
-            <div
-              class="relative w-11 h-6 bg-gray-200 rounded
-                     peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300
-                     dark:peer-focus:ring-green-800 dark:bg-gray-700
-                     after:content-[''] after:absolute after:top-[2px] after:start-[2px]
-                     after:bg-white after:border-gray-300 after:border after:rounded
-                     after:h-5 after:w-5 after:transition-all
-                     peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full
-                     peer-checked:bg-green-600"
-            ></div>
-          </label>
+      <section v-for="group in groups" :key="group.key" class="mb-10">
+        <h5 class="text-sm font-semibold text-gray-600 mb-3">
+          {{ group.title }}
+        </h5>
 
-          <!-- Main -->
-          <label class="inline-flex items-center cursor-pointer" title="Mark as main">
-            <input
-              type="checkbox"
-              :checked="team.is_main"
-              @change="toggleMain(team)"
-              class="sr-only peer"
-            />
-            <div
-              class="relative w-11 h-6 bg-gray-200 rounded
-                     peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-amber-300
-                     dark:peer-focus:ring-amber-800 dark:bg-gray-700
-                     after:content-[''] after:absolute after:top-[2px] after:start-[2px]
-                     after:bg-white after:border-gray-300 after:border after:rounded
-                     after:h-5 after:w-5 after:transition-all
-                     peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full
-                     peer-checked:bg-amber-500"
-            ></div>
-          </label>
-        </div>
-
-        <img :src="`/storage/${team.image}`" alt="Team Image" class="w-full h-80 object-cover" />
-
-        <div
-          class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300
-                 flex flex-col items-center justify-center text-white p-4 text-center"
+        <draggable
+          v-model="group.items"
+          item-key="id"
+          class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+          ghost-class="opacity-60"
+          :animation="180"
+          :group="{ name: `type-${group.key}`, pull: false, put: false }"
+          handle=".drag-handle"
+          @end="persistOrder(group)"
         >
-          <h3 class="text-lg font-semibold mb-1">{{ team.name }}</h3>
-          <p v-if="team.type" class="text-xs uppercase tracking-wide text-emerald-300">{{ team.type.name }}</p>
-          <div class="flex space-x-4 text-sm mt-4">
-            <button @click="editTeam(team)" class="text-white"><i class="fa-solid fa-pen"></i></button>
-            <button @click="showDeleteConfirmation(team)" class="text-rose-500"><i class="fa-solid fa-trash"></i></button>
-          </div>
-        </div>
-      </div>
+          <template #item="{ element: team }">
+            <div class="relative group rounded-lg overflow-hidden shadow-lg">
+              <!-- drag handle + switches -->
+              <div class="absolute top-2 left-2 z-[990]">
+                <button class="drag-handle text-white/80 hover:text-white cursor-grab active:cursor-grabbing" title="Drag to reorder">
+                  <i class="fa-solid fa-grip-lines"></i>
+                </button>
+              </div>
+
+              <div class="absolute top-2 right-2 z-[990] flex gap-2">
+                <label class="inline-flex items-center cursor-pointer" aria-label="Show on home">
+                  <input
+                    type="checkbox"
+                    :checked="team.show_on_home"
+                    @change="toggleShowOnHome(team)"
+                    class="sr-only peer"
+                  />
+                  <div
+                    class="relative w-11 h-6 bg-gray-200 rounded
+                           peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300
+                           dark:peer-focus:ring-green-800 dark:bg-gray-700
+                           after:content-[''] after:absolute after:top-[2px] after:start-[2px]
+                           after:bg-white after:border-gray-300 after:border after:rounded
+                           after:h-5 after:w-5 after:transition-all
+                           peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full
+                           peer-checked:bg-green-600"
+                  ></div>
+                </label>
+              </div>
+
+              <img :src="`/storage/${team.image}`" alt="Team Image" class="w-full h-80 object-cover" />
+
+              <div
+                class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300
+                       flex flex-col items-center justify-center text-white p-4 text-center"
+              >
+                <h3 class="text-lg font-semibold mb-1">{{ team.name }}</h3>
+                <p v-if="team.type" class="text-xs uppercase tracking-wide text-emerald-300">
+                  {{ team.type.name }}
+                </p>
+                <div class="flex space-x-4 text-sm mt-4">
+                  <button @click="editTeam(team)" class="text-white"><i class="fa-solid fa-pen"></i></button>
+                  <button @click="showDeleteConfirmation(team)" class="text-rose-500"><i class="fa-solid fa-trash"></i></button>
+                </div>
+              </div>
+            </div>
+          </template>
+        </draggable>
+      </section>
     </div>
-  </div>
-
-  <!-- Other teams grid -->
-  <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-    <div
-      v-for="team in otherTeams"
-      :key="`other-${team.id}`"
-      class="relative group rounded-lg overflow-hidden shadow-lg"
-    >
-      <div class="absolute top-2 right-2 z-[990] flex gap-2">
-        <!-- Show on home -->
-        <label class="inline-flex items-center cursor-pointer">
-          <input
-            type="checkbox"
-            :checked="team.show_on_home"
-            @change="toggleShowOnHome(team)"
-            class="sr-only peer"
-          />
-          <div
-            class="relative w-11 h-6 bg-gray-200 rounded
-                   peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300
-                   dark:peer-focus:ring-green-800 dark:bg-gray-700
-                   after:content-[''] after:absolute after:top-[2px] after:start-[2px]
-                   after:bg-white after:border-gray-300 after:border after:rounded
-                   after:h-5 after:w-5 after:transition-all
-                   peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full
-                   peer-checked:bg-green-600"
-          ></div>
-        </label>
-
-        <!-- Main -->
-        <label class="inline-flex items-center cursor-pointer" title="Mark as main">
-          <input
-            type="checkbox"
-            :checked="team.is_main"
-            @change="toggleMain(team)"
-            class="sr-only peer"
-          />
-          <div
-            class="relative w-11 h-6 bg-gray-200 rounded
-                   peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-amber-300
-                   dark:peer-focus:ring-amber-800 dark:bg-gray-700
-                   after:content-[''] after:absolute after:top-[2px] after:start-[2px]
-                   after:bg-white after:border-gray-300 after:border after:rounded
-                   after:h-5 after:w-5 after:transition-all
-                   peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full
-                   peer-checked:bg-amber-500"
-          ></div>
-        </label>
-      </div>
-
-      <img :src="`/storage/${team.image}`" alt="Team Image" class="w-full h-80 object-cover" />
-
-      <div
-        class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300
-               flex flex-col items-center justify-center text-white p-4 text-center"
-      >
-        <h3 class="text-lg font-semibold mb-1">{{ team.name }}</h3>
-        <p v-if="team.type" class="text-xs uppercase tracking-wide text-emerald-300">{{ team.type.name }}</p>
-        <div class="flex space-x-4 text-sm mt-4">
-          <button @click="editTeam(team)" class="text-white"><i class="fa-solid fa-pen"></i></button>
-          <button @click="showDeleteConfirmation(team)" class="text-rose-500"><i class="fa-solid fa-trash"></i></button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 
     <!-- Backdrop -->
     <div v-if="drawerOpen" class="fixed inset-0 z-[990] bg-black/40" @click="closeDrawer"></div>
@@ -273,13 +203,17 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import { useToast } from 'vue-toastification'
+import draggable from 'vuedraggable'
 
 const toast = useToast()
-const teams = ref([])
-const teamTypes = ref([])
+
+const teams = ref([])        // flat list from API (source of truth)
+const teamTypes = ref([])    // used for create/edit select
+const groups = ref([])       // [{ key, title, items: Team[] }], mutable for draggable
+
 const drawerOpen = ref(false)
 const editingId = ref(null)
 const showDeleteModal = ref(false)
@@ -289,41 +223,91 @@ const previewImage = ref(null)
 const form = ref({
   name: '', description: '', image: null,
   facebook: '', instagram: '', linkedin: '',
-  team_type_id: '',
-  is_main: false,                   // ⬅️ new
+  team_type_id: ''
 })
 
-const fetchTeams = async () => {
-  const res = await axios.get('/api/teams', { params: { ordered: true }})
-  teams.value = res.data
+/* Build mutable groups from flat list */
+const buildGroups = () => {
+  const map = new Map()
+  for (const t of teams.value) {
+    const key = t?.team_type_id ?? 'uncategorized'
+    const title = t?.type?.name ?? 'Uncategorized'
+    if (!map.has(key)) map.set(key, { key, title, items: [] })
+    map.get(key).items.push({ ...t })
+  }
+  // If there are teams but no groups, add all to 'Uncategorized'
+  if (teams.value.length > 0 && map.size === 0) {
+    map.set('uncategorized', { key: 'uncategorized', title: 'Uncategorized', items: [...teams.value] })
+  }
+  for (const g of map.values()) {
+    g.items.sort((a, b) => (a.position ?? 0) - (b.position ?? 0) || a.name.localeCompare(b.name))
+  }
+  groups.value = Array.from(map.values()).sort((a, b) => String(a.title).localeCompare(String(b.title)))
 }
 
-const mainTeams  = computed(() => teams.value.filter(t => t.is_main))
-const otherTeams = computed(() => teams.value.filter(t => !t.is_main))
+const fetchTeams = async () => {
+  try {
+    const res = await axios.get('/api/teams', { params: { ordered: true } })
+    teams.value = res.data || []
+    buildGroups()
+  } catch (error) {
+    console.error('Error fetching teams:', error)
+    teams.value = []
+    buildGroups()
+    toast.error('Failed to load teams. Please try refreshing the page.')
+  }
+}
 
-// toggles
+const fetchTeamTypes = async () => {
+  try {
+    const res = await axios.get('/api/team-types')
+    teamTypes.value = res.data || []
+  } catch (error) {
+    console.error('Error fetching team types:', error)
+    teamTypes.value = []
+    toast.error('Failed to load team types. Some features may be limited.')
+  }
+}
+
+/* Persist order for a single group (team_type) */
+const persistOrder = async (group) => {
+  try {
+    if (!group?.items?.length) return
+    const team_type_id = group.items[0].team_type_id ?? null
+    if (!team_type_id) return
+
+    const ordered_ids = group.items.map(t => t.id)
+    // Optimistic UI: groups already mutated; just persist
+    await axios.post('/api/teams/reorder', { team_type_id, ordered_ids })
+    toast.success('Order saved')
+    // Sync flat list positions in memory (optional)
+    const idxMap = new Map(ordered_ids.map((id, i) => [id, i + 1]))
+    teams.value = teams.value.map(t => t.team_type_id === team_type_id ? { ...t, position: idxMap.get(t.id) ?? t.position } : t)
+  } catch (e) {
+    toast.error('Failed to save order')
+    // Hard rollback if you prefer:
+    // await fetchTeams()
+  }
+}
+
+/* Toggles */
 const toggleShowOnHome = async (team) => {
   try {
     await axios.put(`/api/teams/${team.id}/toggle-status`)
     toast.success('Team status updated')
-    fetchTeams()
-  } catch { toast.error('Failed to update status') }
+    await fetchTeams()
+  } catch {
+    toast.error('Failed to update status')
+  }
 }
 
-const toggleMain = async (team) => {
-  try {
-    await axios.put(`/api/teams/${team.id}/toggle-main`)
-    toast.success(team.is_main ? 'Removed from main' : 'Marked as main')
-    fetchTeams()
-  } catch { toast.error('Failed to update main flag') }
-}
-
-// drawer helpers
+/* Drawer helpers */
 const openDrawer = () => { resetForm(); drawerOpen.value = true }
 const closeDrawer = () => { drawerOpen.value = false; editingId.value = null }
 const resetForm = () => {
-  form.value = { name:'', description:'', image:null, facebook:'', instagram:'', linkedin:'', team_type_id:'', is_main:false }
-  previewImage.value = null; editingId.value = null
+  form.value = { name:'', description:'', image:null, facebook:'', instagram:'', linkedin:'', team_type_id:'' }
+  previewImage.value = null
+  editingId.value = null
 }
 const handleImageUpload = (e) => {
   const file = e.target.files[0]; if (!file) return
@@ -333,9 +317,7 @@ const removeImage = () => { form.value.image = null; previewImage.value = null }
 
 const saveTeam = async () => {
   const fd = new FormData()
-  Object.entries(form.value).forEach(([k, v]) => {
-    if (v !== null && v !== undefined) fd.append(k, v)
-  })
+  Object.entries(form.value).forEach(([k, v]) => { if (v !== null && v !== undefined) fd.append(k, v) })
   try {
     if (editingId.value) {
       fd.append('_method', 'PUT')
@@ -345,8 +327,11 @@ const saveTeam = async () => {
       await axios.post('/api/teams', fd)
       toast.success('Team created')
     }
-    await fetchTeams(); closeDrawer()
-  } catch (err) { toast.error(err?.response?.data?.message || 'Error saving team') }
+    await fetchTeams()
+    closeDrawer()
+  } catch (err) {
+    toast.error(err?.response?.data?.message || 'Error saving team')
+  }
 }
 
 const editTeam = (team) => {
@@ -357,7 +342,6 @@ const editTeam = (team) => {
     instagram: team.instagram ?? '',
     linkedin: team.linkedin ?? '',
     team_type_id: team.team_type_id ?? '',
-    is_main: !!team.is_main,            // ⬅️ prefill
     image: null,
   }
   previewImage.value = team.image ? `/storage/${team.image}` : null
@@ -365,18 +349,26 @@ const editTeam = (team) => {
   drawerOpen.value = true
 }
 
+/* Delete */
 const showDeleteConfirmation = (team) => { teamToDelete.value = team; showDeleteModal.value = true }
 const cancelDeleteTeam = () => { teamToDelete.value = null; showDeleteModal.value = false }
 const confirmDeleteTeam = async () => {
-  try { await axios.delete(`/api/teams/${teamToDelete.value.id}`); toast.success('Team deleted'); fetchTeams() }
-  catch { toast.error('Error deleting team') }
-  finally { cancelDeleteTeam() }
+  try {
+    await axios.delete(`/api/teams/${teamToDelete.value.id}`)
+    toast.success('Team deleted')
+    await fetchTeams()
+  } catch {
+    toast.error('Error deleting team')
+  } finally {
+    cancelDeleteTeam()
+  }
 }
 
-const fetchTeamTypes = async () => {
-  const res = await axios.get('/api/team-types')
-  teamTypes.value = res.data
-}
-
-onMounted(async () => { await Promise.all([fetchTeams(), fetchTeamTypes()]) })
+onMounted(async () => {
+  try {
+    await Promise.all([fetchTeams(), fetchTeamTypes()])
+  } catch (error) {
+    console.error('Error during component initialization:', error)
+  }
+})
 </script>

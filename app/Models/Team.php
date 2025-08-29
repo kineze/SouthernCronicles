@@ -14,7 +14,7 @@ class Team extends Model
         'facebook', 'instagram', 'linkedin',
         'show_on_home',
         'team_type_id',
-        'is_main',
+        'position'
     ];
 
     public function type()
