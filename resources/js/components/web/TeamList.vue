@@ -32,13 +32,13 @@
         </h2>
 
         <div
-          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center"
+          class="flex flex-wrap justify-center items-center"
         >
           <div
             v-for="team in group.items"
             :key="team.id"
             @click="openModal(team)"
-            class="text-black font-semibold cursor-pointer transition duration-300 hover:bg-black hover:text-white overflow-hidden flex flex-col items-start h-full max-w-xs w-full"
+            class="text-black font-semibold px-3 cursor-pointer transition duration-300 hover:bg-black hover:text-white overflow-hidden flex flex-col items-start h-full max-w-xs w-full"
           >
             <img :src="`/storage/${team.image}`" class="w-full lg:h-80 h-96 object-cover" />
             <div class="p-4 w-full text-center">
