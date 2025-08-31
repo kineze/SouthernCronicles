@@ -36,7 +36,7 @@
             v-for="team in group.items"
             :key="team.id"
             @click="openModal(team)"
-            class="text-black font-semibold cursor-pointer transition duration-300 hover:bg-black hover:text-white overflow-hidden flex flex-col items-start h-full"
+            class="text-black font-semibold cursor-pointer transition duration-300 hover:bg-black hover:text-white overflow-hidden flex flex-col items-center justify-center h-full"
           >
             <img :src="`/storage/${team.image}`" class="w-full lg:h-80 h-96 object-cover" />
             <div class="p-4 w-full text-center">
