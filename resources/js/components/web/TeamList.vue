@@ -31,8 +31,8 @@
           {{ group.title }}
         </h2>
 
-         <div
-            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-center justify-center"
+        <div
+            class="grid grid-cols-1 sm:grid-cols-2 lg:auto-cols-fr lg:grid-flow-col gap-6 justify-center"
           >
             <div
               v-for="team in group.items"
