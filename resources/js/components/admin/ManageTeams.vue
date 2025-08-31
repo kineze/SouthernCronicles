@@ -228,26 +228,39 @@ const form = ref({
 
 /* Build mutable groups from flat list */
 const buildGroups = () => {
+  // Build a quick lookup: team_type_id -> order index
+  const orderMap = new Map(teamTypes.value.map((t, i) => [t.id, i]))
+
   const map = new Map()
+
   for (const t of teams.value) {
     const key = t?.team_type_id ?? 'uncategorized'
     const title = t?.type?.name ?? 'Uncategorized'
-    if (!map.has(key)) map.set(key, { key, title, items: [] })
+    const typePosition = t?.type?.position ?? null
+    const orderIndex = typeof typePosition === 'number'
+      ? typePosition
+      : (orderMap.has(key) ? orderMap.get(key) : Number.MAX_SAFE_INTEGER)
+
+    if (!map.has(key)) map.set(key, { key, title, orderIndex, items: [] })
     map.get(key).items.push({ ...t })
   }
-  // If there are teams but no groups, add all to 'Uncategorized'
-  if (teams.value.length > 0 && map.size === 0) {
-    map.set('uncategorized', { key: 'uncategorized', title: 'Uncategorized', items: [...teams.value] })
-  }
+
+  // Sort teams within each group by position then name
   for (const g of map.values()) {
     g.items.sort((a, b) => (a.position ?? 0) - (b.position ?? 0) || a.name.localeCompare(b.name))
   }
-  groups.value = Array.from(map.values()).sort((a, b) => String(a.title).localeCompare(String(b.title)))
+
+  // ✅ Sort groups by TeamType order (position), fallback to title
+  groups.value = Array.from(map.values()).sort((a, b) => {
+    if (a.orderIndex !== b.orderIndex) return a.orderIndex - b.orderIndex
+    return String(a.title).localeCompare(String(b.title))
+  })
 }
+
 
 const fetchTeams = async () => {
   try {
-    const res = await axios.get('/api/teams', { params: { ordered: true } })
+    const res = await axios.get('/api/teams?ordered=true', { params: { ordered: true } })
     teams.value = res.data || []
     buildGroups()
   } catch (error) {
@@ -260,8 +273,9 @@ const fetchTeams = async () => {
 
 const fetchTeamTypes = async () => {
   try {
-    const res = await axios.get('/api/team-types')
+    const res = await axios.get('/api/team-types?ordered=true')
     teamTypes.value = res.data || []
+    buildGroups() // ✅ rebuild with correct order once types arrive
   } catch (error) {
     console.error('Error fetching team types:', error)
     teamTypes.value = []
@@ -278,7 +292,7 @@ const persistOrder = async (group) => {
 
     const ordered_ids = group.items.map(t => t.id)
     // Optimistic UI: groups already mutated; just persist
-    await axios.post('/api/teams/reorder', { team_type_id, ordered_ids })
+    await axios.post('/api/teams/reorder?ordered=true', { team_type_id, ordered_ids })
     toast.success('Order saved')
     // Sync flat list positions in memory (optional)
     const idxMap = new Map(ordered_ids.map((id, i) => [id, i + 1]))

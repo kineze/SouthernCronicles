@@ -114,19 +114,34 @@ const filteredTeams = computed(() => {
  */
 const groups = computed(() => {
   const map = new Map()
+  const fallbackIndex = new Map()
+  let nextIdx = 0
+
   for (const t of filteredTeams.value) {
-    const key = t?.type?.id ?? 'uncategorized'
+    const key   = t?.type?.id ?? 'uncategorized'
     const title = t?.type?.name ?? 'Uncategorized'
-    if (!map.has(key)) map.set(key, { key, title, items: [] })
+    const pos   = Number.isInteger(t?.type?.position) ? t.type.position : null
+
+    if (!map.has(key)) {
+      // use type.position when available; otherwise assign first-seen index
+      const orderIndex = pos ?? (fallbackIndex.has(key) ? fallbackIndex.get(key) : (fallbackIndex.set(key, nextIdx), nextIdx++))
+      map.set(key, { key, title, orderIndex, items: [] })
+    }
     map.get(key).items.push(t)
   }
-  // sort items in each group
+
+  // sort items in each group by team.position then name
   for (const g of map.values()) {
     g.items.sort((a, b) => (a.position ?? 0) - (b.position ?? 0) || a.name.localeCompare(b.name))
   }
-  // keep section order as returned by API (types already ordered). Fallback to alpha by title.
-  return Array.from(map.values()).sort((a, b) => String(a.title).localeCompare(String(b.title)))
+
+  // sort groups by type.position (or by first-seen fallback), then title
+  return Array.from(map.values()).sort((a, b) =>
+    (a.orderIndex ?? Number.MAX_SAFE_INTEGER) - (b.orderIndex ?? Number.MAX_SAFE_INTEGER) ||
+    String(a.title).localeCompare(String(b.title))
+  )
 })
+
 
 onMounted(fetchTeams)
 </script>
