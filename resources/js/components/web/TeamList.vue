@@ -27,11 +27,11 @@
     <!-- Grouped Teams -->
     <div class="mt-10 space-y-12">
       <section v-for="group in groups" :key="group.key">
-        <h2 class="text-xl font-bold uppercase tracking-wide text-gray-700 mb-5">
+        <h2 class="text-xl font-bold uppercase text-center tracking-wide text-gray-700 mb-5">
           {{ group.title }}
         </h2>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-center">
           <div
             v-for="team in group.items"
             :key="team.id"
