@@ -7,19 +7,19 @@
     <!-- Type Tabs -->
     <div class="flex flex-wrap justify-center gap-2 mb-8">
       <button
-        @click="setType(null)"
-        :class="pillClass(activeType === null)"
-      >
-        All
-      </button>
-
-      <button
-        v-for="t in typesSorted"
+        v-for="(t) in typesSorted"
         :key="t.id"
         @click="setType(t.id)"
         :class="pillClass(activeType === t.id)"
       >
         {{ t.name }}
+      </button>
+
+      <button
+        @click="setType(null)"
+        :class="pillClass(activeType === null)"
+      >
+        All
       </button>
     </div>
 
@@ -51,7 +51,6 @@
       </div>
     </div>
 
-
     <!-- Load More -->
     <div class="text-center mt-10" v-if="visiblePartners.length < filteredPartners.length">
       <button
@@ -73,7 +72,7 @@ const rowsToShow = ref(5)          // how many rows to show
 const cols = 10                    // columns in the grid
 
 const types = ref([])              // partner types from API
-const activeType = ref(null)       // null = All
+const activeType = ref(null)       // null = All (will be overridden to first type on load)
 
 // --- Fetchers ---
 const fetchTypes = async () => {
@@ -95,48 +94,48 @@ const typesSorted = computed(() => {
   })
 })
 
-
 const pillClass = (isActive) =>
   [
     'px-3', 'py-1.5', 'rounded-full', 'font-semibold', 'transition',
     isActive ? 'bg-black text-white' : 'bg-white text-black border border-gray-300 hover:bg-gray-100'
   ].join(' ')
 
-
 const filteredPartners = computed(() => {
   if (activeType.value === null) return allPartners.value
   return allPartners.value.filter(p => p.partner_type_id === activeType.value)
 })
-
-
 
 const visiblePartners = computed(() => {
   const max = rowsToShow.value * cols
   return filteredPartners.value.slice(0, max)
 })
 
-
 // --- UI actions ---
 const setType = (typeId) => {
   activeType.value = typeId
 }
 
-
 const loadMore = () => {
-  rowsToShow.value += 10 // keep your existing growth pattern
+  rowsToShow.value += 10
 }
 
-
-// When switching tabs, reset rows so the user sees the first page again
+// Reset pagination when switching tabs
 watch(activeType, () => {
   rowsToShow.value = 5
 })
 
+// ✅ Default to first type once types are loaded (and only if none selected yet)
+watch(typesSorted, (list) => {
+  if (list.length && activeType.value === null) {
+    activeType.value = list[0].id
+  }
+}, { immediate: true })
 
 onMounted(async () => {
   await Promise.all([fetchTypes(), fetchPartners()])
+  // Safety: in case watch(typesSorted) didn't run due to timing (it will, but still)
+  if (activeType.value === null && typesSorted.value.length) {
+    activeType.value = typesSorted.value[0].id
+  }
 })
 </script>
-
-
-
