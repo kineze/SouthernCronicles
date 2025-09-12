@@ -39,6 +39,8 @@ Route::get('/config/google-maps-key', function () {
 
 Route::get('/festivals/upcoming', [FestivalController::class, 'upcoming']);
 Route::apiResource('festivals', FestivalController::class);
+Route::post('/festivals/reorder', [FestivalController::class, 'reorder']);
+Route::post('/festivals/{festival}/toggle-default', [FestivalController::class, 'toggleDefault']);
 
 Route::post('/speaker-types/reorder', [SpeakerTypeController::class, 'reorder'])->name('speaker-types.reorder');
 Route::apiResource('speaker-types', SpeakerTypeController::class);

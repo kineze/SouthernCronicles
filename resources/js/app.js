@@ -73,6 +73,7 @@ import SpeakerListHex from './components/web/SpeakerListHex.vue';
 import AsianGroupOfLiterature from './components/web/AsianGroupOfLiterature.vue';
 import ThePurpleUmbrella from './components/web/ThePurpleUmbrella.vue';
 import GalaxyApply from './components/web/GalaxyApply.vue';
+import NextCountdownDesktop from './components/web/NextCountdownDesktop.vue';
 
 const app = createApp({});
 
@@ -166,4 +167,5 @@ app
   .component('asian-group-of-literature', AsianGroupOfLiterature)
   .component('the-purple-umbrella', ThePurpleUmbrella)
   .component('galaxy-apply', GalaxyApply)
+  .component('next-countdown-desktop', NextCountdownDesktop)
 .mount('#app')

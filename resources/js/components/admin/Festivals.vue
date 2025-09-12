@@ -1,11 +1,25 @@
+<!-- resources/js/components/admin/AllFestivals.vue -->
 <template>
   <div>
     <!-- Header -->
     <div class="justify-between flex w-full p-4 bg-white dark:bg-gray-800 dark:shadow-soft-dark-xl shadow-soft-xl rounded-xl pb-2">
       <h4 class="text-lg font-semibold dark:text-white">All Festivals</h4>
-      <button @click="openDrawer()" class="px-4 py-1.5 bg-gray-800 text-white dark:bg-green-500 rounded-full text-sm font-semibold">
-        New Festival
-      </button>
+      <div class="flex items-center gap-2">
+        <button
+          v-if="orderDirty"
+          :disabled="ordering"
+          @click="persistOrder"
+          class="px-4 py-1.5 rounded-full text-sm font-semibold border"
+          :class="ordering ? 'bg-gray-200 text-gray-600' : 'bg-black text-white'"
+          title="Save new order"
+        >
+          {{ ordering ? 'Saving…' : 'Save Order' }}
+        </button>
+
+        <button @click="openDrawer()" class="px-4 py-1.5 bg-gray-800 text-white dark:bg-green-500 rounded-full text-sm font-semibold">
+          New Festival
+        </button>
+      </div>
     </div>
 
     <!-- Table -->
@@ -13,43 +27,85 @@
       <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
+            <th class="w-10 px-3 py-3 dark:text-white font-semibold"></th>
             <th class="px-6 py-3 dark:text-white font-semibold">Festival Name</th>
             <th class="px-6 py-3 dark:text-white font-semibold">Start</th>
             <th class="px-6 py-3 dark:text-white font-semibold">End</th>
             <th class="px-6 py-3 dark:text-white font-semibold">Location</th>
+            <th class="px-6 py-3 dark:text-white font-semibold">Default</th>
             <th class="px-6 py-3 dark:text-white font-semibold">Actions</th>
           </tr>
         </thead>
-        <tbody>
-          <tr v-for="festival in festivals" :key="festival.id" class="border-b dark:border-gray-700">
-            <td class="px-6 py-4 dark:text-white font-semibold">
-              <div class="flex items-center gap-3">
-                <img v-if="festival.image" :src="`/storage/${festival.image}`" class="w-10 h-10 rounded object-cover" alt="thumb" />
-                <div>
-                  <div>{{ festival.name }}</div>
-                  <a v-if="festival.site_url" :href="festival.site_url" target="_blank" rel="noopener" class="text-xs text-green-600 hover:underline">
-                    {{ festival.site_url }}
-                  </a>
+
+        <!-- Draggable tbody -->
+        <draggable
+          v-model="festivals"
+          item-key="id"
+          tag="tbody"
+          handle=".drag-handle"
+          ghost-class="drag-ghost"
+          animation="200"
+          @start="dragging = true"
+          @end="onDragEnd"
+        >
+          <template #item="{ element: festival }">
+            <tr :key="festival.id" class="border-b dark:border-gray-700">
+              <!-- Drag handle -->
+              <td class="px-3 py-4 text-gray-400">
+                <button class="drag-handle cursor-grab active:cursor-grabbing" title="Drag to reorder">
+                  <i class="fa-solid fa-grip-lines text-lg"></i>
+                </button>
+              </td>
+
+              <td class="px-6 py-4 dark:text-white font-semibold">
+                <div class="flex items-center gap-3">
+                  <img v-if="festival.image" :src="`/storage/${festival.image}`" class="w-10 h-10 rounded object-cover" alt="thumb" />
+                  <div>
+                    <div>{{ festival.name }}</div>
+                    <a v-if="festival.site_url" :href="festival.site_url" target="_blank" rel="noopener" class="text-xs text-green-600 hover:underline">
+                      {{ festival.site_url }}
+                    </a>
+                  </div>
                 </div>
-              </div>
-            </td>
+              </td>
+
+              <td class="px-6 py-4 dark:text-white font-semibold">
+                {{ formatTimeAMPM(festival.start_at) }}
+              </td>
+              <td class="px-6 py-4 dark:text-white font-semibold">
+                {{ formatTimeAMPM(festival.end_at) }}
+              </td>
+
+              <td class="px-6 py-4 dark:text-white font-semibold">{{ festival.location }}</td>
+
+              <td class="px-6 py-4">
+                <label class="inline-flex items-center cursor-pointer">
+                  <input
+                    type="checkbox"
+                    :checked="!!festival.is_default"
+                    @change="toggleDefault(festival)"
+                    class="sr-only peer"
+                  />
+                  <div
+                    class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300
+                          dark:peer-focus:ring-green-800 rounded peer dark:bg-gray-700
+                          peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full
+                          peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px]
+                          after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded
+                          after:h-5 after:w-5 after:transition-all dark:border-gray-600
+                          peer-checked:bg-green-600 dark:peer-checked:bg-green-600">
+                  </div>
+                </label>
+              </td>
 
 
-            <td class="px-6 py-4 dark:text-white font-semibold">
-              {{ formatTimeAMPM(festival.start_at) }}
-            </td>
-            <td class="px-6 py-4 dark:text-white font-semibold">
-              {{ formatTimeAMPM(festival.end_at) }}
-            </td>
-
-
-            <td class="px-6 py-4 dark:text-white font-semibold">{{ festival.location }}</td>
-            <td class="px-6 py-4 text-right flex gap-3 justify-end">
-              <button @click="editFestival(festival)" class="text-green-500"><i class="fa-solid fa-pen"></i></button>
-              <button @click="showDeleteConfirmation(festival)" class="text-red-500"><i class="fa-solid fa-trash"></i></button>
-            </td>
-          </tr>
-        </tbody>
+              <td class="px-6 py-4 text-right flex gap-3 justify-end">
+                <button @click="editFestival(festival)" class="text-green-500"><i class="fa-solid fa-pen"></i></button>
+                <button @click="showDeleteConfirmation(festival)" class="text-red-500"><i class="fa-solid fa-trash"></i></button>
+              </td>
+            </tr>
+          </template>
+        </draggable>
       </table>
     </div>
 
@@ -66,8 +122,7 @@
       </div>
 
       <form @submit.prevent="saveFestival">
-
-      <!-- Image -->
+        <!-- Image -->
         <div class="mb-6">
           <label class="block text-sm font-medium dark:text-white mb-1">Image</label>
           <div
@@ -102,7 +157,7 @@
           />
           <label
             for="festival_name"
-            class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 bg-white dark:bg-gray-800 px-2 peer-focus:px-2 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
+            class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 bg-white dark:bg-gray-800 px-2"
           >Festival Name</label>
         </div>
 
@@ -116,10 +171,9 @@
             class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
             required
           />
-          <label
-            for="start_at"
-            class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 bg-white dark:bg-gray-800 px-2 peer-focus:px-2 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
-          >Start Date & Time</label>
+          <label for="start_at" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 bg-white dark:bg-gray-800 px-2">
+            Start Date & Time
+          </label>
         </div>
 
         <!-- End Date & Time -->
@@ -132,39 +186,26 @@
             class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
             required
           />
-          <label
-            for="end_at"
-            class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 bg-white dark:bg-gray-800 px-2 peer-focus:px-2 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
-          >End Date & Time</label>
+          <label for="end_at" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 bg-white dark:bg-gray-800 px-2">
+            End Date & Time
+          </label>
         </div>
 
-          <!-- Location (with Places Autocomplete) -->
-          <div class="relative mb-5">
-            <input
-              ref="locationInput"
-              v-model="form.location"
-              type="text"
-              id="location"
-              placeholder=" "
-              autocomplete="off"
-              class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
-              required
-            />
-            <label
-              for="location"
-              class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 bg-white dark:bg-gray-800 px-2 peer-focus:px-2 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
-            >Location</label>
-          </div>
-
-          <!-- Small map preview -->
-          <div class="mb-5">
-            <div ref="mapEl" class="w-full h-40 border rounded-lg dark:border-gray-600"></div>
-            <div class="mt-2 text-xs text-gray-600 dark:text-gray-300" v-if="form.location_lat != null && form.location_lng != null">
-              <span class="font-semibold">Lat:</span> {{ form.location_lat }} &nbsp; 
-              <span class="font-semibold">Lng:</span> {{ form.location_lng }}
-            </div>
-          </div>
-
+        <!-- Location -->
+        <div class="relative mb-5">
+          <input
+            v-model="form.location"
+            type="text"
+            id="location"
+            placeholder=" "
+            autocomplete="off"
+            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
+            required
+          />
+          <label for="location" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 bg-white dark:bg-gray-800 px-2">
+            Location
+          </label>
+        </div>
 
         <!-- Site URL -->
         <div class="relative mb-5">
@@ -175,10 +216,9 @@
             placeholder=" "
             class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
           />
-          <label
-            for="site_url"
-            class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 bg-white dark:bg-gray-800 px-2 peer-focus:px-2 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1"
-          >Site URL (optional)</label>
+          <label for="site_url" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 bg-white dark:bg-gray-800 px-2">
+            Site URL (optional)
+          </label>
         </div>
 
         <!-- Submit -->
@@ -208,24 +248,16 @@
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import { useToast } from 'vue-toastification'
+import draggable from 'vuedraggable'
 
 const toast = useToast()
 
 const festivals = ref([])
 const drawerOpen = ref(false)
 const editingId = ref(null)
-
-const locationInput = ref(null)
-const mapEl = ref(null)
-
-let maps = null
-let autocomplete = null
-let map = null
-let marker = null
-
-let geocoder = null
-
-
+const ordering = ref(false)
+const orderDirty = ref(false)
+const dragging = ref(false)
 
 const form = ref({
   name: '',
@@ -234,145 +266,18 @@ const form = ref({
   location: '',
   site_url: '',
   image: null,
-
-  // NEW:
-  location_place_id: '',
-  location_lat: null,
-  location_lng: null,
 })
-
-let mapsApiPromise = null
-function loadGoogleMaps () {
-  if (window.google?.maps) return Promise.resolve(window.google.maps)
-  if (mapsApiPromise) return mapsApiPromise
-
-  const apiKey =
-    document.querySelector('meta[name="gmaps-key"]')?.content ||
-    (import.meta.env?.VITE_GOOGLE_MAPS_API_KEY ?? '')
-
-  mapsApiPromise = new Promise((resolve, reject) => {
-    if (!apiKey) return reject(new Error('Google Maps API key is missing'))
-    const s = document.createElement('script')
-    s.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places&v=weekly`
-    s.async = true
-    s.defer = true
-    s.onerror = () => reject(new Error('Failed to load Google Maps'))
-    s.onload = () => resolve(window.google.maps)
-    document.head.appendChild(s)
-  })
-  return mapsApiPromise
-}
-
-function setMarkerAndCenter(latLng, zoom = 15) {
-  if (!marker) {
-    marker = new maps.Marker({ map, draggable: true })
-    marker.addListener('dragend', async () => {
-      const newPos = marker.getPosition()
-      await applyLatLng(newPos, { doReverseGeocode: true })
-    })
-  }
-  marker.setPosition(latLng)
-  map.setCenter(latLng)
-  map.setZoom(zoom)
-}
-
-
-async function applyLatLng(latLng, { doReverseGeocode = true } = {}) {
-  form.value.location_lat = latLng.lat()
-  form.value.location_lng = latLng.lng()
-
-  if (doReverseGeocode) {
-    try {
-      const results = await geocodeLatLng(latLng)
-      // prefer formatted address if available
-      const addr = results?.[0]?.formatted_address ?? ''
-      form.value.location = addr || form.value.location || ''
-      // save place_id if available
-      form.value.location_place_id = results?.[0]?.place_id || ''
-    } catch (e) {
-      console.warn('Reverse geocode failed', e)
-      // keep lat/lng only
-    }
-  }
-}
-
-function geocodeLatLng(latLng) {
-  return new Promise((resolve, reject) => {
-    if (!geocoder) geocoder = new maps.Geocoder()
-    geocoder.geocode({ location: latLng }, (results, status) => {
-      if (status === 'OK') return resolve(results || [])
-      reject(new Error(status))
-    })
-  })
-}
-
-
-
-function initMap () {
-  if (!mapEl.value || !maps) return
-  map = new maps.Map(mapEl.value, {
-    center: { lat: 7.8731, lng: 80.7718 }, // Sri Lanka center
-    zoom: 7,
-    mapTypeControl: false,
-    streetViewControl: false,
-  })
-
-  // Click to place/relocate
-  map.addListener('click', async (ev) => {
-    const latLng = ev.latLng
-    setMarkerAndCenter(latLng)
-    await applyLatLng(latLng, { doReverseGeocode: true })
-  })
-}
-
-
-function initPlacesAutocomplete () {
-  if (!locationInput.value || !maps) return
-
-  autocomplete = new maps.places.Autocomplete(locationInput.value, {
-    fields: ['place_id', 'formatted_address', 'geometry', 'name'],
-
-    types: ['geocode'],
-  })
-
-autocomplete.addListener('place_changed', () => {
-  const place = autocomplete.getPlace()
-  if (!place || !place.geometry) {
-    toast.error('Please pick a location from the suggestions')
-    return
-  }
-
-  // Write to your form
-  form.value.location = place.formatted_address || place.name || ''
-  form.value.location_place_id = place.place_id || ''
-  form.value.location_lat = place.geometry.location.lat()
-  form.value.location_lng = place.geometry.location.lng()
-
-  // Update map + marker
-  const pos = place.geometry.location
-  setMarkerAndCenter(pos)
-
-  // ensure draggable + reverse geocode on drag end
-  if (marker) {
-    marker.setDraggable(true)
-    marker.addListener('dragend', async () => {
-      const newPos = marker.getPosition()
-      await applyLatLng(newPos, { doReverseGeocode: true })
-    })
-  }
-})
-
-}
-
 
 const previewImage = ref(null)
 
 const showDeleteModal = ref(false)
 const festivalToDelete = ref(null)
 
+// ===== CRUD =====
 const fetchFestivals = async () => {
-  const res = await axios.get('/api/festivals')
-  festivals.value = res.data
+  const res = await axios.get('/api/festivals', { params: { ordered: 1 } })
+  festivals.value = Array.isArray(res.data) ? res.data : []
+  orderDirty.value = false
 }
 
 const openDrawer = () => {
@@ -393,24 +298,10 @@ const resetForm = () => {
     location: '',
     site_url: '',
     image: null,
-
-    // NEW:
-    location_place_id: '',
-    location_lat: null,
-    location_lng: null,
   }
   previewImage.value = null
   editingId.value = null
-
-  // Reset map view
-  if (maps && map) {
-    map.setCenter({ lat: 7.8731, lng: 80.7718 })
-    map.setZoom(7)
-    if (marker) marker.setMap(null)
-    marker = null
-  }
 }
-
 
 const handleImageUpload = (e) => {
   const file = e.target.files[0]
@@ -433,12 +324,6 @@ const saveFestival = async () => {
     fd.append('end_at', form.value.end_at)
     fd.append('location', form.value.location)
     fd.append('site_url', form.value.site_url || '')
-
-    // NEW:
-    if (form.value.location_place_id) fd.append('location_place_id', form.value.location_place_id)
-    if (form.value.location_lat != null) fd.append('location_lat', String(form.value.location_lat))
-    if (form.value.location_lng != null) fd.append('location_lng', String(form.value.location_lng))
-
     if (form.value.image) fd.append('image', form.value.image)
 
     if (editingId.value) {
@@ -454,7 +339,7 @@ const saveFestival = async () => {
       toast.success('Festival created')
     }
 
-    fetchFestivals()
+    await fetchFestivals()
     closeDrawer()
   } catch (err) {
     if (err.response?.status === 422) {
@@ -466,33 +351,48 @@ const saveFestival = async () => {
   }
 }
 
-
 const editFestival = (festival) => {
   editingId.value = festival.id
   form.value = {
     name: festival.name,
-    start_at: festival.start_at ? festival.start_at.slice(0,16) : '',
-    end_at: festival.end_at ? festival.end_at.slice(0,16) : '',
+    start_at: festival.start_at ? String(festival.start_at).slice(0,16) : '',
+    end_at: festival.end_at ? String(festival.end_at).slice(0,16) : '',
     location: festival.location || '',
     site_url: festival.site_url || '',
     image: null,
-
-    // NEW:
-    location_place_id: festival.location_place_id || '',
-    location_lat: festival.location_lat ?? null,
-    location_lng: festival.location_lng ?? null,
   }
   previewImage.value = festival.image ? `/storage/${festival.image}` : null
   drawerOpen.value = true
+}
 
-  // move map marker if lat/lng exist
-  if (maps && map && (form.value.location_lat != null) && (form.value.location_lng != null)) {
-    const pos = new maps.LatLng(form.value.location_lat, form.value.location_lng)
-    setMarkerAndCenter(pos)
+async function toggleDefault(festival) {
+  const desired = !festival.is_default;
+
+  try {
+    // optimistic: if turning on, everything else off
+    festivals.value = festivals.value.map(f => ({
+      ...f,
+      is_default: desired ? f.id === festival.id : (f.id === festival.id ? false : f.is_default)
+    }));
+
+    const { data } = await axios.post(`/api/festivals/${festival.id}/toggle-default`, { value: desired });
+
+    // server is source of truth
+    if (data?.is_default) {
+      festivals.value = festivals.value.map(f => ({ ...f, is_default: f.id === festival.id }));
+    } else {
+      festivals.value = festivals.value.map(f => ({ ...f, is_default: f.id === festival.id ? false : f.is_default }));
+    }
+
+    toast.success(data?.message || 'Updated');
+  } catch (e) {
+    await fetchFestivals(); // rollback
+    toast.error('Failed to update default festival');
   }
 }
 
 
+// ===== Delete =====
 const showDeleteConfirmation = (festival) => {
   festivalToDelete.value = festival
   showDeleteModal.value = true
@@ -507,7 +407,7 @@ const confirmDeleteFestival = async () => {
   try {
     await axios.delete(`/api/festivals/${festivalToDelete.value.id}`)
     toast.success('Festival deleted')
-    fetchFestivals()
+    await fetchFestivals()
   } catch (error) {
     toast.error('Error deleting festival')
   } finally {
@@ -515,13 +415,39 @@ const confirmDeleteFestival = async () => {
   }
 }
 
-// Extracts "HH:mm" (or HH:mm:ss) from common DB/ISO strings and prints AM/PM
+// ===== Reorder =====
+function onDragEnd() {
+  dragging.value = false
+  orderDirty.value = true
+  persistOrder()
+}
+
+async function persistOrder() {
+  if (!orderDirty.value) return
+  ordering.value = true
+  try {
+    const payload = {
+      order: festivals.value.map((f, idx) => ({ id: f.id, position: idx + 1 }))
+    }
+    await axios.post('/api/festivals/reorder', payload)
+    orderDirty.value = false
+    toast.success('Order updated')
+  } catch (e) {
+    console.error(e?.response?.data || e.message)
+    toast.error('Failed to save order')
+  } finally {
+    ordering.value = false
+    // Refetch to ensure positions remain consistent
+    await fetchFestivals()
+  }
+}
+
+// ===== Helpers =====
 function formatTimeAMPM(dtStr) {
   if (!dtStr) return ''
   const s = String(dtStr)
-  // works for "YYYY-MM-DD HH:mm:ss", "YYYY-MM-DDTHH:mm:ss", "...Z", etc.
   const m = s.match(/(?:T|\s)(\d{2}):(\d{2})(?::\d{2})?/)
-  if (!m) return s // fallback if no time found
+  if (!m) return s
   let h = parseInt(m[1], 10)
   const min = m[2]
   const ampm = h >= 12 ? 'PM' : 'AM'
@@ -530,25 +456,14 @@ function formatTimeAMPM(dtStr) {
   return `${h}:${min} ${ampm}`
 }
 
-// Optional: show a simple date without timezone conversion (YYYY-MM-DD)
-function formatDateYMD(dtStr) {
-  if (!dtStr) return ''
-  const m = String(dtStr).match(/^(\d{4})-(\d{2})-(\d{2})/)
-  return m ? `${m[1]}-${m[2]}-${m[3]}` : dtStr
-}
-
-
 onMounted(async () => {
   await fetchFestivals()
-
-  try {
-    maps = await loadGoogleMaps()
-    initMap()
-    initPlacesAutocomplete()
-  } catch (e) {
-    console.error(e)
-    toast.error('Failed to load Google Maps')
-  }
 })
-
 </script>
+
+<style scoped>
+.drag-ghost {
+  opacity: 0.5;
+  background-color: rgba(0,0,0,0.04);
+}
+</style>

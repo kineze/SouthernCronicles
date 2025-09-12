@@ -14,9 +14,9 @@ class GenaralController extends Controller
     public function index()
     {
         
-         $nextFestival = Festival::where('start_at', '>=', Carbon::now())
-            ->orderBy('end_at', 'asc')
-            ->first();
+        $nextFestival = Festival::where('start_at', '>=', Carbon::now())
+        ->where('is_default', true)   // ✅ correct way
+        ->first();
     
         return view('web.homepage', compact('nextFestival'));
     }

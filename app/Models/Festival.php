@@ -10,18 +10,21 @@ class Festival extends Model
         'name',
         'start_at',
         'end_at',
-        'location', 
-        'location_place_id',
-        'location_lat',
-        'location_lng',
+        'location',
         'image',
         'site_url',
+        'position',
+        'is_default'
     ];
 
     protected $casts = [
         'start_at' => 'datetime',
         'end_at'   => 'datetime',
-        'location_lat' => 'float',
-        'location_lng' => 'float',
+        'is_default' => 'boolean',
     ];
+
+    public function scopeOrdered($q)
+    {
+        return $q->orderBy('position')->orderBy('id');
+    }
 }

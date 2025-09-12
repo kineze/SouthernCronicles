@@ -14,9 +14,9 @@ class PagesController extends Controller
 
     public function aboutUs(){
 
-          $nextFestival = Festival::where('start_at', '>=', Carbon::now())
-            ->orderBy('end_at', 'asc')
-            ->first();
+        $nextFestival = Festival::where('start_at', '>=', Carbon::now())
+        ->where('is_default', true)   // ✅ correct way
+        ->first();
 
         return view('web.aboutUs', compact('nextFestival'));
     }
