@@ -115,7 +115,7 @@
                     <strong class="text-lg text-black text-justify dark:text-white">A Global Initiative to Preserve Our Intangible Heritage</strong>
                 </p>
                 <p class=" text-justify">
-                    As modernization accelerates, centuries of stories, rituals, and traditional knowledge are fading into silence. <strong>The Living Memory Vault</strong>, a collaborative initiative by The Asian Literary Festivals and The Purple Umbrella Theatre Festival, aims to safeguard these priceless cultural treasures. From ancient healing methods to folklore and community rituals, this digital archive honors the wisdom that shaped generations—ensuring it remains accessible and inspiring for those yet to come.
+                    As modernization accelerates, centuries of stories, rituals, and traditional knowledge are fading into silence. <strong>The Living Memory Vault</strong>, a collaborative initiative by Southern Chronicless and The Purple Umbrella Theatre Festival, aims to safeguard these priceless cultural treasures. From ancient healing methods to folklore and community rituals, this digital archive honors the wisdom that shaped generations—ensuring it remains accessible and inspiring for those yet to come.
                 </p>
                 <p class="mb-10 text-justify">
                     We call upon storytellers, cultural custodians, scholars, and passionate individuals worldwide to contribute. By sharing your knowledge, you help ensure no story is lost and no tradition forgotten. Join us in building a living archive that celebrates our shared human heritage. <strong>Register today</strong> to become a contributor to The Living Memory Vault and help preserve humanity's greatest stories for tomorrow.
@@ -140,7 +140,7 @@
                  <p class="py-3">
                     <strong class="text-lg text-black text-justify  dark:text-white">Global Literary Pitching Platform</strong>
                 </p>
-                <p. class="  text-justify">Launchpad 1000 is The Asian Literary Festivals' live manuscript pitching platform, connecting writers worldwide with industry professionals. We seek fresh talent and welcome established authors across all genres.</p>
+                <p. class="  text-justify">Launchpad 1000 is Southern Chronicless' live manuscript pitching platform, connecting writers worldwide with industry professionals. We seek fresh talent and welcome established authors across all genres.</p>
                 <p  class="  text-justify">The Asian Literary Agency, our talent management wing, hosts live pitching sessions at festival locations. Our platform features two distinct tracks: an original manuscript submission desk for unpublished work and a translation pitching deck for published titles seeking international markets.</p>
                 <p  class="  text-justify mb-6">Book your slot and present your work directly to agents actively seeking compelling narratives and market-ready content. Whether you're submitting debut manuscripts or published works for translation opportunities, Launchpad 1000 provides the essential gateway to advance your literary career on the global stage.</p>
 

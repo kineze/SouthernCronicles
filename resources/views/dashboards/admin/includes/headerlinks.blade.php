@@ -6,7 +6,7 @@
     <link rel="icon" type="image/png" href="{{ asset('/assets/img/logo.webp') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>The Asian Literary Festival</title>
+    <title>Southern Chronicles</title>
 
     <link href="{{asset('/assets/css/theme.css')}}" rel="stylesheet" />
 

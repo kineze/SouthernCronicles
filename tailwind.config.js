@@ -17,6 +17,7 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                nordique: ['Nordique Pro', ...defaultTheme.fontFamily.sans],
             },
         },
 

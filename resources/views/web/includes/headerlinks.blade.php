@@ -12,11 +12,27 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="{{ url()->current() }}" />
     
-    <title>Asian Literary Festival</title>
+    <title>Southern Chronicles</title>
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+
+    <link rel="stylesheet" href="{{ asset('assets/css/fonts.css') }}">
     
 <style>
+
+  @font-face {
+    font-family: 'Nordique Pro';
+    src: url('{{ asset("assetsfonts/nordique/nordic-pro-semibold.ttf") }}') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Nordique Pro';
+    src: url('{{ asset("assetsfonts/nordic-pro-bold.ttf") }}') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+  }
+
 /* ===========================
    Parallax base (keep as-is)
    =========================== */
