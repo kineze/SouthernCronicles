@@ -36,6 +36,7 @@ import ManagePartnerInquiries from './components/admin/ManagePartnerInquiries.vu
 import AdvisorTypes from './components/admin/AdvisorTypes.vue';
 import ManageAdvisors from './components/admin/ManageAdvisors.vue';
 import GalaxyApplications from './components/admin/GalaxyApplications.vue';
+import KidsStoriesSubmissions from './components/admin/KidsStoriesSubmissions.vue';
 // web components
 import WebNav from './components/web/webNav.vue';
 import SpeakersCarousel from './components/web/SpeakersCarousel.vue';
@@ -74,6 +75,9 @@ import AsianGroupOfLiterature from './components/web/AsianGroupOfLiterature.vue'
 import ThePurpleUmbrella from './components/web/ThePurpleUmbrella.vue';
 import GalaxyApply from './components/web/GalaxyApply.vue';
 import NextCountdownDesktop from './components/web/NextCountdownDesktop.vue';
+import LiteratureBlurbSlider from './components/web/LiteratureBlurbSlider.vue';
+import KipenziKidsStories from './components/web/KipenziKidsStories.vue';
+import AboutUsParagraphSlider from './components/web/AboutUsParagraphSlider.vue';
 
 const app = createApp({});
 
@@ -130,6 +134,7 @@ app
   .component('advisor-types', AdvisorTypes)
   .component('manage-advisors', ManageAdvisors)
   .component('galaxy-applications', GalaxyApplications)
+  .component('kids-stories-submissions', KidsStoriesSubmissions)
   // web
   .component('web-nav',WebNav)
   .component('speakers-carousel',SpeakersCarousel)
@@ -168,4 +173,7 @@ app
   .component('the-purple-umbrella', ThePurpleUmbrella)
   .component('galaxy-apply', GalaxyApply)
   .component('next-countdown-desktop', NextCountdownDesktop)
+  .component('literature-blurb-slider', LiteratureBlurbSlider)
+  .component('kipenzi-kids-stories', KipenziKidsStories)
+  .component('about-us-paragraph-slider', AboutUsParagraphSlider)
 .mount('#app')

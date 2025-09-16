@@ -14,6 +14,7 @@ use App\Http\Controllers\FestivalController;
 use App\Http\Controllers\SpeakersController;
 use App\Http\Controllers\TeamTypeController;
 use App\Http\Controllers\TimeSlotController;
+use App\Http\Controllers\KidsStoryController;
 use App\Http\Controllers\InternshipController;
 use App\Http\Controllers\UsefulLinkController;
 use App\Http\Controllers\VolunteersController;
@@ -35,6 +36,13 @@ Route::get('/config/google-maps-key', function () {
         'key' => config('services.google_maps.key')
     ]);
 });
+
+
+    Route::post('/kids-stories', [KidsStoryController::class, 'store']);
+    Route::get('/kids-stories', [KidsStoryController::class, 'index']);
+    Route::patch('/kids-stories/{kidsStory}/status', [KidsStoryController::class, 'updateStatus']);
+    Route::delete('/kids-stories/{kidsStory}', [KidsStoryController::class, 'destroy']);
+    Route::get('/kids-stories/counts', [KidsStoryController::class, 'counts']);
 
 
 Route::get('/festivals/upcoming', [FestivalController::class, 'upcoming']);

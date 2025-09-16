@@ -17,6 +17,7 @@ use App\Http\Controllers\SpeakersController;
 use App\Http\Controllers\TeamTypeController;
 use App\Http\Controllers\TimeSlotController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KidsStoryController;
 use App\Http\Controllers\InternshipController;
 use App\Http\Controllers\UsefulLinkController;
 use App\Http\Controllers\VolunteersController;
@@ -50,7 +51,7 @@ Route::controller(PagesController::class)->group( function (){
 
     Route::get('/the-writing-lab', 'writingLab')->name('writingLab');
     Route::get('/about-us', 'aboutUs')->name('aboutUs');
-    Route::get('/galaxy-list','speakersList')->name('speakersList');
+    Route::get('/speakers-list','speakersList')->name('speakersList');
     Route::get('/our-partners','ourPartners')->name('ourPartners');
     Route::get('/contact-us','contactus')->name('contactus');
     Route::get('/events-schedule','eventsSchedule')->name('eventsSchedule');
@@ -75,6 +76,8 @@ Route::controller(PagesController::class)->group( function (){
     Route::get('/advisors-list','advisorsList')->name('advisorsList');
     Route::get('/asian-group-of-literature','asianGroupOfLiterature')->name('asianGroupOfLiterature');
     Route::get('/the-purple-umbrella','thePurpleUmbrella')->name('thePurpleUmbrella');
+
+    Route::get('/kipenzi-kids-stories','kipenziKidsStories')->name('kipenziKidsStories');
 
 });
 
@@ -204,8 +207,11 @@ Route::middleware(['permission:Manage Bookings', config('jetstream.auth_session'
         Route::get('/memory-submission','memorySubmission')->name('memorySubmission');
     });
 
-});
+    Route::controller(KidsStoryController::class)->group(function () {
+        Route::get('/kids-stories','kidsStories')->name('kidsStories');
+    });
 
+});
 
 
 Route::middleware(['permission:Manage News', config('jetstream.auth_session'), 'verified',])->group( function (){

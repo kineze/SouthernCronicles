@@ -161,6 +161,10 @@
             Memory Submission
           </a>
 
+          <a href="{{ route('kidsStories') }}" class="block px-4 py-2 text-xs font-semibold text-black dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-md">
+           Kids Stories
+          </a>
+
         </div>
       </div>
 

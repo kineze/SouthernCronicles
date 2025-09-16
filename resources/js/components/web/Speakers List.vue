@@ -20,72 +20,36 @@
           </label>
         </div>
       </div>
-
-      <!-- <div class="lg:w-auto w-full mt-4 lg:mt-0">
-        <div class="px-2.5 py-2.5 border rounded-full border-1 border-gray-300 flex flex-wrap gap-2">
-          <button
-            @click="filterByType(null)"
-            :class="['font-semibold rounded-full px-3 py-1.5 transition-all duration-300', activeType === null ? 'bg-black text-white' : 'bg-white text-black']">
-            All
-          </button>
-          <button
-            v-for="type in types"
-            :key="type.id"
-            @click="filterByType(type.id)"
-            :class="['font-semibold rounded-full px-3 py-1.5 transition-all duration-300', activeType === type.id ? 'bg-black text-white' : 'bg-white text-black']">
-            {{ type.name }}
-          </button>
-        </div>
-      </div> -->
     </div>
 
-    <!-- Honeycomb Grid -->
+    <!-- New marquee grid (desktop) -->
     <div class="mt-10 hidden lg:block">
-      <HexHoneyGrid
-        v-if="imgSrcs.length"
-        :images="imgSrcs"
-        :radius="62"
-        :stroke-width="6"
-        stroke-color="#ffffff"
-        :shuffle="true"         
-        :interval-ms="3000"
-        :fade-ms="600"
-        :batch-size="60"           
-        :avoid-duplicates="false"
-        dedupe-key="exact"
-        :rows-desktop="desktopRows"
-        :rows-mobile="mobileRows"
-        :pad="12"
-        interactive
-        @hex-click="handleHexClick"
+      <SpeakerMarqueeGrid
+        :speakers="filteredSpeakers"
+        :columns-desktop="7"
+        :columns-mobile="2"
+        :gap="16"
+        :card-height="420"
+        :duration-min="18"
+        :duration-max="28"
+        pause-on-hover
+        @item-click="openModalWith"
       />
-      <div v-else class="w-full h-40 grid place-items-center text-gray-500">
-        No speakers found.
-      </div>
     </div>
 
+    <!-- New marquee grid (mobile) -->
     <div class="mt-10 lg:hidden">
-      <HexHoneyGrid
-        v-if="imgSrcs.length"
-        :images="imgSrcs"
-        :radius="62"
-        :stroke-width="6"
-        stroke-color="#ffffff"
-        :shuffle="true"         
-        :interval-ms="3000"
-        :fade-ms="600"
-        :batch-size="10"           
-        :avoid-duplicates="false"
-        dedupe-key="exact"
-        :rows-desktop="desktopRows"
-        :rows-mobile="mobileRows"
-        :pad="12"
-        interactive
-        @hex-click="handleHexClick"
+      <SpeakerMarqueeGrid
+        :speakers="filteredSpeakers"
+        :columns-desktop="6"
+        :columns-mobile="2"
+        :gap="12"
+        :card-height="360"
+        :duration-min="16"
+        :duration-max="22"
+        pause-on-hover
+        @item-click="openModalWith"
       />
-      <div v-else class="w-full h-40 grid place-items-center text-gray-500">
-        No speakers found.
-      </div>
     </div>
 
     <!-- Modal -->
@@ -126,18 +90,13 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import axios from 'axios'
-import HexHoneyGrid from './SpeakerListHex.vue'
+import SpeakerMarqueeGrid from './SpeakerListHex.vue' // ⬅️ NEW
 
 const types = ref([])
 const speakers = ref([])
 const activeType = ref(null)
 const searchQuery = ref('')
 
-/** Grid shape (enough capacity for many speakers) */
-const desktopRows = ref([14, 13, 14, 13, 14, 13, 14, 13, 14, 13, 14, 13,14]) // 12 rows
-const mobileRows  = ref([5, 4, 5, 4, 5, 4, 5, 4])
-
-/** Filtered list from API */
 const filteredSpeakers = computed(() => {
   const q = (searchQuery.value || '').toLowerCase()
   return (speakers.value || []).filter(s => {
@@ -147,29 +106,11 @@ const filteredSpeakers = computed(() => {
   })
 })
 
-/** Build image srcs with a unique query so animated pool treats them distinctly */
-const imgSrcs = computed(() =>
-  filteredSpeakers.value.map((s, i) => `/storage/${s.image}?v=${i}`)
-)
-
-/** Map: src (with ?v=i) -> speaker (so clicks are stable while animating) */
-const imageToSpeaker = computed(() => {
-  const map = Object.create(null)
-  filteredSpeakers.value.forEach((s, i) => {
-    map[`/storage/${s.image}?v=${i}`] = s
-  })
-  return map
-})
-
-/* ---- Modal ---- */
 const showModal = ref(false)
 const selectedSpeaker = ref(null)
 const selectedSrc = ref('')
 
-function handleHexClick({ src }) {
-  // Use the src from the grid (includes ?v=i) to find the correct speaker
-  const sp = imageToSpeaker.value[src]
-  if (!sp) return
+function openModalWith(sp) {
   selectedSpeaker.value = sp
   selectedSrc.value = `/storage/${sp.image}`
   showModal.value = true
@@ -180,7 +121,6 @@ function closeModal() {
   selectedSrc.value = ''
 }
 
-/* ---- Data ---- */
 async function fetchTypes () {
   const { data } = await axios.get('/api/speaker-types')
   types.value = Array.isArray(data) ? data : []
@@ -189,8 +129,6 @@ async function fetchSpeakers () {
   const { data } = await axios.get('/api/speakers', { params: { ordered: true } })
   speakers.value = Array.isArray(data) ? data : []
 }
-
-function filterByType(typeId){ activeType.value = typeId }
 
 onMounted(() => {
   fetchTypes()

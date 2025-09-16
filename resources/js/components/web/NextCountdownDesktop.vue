@@ -1,62 +1,69 @@
 <template>
   <section class="w-full">
-    <div>
-      <div
-        class="px-6 lg:px-12 py-12 bg-black flex flex-col lg:flex-row items-center justify-between gap-6"
-      >
-        <!-- Left: Date + Location -->
-        <div
-          v-if="festivalReady"
-          class="flex flex-col items-start text-center lg:w-6/12 lg:text-left"
+    <div class="mx-auto text-center">
+      <!-- If festival data is available -->
+      <template v-if="festivalReady">
+        <!-- Title -->
+        <!-- <h1
+          class="text-4xl md:text-5xl uppercase font-extrabold text-active-purple mb-4 animate-pulse"
         >
-          <h2 class="font-semibold text-white uppercase text-2xl lg:text-3xl">
-            {{ formattedDateRange }}
-          </h2>
-          <h1
-            class="tracking-[10px] lg:tracking-[12px] text-xl lg:text-3xl uppercase font-bold text-white leading-tight mt-2"
+          {{ f?.title || 'Festival' }}
+        </h1> -->
+
+        <!-- Date Range -->
+        <h2 class="font-semibold text-black uppercase text-3xl mb-2">
+          {{ formattedDateRange }}
+        </h2>
+
+        <!-- Location -->
+        <h1
+          class="tracking-[10px] text-3xl uppercase font-bold text-black leading-tight"
+        >
+          {{ locationInline }}
+        </h1>
+
+        <!-- Countdown -->
+        <div class="flex flex-wrap justify-center gap-4 py-12" id="countdown">
+          <div
+            class="bg-black/10 backdrop-blur-sm rounded-xl p-4 min-w-[100px] text-center"
           >
-            {{ locationInline }}
-          </h1>
+            <span class="text-5xl font-bold text-black">{{ days }}</span>
+            <p class="text-black mb-0">Days</p>
+          </div>
+          <div
+            class="bg-black/10 backdrop-blur-sm rounded-xl p-4 min-w-[100px] text-center"
+          >
+            <span class="text-5xl font-bold text-black">{{ hours }}</span>
+            <p class="text-black mb-0">Hours</p>
+          </div>
+          <div
+            class="bg-black/10 backdrop-blur-sm rounded-xl p-4 min-w-[100px] text-center"
+          >
+            <span class="text-5xl font-bold text-black">{{ minutes }}</span>
+            <p class="text-black mb-0">Minutes</p>
+          </div>
+          <div
+            class="bg-black/10 backdrop-blur-sm rounded-xl p-4 min-w-[100px] text-center"
+          >
+            <span class="text-5xl font-bold text-black">{{ seconds }}</span>
+            <p class="text-black mb-0">Seconds</p>
+          </div>
         </div>
+      </template>
 
-        <div v-else class="flex flex-col items-start">
-          <h2 class="text-active-purple uppercase text-3xl lg:text-5xl">
-            Coming Soon
-          </h2>
-        </div>
+      <!-- Coming Soon -->
+      <template v-else>
+        <h2 class="text-active-purple uppercase text-5xl">Coming Soon</h2>
+      </template>
 
-        <!-- Middle: Countdown -->
-        <div
-          v-if="festivalReady"
-          id="countdown"
-          class="flex flex-wrap justify-center gap-4"
-        >
-          <div class="bg-white/20 backdrop-blur-sm rounded-xl p-4 min-w-[90px] text-center">
-            <span class="text-2xl font-bold text-white">{{ days }}</span>
-            <p class="text-white text-sm mb-0">Days</p>
-          </div>
-          <div class="bg-white/20 backdrop-blur-sm rounded-xl p-4 min-w-[90px] text-center">
-            <span class="text-2xl font-bold text-white">{{ hours }}</span>
-            <p class="text-white text-sm mb-0">Hours</p>
-          </div>
-          <div class="bg-white/20 backdrop-blur-sm rounded-xl p-4 min-w-[90px] text-center">
-            <span class="text-2xl font-bold text-white">{{ minutes }}</span>
-            <p class="text-white text-sm mb-0">Minutes</p>
-          </div>
-          <div class="bg-white/20 backdrop-blur-sm rounded-xl p-4 min-w-[90px] text-center">
-            <span class="text-2xl font-bold text-white">{{ seconds }}</span>
-            <p class="text-white text-sm mb-0">Seconds</p>
-          </div>
-        </div>
-
-        <!-- Right: Optional action slot -->
-        <div class="flex justify-center items-center lg:mt-0" v-if="$slots.action">
-          <slot name="action" />
-        </div>
+      <!-- Action Slot -->
+      <div class="flex justify-center items-center lg:mt-6" v-if="$slots.action">
+        <slot name="action" />
       </div>
     </div>
   </section>
 </template>
+
 
 <script setup>
 import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue'

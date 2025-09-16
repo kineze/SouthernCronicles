@@ -110,6 +110,7 @@ const navItems = [
   { id: 'videos', label: 'Videos', href: '/oalf-2026-videos', icon: `<i class='fa-solid fa-video text-base'></i>` },
   { id: 'archive', label: 'Archive', href: '/all-oalf-festivals', icon: `<i class="fa-solid fa-box-archive text-base"></i>` },
   { id: 'kipenzi', label: 'Kipenzi', href: '/the-kipenzi', icon: `<img src="${kipenziIcon}" class="w-6 h-6 inline-block object-contain" alt="Kipenzi" />` },
+  { id: 'kipenzi-kids', label: 'Kipenzi Kids Stories', href: '/kipenzi-kids-stories', icon: `<i class="fa-solid fa-wand-magic-sparkles text-base"></i>` },
   { id: 'contact', label: 'Contact Us', href: '/contact-us', icon: `<i class='fa-solid fa-phone text-base'></i>` }
 ]
 

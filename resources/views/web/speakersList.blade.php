@@ -9,9 +9,9 @@
         <div class="relative z-30 flex flex-col items-start justify-center  pt-12">
             <h2 class="font-semibold text-black uppercase text-7xl">2026</h2>
             <h1 class="tracking-[10px] text-4xl uppercase font-bold text-black leading-tight">
-                The Asian Literary <br> Festival
+                 Southern <br>Chronicles
             </h1>
-            <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl">global summit</h2>
+            {{-- <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl">global summit</h2> --}}
         </div>
       </div>
     </div>
@@ -22,7 +22,7 @@
 
       <speakers-list></speakers-list>
 
-        <galaxy-apply></galaxy-apply>
+        {{-- <galaxy-apply></galaxy-apply> --}}
 </section>
 
 @endsection

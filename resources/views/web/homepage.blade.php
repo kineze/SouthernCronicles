@@ -5,51 +5,62 @@
 
 <section class="w-full block max-w-screen-2xl top-0 mx-auto relative">
 
-    <div class="relative w-full z-0 rounded-3 lg:min-h-[100vh] min-h-[70vh] bg-white">
+            <div class="relative w-full z-0 rounded-3 lg:min-h-[100vh] min-h-[70vh] bg-white">
 
-        <div class="w-full rounded-xl bg-cover absolute bg-top z-[200] py-6 px-4 lg:pl-10">
-            <div class='w-full rounded-xl rounded-bl-none bg-transparent flex bg-cover items-start'>
-                <div class="relative z-30 flex flex-col items-start justify-center pt-12">
-                    <h2 class="font-bold text-black uppercase text-8xl">2026</h2>
-                    <h1 class="tracking-[10px] lg:text-5xl text-4xl uppercase font-bold text-black leading-tight">
-                    Southern <br>Chronicles
-                    </h1>
-                    <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl"></h2>
+                <div class="w-full rounded-xl bg-cover absolute bg-top z-[200] py-6 px-4 lg:pl-10">
+                    <div class='w-full rounded-xl rounded-bl-none bg-transparent flex bg-cover items-start'>
+                        <div class="relative z-30 flex flex-col items-start justify-center pt-12">
+                            <h2 class="font-bold text-black uppercase text-8xl">2026</h2>
+                            <h1 class="tracking-[10px] lg:text-5xl text-4xl uppercase font-bold text-black leading-tight">
+                            Southern <br>Chronicles
+                            </h1>
+                            <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl"></h2>
+                        </div>
+                    </div>
+                </div>
+                <!-- Color Splash Stage (background with video) -->
+                <div id="splash-stage"
+                    class="pointer-events-none absolute inset-0 z-[5] overflow-hidden">
+                    
+                    <video autoplay muted loop playsinline
+                        class="absolute inset-0 w-full h-full object-cover">
+                        <source src="{{ asset('assets/img/herovideo.webm') }}" type="video/webm">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            
+                <div class="parallax-layer absolute bottom-0 lg:top-64 xl:top-96 z-10 w-full" data-speed="0.2">
+                    <img src="{{ asset('assets/img/pencil-odisha-2.webp') }}" 
+                        class="w-full object-contain" alt="Layer 2">
+                </div>
+
+                <div class="parallax-layer absolute overflow-hidden z-[120] pl-40 -top-16 w-full" data-speed="0.4">
+                    <div class="w-full"></div>
                 </div>
             </div>
-        </div>
-        <!-- Color Splash Stage (background with video) -->
-        <div id="splash-stage"
-            class="pointer-events-none absolute inset-0 z-[5] overflow-hidden">
+
+            <div class=" bg-gray-200/10 backdrop-blur-xl">
+                <div  class=" relative flex pt-24 flex-wrap bg-black z-[1000] bg-opacity-50 backdrop-blur-xl bg-transparent items-start justify-end px-6 lg:px-12 ">
+                    
+                    <div class="z-[200] w-full lg:w-6/12 relative">
+                        <next-countdown-desktop :next-festival='@json($nextFestival)'>
+                            <template #action>
+                                <register-now-modal></register-now-modal>
+                            </template>
+                        </next-countdown-desktop>
+                    </div>
+
+                    <div class="z-[200] w-full lg:w-6/12 relative mt-10 lg:mt-0">
+                        <h2 class="font-semibold text-black uppercase text-start text-7xl">It Isn't a Luxury…</h2>
+                        <h1 class="tracking-[10px] lg:text-4xl text-2xl mt-3 uppercase font-bold text-black leading-tight">
+                            Bridging Worlds Through Words
+                        </h1>
+                        <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl mt-5"></h2>
+                        <literature-blurb-slider></literature-blurb-slider>
+                    </div>
+                </div>
+            </div>
             
-            <video autoplay muted loop playsinline
-                class="absolute inset-0 w-full h-full object-cover">
-                <source src="{{ asset('assets/img/herovideo.webm') }}" type="video/webm">
-                Your browser does not support the video tag.
-            </video>
-        </div>
-
-    
-        <div class="parallax-layer absolute bottom-0 lg:top-64 xl:top-96 z-10 w-full" data-speed="0.2">
-            <img src="{{ asset('assets/img/pencil-odisha-2.webp') }}" 
-                class="w-full object-contain" alt="Layer 2">
-        </div>
-
-        <div class="parallax-layer absolute overflow-hidden z-[120] pl-40 -top-16 w-full" data-speed="0.4">
-            <div class="w-full"></div>
-        </div>
-    </div>
-
-
-  <div class="z-[200] relative">
-
-    <next-countdown-desktop :next-festival='@json($nextFestival)'>
-        <template #action>
-            <register-now-modal></register-now-modal>
-        </template>
-    </next-countdown-desktop>
-
-  </div>
 
 </section>
 
@@ -76,14 +87,14 @@
 
 <section class="w-full max-w-screen-2xl mx-auto">
 
-    <previous-festival></previous-festival>
+    <up-coming-festivals></up-coming-festivals>
 
 </section>
 
 
 <section class="relative w-full max-w-screen-2xl flex flex-wrap mx-auto px-4">
 
-    <div class=" overflow-hidden w-full lg:w-6/12">
+    {{-- <div class=" overflow-hidden w-full lg:w-6/12">
         <div class="">
         <h2 class="lg:text-5xl text-3xl mb-10 text-center text-black font-extrabold tracking-widest uppercase">
             Festival Director’s Note
@@ -125,9 +136,9 @@
             <div class="clear-both"></div>
         </div>
         </div>
-    </div>
+    </div> --}}
 
-    <div class="w-full lg:w-6/12">
+    <div class="w-full">
         <speakers-carousel></speakers-carousel>
     </div>
 
@@ -149,6 +160,12 @@
     <advisor-carousel></advisor-carousel>
    
 </section> --}}
+
+<section class="w-full max-w-screen-2xl mx-auto">
+
+    <our-partners></our-partners>
+
+</section>
 
 <section class="w-full max-w-screen-2xl  mt-6 mx-auto">
 

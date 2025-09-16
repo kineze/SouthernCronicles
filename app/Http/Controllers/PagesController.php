@@ -127,5 +127,10 @@ class PagesController extends Controller
         return view('web.thePurpleUmbrella');
     }
 
+    public function kipenziKidsStories(){
+
+        return view('web.kipenziKidsStories');
+    }
+
 }
 
