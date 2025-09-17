@@ -1,78 +1,220 @@
 <template>
-  <div class="max-w-screen-2xl mx-auto px-6 py-6 bg-black text-white text-center">
-    <h1 class="text-3xl lg:text-6xl font-bold tracking-wide uppercase mt-6 mb-3">Coming Soon</h1>
-    <h3 class="text-xl lg:text-3xl font-bold tracking-widest uppercase mb-3">Next Festival</h3>
-    <h5 class="text-sm lg:text-lg font-bold tracking-wide">Abu Dhabi - UAE</h5>
+  <section class="w-full">
+    <div class="mx-auto text-center">
+      <!-- If festival data is available -->
+      <template v-if="festivalReady">
+        <!-- Title -->
+        <!-- <h1
+          class="text-4xl md:text-5xl uppercase font-extrabold text-active-purple mb-4 animate-pulse"
+        >
+          {{ f?.title || 'Festival' }}
+        </h1> -->
 
-    <div class="lg:mt-10 mt-5">
-      <p class="text-sm font-semibold uppercase">21ST NOV 2025</p>
+        <!-- Date Range -->
+        <h2 class="font-semibold text-white uppercase text-3xl mb-2">
+          {{ formattedDateRange }}
+        </h2>
 
-      <div class="mt-6 mb-10 flex justify-center gap-4 flex-wrap">
-        <div class="bg-white/20 text-white rounded-md w-20 h-20 flex flex-col justify-center items-center">
-          <span class="text-xl font-bold">{{ countdown.days }}</span>
-          <span class="text-xs font-semibold uppercase">Days</span>
+        <!-- Location -->
+        <h1
+          class="tracking-[10px] text-3xl uppercase font-bold text-white leading-tight"
+        >
+          {{ locationInline }}
+        </h1>
+
+        <!-- Countdown -->
+        <div class="flex flex-wrap justify-center gap-4 py-12" id="countdown">
+          <div
+            class="bg-black/50 backdrop-blur-sm rounded-xl p-4 min-w-[100px] text-center"
+          >
+            <span class="text-5xl font-bold text-white">{{ days }}</span>
+            <p class="text-white mb-0">Days</p>
+          </div>
+          <div
+            class="bg-black/50 backdrop-blur-sm rounded-xl p-4 min-w-[100px] text-center"
+          >
+            <span class="text-5xl font-bold text-white">{{ hours }}</span>
+            <p class="text-white mb-0">Hours</p>
+          </div>
+          <div
+            class="bg-black/50 backdrop-blur-sm rounded-xl p-4 min-w-[100px] text-center"
+          >
+            <span class="text-5xl font-bold text-white">{{ minutes }}</span>
+            <p class="text-white mb-0">Minutes</p>
+          </div>
+          <div
+            class="bg-black/50 backdrop-blur-sm rounded-xl p-4 min-w-[100px] text-center"
+          >
+            <span class="text-5xl font-bold text-white">{{ seconds }}</span>
+            <p class="text-white mb-0">Seconds</p>
+          </div>
         </div>
-        <div class="bg-white/20 text-white rounded-md w-20 h-20 flex flex-col justify-center items-center">
-          <span class="text-xl font-bold">{{ countdown.hours }}</span>
-          <span class="text-xs font-semibold uppercase">Hours</span>
-        </div>
-        <div class="bg-white/20 text-white rounded-md w-20 h-20 flex flex-col justify-center items-center">
-          <span class="text-xl font-bold">{{ countdown.minutes }}</span>
-          <span class="text-xs font-semibold uppercase">Minutes</span>
-        </div>
-        <div class="bg-white/20 text-white rounded-md w-20 h-20 flex flex-col justify-center items-center">
-          <span class="text-xl font-bold">{{ countdown.seconds }}</span>
-          <span class="text-xs font-semibold uppercase">Seconds</span>
-        </div>
+      </template>
+
+      <!-- Coming Soon -->
+      <template v-else>
+        <h2 class="text-active-purple uppercase text-5xl">Coming Soon</h2>
+      </template>
+
+      <!-- Action Slot -->
+      <div class="flex justify-center items-center lg:mt-6" v-if="$slots.action">
+        <slot name="action" />
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue'
+import axios from 'axios'
 
-const countdown = ref({
-  days: '00',
-  hours: '00',
-  minutes: '00',
-  seconds: '00'
+/**
+ * Props:
+ * - Pass either `festival` or `nextFestival`.
+ * - If neither is provided, the component will GET /api/festival.
+ */
+const props = defineProps({
+  festival: { type: Object, default: null },
+  nextFestival: { type: Object, default: null },
+  /** Optional: override the fetch URL if needed */
+  fetchUrl: { type: String, default: '/api/festival' }
 })
 
-const targetDate = new Date('2025-11-21T00:00:00')
+/* state */
+const f = ref(props.festival ?? props.nextFestival ?? null)
+const loading = ref(false)
 
-let interval = null
-
-const updateCountdown = () => {
-  const now = new Date()
-  const distance = targetDate - now
-
-  if (distance < 0) {
-    clearInterval(interval)
-    countdown.value = { days: '00', hours: '00', minutes: '00', seconds: '00' }
-    return
-  }
-
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24))
-  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
-  const seconds = Math.floor((distance % (1000 * 60)) / 1000)
-
-  countdown.value = {
-    days: String(days).padStart(2, '0'),
-    hours: String(hours).padStart(2, '0'),
-    minutes: String(minutes).padStart(2, '0'),
-    seconds: String(seconds).padStart(2, '0')
+/* fetch if nothing was passed */
+async function loadLatestIfNeeded() {
+  if (f.value) return
+  loading.value = true
+  try {
+    const { data } = await axios.get(props.fetchUrl)
+    f.value = data || null
+  } catch (e) {
+    // swallow error, keep null -> "Coming Soon"
+  } finally {
+    loading.value = false
   }
 }
 
-onMounted(() => {
-  updateCountdown()
-  interval = setInterval(updateCountdown, 1000)
+/* sync when parent updates either prop */
+watch(() => props.festival, v => { if (v !== undefined) f.value = v })
+watch(() => props.nextFestival, v => { if (v !== undefined) f.value = v })
+
+onMounted(loadLatestIfNeeded)
+
+/* helpers */
+const festivalReady = computed(() => !!f.value?.start_at)
+
+/* --- Date formatting helpers --- */
+const monthNames = [
+  'January','February','March','April','May','June',
+  'July','August','September','October','November','December'
+]
+function ordinal (d) {
+  const v = d % 100
+  if (v >= 11 && v <= 13) return 'th'
+  switch (d % 10) { case 1: return 'st'; case 2: return 'nd'; case 3: return 'rd'; default: return 'th' }
+}
+function parts (dStr) {
+  const d = new Date(dStr)
+  const day = d.getDate()
+  const monthIdx = d.getMonth()
+  const year = d.getFullYear()
+  return {
+    day,
+    ord: ordinal(day),
+    monthName: monthNames[monthIdx],
+    monthShort: monthNames[monthIdx].slice(0, 3),
+    year
+  }
+}
+
+/**
+ * Formats:
+ * - Only start date or same day: "27th December 2025"
+ * - Same month & year:          "27th to 29th December 2025"
+ * - Same year, diff months:     "27th Dec to 2nd Jan 2025"
+ * - Different years:            "31st Dec 2025 to 1st Jan 2026"
+ */
+const formattedDateRange = computed(() => {
+  if (!f.value?.start_at) return ''
+
+  const p1 = parts(f.value.start_at)
+  const hasEnd = !!f.value?.end_at
+  if (!hasEnd) {
+    return `${p1.day}${p1.ord} ${p1.monthName} ${p1.year}`
+  }
+
+  const p2 = parts(f.value.end_at)
+
+  // Same day
+  if (p1.day === p2.day && p1.monthName === p2.monthName && p1.year === p2.year) {
+    return `${p1.day}${p1.ord} ${p1.monthName} ${p1.year}`
+  }
+
+  // Same month + year
+  if (p1.monthName === p2.monthName && p1.year === p2.year) {
+    return `${p1.day}${p1.ord} to ${p2.day}${p2.ord} ${p1.monthName} ${p1.year}`
+  }
+
+  // Same year, different month
+  if (p1.year === p2.year) {
+    return `${p1.day}${p1.ord} ${p1.monthShort} to ${p2.day}${p2.ord} ${p2.monthShort} ${p1.year}`
+  }
+
+  // Different years
+  return `${p1.day}${p1.ord} ${p1.monthShort} ${p1.year} to ${p2.day}${p2.ord} ${p2.monthShort} ${p2.year}`
 })
 
-onBeforeUnmount(() => {
-  clearInterval(interval)
+/* Location inline (fallbacks to name if no location) */
+const locationInline = computed(() => {
+  const raw = String(f.value?.location || '').trim()
+  if (raw) return raw
+  return f.value?.name || 'Festival'
 })
+
+/* --- Countdown (to start_at) --- */
+const days = ref(0)
+const hours = ref(0)
+const minutes = ref(0)
+const seconds = ref(0)
+let timer = null
+
+function tick () {
+  if (!f.value?.start_at) return
+  const target = new Date(f.value.start_at).getTime()
+  const now = Date.now()
+  const diff = target - now
+
+  if (diff <= 0) {
+    days.value = hours.value = minutes.value = seconds.value = 0
+    return
+  }
+
+  const s = 1000
+  const m = 60 * s
+  const h = 60 * m
+  const d = 24 * h
+
+  days.value    = Math.floor(diff / d)
+  hours.value   = Math.floor((diff % d) / h)
+  minutes.value = Math.floor((diff % h) / m)
+  seconds.value = Math.floor((diff % m) / s)
+}
+
+onMounted(() => {
+  tick()
+  timer = setInterval(tick, 1000)
+})
+onBeforeUnmount(() => { if (timer) clearInterval(timer) })
+
+// Re-run countdown if the start date changes at runtime
+watch(() => f.value?.start_at, () => tick())
 </script>
+
+<style scoped>
+/* Keep the rounded corners crisp on dark backgrounds (optional) */
+</style>

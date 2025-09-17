@@ -78,6 +78,7 @@ import NextCountdownDesktop from './components/web/NextCountdownDesktop.vue';
 import LiteratureBlurbSlider from './components/web/LiteratureBlurbSlider.vue';
 import KipenziKidsStories from './components/web/KipenziKidsStories.vue';
 import AboutUsParagraphSlider from './components/web/AboutUsParagraphSlider.vue';
+import Logo from './components/web/Logo.vue';
 
 const app = createApp({});
 
@@ -176,4 +177,5 @@ app
   .component('literature-blurb-slider', LiteratureBlurbSlider)
   .component('kipenzi-kids-stories', KipenziKidsStories)
   .component('about-us-paragraph-slider', AboutUsParagraphSlider)
+  .component('logo', Logo)
 .mount('#app')

@@ -17,48 +17,17 @@
     </div>
 
  
-    <div class="hidden md:block">
+    <div class="">
         <div  class=" relative flex mb-24 flex-wrap items-start  z-[1000] bg-opacity-30 backdrop-blur-xl rounded-3xl  bg-transparent  justify-end pt-12">
-           <div class="w-full bg-black md:sticky py-6 top-5 lg:w-6/12">
+           <div class="w-full bg-primary-blue md:sticky py-6 top-5 lg:w-6/12">
                <div class="">
                     <div class=" mx-auto px-4 text-center py-6">
-                            @if($nextFestival)
-                                <h1 class="text-4xl md:text-5xl uppercase font-extrabold text-active-purple mb-4 animate-pulse">{{$nextFestival->title}}</h1>
-                                <p class="text-xl md:text-xl uppercase font-extrabold text-active-purple mb-4 animate-pulse"></p>
-                                 <h2 class="font-semibold text-black uppercase text-3xl">
-                                    {{ \Carbon\Carbon::parse($nextFestival->start_at)->format('jS') }}
-                                    to
-                                    {{ \Carbon\Carbon::parse($nextFestival->end_at)->format('jS F Y') }}
-                                </h2>
 
-                                <h1 class="tracking-[10px] text-3xl uppercase font-bold text-white leading-tight">
-                                     {{ $nextFestival->location }}
-                                </h1>
-                                <div class="flex flex-wrap justify-center gap-4 py-12" id="countdown">
-                                    <div class="bg-white/20 backdrop-blur-sm rounded-xl p-4">
-                                        <span class="text-5xl font-bold text-white" id="days"></span>
-                                        <p class="text-white mb-0">Days</p>
-                                    </div>
-                                    <div class="bg-white/20 backdrop-blur-sm rounded-xl p-4">
-                                        <span class="text-5xl font-bold text-white" id="hours"></span>
-                                        <p class="text-white mb-0">Hours</p>
-                                    </div>
-                                    <div class="bg-white/20 backdrop-blur-sm rounded-xl p-4">
-                                        <span class="text-5xl font-bold text-white" id="minutes"></span>
-                                        <p class="text-white mb-0">Minutes</p>
-                                    </div>
-                                    <div class="bg-white/20 backdrop-blur-sm rounded-xl p-4">
-                                        <span class="text-5xl font-bold text-white" id="seconds"></span>
-                                        <p class="text-white mb-0">Seconds</p>
-                                    </div>
-                                </div>
-                            @else
-                                <h2 class="text-active-purple uppercase text-5xl">Coming Soon</h2>
-                            @endif
-
-                            <div class="flex justify-center items-center lg:mt-6">
-                                <register-now-modal></register-now-modal>
-                            </div>
+                            <next-count-down :next-festival='@json($nextFestival)'>
+                                <template #action>
+                                    <register-now-modal></register-now-modal>
+                                </template>
+                            </next-count-down>
                             
                         </div>
                </div>
@@ -69,82 +38,12 @@
                 <h1 class="tracking-[10px] text-4xl uppercase font-bold text-black leading-tight">
                     The Fastest Growing Global Network of Festivals
                 </h1>
-                {{-- <p class="text-gray-700 py-3">The Asian Literary Festivals: Where Stories Unite the World Creative expression is humanity's most profound manifestation of diversity—a mirror reflecting our heritage, our souls, and the rich tapestry of human experience. The Asian Literary Festivals serve as the crucible where this diversity fuses into one shared humanity, creating a global stage that celebrates both our unity and our beautiful differences within the human race.</p>
-                <p class="text-gray-700 py-3">Co-created by The Asian Group of Literature and Trogon Global, The Asian Literary Festivals represent an inclusive ecosystem anchored by our flagship festival in Abu Dhabi, with satellite festivals flourishing in major cultural centres worldwide. This network creates a year-round celebration of literary and cultural exchange.</p>
-                <p class="text-gray-700 py-3">Whether you hail from East or West, North or South, this is your space.</p>
-                <p class="text-gray-700 py-3">The Asian Literary Festivals don't just showcase literature—they celebrate the full spectrum of human creativity and connection, and each festival is proudly local in its international network.</p>
-                <p class="text-gray-700 py-3">Join us in writing the next chapter of global literary dialogue, where every story matters and every voice contributes to our collective human narrative. The Asian Literary Festival, Gampaha Edition, co-created by The Asian/Trogon festival ecosystem and The Philippine Art and Culture Exchange (PACE), weaves creative expression from the global majority into this vibrant tapestry, transforming the European capital into an unparalleled sanctuary of cultural exchange and cross-fertilisation.</p>
-                <p class="text-gray-700 py-3">This festival revives the historical exchanges between East and West, breathing new life into ancient dialogues as literary traditions converge and contemporary voices rise, creating a dynamic crossroads where stories transcend borders and new cultural conversations bloom in this remarkable intersection of civilisations.</p> --}}
 
                 <about-us-paragraph-slider></about-us-paragraph-slider>
             </div>
         </div>
     </div>
-    
-        <div class=" md:hidden">
-         <div  class=" relative flex flex-wrap bg-white z-[1000] bg-opacity-30 backdrop-blur-xl rounded-3xl  bg-transparent items-start justify-end lg:px-12 pt-12 lg:pt-36">
-           <div class="w-full lg:w-6/12">
-               <div class="">
-                    <div class=" mx-auto px-4 text-center py-6">
-                            @if($nextFestival)
-                                <h1 class="text-4xl md:text-5xl uppercase font-extrabold text-active-purple mb-4 animate-pulse">{{$nextFestival->title}}</h1>
-                                <p class="text-xl md:text-xl uppercase font-extrabold text-active-purple mb-4 animate-pulse"></p>
-                                <h2 class="font-semibold text-black uppercase text-3xl">
-                                    {{ \Carbon\Carbon::parse($nextFestival->start_at)->format('jS') }}
-                                    to
-                                    {{ \Carbon\Carbon::parse($nextFestival->end_at)->format('jS F Y') }}
-                                </h2>
 
-                                <h1 class="tracking-[5px] text-xl uppercase font-bold text-black leading-tight">
-                                     {{ $nextFestival->location }}
-                                </h1>
-                                <div class="flex flex-wrap justify-center gap-2 py-6 lg:py-12" id="countdown-mobile">
-                                    <div class="bg-white/50 backdrop-blur-sm rounded-xl p-2">
-                                        <span class="text-xl font-bold text-black" id="days-mobile"></span>
-                                        <p class="text-black text-sm mb-0">Days</p>
-                                    </div>
-                                    <div class="bg-white/50 backdrop-blur-sm rounded-xl p-2">
-                                        <span class="text-xl font-bold text-black" id="hours-mobile"></span>
-                                        <p class="text-black text-sm mb-0">Hours</p>
-                                    </div>
-                                    <div class="bg-white/50 backdrop-blur-sm rounded-xl p-2">
-                                        <span class="text-xl  font-bold text-black" id="minutes-mobile"></span>
-                                        <p class="text-black text-sm mb-0">Mins</p>
-                                    </div>
-                                    <div class="bg-white/50 backdrop-blur-sm rounded-xl p-2">
-                                        <span class="text-xl font-bold text-black" id="seconds-mobile"></span>
-                                        <p class="text-black text-sm mb-0">Secs</p>
-                                    </div>
-                                </div>
-                            @else
-                                <h2 class="text-active-purple uppercase text-5xl">Coming Soon</h2>
-                            @endif
-
-                            <div class="flex justify-center items-center mt-6">
-                                <register-now-modal></register-now-modal>
-                            </div>
-                            
-                        </div>
-               </div>
-           </div>
-           
-            <div class="w-full lg:w-6/12">
-             <h2 class="font-semibold text-black text-center uppercase md:text-start text-3xl md:text-8xl">About</h2>
-                <h1 class="tracking-[5px] text-xl uppercase text-center md:text-start font-bold text-black leading-tight">
-                   The Fastest Growing Global Network of Festivals
-                </h1>
-            <h2 class="font-semibold tracking-[10px] text-black text-center md:text-start uppercase text-xl">Gampaha.</h2>
-                {{-- <p class="text-gray-700 py-3">The Asian Literary Festivals: Where Stories Unite the World Creative expression is humanity's most profound manifestation of diversity—a mirror reflecting our heritage, our souls, and the rich tapestry of human experience. The Asian Literary Festivals serve as the crucible where this diversity fuses into one shared humanity, creating a global stage that celebrates both our unity and our beautiful differences within the human race.</p>
-                <p class="text-gray-700 py-3">Co-created by The Asian Group of Literature and Trogon Global, The Asian Literary Festivals represent an inclusive ecosystem anchored by our flagship festival in Abu Dhabi, with satellite festivals flourishing in major cultural centres worldwide. This network creates a year-round celebration of literary and cultural exchange.</p>
-                <p class="text-gray-700 py-3">Whether you hail from East or West, North or South, this is your space.</p>
-                <p class="text-gray-700 py-3">The Asian Literary Festivals don't just showcase literature—they celebrate the full spectrum of human creativity and connection, and each festival is proudly local in its international network.</p>
-                <p class="text-gray-700 py-3">Join us in writing the next chapter of global literary dialogue, where every story matters and every voice contributes to our collective human narrative. The Asian Literary Festival, Gampaha Edition, co-created by The Asian/Trogon festival ecosystem and The Philippine Art and Culture Exchange (PACE), weaves creative expression from the global majority into this vibrant tapestry, transforming the European capital into an unparalleled sanctuary of cultural exchange and cross-fertilisation.</p>
-                <p class="text-gray-700 py-3">This festival revives the historical exchanges between East and West, breathing new life into ancient dialogues as literary traditions converge and contemporary voices rise, creating a dynamic crossroads where stories transcend borders and new cultural conversations bloom in this remarkable intersection of civilisations.</p> --}}
-
-                <about-us-paragraph-slider></about-us-paragraph-slider>
-            </div>
-           </div>
-        </div>
     </div>
 </section>
 

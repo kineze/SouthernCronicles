@@ -1,9 +1,9 @@
 <template>
   <nav class="w-full absolute top-0 left-0 z-50">
-    <div class="w-full max-w-screen-2xl bg-transparent mx-auto">
-      <div class="w-full flex justify-between px-4">
+    <div class="w-full max-w-screen-2xl bg-transparent mx-auto px-4 py-4">
+      <div class="w-full flex justify-between ">
         <div class="w-full flex justify-between">
-          <div class="lg:py-6 relative">
+          <div class="relative">
             <button
               @click="isDrawerOpen = true"
               type="button"
@@ -18,21 +18,21 @@
         </div>
 
         <div class=" w-4/12 flex  justify-end items-center z-50 rounded-es-3xl">
-          <div class="py-6">
-          <a href="/" class="px-5">
+          <div class="">
+          <a href="/" >
             <img
               :src="trogonUrl"
               class="inline-block max-w-full transition-all lg:w-40 w-32  duration-200 ease-soft-in-out"
               alt="main_logo"
             />
           </a>
-          <!-- <a href="/">
+          <a href="/">
             <img
               :src="logoUrl"
-              class="inline-block max-w-full transition-all  lg:w-32 w-20 duration-200 ease-soft-in-out "
+              class="inline-block max-w-full transition-all  lg:w-20 w-20 duration-200 ease-soft-in-out "
               alt="main_logo"
             />  
-          </a> -->
+          </a>
           </div>
         </div>
       </div>
@@ -90,7 +90,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 
-const logoUrl = '/assets/img/logo.webp'
+const logoUrl = '/assets/img/logo-new.webp'
 const trogonUrl = '/assets/img/sou-logo.webp'
 const kipenziIcon = '/assets/img/kipenzi-icon.webp'
 

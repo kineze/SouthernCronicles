@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="lg:text-6xl text-3xl mt-12 lg:mt-4 text-black font-extrabold tracking-widest uppercase text-center">
+    <h1 class="lg:text-7xl text-3xl mt-12 lg:mt-4 font-nordique text-primary-blue font-bold tracking-widest text-center">
       Speakers
     </h1>
 
@@ -26,22 +26,25 @@
     <div class="mt-10 hidden lg:block">
       <SpeakerMarqueeGrid
         :speakers="filteredSpeakers"
-        :columns-desktop="7"
+        direction="horizontal"          
+        :columns-desktop="4"
         :columns-mobile="2"
-        :gap="16"
-        :card-height="420"
-        :duration-min="18"
-        :duration-max="28"
+        :gap="8"
+        :card-height="310"
+        :card-width="200"               
+        :duration-min="55"
+        :duration-max="60"
         pause-on-hover
         @item-click="openModalWith"
       />
+
     </div>
 
     <!-- New marquee grid (mobile) -->
     <div class="mt-10 lg:hidden">
       <SpeakerMarqueeGrid
         :speakers="filteredSpeakers"
-        :columns-desktop="6"
+        :columns-desktop="4"
         :columns-mobile="2"
         :gap="12"
         :card-height="360"
@@ -90,7 +93,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import axios from 'axios'
-import SpeakerMarqueeGrid from './SpeakerListHex.vue' // ⬅️ NEW
+import SpeakerMarqueeGrid from './SpeakerListHex.vue'
 
 const types = ref([])
 const speakers = ref([])

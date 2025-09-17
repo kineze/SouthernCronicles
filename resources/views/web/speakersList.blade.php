@@ -4,11 +4,11 @@
 
 <section class="w-full max-w-screen-2xl  -mt-6 mx-auto p-3">
    
-    <div class="w-full rounded-xl bg-cover bg-top z-[200] py-9 px-4 lg:pl-10 ">
+    <div class="w-full rounded-xl bg-cover bg-top z-[200] font-nordique py-9 px-4 lg:pl-10 ">
       <div class='w-full rounded-xl rounded-bl-none bg-transparent flex bg-cover items-start'>
-        <div class="relative z-30 flex flex-col items-start justify-center pt-12">
-          <h2 class="font-bold text-black uppercase text-8xl">2026</h2>
-          <h1 class="tracking-[10px] lg:text-5xl text-4xl uppercase font-bold text-black leading-tight">
+        <div class="relative z-30 flex flex-col items-start justify-center">
+          <h2 class="font-bold text-primary-blue text-8xl">2026</h2>
+          <h1 class="tracking-[10px] lg:text-5xl text-4xl font-bold pt-4 text-primary-blue">
             Southern <br>Chronicles
           </h1>
           <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl"></h2>
@@ -21,7 +21,7 @@
 <section class="w-full max-w-screen-2xl mx-auto p-3">
 
       <speakers-list></speakers-list>
-      
+
         {{-- <galaxy-apply></galaxy-apply> --}}
 </section>
 
