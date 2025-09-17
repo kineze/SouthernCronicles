@@ -12,13 +12,13 @@
 
     <!-- Section heading -->
     <header class="text-center mb-10 lg:mb-14">
-      <p class="text-sm tracking-[8px] uppercase font-semibold text-gray-600">
+      <p class="text-sm tracking-[8px] uppercase font-semibold text-gray-900">
         {{ eyebrow }}
       </p>
-      <h2 id="vm-title" class="mt-2 uppercase font-extrabold text-black tracking-widest" :class="titleSize">
+      <h2 id="vm-title" class="mt-2 uppercase font-extrabold text-primary-blue tracking-widest" :class="titleSize">
         {{ title }}
       </h2>
-      <p v-if="subtitle" class="mt-3 max-w-2xl mx-auto text-gray-700 text-base lg:text-lg">
+      <p v-if="subtitle" class="mt-3 max-w-2xl mx-auto text-gray-900 text-base lg:text-lg">
         {{ subtitle }}
       </p>
     </header>
@@ -42,12 +42,12 @@
 
           <!-- Copy -->
           <div class="w-full flex  flex-col justify-start items-start p-6 lg:p-8 lg:mt-0 mt-6">
-            <h3 class="uppercase text-3xl lg:text-4xl font-extrabold tracking-widest text-black gap-3">
+            <h3 class="uppercase text-3xl lg:text-4xl font-extrabold tracking-widest text-primary-blue gap-3">
               <span class="inline-block  lg:mx-0">Vision</span>
               <span class="h-[10px] w-[10px] rounded-full" :class="accentDotClass"></span>
             </h3>
 
-            <p class="mt-4 text-gray-700 text-justify leading-relaxed">
+            <p class="mt-4 text-black text-justify leading-relaxed">
               {{ visionText }}
             </p>
           </div>
@@ -70,12 +70,12 @@
 
           <!-- Copy -->
           <div class="w-full  flex  flex-col justify-start items-start p-6 lg:p-8 lg:mt-0 mt-6">
-            <h3 class="uppercase text-3xl lg:text-4xl font-extrabold tracking-widest text-black gap-3">
+            <h3 class="uppercase text-3xl lg:text-4xl font-extrabold tracking-widest text-primary-blue gap-3">
               <span class="inline-block  lg:mx-0">Mission</span>
               <span class="h-[10px] w-[10px] rounded-full" :class="accentDotClass"></span>
             </h3>
 
-            <p class="mt-4 text-gray-700 text-justify leading-relaxed">
+            <p class="mt-4 text-black text-justify leading-relaxed">
               {{ missionText }}
             </p>
           </div>

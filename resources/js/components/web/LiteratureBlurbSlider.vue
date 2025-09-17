@@ -30,7 +30,7 @@
           :key="`slide-${lang.key}-${i}`"
           class="min-w-full"
         >
-          <p class="text-gray-700 dark:text-gray-200 text-justify leading-7">
+          <p class="dark:text-gray-200 text-black text-justify leading-7">
             {{ lang.text }}
           </p>
         </article>

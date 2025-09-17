@@ -18,21 +18,21 @@
         </div>
 
         <div class=" w-4/12 flex  justify-end items-center z-50 rounded-es-3xl">
-          <div>
-          <a href="/">
+          <div class="py-6">
+          <a href="/" class="px-5">
             <img
               :src="trogonUrl"
-              class="inline-block max-w-full transition-all lg:w-40 w-32 duration-200 ease-soft-in-out"
+              class="inline-block max-w-full transition-all lg:w-40 w-32  duration-200 ease-soft-in-out"
               alt="main_logo"
             />
           </a>
-           <a href="/">
+          <!-- <a href="/">
             <img
               :src="logoUrl"
               class="inline-block max-w-full transition-all  lg:w-32 w-20 duration-200 ease-soft-in-out "
               alt="main_logo"
             />  
-          </a>
+          </a> -->
           </div>
         </div>
       </div>
@@ -91,7 +91,7 @@
 import { ref, onMounted } from 'vue'
 
 const logoUrl = '/assets/img/logo.webp'
-const trogonUrl = '/assets/img/logo-oalf.webp'
+const trogonUrl = '/assets/img/sou-logo.webp'
 const kipenziIcon = '/assets/img/kipenzi-icon.webp'
 
 const isDrawerOpen = ref(false)
@@ -104,13 +104,15 @@ onMounted(() => {
 const navItems = [
   { id: 'home', label: 'Home', href: '/', icon: `<i class="fa-solid fa-home text-base"></i>` },
   { id: 'about', label: 'About Us', href: '/about-us', icon: `<i class="fa-solid fa-book-open text-base"></i>` },
-  { id: 'speakers', label: 'Speakers', href: '/galaxy-list', icon: `<i class="fa-solid fa-person-chalkboard text-base"></i>` },
-  { id: 'schedule', label: 'Schedule', href: '/events-schedule', icon: `<i class='fa-solid fa-calendar-check text-base'></i>` },
-  { id: 'gallery', label: 'Gallery', href: '/oalf-2026-gallery', icon: `<i class='fa-solid fa-photo-film text-base'></i>` },
-  { id: 'videos', label: 'Videos', href: '/oalf-2026-videos', icon: `<i class='fa-solid fa-video text-base'></i>` },
-  { id: 'archive', label: 'Archive', href: '/all-oalf-festivals', icon: `<i class="fa-solid fa-box-archive text-base"></i>` },
-  { id: 'kipenzi', label: 'Kipenzi', href: '/the-kipenzi', icon: `<img src="${kipenziIcon}" class="w-6 h-6 inline-block object-contain" alt="Kipenzi" />` },
+  { id: 'speakers', label: 'Speakers', href: '/speakers-list', icon: `<i class="fa-solid fa-person-chalkboard text-base"></i>` },
+  { id: 'schedule', label: 'The Writing Lab', href: '/the-writing-lab', icon: `<i class='fa-solid fa-feather-pointed text-base'></i>` },
+  { id: 'kipenzi', label: 'Kipenzi ALF Kids', href: '/the-kipenzi', icon: `<img src="${kipenziIcon}" class="w-6 h-6 inline-block object-contain" alt="Kipenzi" />` },
   { id: 'kipenzi-kids', label: 'Kipenzi Kids Stories', href: '/kipenzi-kids-stories', icon: `<i class="fa-solid fa-wand-magic-sparkles text-base"></i>` },
+  { id: 'schedule', label: 'Events Schedule', href: '/events-schedule', icon: `<i class='fa-solid fa-calendar-check text-base'></i>` },
+  { id: 'volunteerwithus', label: 'Volunteer With Us', href: '/volunteer-with-us', icon: `<i class='fa-solid fa-hand-holding-heart text-base'></i>` },
+  // { id: 'gallery', label: 'Gallery', href: '/oalf-2026-gallery', icon: `<i class='fa-solid fa-photo-film text-base'></i>` },
+  // { id: 'videos', label: 'Videos', href: '/oalf-2026-videos', icon: `<i class='fa-solid fa-video text-base'></i>` },
+  // { id: 'archive', label: 'Archive', href: '/all-oalf-festivals', icon: `<i class="fa-solid fa-box-archive text-base"></i>` },
   { id: 'contact', label: 'Contact Us', href: '/contact-us', icon: `<i class='fa-solid fa-phone text-base'></i>` }
 ]
 

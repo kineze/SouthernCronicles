@@ -1,7 +1,7 @@
 <template>
     <div class="relative bg-white bg-transparent bg-opacity-30 md:pt-6 backdrop-blur-xl">
     <div>
-        <h1 class="lg:text-6xl text-3xl text-black font-extrabold tracking-widest uppercase text-center">Speakers</h1>
+        <h1 class="lg:text-6xl text-3xl text-primary-blue font-extrabold tracking-widest uppercase text-center">Speakers</h1>
     </div>
     <div class="py-8 w-full max-w-screen-2xl flex flex-col">
         <Carousel 
@@ -37,7 +37,7 @@
                   <!-- Optional overlay name (if you want) -->
                   <!--
                   <div class="absolute bottom-4 left-0 right-0 text-center">
-                    <h3 class="font-semibold text-black uppercase text-lg bg-white/70 px-2 py-1 inline-block rounded">
+                    <h3 class="font-semibold text-primary-blue uppercase text-lg bg-white/70 px-2 py-1 inline-block rounded">
                       {{ speaker.name }}
                     </h3>
                   </div>
@@ -50,7 +50,7 @@
         </Carousel>
 
         <div class="mx-auto mt-7">
-            <a href="/speakers-list" class="px-6 py-3 bg-black text-white foont-bold"> VIEW MORE </a>
+            <a href="/speakers-list" class="px-6 py-3 bg-primary-blue text-white foont-bold"> VIEW MORE </a>
         </div>
 
     </div>

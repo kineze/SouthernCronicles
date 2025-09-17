@@ -1,6 +1,6 @@
 <template>
   <section class="max-w-screen-2xl mx-auto px-4 py-10">
-    <h1 class="lg:text-6xl text-3xl text-black font-extrabold tracking-widest uppercase text-center mb-10">
+    <h1 class="lg:text-6xl text-3xl text-primary-blue font-extrabold tracking-widest uppercase text-center mb-10">
       Latest News
     </h1>
 
@@ -32,27 +32,27 @@
 
         <div class="flex-1 pt-3">
           <a :href="newsUrl(n)" class="block">
-            <h3 class="font-semibold line-clamp-2 text-gray-900">
+            <h3 class="font-semibold line-clamp-2 text-primary-blue">
               {{ n.title }}
             </h3>
           </a>
 
-          <p class="mt-2 text-xs text-gray-600">
+          <p class="mt-2 text-xs text-black">
             {{ formatDate(n.published_at) }} • {{ formatTime(n.created_at) }}
           </p>
 
-          <p class="mt-2 text-xs text-gray-600">
+          <p class="mt-2 text-xs text-black">
             {{ n.small_description}}
           </p>
 
-            <p class="mt-2 text-xs text-gray-600 font-semibold">
+            <p class="mt-2 text-xs text-black font-semibold">
                 {{ n.published_by}}
             </p>
         </div>
 
         <!-- Share row -->
         <div class="mt-4 flex items-center justify-between">
-            <div class="flex gap-2 text-gray-600">
+            <div class="flex gap-2 text-black">
             <!-- Copy Link -->
             <button
                 class="text-xs px-2 py-1 rounded border hover:bg-gray-50 flex items-center gap-1"
@@ -96,7 +96,7 @@
 
           <a
             :href="newsUrl(n)"
-            class="text-xs font-medium text-black hover:underline"
+            class="text-xs font-medium text-primary-blue hover:underline"
           >
             Read More...
           </a>

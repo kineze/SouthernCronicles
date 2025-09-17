@@ -1,7 +1,7 @@
 <template>
   <section class="relative w-full max-w-screen-xl mx-auto font-poppins" ref="wrap">
     <!-- Language buttons -->
-    <div class="flex justify-start gap-2 mt-4 mb-1">
+    <!-- <div class="flex justify-start gap-2 mt-4 mb-1">
       <button
         v-for="(lang, i) in langs"
         :key="lang.key"
@@ -13,10 +13,10 @@
           : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-600'"
         :title="lang.title"
       >
-        <!-- <i class="fa-solid fa-language"></i> -->
+        
         <span>{{ lang.label }}</span>
       </button>
-    </div>
+    </div> -->
 
     <!-- Slider -->
     <div class="overflow-hidden">

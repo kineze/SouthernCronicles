@@ -1,6 +1,6 @@
 <template>
   <div class="max-w-screen-2xl mx-auto px-4 py-10">
-    <h1 class="lg:text-6xl text-3xl text-black font-extrabold tracking-widest uppercase text-center mb-10">
+    <h1 class="lg:text-6xl text-3xl text-primary-blue font-extrabold tracking-widest uppercase text-center mb-10">
       Our Partners
     </h1>
 
@@ -55,7 +55,7 @@
     <div class="text-center mt-10" v-if="visiblePartners.length < filteredPartners.length">
       <button
         @click="loadMore"
-        class="px-6 py-3 text-white bg-black hover:bg-gray-800 rounded-full font-bold transition"
+        class="px-6 py-3 text-white bg-primary-blue hover:bg-gray-800 rounded-full font-bold transition"
       >
         Load More
       </button>

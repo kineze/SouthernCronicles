@@ -1,6 +1,6 @@
 <template>
   <section class="max-w-screen-2xl bg-gray-100 dark:bg-gray-900 mx-auto px-4 py-10 my-12">
-    <h1 class="lg:text-6xl text-3xl mt-4 text-black dark:text-white rounded-xl font-extrabold tracking-widest uppercase text-center mb-8">
+    <h1 class="lg:text-6xl text-3xl mt-4 text-primary-blue dark:text-white rounded-xl font-extrabold tracking-widest uppercase text-center mb-8">
       Our Festivals
     </h1>
 
@@ -42,22 +42,22 @@
           <div class="space-y-1">
             <!-- Title -->
             <a v-if="ev.site_url" :href="ev.site_url" target="_blank" rel="noopener" class="block">
-              <h3 class="font-extrabold tracking-tight text-black dark:text-white line-clamp-2">
+              <h3 class="font-extrabold tracking-tight text-primary-blue dark:text-white line-clamp-2">
                 {{ ev.name }}
               </h3>
             </a>
-            <h3 v-else class="font-extrabold tracking-tight text-black dark:text-white line-clamp-2">
+            <h3 v-else class="font-extrabold tracking-tight text-primary-blue dark:text-white line-clamp-2">
               {{ ev.name }}
             </h3>
 
             <!-- Date -->
-            <p class="text-xs text-gray-700 dark:text-gray-200 font-semibold">
+            <p class="text-xs text-black dark:text-gray-200 font-semibold">
               {{ formatDate(ev.start_at, ev.end_at) }}
               <span v-if="formatTime(ev.start_at)"> • {{ formatTime(ev.start_at) }}</span>
             </p>
 
             <!-- Location -->
-            <p class="mt-1 flex items-center gap-2 text-gray-600 dark:text-gray-300 text-sm">
+            <p class="mt-1 flex items-center gap-2 text-black dark:text-gray-300 text-sm">
               <i class="fa-solid fa-location-dot"></i>
               <span class="line-clamp-1">{{ ev.location }}</span>
             </p>
@@ -66,7 +66,7 @@
 
         <!-- Footer -->
         <div class="mt-4 flex items-center justify-between">
-          <div class="text-xs text-gray-500">
+          <div class="text-xs text-black">
             <!-- You can add tags or category here if available -->
           </div>
 
@@ -74,7 +74,7 @@
             v-if="ev.site_url"
             :href="ev.site_url"
             target="_blank" rel="noopener"
-            class="text-xs font-medium text-black dark:text-white hover:underline"
+            class="text-xs font-medium text-primary-blue dark:text-white hover:underline"
           >
             Explore →
           </a>
@@ -83,7 +83,7 @@
     </div>
 
     <!-- Empty state -->
-    <div v-else class="text-center text-gray-500 dark:text-gray-300">
+    <div v-else class="text-center text-black dark:text-gray-300">
       No festivals found.
     </div>
   </section>

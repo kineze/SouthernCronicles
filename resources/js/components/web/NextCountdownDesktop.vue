@@ -11,13 +11,13 @@
         </h1> -->
 
         <!-- Date Range -->
-        <h2 class="font-semibold text-black uppercase text-3xl mb-2">
+        <h2 class="font-semibold text-primary-blue uppercase text-3xl mb-2">
           {{ formattedDateRange }}
         </h2>
 
         <!-- Location -->
         <h1
-          class="tracking-[10px] text-3xl uppercase font-bold text-black leading-tight"
+          class="tracking-[10px] text-3xl uppercase font-bold text-primary-blue leading-tight"
         >
           {{ locationInline }}
         </h1>
@@ -27,26 +27,26 @@
           <div
             class="bg-black/10 backdrop-blur-sm rounded-xl p-4 min-w-[100px] text-center"
           >
-            <span class="text-5xl font-bold text-black">{{ days }}</span>
-            <p class="text-black mb-0">Days</p>
+            <span class="text-5xl font-bold text-primary-blue">{{ days }}</span>
+            <p class="text-primary-blue mb-0">Days</p>
           </div>
           <div
             class="bg-black/10 backdrop-blur-sm rounded-xl p-4 min-w-[100px] text-center"
           >
-            <span class="text-5xl font-bold text-black">{{ hours }}</span>
-            <p class="text-black mb-0">Hours</p>
+            <span class="text-5xl font-bold text-primary-blue">{{ hours }}</span>
+            <p class="text-primary-blue mb-0">Hours</p>
           </div>
           <div
             class="bg-black/10 backdrop-blur-sm rounded-xl p-4 min-w-[100px] text-center"
           >
-            <span class="text-5xl font-bold text-black">{{ minutes }}</span>
-            <p class="text-black mb-0">Minutes</p>
+            <span class="text-5xl font-bold text-primary-blue">{{ minutes }}</span>
+            <p class="text-primary-blue mb-0">Minutes</p>
           </div>
           <div
             class="bg-black/10 backdrop-blur-sm rounded-xl p-4 min-w-[100px] text-center"
           >
-            <span class="text-5xl font-bold text-black">{{ seconds }}</span>
-            <p class="text-black mb-0">Seconds</p>
+            <span class="text-5xl font-bold text-primary-blue">{{ seconds }}</span>
+            <p class="text-primary-blue mb-0">Seconds</p>
           </div>
         </div>
       </template>

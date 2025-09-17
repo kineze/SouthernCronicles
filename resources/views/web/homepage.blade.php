@@ -10,8 +10,8 @@
                 <div class="w-full rounded-xl bg-cover absolute bg-top z-[200] py-6 px-4 lg:pl-10">
                     <div class='w-full rounded-xl rounded-bl-none bg-transparent flex bg-cover items-start'>
                         <div class="relative z-30 flex flex-col items-start justify-center pt-12">
-                            <h2 class="font-bold text-black uppercase text-8xl">2026</h2>
-                            <h1 class="tracking-[10px] lg:text-5xl text-4xl uppercase font-bold text-black leading-tight">
+                            <h2 class="font-bold text-primary-blue uppercase text-8xl">2026</h2>
+                            <h1 class="tracking-[10px] lg:text-5xl text-4xl uppercase font-bold text-primary-blue leading-tight">
                             Southern <br>Chronicles
                             </h1>
                             <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl"></h2>
@@ -51,8 +51,8 @@
                     </div>
 
                     <div class="z-[200] w-full lg:w-6/12 relative mt-10 lg:mt-0">
-                        <h2 class="font-semibold text-black uppercase text-start text-7xl">It Isn't a Luxury…</h2>
-                        <h1 class="tracking-[10px] lg:text-4xl text-2xl mt-3 uppercase font-bold text-black leading-tight">
+                        <h2 class="font-semibold text-primary-blue uppercase text-start text-7xl">It Isn't a Luxury…</h2>
+                        <h1 class="tracking-[10px] lg:text-4xl text-2xl mt-3 uppercase font-bold text-primary-blue leading-tight">
                             Bridging Worlds Through Words
                         </h1>
                         <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl mt-5"></h2>
