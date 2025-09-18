@@ -30,8 +30,8 @@
                     </video>
                 </div>
             
-                <div class="parallax-layer absolute bottom-0  z-10 w-full" data-speed="0.2">
-                    <img src="{{ asset('assets/img/southern-hero.webp') }}" 
+                <div class="parallax-layer absolute top-32  z-10 w-full" data-speed="0.2">
+                    <img src="{{ asset('assets/img/southern-hero-02.webp') }}" 
                         class="w-full object-contain" alt="Layer 2">
                 </div>
 
