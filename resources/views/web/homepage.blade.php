@@ -31,7 +31,7 @@
                 </div>
             
                 <div class="parallax-layer absolute top-16  z-10 w-full" data-speed="0.2">
-                    <img src="{{ asset('assets/img/hero-images-southern.webp') }}" 
+                    <img src="{{ asset('assets/img/southern-hro-004.webp') }}" 
                         class="w-full object-contain" alt="Layer 2">
                 </div>
 
