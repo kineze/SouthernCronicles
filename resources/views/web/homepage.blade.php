@@ -25,13 +25,13 @@
                     
                     <video autoplay muted loop playsinline
                         class="absolute inset-0 w-full h-full object-cover">
-                        <source src="{{ asset('assets/img/herovideo.webm') }}" type="video/webm">
+                        <source src="{{ asset('assets/img/southern-hero-video.webm') }}" type="video/webm">
                         Your browser does not support the video tag.
                     </video>
                 </div>
             
-                <div class="parallax-layer absolute bottom-0 lg:top-64 xl:top-96 z-10 w-full" data-speed="0.2">
-                    <img src="{{ asset('assets/img/pencil-odisha-2.webp') }}" 
+                <div class="parallax-layer absolute bottom-0  z-10 w-full" data-speed="0.2">
+                    <img src="{{ asset('assets/img/southern-hero.webp') }}" 
                         class="w-full object-contain" alt="Layer 2">
                 </div>
 
