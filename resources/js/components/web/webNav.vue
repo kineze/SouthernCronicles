@@ -22,14 +22,14 @@
           <a href="/" >
             <img
               :src="trogonUrl"
-              class="inline-block max-w-full transition-all lg:w-40 w-32  duration-200 ease-soft-in-out"
+              class="inline-block max-w-full transition-all lg:w-44 w-32  duration-200 ease-soft-in-out"
               alt="main_logo"
             />
           </a>
           <a href="/">
             <img
               :src="logoUrl"
-              class="inline-block max-w-full transition-all  lg:w-20 w-20 duration-200 ease-soft-in-out "
+              class="inline-block max-w-full transition-all  lg:w-44 w-20 duration-200 ease-soft-in-out "
               alt="main_logo"
             />  
           </a>
