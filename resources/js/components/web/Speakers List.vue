@@ -53,6 +53,7 @@
         pause-on-hover
         @item-click="openModalWith"
       />
+      
     </div>
 
     <!-- Modal -->

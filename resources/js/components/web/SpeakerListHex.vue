@@ -32,7 +32,7 @@
               :is-horizontal="isHorizontal"
               :card-width="cardWidth"
               :border-radius-x="200"
-              :border-radius-y="100"
+              :border-radius-y="200"
               @click="emitClick(sp)"
             />
           </div>
@@ -46,7 +46,7 @@
               :is-horizontal="isHorizontal"
               :card-width="cardWidth"
               :border-radius-x="200"
-              :border-radius-y="100"
+              :border-radius-y="200"
               @click="emitClick(sp)"
             />
           </div>
@@ -68,6 +68,8 @@ import {
   nextTick
 } from 'vue'
 
+const sideimage = '/assets/img/speakers-side-decor.webp'
+
 /**
  * Props:
  *  - speakers: [{ id, name, image, ... }]
@@ -85,7 +87,7 @@ const props = defineProps({
   columnsDesktop: { type: Number, default: 6 },
   columnsMobile: { type: Number, default: 2 },
   gap: { type: Number, default: 16 },
-  cardHeight: { type: Number, default: 420 },
+  cardHeight: { type: Number, default: 500 },
   cardWidth: { type: Number, default: 260 },
   durationMin: { type: Number, default: 18 },
   durationMax: { type: Number, default: 28 },
@@ -156,7 +158,7 @@ onBeforeUnmount(() => {
 
 /* ensure each stack is wide enough for seamless loop */
 const minPerStack = computed(() => {
-  if (!isHorizontal.value) return 3 // vertical not used here but keep fallback
+  if (!isHorizontal.value) return 3
   if (!laneWidth.value) return 6
   const w = props.cardWidth + props.gap
   return Math.max(3, Math.ceil(laneWidth.value / w) + 1)
@@ -170,11 +172,11 @@ function fillTrack(base, need) {
   return out.slice(0, need)
 }
 const tracksFilled = computed(() => {
-  if (!isHorizontal.value) return tracksBase.value // vertical path (not used here)
+  if (!isHorizontal.value) return tracksBase.value
   return tracksBase.value.map((base) => fillTrack(base, minPerStack.value))
 })
 
-/* rotated copy for stack #2 to avoid "same card touching" at the seam */
+/* rotated copy for stack #2 to avoid "same card touching" */
 const rotatedTracksFilled = computed(() =>
   tracksFilled.value.map(arr => (arr.length > 1 ? [...arr.slice(1), arr[0]] : [...arr]))
 )
@@ -187,7 +189,7 @@ const containerHeight = computed(
   () => Math.round(props.cardHeight * 2.2 + props.gap * 2)
 )
 
-/* animation durations per track (randomized) */
+/* animation durations per track */
 const durations = ref([])
 function randomDurations() {
   const out = []
@@ -203,16 +205,16 @@ function emitClick(sp) {
   emit('item-click', sp)
 }
 
-/* ---- Local subcomponent: pill-shaped image card (render function) ---- */
+/* ---- Speaker Card ---- */
 const SpeakerCard = defineComponent({
   name: 'SpeakerCard',
   props: {
     speaker: { type: Object, required: true },
     isHorizontal: { type: Boolean, default: true },
-    cardHeight: { type: Number, default: 200 },
-    cardWidth: { type: Number, default: 260 },
+    cardHeight: { type: Number, default: 500 },
+    cardWidth: { type: Number, default: 600 },
     borderRadiusX: { type: Number, default: 200 },
-    borderRadiusY: { type: Number, default: 100 },
+    borderRadiusY: { type: Number, default: 200 },
   },
   emits: ['click'],
   setup(cardProps, { emit }) {
@@ -225,9 +227,8 @@ const SpeakerCard = defineComponent({
             'relative overflow-hidden bg-white shadow-md flex justify-center items-center cursor-pointer',
           style: {
             height: `${cardProps.cardHeight}px`,
-            width: cardProps.isHorizontal ? `${cardProps.cardWidth}px` : '100%',
-            borderRadius: `${cardProps.borderRadiusX}px ${cardProps.borderRadiusX}px ${cardProps.borderRadiusX}px ${cardProps.borderRadiusX}px / ${cardProps.borderRadiusY}px ${cardProps.borderRadiusY}px ${cardProps.borderRadiusY}px ${cardProps.borderRadiusY}px`,
-            /* fallback spacing for browsers without flex-gap */
+            width: cardProps.isHorizontal ? `${cardProps.cardWidth}px` : '5',
+            borderRadius: `${cardProps.borderRadiusX}px / ${cardProps.borderRadiusY}px`,
             marginRight: 'var(--gap, 16px)'
           },
           title: 'View speaker',
@@ -240,6 +241,11 @@ const SpeakerCard = defineComponent({
             class: 'w-full h-full object-cover',
             loading: 'lazy',
           }),
+          h('img', {
+            src: sideimage,
+            alt: '',
+            class: 'absolute right-0 top-1/2 -translate-y-1/2 translate-x-[65px] h-full pointer-events-none',
+          }),
         ]
       )
   },
@@ -247,26 +253,23 @@ const SpeakerCard = defineComponent({
 </script>
 
 <style scoped>
-/* pause animation when hovering the track */
 .group:hover .marquee-stack-h,
 .group:hover .marquee-stack-v {
   animation-play-state: paused;
 }
 
-/* stacks are flex containers; direction set inline */
 .stack {
   display: flex;
-  gap: var(--gap, 8px); /* primary spacing */
+  gap: var(--gap, 8px);
 }
 .stack > *:last-child {
-  margin-right: 0;        /* gap fallback cleanup */
+  margin-right: 0;
 }
 
-/* ===== Horizontal marquee (left/right) ===== */
 .marquee-stack-h {
   display: flex;
   flex-direction: row;
-  width: max-content;           /* ensure wrapper width equals content width */
+  width: max-content;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   will-change: transform;
@@ -274,7 +277,6 @@ const SpeakerCard = defineComponent({
 .marquee-stack-h[data-dir="forward"] { animation-name: marquee-left; }
 .marquee-stack-h[data-dir="reverse"] { animation-name: marquee-right; }
 
-/* Duplicate two equal stacks; move by 50% width to loop seamlessly */
 @keyframes marquee-left {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
@@ -284,7 +286,6 @@ const SpeakerCard = defineComponent({
   to   { transform: translateX(0); }
 }
 
-/* ===== Vertical marquee (kept for completeness) ===== */
 .marquee-stack-v {
   display: flex;
   flex-direction: column;
