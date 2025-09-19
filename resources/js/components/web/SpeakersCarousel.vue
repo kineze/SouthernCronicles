@@ -24,7 +24,7 @@
             <div class="p-3">
               <a href="/speakers-list">
                 <div
-                  class="relative overflow-hidden bg-white shadow-md flex justify-center items-center"
+                  class="relative overflow-hidden bg-white flex justify-center items-center"
                   style="border-radius: 200px 200px 200px 200px / 200px 200px 200px 200px;"
                 >
                   <!-- Speaker Image -->
