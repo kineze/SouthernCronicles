@@ -1,13 +1,13 @@
 <template>
   <div>
-    <h1 class="lg:text-6xl text-3xl mt-12 lg:mt-4 text-black font-extrabold tracking-widest uppercase text-center">Events Agenda</h1>
+    <h1 class="lg:text-6xl text-3xl mt-12 lg:mt-4 text-primary-blue font-extrabold tracking-widest uppercase text-center">Events Agenda</h1>
 
     <div v-if="showFilter" class="flex flex-wrap justify-end items-center w-full mt-10">
       <div class="lg:w-auto w-full mt-4 lg:mt-0">
         <div class="px-2.5 py-2.5 border rounded-full border-gray-300 flex flex-wrap gap-2">
           <button
             @click="filterDate = null; fetchEvents()"
-            :class="['font-semibold rounded-full px-3 py-1.5 transition-all duration-300', !filterDate ? 'bg-black text-white' : 'bg-white text-black']">
+            :class="['font-semibold rounded-full px-3 py-1.5 transition-all duration-300', !filterDate ? 'bg-primary-blue text-white' : 'bg-white text-black']">
             All
           </button>
 

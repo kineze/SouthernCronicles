@@ -1,6 +1,6 @@
 <template>
   <div class="max-w-screen-2xl mx-auto bg-white dark:bg-gray-900 shadow py-10">
-    <h1 class="lg:text-6xl text-3xl mt-4 text-black dark:text-white font-extrabold tracking-widest uppercase text-center mb-8">
+    <h1 class="lg:text-6xl text-3xl mt-4 text-primary-blue dark:text-white font-extrabold tracking-widest uppercase text-center mb-8">
       Volunteer With Us
     </h1>
 
@@ -9,20 +9,20 @@
         <div class="max-w-7xl lg:w-7/12 mt-10 lg:p-4 space-y-6 text-gray-700 dark:text-gray-300 text-base leading-relaxed">
 
             <!-- Subtitle 1 -->
-            <h2 class="text-lg font-semibold text-black dark:text-white">Why Volunteer?</h2>
-            <p class="text-justify">
+            <h2 class="text-lg font-semibold text-primary-blue dark:text-white">Why Volunteer?</h2>
+            <p class="text-justify text-black">
                 Across the world, stories, songs, rituals, and traditional skills are fading with each passing generation. By volunteering with us, you help protect this living heritage — the cultural knowledge and creative expressions that connect communities to their history and identity.
             </p>
 
             <!-- Subtitle 2 -->
-            <h2 class="text-lg font-semibold text-black dark:text-white">Ways You Can Help</h2>
-            <p class="text-justify">
+            <h2 class="text-lg font-semibold text-primary-blue dark:text-white">Ways You Can Help</h2>
+            <p class="text-justify text-black">
                 We welcome volunteers from all walks of life. Whether you excel at outreach and communication, enjoy documenting through photography or video, have translation or editing skills, or are skilled at research and archiving, your efforts will help safeguard wisdom for the future. Every role matters in preserving and sharing these traditions.
             </p>
 
             <!-- Subtitle 3 -->
-            <h2 class="text-lg font-semibold text-black dark:text-white">Get Involved Today</h2>
-            <p class="font-medium text-justify">
+            <h2 class="text-lg font-semibold text-primary-blue dark:text-white">Get Involved Today</h2>
+            <p class="font-medium text-justify text-black">
                 If you’re passionate about honoring the past while empowering the future, join our volunteer network. Fill out the form, and our team will contact you with the next steps to start your journey with us.
             </p>
 
@@ -81,7 +81,7 @@
         <!-- Submit -->
         <div class="text-start">
           <button @click="submitForm" :disabled="submitting"
-                  class="px-6 py-2 bg-black text-white font-semibold hover:bg-gray-800 transition disabled:opacity-60">
+                  class="px-6 py-2 bg-primary-blue text-white font-semibold hover:bg-gray-800 transition disabled:opacity-60">
             {{ submitting ? 'Submitting…' : 'Submit' }}
           </button>
         </div>

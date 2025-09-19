@@ -1,6 +1,6 @@
 <template>
   <div class="max-w-screen-2xl mx-auto px-4 py-10">
-    <h1 class="lg:text-6xl text-3xl text-black font-extrabold tracking-widest uppercase text-center mb-10">
+    <h1 class="lg:text-6xl text-3xl text-primary-blue font-extrabold tracking-widest uppercase text-center mb-10">
       Contact Us
     </h1>
 
@@ -22,7 +22,7 @@
         <div class="lg:px2 lg:pt-2 bg-white border border-gray-300">
 
             <div class="p-4">
-                <div class="uppercase text-black font-semibold lg:text-4xl text-2xl text-center mb-4">
+                <div class="uppercase text-primary-blue font-semibold lg:text-4xl text-2xl text-center mb-4">
                     Get In Touch With Us
                 </div>
                 <form @submit.prevent="submitForm" class="space-y-6">
@@ -33,7 +33,7 @@
                             type="text"
                             id="first_name"
                             v-model="form.first_name"
-                            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-black bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" "
                             />
                             <label
@@ -49,7 +49,7 @@
                             type="text"
                             id="last_name"
                             v-model="form.last_name"
-                            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-black bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" "
                             />
                             <label
@@ -67,7 +67,7 @@
                                 type="email"
                                 id="email"
                                 v-model="form.email"
-                                class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-black bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                 placeholder=" "
                             />
                             <label
@@ -83,7 +83,7 @@
                                 type="text"
                                 id="mobile"
                                 v-model="form.mobile"
-                                class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-black bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                 placeholder=" "
                             />
                             <label
@@ -100,7 +100,7 @@
                         type="text"
                         id="subject"
                         v-model="form.subject"
-                        class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-black bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                         placeholder=" "
                     />
                     <label
@@ -116,7 +116,7 @@
                         id="description"
                         rows="4"
                         v-model="form.description"
-                        class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-black bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                         placeholder=" "
                     ></textarea>
                     <label
@@ -128,18 +128,18 @@
 
                     <button
                     type="submit"
-                    class="bg-black text-blac px-6 py-3 rounded-lg font-semibold text-white mx-auto flex"
+                    class="bg-primary-blue text-blac px-6 py-3 rounded-lg font-semibold text-white mx-auto flex"
                     >
                     Send Message
                     </button>
                 </form>
             </div>
 
-            <div class="bg-black p-2 w-full"></div>
+            <div class="bg-primary-blue p-2 w-full"></div>
         </div>
     </div>
 
-    <div class="mt-8 text-center text-base text-gray-900 dark:text-gray-300 leading-relaxed">
+    <div class="mt-8 text-center text-base text-black dark:text-gray-300 leading-relaxed">
         <p class="font-semibold text-lg">The Asian Literary Festival</p>
         <p>The Asian Literary Agency,</p>
         <p>16 Vishaka Road, Medagama, </p>

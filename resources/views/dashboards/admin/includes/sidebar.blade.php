@@ -133,7 +133,8 @@
           data-links='[
             {"label":"Time Slots","href":"{{ route('manageTimeSlots') }}"},
             {"label":"Bookings","href":"{{ route('manageBookings') }}"},
-            {"label":"Memory Submission","href":"{{ route('memorySubmission') }}"}
+            {"label":"Memory Submission","href":"{{ route('memorySubmission') }}"},
+            {"label":"Kids Stories","href":"{{ route('kidsStories') }}"}
           ]'>
 
         <button class="dropdown-toggle w-full flex items-center gap-3 p-2 rounded-lg dark:hover:bg-slate-800 transition-all">

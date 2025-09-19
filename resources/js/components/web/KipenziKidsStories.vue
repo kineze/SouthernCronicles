@@ -1,12 +1,12 @@
 <template>
   <div class="max-w-screen-2xl mx-auto bg-white dark:bg-gray-900 shadow py-10">
-    <h1 class="lg:text-6xl text-3xl mt-4 text-black dark:text-white font-extrabold tracking-widest uppercase text-center mb-8">
+    <h1 class="lg:text-6xl text-3xl mt-4 text-primary-blue dark:text-white font-extrabold tracking-widest uppercase text-center mb-8">
       Share your magical story with the world!
     </h1>
 
     <div class="flex flex-wrap">
 
-      <div class="max-w-7xl lg:w-5/12 mt-10 lg:p-4 space-y-6 text-gray-700 dark:text-gray-300 text-base leading-relaxed">
+      <div class="max-w-7xl lg:w-5/12 mt-10 lg:p-4 space-y-6 text-primary-blue dark:text-gray-300 text-base leading-relaxed">
         <div class="relative lg:h-[850px] h-[400px] w-full overflow-hidden rounded-3xl ring-1 ring-black/10">
           <video
             src="/public/assets/img/alfkids.webm"
@@ -26,12 +26,12 @@
       >
 
         <p class="text-justify">
-          <strong class="text-black dark:text-white text-lg">Hello, young author! 📖✨</strong> <br>
+          <strong class="text-primary-blue dark:text-white text-lg">Hello, young author! 📖✨</strong> <br>
           We love stories made with heart, imagination, and joy. Fill out this form to share your story with Kipenzi Kids.
         </p>
 
         <section class="space-y-4">
-          <h3 class="font-semibold text-lg text-black dark:text-white">Your Info</h3>
+          <h3 class="font-semibold text-lg text-primary-blue dark:text-white">Your Info</h3>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
@@ -132,7 +132,7 @@
         </section>
 
         <section class="space-y-4">
-          <h3 class="font-semibold text-lg text-black dark:text-white">Your Story Info</h3>
+          <h3 class="font-semibold text-lg text-primary-blue dark:text-white">Your Story Info</h3>
 
           <div class="relative">
             <input
@@ -153,7 +153,7 @@
           </div>
 
           <div>
-            <label class="block text-sm mb-2 text-gray-700 dark:text-gray-300">What kind of story is it? (choose any)</label>
+            <label class="block text-sm mb-2 text-black dark:text-gray-300">What kind of story is it? (choose any)</label>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
               <label
                 v-for="opt in genreOptions"
@@ -204,10 +204,10 @@
         </section>
 
         <section class="space-y-3">
-          <h3 class="font-semibold text-lg text-black dark:text-white">Your Story</h3>
+          <h3 class="font-semibold text-lg text-primary-blue dark:text-white">Your Story</h3>
 
           <div class="relative">
-            <label class="block text-sm mb-2 text-gray-700 dark:text-gray-300">
+            <label class="block text-sm mb-2 text-black dark:text-gray-300">
               Write or paste your story (max 500 words) *
             </label>
 
@@ -230,7 +230,7 @@
         </section>
 
         <section class="space-y-2">
-          <h3 class="font-semibold text-lg text-black dark:text-white">Draw Your Character</h3>
+          <h3 class="font-semibold text-lg text-primary-blue dark:text-white">Draw Your Character</h3>
 
           <div
             class="relative border-2 border-dashed border-gray-400 dark:border-gray-600 rounded-lg p-6 text-center
@@ -277,9 +277,9 @@
 
         <!-- Permission -->
         <section class="space-y-4">
-          <h3 class="font-semibold text-lg text-black dark:text-white">Parent/Guardian Permission</h3>
+          <h3 class="font-semibold text-lg text-primary-blue dark:text-white">Parent/Guardian Permission</h3>
 
-          <label class="inline-flex items-start text-sm text-gray-700 dark:text-gray-300">
+          <label class="inline-flex items-start text-sm text-black dark:text-gray-300">
             <input type="checkbox" v-model="form.consent" class="mt-1 mr-2 accent-emerald-600" />
             <span>
               I am the parent/guardian and I grant <strong>Kipenzi Kids</strong> the right to

@@ -25,23 +25,21 @@
               <a href="/speakers-list">
                 <div
                   class="relative overflow-hidden bg-white shadow-md flex justify-center items-center"
-                  style="border-radius: 200px 200px 200px 200px / 100px 100px 100px 100px;"
+                  style="border-radius: 200px 200px 200px 200px / 200px 200px 200px 200px;"
                 >
                   <!-- Speaker Image -->
                   <img
                     :src="`/storage/${speaker.image}`"
                     :alt="speaker.name"
-                    class="w-full h-[420px] object-cover"
+                    class="w-full h-[490px] object-cover"
                   />
 
-                  <!-- Optional overlay name (if you want) -->
-                  <!--
-                  <div class="absolute bottom-4 left-0 right-0 text-center">
-                    <h3 class="font-semibold text-primary-blue uppercase text-lg bg-white/70 px-2 py-1 inline-block rounded">
-                      {{ speaker.name }}
-                    </h3>
-                  </div>
-                  -->
+                  <!-- Side image positioned on the right -->
+                  <img
+                    :src="sideimage"
+                    alt=""
+                    class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-24 h-full"
+                  />
                 </div>
               </a>
             </div>
@@ -62,6 +60,8 @@ import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import { Carousel, Slide } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
+
+const sideimage = '/assets/img/speakers-side-decor.webp'
 
 const homeSpeakers = ref([])
 // const carousel = ref(null)
