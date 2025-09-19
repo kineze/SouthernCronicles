@@ -65,11 +65,11 @@
 
 </section> --}}
 
-<section class="w-full max-w-screen-2xl  mx-auto p-3">
+{{-- <section class="w-full max-w-screen-2xl  mx-auto p-3">
 
     <next-count-down></next-count-down>
 
-</section>
+</section> --}}
 
 <section class="w-full max-w-screen-2xl -mt-10 mx-auto p-3">
 
@@ -82,7 +82,7 @@
 
 @endsection
 
-@push('scripts')
+{{-- @push('scripts')
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         var countDownDate = new Date("{{ $nextFestival->start_at }}").getTime();
@@ -129,4 +129,4 @@
         }, 1000);
     });
 </script>
-@endpush
+@endpush --}}
