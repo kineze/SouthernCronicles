@@ -6,23 +6,27 @@
 
     <div class="flex flex-wrap">
 
-      <div class="max-w-7xl lg:w-5/12 mt-10 lg:p-4 space-y-6 text-primary-blue dark:text-gray-300 text-base leading-relaxed">
-        <div class="relative lg:h-[850px] h-[400px] w-full overflow-hidden rounded-3xl ring-1 ring-black/10">
-          <video
-            src="/public/assets/img/alfkids.webm"
-            autoplay
-            muted
-            loop
-            playsinline
-            class="absolute inset-0 w-full h-full object-cover aspect-auto bg-black"
-          ></video>
+      <div class="lg:w-5/12 lg:pr-6">
+    <div class="lg:sticky lg:top-3">
+      <div class="relative lg:h-[850px] h-[400px] w-full overflow-hidden rounded-3xl ring-1 ring-black/10">
+        <video
+          src="/public/assets/img/alfkids.webm"
+          autoplay
+          muted
+          loop
+          playsinline
+          class="absolute inset-0 w-full h-full object-cover aspect-auto bg-black"
+        ></video>
 
-          <div class=" bg-white text-end p-2 z-50 text-white font-bold w-full absolute bottom-0 bg-opacity-20 backdrop-blur-2xl -mt-12">KIPENZI™</div>
+        <div class="bg-white text-end p-2 z-50 text-white font-bold w-full absolute bottom-0 bg-opacity-20 backdrop-blur-2xl -mt-12">
+          KIPENZI™
         </div>
       </div>
+    </div>
+  </div>
 
       <div
-        class="mt-10 max-w-4xl lg:w-7/12 lg:p-4 mx-auto bg-white dark:bg-gray-800 rounded-lg shadow space-y-6 lg:sticky lg:top-4 lg:max-h-[100svh] lg:overflow-y-auto"
+        class="mt-10 max-w-4xl lg:w-7/12 lg:p-4 mx-auto bg-white dark:bg-gray-800 rounded-lg shadow space-y-6"
       >
 
         <p class="text-justify">
