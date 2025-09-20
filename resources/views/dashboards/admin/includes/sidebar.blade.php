@@ -3,11 +3,19 @@
   <div class="flex items-center justify-center px-3 h-24 border-b border-gray-500 dark:border-gray-700">
     <a href="{{ url('/home') }}" class="relative flex justify-center w-full items-center">
 
-      <img src="/assets/img/logo.webp" alt="logo" class="sidebar-logo sidebar-logo-full block h-24 w-auto dark:hidden transition-opacity duration-200" loading="lazy" />
+      <img src="/assets/img/sou-logo.webp" alt="logo" class="sidebar-logo sidebar-logo-full block h-16 w-auto dark:hidden transition-opacity duration-200" loading="lazy" />
 
-      <img src="/assets/img/logo.webp" alt="logo" class="sidebar-logo sidebar-logo-full hidden dark:block h-16 w-auto transition-opacity duration-200" loading="lazy" />
+      <img src="/assets/img/sou-logo-white.webp" alt="logo" class="sidebar-logo sidebar-logo-full hidden dark:block h-16 w-auto transition-opacity duration-200" loading="lazy" />
 
-      <img src="/assets/img/logo.webp" alt="logo Icon" class="sidebar-logo sidebar-logo-icon hidden h-14 w-14 transition-opacity duration-200" loading="lazy" />
+      <img src="/assets/img/sou-logo-icon.webp"
+     alt="logo Icon"
+     class="sidebar-logo sidebar-logo-icon block h-14 dark:hidden transition-opacity duration-200"
+     loading="lazy" />
+
+    <img src="/assets/img/sou-logo-icon-white.webp"
+     alt="logo Icon Dark"
+     class="sidebar-logo sidebar-logo-icon hidden dark:block h-14 transition-opacity duration-200"
+     loading="lazy" />
     </a>
   </div>
 

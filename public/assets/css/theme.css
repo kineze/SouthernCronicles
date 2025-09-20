@@ -5,7 +5,8 @@
 }
 
 .sidebar-logo-full { opacity: 1; transition: opacity .18s ease; }
-.sidebar-logo-icon { opacity: 0; transition: opacity .18s ease; }
+.sidebar-logo-icon { opacity: 1; transition: opacity .18s ease; }
+
 
 #sidebar[data-mini="true"] .sidebar-logo-full {
   opacity: 0;
@@ -13,13 +14,13 @@
   position: absolute;
   inset: 0;
 }
-#sidebar[data-mini="true"] .sidebar-logo-icon {
+/* #sidebar[data-mini="true"] .sidebar-logo-icon {
   opacity: 1;
   display: block;
-}
-#sidebar[data-mini="false"] .sidebar-logo-icon {
-  display: none;
-}
+} */
+/* #sidebar[data-mini="false"] .sidebar-logo-icon {
+  display: none !important;
+} */
 
 #toggleSidebar i {
   transition: transform .25s ease;

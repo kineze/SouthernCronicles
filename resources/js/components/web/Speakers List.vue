@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="lg:text-7xl text-3xl mt-12 lg:mt-4 font-nordique text-primary-blue font-bold tracking-widest text-center">
+    <h1 class="lg:text-7xl text-3xl mt-12 lg:mt-4  text-primary-blue font-bold tracking-widest text-center">
       Speakers
     </h1>
 

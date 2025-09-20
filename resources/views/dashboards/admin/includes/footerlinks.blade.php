@@ -324,7 +324,8 @@
     const cfg = (window.SidebarThemeConfig && window.SidebarThemeConfig.logos) || {};
     const lightLogo = cfg.light || '/assets/img/logo.webp';
     const darkLogo  = cfg.dark  || '/assets/img/logo.webp';
-    const iconLogo  = cfg.icon  || '/assets/img/logo.webp';
+    const iconLogoLight = cfg.iconLight || '/assets/img/sou-logo-icon.webp';
+    const iconLogoDark  = cfg.iconDark  || '/assets/img/sou-logo-icon-white.webp';
 
 
     // If you have alternate icon versions you can extend config.
@@ -376,22 +377,19 @@
     }
 
     function swapLogos(isLightBackground) {
-      // We have:
-      //  - .sidebar-logo-full (two variants currently in DOM: light + dark)
-      //  - .sidebar-logo-icon (icon)
-      // Strategy: Hide both full logos, then inject correct one? Easier: toggle their display/opacity.
-      const fullLight = Array.from(document.querySelectorAll('img.sidebar-logo-full.dark\\:hidden')); // original light
-      const fullDark  = Array.from(document.querySelectorAll('img.sidebar-logo-full.dark\\:block'));  // original dark
-      // Actually simpler: direct src swap on the first .sidebar-logo-full elements (both variants).
+      // Swap full logos
       const fullLogos = document.querySelectorAll('.sidebar-logo-full');
-
       fullLogos.forEach(img => {
-        // Choose which file
         img.src = isLightBackground ? lightLogo : darkLogo;
-        // Force show one, hide the other dark-mode specific classes won't matter because we unify them
-        // Let dark-mode media queries remain for system dark if you prefer; else you could remove that logic.
+      });
+
+      // Swap icon logos
+      const iconLogos = document.querySelectorAll('.sidebar-logo-icon');
+      iconLogos.forEach(img => {
+        img.src = isLightBackground ? iconLogoLight : iconLogoDark;
       });
     }
+
 
     function restoreDefaultLogos() {
       // Reset to original logic: first has light version (non-dark), second has dark variant.

@@ -7,9 +7,9 @@
         <div class=" bg-white dark:border-neutral-700 dark:border w-full md:shadow-xl dark:shadow-none p-6 shadow-gray-300 dark:shadow-neutral-800">
 
         <div class="w-full flex flex-col p-6 items-center justify-center">
-        <img src="{{asset('assets/img/logo.webp')}}" class="inline-block  max-w-full transition-all duration-200 ease-soft-in-out h-24 dark:hidden" alt="main_logo" />
-        <img src="{{asset('assets/img/logo.webp')}}" class="hidden  max-w-full transition-all duration-200 ease-soft-in-out h-20 dark:inline-block" alt="main_logo" />
-        <h4 class="font-bold inline-flex flex-col space-y-2 leading-3 text-xl dark:text-white text-center uppercase text-black mb-0">The Asian <br> <span class=" text-xl">Literary Festival - Sri Lanka</span></h4>
+        <img src="{{asset('assets/img/sou-logo.webp')}}" class="inline-block  max-w-full transition-all duration-200 ease-soft-in-out h-24 dark:hidden" alt="main_logo" />
+        <img src="{{asset('assets/img/sou-logo.webp')}}" class="hidden  max-w-full transition-all duration-200 ease-soft-in-out h-20 dark:inline-block" alt="main_logo" />
+        {{-- <h4 class="font-bold inline-flex flex-col space-y-2 leading-3 text-xl dark:text-white text-center uppercase text-black mb-0">Southern Chronicles</h4> --}}
 
         </div>
 
@@ -57,7 +57,7 @@
                         @endif --}}
         
 
-                        <button class=" dark:bg-blue-600 mb-0 font-semibold text-sm text-white py-2 px-4 ml-2 shadow-lg flex items-center gap-3 bg-black">
+                        <button class=" dark:bg-blue-600 mb-0 font-semibold text-sm text-white py-2 px-4 ml-2 shadow-lg flex items-center gap-3 bg-primary-blue">
                             {{ __('Log in') }}
 
                             {{-- <i class="fa-solid fa-arrow-right"></i> --}}
@@ -70,7 +70,7 @@
 
     </div>
 
-    <div class="bg-black p-2 w-full"></div>
+    <div class="bg-primary-blue p-2 w-full"></div>
 </div>
     
 
