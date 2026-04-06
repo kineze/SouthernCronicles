@@ -51,7 +51,7 @@
 
       <div >
 
-         <div class="flex w-full flex-wrap justify-center py-12 px-3">
+         {{-- <div class="flex w-full flex-wrap justify-center py-12 px-3">
             <!-- Left: The Living Memory Vault -->
             <div class="w-full lg:w-6/12 text-gray-700 dark:text-gray-300 pr-6 space-y-5">
 
@@ -102,7 +102,7 @@
 
             </div>
         </div>
-    
+     --}}
         <div class="flex w-full flex-wrap justify-center py-6 px-3">
 
 
