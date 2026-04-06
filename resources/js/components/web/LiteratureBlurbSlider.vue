@@ -2,7 +2,7 @@
   <section class="relative w-full max-w-screen-xl mx-auto font-poppins" ref="wrap">
     <!-- Language switcher -->
 
-    <!-- <div class="flex justify-start gap-2 mb-4">
+    <div v-if="enableLanguageTabs" class="flex justify-start gap-2 mb-4">
       <button
         v-for="(lang, i) in langs"
         :key="lang.key"
@@ -17,13 +17,13 @@
 
         <span>{{ lang.label }}</span>
       </button>
-    </div> -->
+    </div>
 
     <!-- Slider -->
     <div class="overflow-hidden">
       <div
         class="flex transition-transform duration-700 ease-out will-change-transform"
-        :style="{ transform: `translateX(-${active * 100}%)` }"
+        :style="{ transform: `translateX(-${currentSlideIndex * 100}%)` }"
       >
         <article
           v-for="(lang, i) in langs"
@@ -31,8 +31,16 @@
           class="min-w-full"
         >
           <p class="dark:text-gray-200 text-black text-justify leading-7">
-            {{ lang.text }}
+            {{ displayText(lang) }}
           </p>
+          <button
+            v-if="isLongText(lang.text)"
+            @click="toggleReadMore(lang.key)"
+            class="mt-3 text-sm font-semibold text-primary-blue hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-blue"
+            type="button"
+          >
+            {{ expanded[lang.key] ? 'Read less' : 'Read more' }}
+          </button>
         </article>
       </div>
     </div>
@@ -42,12 +50,17 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+const WORD_LIMIT =130
 
 const props = defineProps({
+  enableLanguageTabs: {
+    type: Boolean,
+    default: true
+  },
   englishText: {
     type: String,
     default:
-      "Literature is the lifeblood of human understanding, the bridge between hearts and minds across all divides. The Asian Literary Festival Gampaha, the island's first free literary celebration, serves as the epicentre where writers, thinkers, and artists from across the globe converge with Sri Lanka's local literary voices, fostering dynamic cross-fertilisation. Set in Gampaha—birthplace of numerous Sri Lankan creative luminaries—this festival transforms literary engagement from privilege to public right, celebrating the power of storytelling to unite, inspire, and transform communities across cultural and linguistic boundaries."
+      "At the northern tip of the island, where the Palk Strait meets millennia of memory, Jaffna has long been a civilisation unto itself — ancient, resilient, and luminous with creative life. For all its richness, it has remained one of South Asia's most quietly kept secrets: a city of extraordinary temples, layered histories, living folklore, and a culinary tradition of uncommon refinement, known intimately to those who have found their way here, yet still to be discovered by much of the world. The Asian Literary Festival arrives in Jaffna not merely to celebrate what already exists, but to announce what has always been true — that this peninsula is a cultural destination of the first order, and that its time as a gathering place for the world is long overdue. Over two immersive days, the festival brings storytelling, music, dance, folklore, culinary art, and visual creation to this storied city, with sessions unfolding in Tamil, Sinhala, and English. International authors and artists from across the subcontinent and beyond join local voices shaped by one of the world's oldest living literary traditions. Jaffna is not a destination at the edge of the map. It is an inseparable thread in the larger fabric of Sri Lanka's civilisational legacy — and ALF Jaffna 2026 is its formal introduction to the world."
   },
   sinhalaText: {
     type: String,
@@ -68,6 +81,11 @@ const props = defineProps({
 })
 
 const active = ref(0) // 0: Sinhala, 1: English, 2: Tamil
+const expanded = ref({
+  en: false,
+  si: false,
+  ta: false
+})
 
 const langs = computed(() => ([
   { key: 'en', label: 'En', title: 'English', text: props.englishText },
@@ -75,7 +93,33 @@ const langs = computed(() => ([
   { key: 'ta', label: 'த', title: 'Tamil',  text: props.tamilText }
 ]))
 
+const currentSlideIndex = computed(() => (props.enableLanguageTabs ? active.value : 0))
+
+function normalizedWords(text = '') {
+  return text.trim().split(/\s+/).filter(Boolean)
+}
+
+function getPreviewText(text = '') {
+  const words = normalizedWords(text)
+  if (words.length <= WORD_LIMIT) return text
+  return `${words.slice(0, WORD_LIMIT).join(' ')}...`
+}
+
+function isLongText(text = '') {
+  return normalizedWords(text).length > WORD_LIMIT
+}
+
+function displayText(lang) {
+  if (expanded.value[lang.key]) return lang.text
+  return getPreviewText(lang.text)
+}
+
+function toggleReadMore(langKey) {
+  expanded.value[langKey] = !expanded.value[langKey]
+}
+
 function go(i) {
+  if (!props.enableLanguageTabs) return
   if (i < 0 || i >= langs.value.length) return
   active.value = i
 }

@@ -19,13 +19,6 @@
 
         <div class=" w-4/12 flex  justify-end items-center z-50 rounded-es-3xl">
           <div class="">
-          <a href="/" >
-            <img
-              :src="trogonUrl"
-              class="inline-block max-w-full transition-all lg:w-44 w-32  duration-200 ease-soft-in-out"
-              alt="main_logo"
-            />
-          </a>
           <a href="/">
             <img
               :src="logoUrl"

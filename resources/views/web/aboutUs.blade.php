@@ -11,7 +11,7 @@
                 <h1 class="tracking-[8px] lg:text-5xl text-4xl uppercase font-bold pt-3 text-primary-blue leading-tight">
                     Southern <br>Chronicles
                 </h1>
-                <h2 class="font-semibold tracking-[10px] text-primary-blue uppercase text-3xl"></h2>
+                <h2 class="font-semibold tracking-[10px] text-primary-blue uppercase text-3xl">Jaffna</h2>
                             {{-- <img src="{{ asset('assets/img/sou-logo.webp')}}" alt="" class="w-48 lg:w-72 object-contain"> --}}
             </div>
         </div>
@@ -35,12 +35,31 @@
            </div>
            
             <div class="w-full px-6 lg:w-6/12">
-                <h2 class="font-semibold text-primary-blue uppercase text-start text-8xl">About</h2>
+                <h2 class="font-semibold text-primary-blue uppercase text-start text-8xl">Our Story</h2>
                 <h1 class="tracking-[10px] text-4xl uppercase font-bold text-primary-blue leading-tight">
                     The Fastest Growing Global Network of Festivals
                 </h1>
 
-                <about-us-paragraph-slider></about-us-paragraph-slider>
+                <div class="mt-6 space-y-5 text-gray-800 leading-7 text-justify">
+                    <p>
+                        Founded by Sri Lankan writer Pramudith D Rupasinghe - a humanitarian diplomat who transitioned into fiction writing after two decades of service across Africa, Asia, and Europe - this movement began with a deep desire to democratise literature and culture.
+                    </p>
+                    <p>
+                        What started as a magazine gradually transformed into a larger collective force through strategic vision and unwavering commitment. From this evolution emerged The Asian Literary Festival - not simply as an event, but as a powerful testament to collaborative creativity transcending borders.
+                    </p>
+                    <p>
+                        At the heart of this journey stands The Asian Review, a Sri Lankan literary magazine that challenged the belief that literature and culture are limited luxuries. From this foundation arose The Asian Group of Literature - now recognised as Asia's largest creative enterprise network, bringing together six distinct creative social enterprises under one shared purpose: every voice matters.
+                    </p>
+                    <p>
+                        Gathering thinkers, writers, artists, activists, and entrepreneurs from across the world, Rupasinghe built a counter-current to the elitist construct that literature belongs only to privileged circles. The Asian Literary Festival became a global people's movement - birthed from the global majority, yet open to the entire world.
+                    </p>
+                    <p>
+                        This vision continues to expand rapidly - evolving into what is poised to become the fastest-growing literary festival network worldwide. Each year, The Asian Literary Festival selects a host city through The Asian Committee - an independent body formed to preserve the festival's democratic ethos and global reach.
+                    </p>
+                    <p>
+                        Today, this rotating celebration travels across Asia, Europe, Africa, and the Americas - concluding annually with interconnected literary gatherings that illuminate continents and cultures through shared creative expression.
+                    </p>
+                </div>
             </div>
         </div>
     </div>

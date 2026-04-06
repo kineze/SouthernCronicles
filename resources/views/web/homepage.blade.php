@@ -14,8 +14,7 @@
                             <h1 class="tracking-[8px] lg:text-5xl text-4xl uppercase font-bold pt-3 text-primary-blue leading-tight">
                                 Southern <br>Chronicles
                             </h1>
-                            <h2 class="font-semibold tracking-[10px] text-primary-blue uppercase text-3xl"></h2>
-                                        {{-- <img src="{{ asset('assets/img/sou-logo.webp')}}" alt="" class="w-48 lg:w-72 object-contain"> --}}
+                            <h2 class="font-semibold tracking-[10px] text-primary-blue uppercase text-3xl">Jaffna</h2>
                         </div>
                     </div>
                 </div>
@@ -52,12 +51,12 @@
                     </div>
 
                     <div class="z-[200] w-full lg:w-6/12 relative mt-10 lg:mt-0">
-                        <h2 class="font-semibold text-primary-blue uppercase text-start text-7xl">It Isn't a Luxury…</h2>
-                        <h1 class="tracking-[10px] lg:text-4xl text-2xl mt-3 uppercase font-bold text-primary-blue leading-tight">
-                            Bridging Worlds Through Words
+                        <h2 class="font-semibold text-primary-blue uppercase text-start text-5xl">Threads of Tomorrow</h2>
+                        <h1 class="tracking-[10px] lg:text-2xl text-2xl mt-3 uppercase font-bold text-primary-blue leading-tight">
+                            The Asian Literary Festival
                         </h1>
-                        <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl mt-5"></h2>
-                        <literature-blurb-slider></literature-blurb-slider>
+                        <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl mt-5">Jaffna 2026</h2>
+                        <literature-blurb-slider :enable-language-tabs="false"></literature-blurb-slider>
                     </div>
                 </div>
             </div>
