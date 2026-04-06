@@ -10,7 +10,7 @@
             <div class="relative z-30 flex flex-col items-start justify-center pt-12">
                 <h2 class="font-bold text-primary-blue uppercase text-8xl">2026</h2>
                 <h1 class="tracking-[8px] lg:text-5xl text-4xl uppercase font-bold pt-3 text-primary-blue leading-tight">
-                    Southern <br>Chronicles
+                    Vaanam, <br> The Asian <br>Literary Festival
                 </h1>
                 <h2 class="font-semibold tracking-[10px] text-primary-blue uppercase text-3xl">Jaffna</h2>
                             {{-- <img src="{{ asset('assets/img/sou-logo.webp')}}" alt="" class="w-48 lg:w-72 object-contain"> --}}
