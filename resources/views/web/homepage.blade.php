@@ -2,43 +2,174 @@
 
 @section('content')
 
+<section class="w-full hidden md:block max-w-screen-2xl mx-auto relative">
+  <!-- Container for layers -->
+  <div class="relative w-full z-0 rounded-3 min-h-[130vh]">
+
+   <div id="splash-stage"
+        class="pointer-events-none absolute inset-0 z-[0] overflow-hidden">
+        
+        <video autoplay muted loop playsinline
+            class="absolute inset-0 w-full h-full object-cover">
+            <source src="{{ asset('assets/img/sky-loop.mp4') }}" type="video/webm">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Layer 5: Farthest Background -->
+    <div class="parallax-layer absolute z-50 w-full bottom-20" data-speed="0.2">
+      <img src="{{ asset('assets/img/bottom-layer-bg.webp') }}" class="w-full object-contain" alt="Layer 5">
+    </div>
+    
+    <!-- Layer 4 -->
+    <div class="parallax-layer absolute z-40 w-full bottom-0" data-speed="0.3">
+      {{-- <img src="{{ asset('assets/img/layer-004.webp') }}" class="w-full object-contain" alt="Layer 4"> --}}
+    </div>
+
+    <!-- Layer 3: Looping layer -->
+  
+
+    <!-- Layer 1: Foreground -->
+    <div class="parallax-layer absolute z-10 w-full bottom-44" data-speed="0.3">
+      <img src="{{ asset('assets/img/center-hero-block.webp') }}" class="w-full object-contain" alt="Layer 1">
+    </div>
+
+ 
+
+    <!-- Foreground Content -->
+    <div class="relative z-60 flex flex-col items-start justify-center p-3 pt-32 lg:pt-14">
+      <h2 class="font-semibold  text-primary-blue uppercase text-8xl">2026</h2>
+      <h1 class="tracking-[5px] text-primary-blue text-5xl uppercase font-bold  leading-tight">
+        The Asian Literary <br> Festival  <span class="font-semibold tracking-[10px]  text-primary-blue uppercase text-3xl"> - jaffna</span>
+      </h1>
+      
+    </div>
+
+  </div>
+  
+
+
+</section>
+
+<section class="w-full md:hidden max-w-screen-2xl -mt-6 mx-auto relative">
+  <!-- Container for layers -->
+  <div class="relative w-full z-0 rounded-3 min-h-[100vh]">
+
+    <!-- Layer 5: Farthest Background -->
+    <div class="parallax-layer absolute z-50 w-full bottom-0" data-speed="0.2">
+      <img src="{{ asset('assets/img/layer-005.webp') }}" class="w-full object-contain" alt="Layer 5">
+    </div>
+    
+    <!-- Layer 4 -->
+    <div class="parallax-layer absolute z-40 w-full bottom-0" data-speed="0.3">
+      <img src="{{ asset('assets/img/layer-004.webp') }}" class="w-full object-contain" alt="Layer 4">
+    </div>
+
+    <!-- Layer 3: Looping layer -->
+    <div class="parallax-layer absolute z-30 -bottom-5 w-full overflow-hidden" data-speed="0.3">
+      <img src="{{ asset('assets/img/layer-002.webp') }}" class="w-full bob-y -mb-2 object-contain" alt="Layer 2">
+
+      <!-- Bob the entire marquee vertically -->
+      <div class="loop-viewport " style="--bob-amp:12px; --bob-dur:5s">
+        <div class="loop-track">
+          <div class="loop-group">
+            <img src="{{ asset('assets/img/layer-003.webp') }}" alt="Layer 3">
+            <img src="{{ asset('assets/img/layer-003.webp') }}" alt="Layer 3">
+            <img src="{{ asset('assets/img/layer-003.webp') }}" alt="Layer 3">
+            <img src="{{ asset('assets/img/layer-003.webp') }}" alt="Layer 3">
+          </div>
+          <div class="loop-group" aria-hidden="true">
+            <img src="{{ asset('assets/img/layer-003.webp') }}" alt="Layer 3">
+            <img src="{{ asset('assets/img/layer-003.webp') }}" alt="Layer 3">
+            <img src="{{ asset('assets/img/layer-003.webp') }}" alt="Layer 3">
+            <img src="{{ asset('assets/img/layer-003.webp') }}" alt="Layer 3">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Layer 1: Foreground -->
+    <div class="parallax-layer absolute z-10 w-full bottom-12" data-speed="0.3">
+      <img src="{{ asset('assets/img/layer-001.webp') }}" class="w-full object-contain" alt="Layer 1">
+    </div>
+
+    <div class="parallax-layer absolute z-20 w-full top-20" data-speed="0.3">
+        <img src="{{ asset('assets/img/top-layer-new.webp') }}" class="w-full object-contain" alt="Buildings">
+    </div>
+
+    <!-- Foreground Content -->
+    <div class="relative z-60 flex flex-col items-start justify-center p-3 pt-32 lg:pt-28">
+      <h2 class="font-semibold text-black uppercase text-8xl">
+      <h1 class="tracking-[5px] text-5xl uppercase font-bold text-black leading-tight">
+        The Asian Literary <br> Festival
+      </h1>
+      <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl">Gampaha</h2>
+    </div>
+
+  </div>
+  
+    <div class="bg-transparent">
+        <div  class=" relative flex pb-24 flex-wrap bg-white z-[1000] bg-opacity-50 backdrop-blur-xl bg-transparent items-start justify-end px-6 lg:px-12 pt-36">
+            <div class="w-full lg:w-6/12">
+               <div class="">
+                    <div class=" mx-auto px-4 text-center py-6">
+                            @if($nextFestival)
+                                <h1 class="text-4xl md:text-5xl uppercase font-extrabold text-active-purple mb-4 animate-pulse">{{$nextFestival->title}}</h1>
+                                <p class="text-xl md:text-xl uppercase font-extrabold text-active-purple mb-4 animate-pulse"></p>
+                                 <h2 class="font-semibold text-black uppercase text-3xl">
+                                    {{ \Carbon\Carbon::parse($nextFestival->start_at)->format('jS') }}
+                                    to
+                                    {{ \Carbon\Carbon::parse($nextFestival->end_at)->format('jS F Y') }}
+                                </h2>
+
+                                <h1 class="tracking-[5px] text-xl uppercase font-bold text-black leading-tight">
+                                     {{ $nextFestival->location }}
+                                </h1>
+                                <div class="flex flex-wrap justify-center gap-2 py-6 lg:py-12" id="countdown-mobile">
+                                    <div class="bg-white/50 backdrop-blur-sm rounded-xl p-2">
+                                        <span class="text-xl font-bold text-black" id="days-mobile"></span>
+                                        <p class="text-black text-sm mb-0">Days</p>
+                                    </div>
+                                    <div class="bg-white/50 backdrop-blur-sm rounded-xl p-2">
+                                        <span class="text-xl font-bold text-black" id="hours-mobile"></span>
+                                        <p class="text-black text-sm mb-0">Hours</p>
+                                    </div>
+                                    <div class="bg-white/50 backdrop-blur-sm rounded-xl p-2">
+                                        <span class="text-xl  font-bold text-black" id="minutes-mobile"></span>
+                                        <p class="text-black text-sm mb-0">Mins</p>
+                                    </div>
+                                    <div class="bg-white/50 backdrop-blur-sm rounded-xl p-2">
+                                        <span class="text-xl font-bold text-black" id="seconds-mobile"></span>
+                                        <p class="text-black text-sm mb-0">Secs</p>
+                                    </div>
+                                </div>
+                                 <div class="flex justify-center items-center mt-6">
+                                    <register-now-modal></register-now-modal>
+                                </div>
+                            @else
+                               <img src="{{ asset('assets/img/image-placeholder.webp') }}" class="h-full" alt="Asian Literary Festival">
+                            @endif
+                        </div>
+               </div>
+          </div>
+          <div class="w-full lg:w-6/12">
+            <h2 class="font-semibold text-black uppercase text-start lg:text-7xl mb-3 text-5xl">Not a Luxury…</h2>
+              <h1 class="lg:tracking-[10px] tracking-[6px] lg:text-4xl text-xl uppercase font-bold text-black leading-tight">
+                  Bridging Worlds...
+              </h1>
+          <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl mt-5"></h2>
+          {{-- <p class="text-gray-700 text-justify">Literature is the lifeblood of human understanding, the bridge between hearts and minds across all divides. The Asian Literary Festival Gampaha, the island's first free literary celebration, serves as the epicentre where writers, thinkers, and artists from across the globe converge with Sri Lanka's local literary voices, fostering dynamic cross-fertilisation.
+            Set in Gampaha—birthplace of numerous Sri Lankan creative luminaries—this festival transforms literary engagement from privilege to public right, celebrating the power of storytelling to unite, inspire, and transform communities across cultural and linguistic boundaries.
+        </p> --}}
+
+          <literature-blurb-slider></literature-blurb-slider>
+          </div>
+      </div>
+    </div>
+
+</section>
 
 <section class="w-full block max-w-screen-2xl top-0 mx-auto relative">
-
-            <div class="relative w-full z-0 rounded-3 lg:min-h-[100vh] min-h-[70vh] bg-white">
-
-                <div class="w-full rounded-xl bg-cover absolute  bg-top z-[200] py-8 px-4 lg:pl-5">
-                    <div class='w-full rounded-xl rounded-bl-none bg-transparent flex bg-cover items-start'>
-                        <div class="relative z-30 flex flex-col items-start justify-center pt-12">
-                            <h2 class="font-bold text-primary-blue uppercase text-8xl">2026</h2>
-                            <h1 class="tracking-[8px] lg:text-5xl text-4xl uppercase font-bold pt-3 text-primary-blue leading-tight">
-                                Vaanam, <br> The Asian <br>Literary Festival
-                            </h1>
-                            <h2 class="font-semibold tracking-[10px] text-primary-blue uppercase text-3xl">Jaffna</h2>
-                        </div>
-                    </div>
-                </div>
-                <!-- Color Splash Stage (background with video) -->
-                <div id="splash-stage"
-                    class="pointer-events-none absolute inset-0 z-[5] overflow-hidden">
-                    
-                    <video autoplay muted loop playsinline
-                        class="absolute inset-0 w-full h-full object-cover">
-                        <source src="{{ asset('assets/img/southern-hero-video.webm') }}" type="video/webm">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-            
-                <div class="parallax-layer absolute top-8 z-10 w-full" data-speed="0.2">
-                    <img src="{{ asset('assets/img/sother-hero-007.webp') }}" 
-                        class="w-full object-contain" alt="Layer 2">
-                </div>
-
-                <div class="parallax-layer absolute overflow-hidden z-[120] pl-40 -top-16 w-full" data-speed="0.4">
-                    <div class="w-full"></div>
-                </div>
-            </div>
-
             <div class=" bg-gray-200/10 backdrop-blur-xl">
                 <div  class=" relative flex pt-24 flex-wrap bg-black z-[1000] bg-opacity-50 backdrop-blur-xl bg-transparent items-start justify-end px-6 lg:px-12 ">
                     
@@ -63,6 +194,8 @@
             
 
 </section>
+
+
 
 
 <section class="w-full z-[200]  max-w-screen-2xl mx-auto">
