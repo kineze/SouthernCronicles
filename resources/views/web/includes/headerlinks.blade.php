@@ -6,13 +6,13 @@
     <link rel="icon" type="image/png" href="{{asset('assets/img/logo.webp')}}">
 
 
-    <meta property="og:title" content="ALF - 2026" />
+    <meta property="og:title" content="The Asian Literary Festival - jaffna" />
     <meta property="og:description" content="Bridging Worlds Through Words" />
-    <meta property="og:image" content="{{ asset('assets/img/og-image-sc.webp') }}" />
+    <meta property="og:image" content="{{ asset('assets/img/og-image.webp') }}" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="{{ url()->current() }}" />
     
-    <title>Southern Chronicles</title>
+    <title>The Asian Literary Festival - jaffna</title>
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
 
