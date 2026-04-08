@@ -4,10 +4,10 @@
 
 <section class="w-full max-w-screen-2xl mx-auto relative">
   <!-- Container for layers -->
-  <div class="relative w-full z-0 rounded-3  min-h-[70vh] md:min-h-[130vh]">
+  <div class="relative w-full z-0 rounded-3  min-h-[70vh] md:min-h-[80vh] lg:min-h-[130vh]">
 
    <div id="splash-stage"
-        class="pointer-events-non absolute inset-0 z-[0] overflow-hidden">
+        class="pointer-events-non md:mt-44 absolute inset-0 z-[0] overflow-hidden">
         
         <video autoplay muted loop playsinline
             class="absolute mt-80 md:mt-0 inset-0 w-full  object-contain">
@@ -35,7 +35,7 @@
 
 <section class="w-full block max-w-screen-2xl top-0 mx-auto relative">
             <div class=" bg-gray-200/10 backdrop-blur-xl">
-                <div  class=" relative flex pt-24 flex-wrap bg-black z-[1000] bg-opacity-50 backdrop-blur-xl bg-transparent items-start justify-end px-6 lg:px-12 ">
+                <div  class=" relative flex  flex-wrap bg-black z-[1000] bg-opacity-50 backdrop-blur-xl bg-transparent items-start justify-end px-6 lg:px-12 ">
                     
                     <div class="z-[200] w-full lg:w-6/12 relative">
                         <next-countdown-desktop :next-festival='@json($nextFestival)'>
