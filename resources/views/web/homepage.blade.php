@@ -6,7 +6,7 @@
   <!-- Container for layers -->
   <div class="relative w-full z-0 rounded-3  min-h-[70vh] md:min-h-[80vh] lg:min-h-[130vh]">
 
-   <div id="splash-stage"
+    <div id="splash-stage"
         class="pointer-events-non md:mt-44 absolute inset-0 z-[0] overflow-hidden">
         
         <video autoplay muted loop playsinline
@@ -20,11 +20,13 @@
 
     <!-- Foreground Content -->
     <div class="relative z-60 flex flex-col items-start justify-center p-3 pt-32 lg:pt-14">
-      <h2 class="font-semibold  text-primary-blue uppercase text-8xl">2026</h2>
+      <h2 class="font-semibold uppercase text-8xl">
+        <span class="text-[#F2C39A]">V</span><span class="text-[#C48A3A]">A</span><span class="text-[#4F6C9B]">A</span><span class="text-[#4F6A47]">N</span><span class="text-[#B25A2A]">A</span><span class="text-[#7B2D2D]">M</span>
+      </h2>
       <h1 class="tracking-[5px] text-primary-blue text-3xl lg:text-5xl uppercase font-bold  leading-tight">
-        The Asian Literary <br> Festival  <span class="font-semibold tracking-[10px]  text-primary-blue uppercase text-xl lg:text-3xl"> - jaffna</span>
+        The Asian Literary <br> Festival - Jaffna
       </h1>
-      
+      <h2 class="font-semibold tracking-[10px]  text-primary-blue uppercase text-xl lg:text-3xl">2026</h2>
     </div>
 
   </div>
@@ -46,7 +48,7 @@
                     </div>
 
                     <div class="z-[200] w-full lg:w-6/12 relative mt-10 lg:mt-0">
-                        <h2 class="font-semibold text-primary-blue uppercase text-start text-5xl">Threads of Tomorrow</h2>
+                        <h2 class="font-semibold text-primary-blue mb-4 uppercase text-start text-5xl">Threads of Tomorrow</h2>
                         {{-- <h1 class="tracking-[10px] lg:text-2xl text-2xl mt-3 uppercase font-bold text-primary-blue leading-tight">
                             The Asian Literary Festival
                         </h1>
@@ -82,11 +84,11 @@
 
 </section> --}}
 
-<section class="w-full max-w-screen-2xl mx-auto">
+{{-- <section class="w-full max-w-screen-2xl mx-auto">
 
     <up-coming-festivals></up-coming-festivals>
 
-</section>
+</section> --}}
 
 
 <section class="relative w-full max-w-screen-2xl flex flex-wrap mx-auto px-4">
@@ -164,11 +166,11 @@
 
 </section>
 
-<section class="w-full max-w-screen-2xl  mt-6 mx-auto">
+{{-- <section class="w-full max-w-screen-2xl  mt-6 mx-auto">
 
     <latest-news></latest-news>
    
-</section>
+</section> --}}
 
 {{-- <section class="w-full max-w-screen-2xl mx-auto">
 
@@ -214,52 +216,3 @@
 </section>
 
 @endsection
-
-{{-- @push('scripts')
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        var countDownDate = new Date("{{ $nextFestival->start_at }}").getTime();
-
-        var countdownFunction = setInterval(function () {
-            var now = new Date().getTime();
-            var timeLeft = countDownDate - now;
-
-            if (timeLeft > 0) {
-                var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-                var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-                var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-                const ids = ["days", "days-mobile"];
-                const hoursIds = ["hours", "hours-mobile"];
-                const minutesIds = ["minutes", "minutes-mobile"];
-                const secondsIds = ["seconds", "seconds-mobile"];
-
-                ids.forEach(id => {
-                    const el = document.getElementById(id);
-                    if (el) el.innerText = days;
-                });
-                hoursIds.forEach(id => {
-                    const el = document.getElementById(id);
-                    if (el) el.innerText = hours;
-                });
-                minutesIds.forEach(id => {
-                    const el = document.getElementById(id);
-                    if (el) el.innerText = minutes;
-                });
-                secondsIds.forEach(id => {
-                    const el = document.getElementById(id);
-                    if (el) el.innerText = seconds;
-                });
-
-            } else {
-                clearInterval(countdownFunction);
-                const cd1 = document.getElementById("countdown");
-                const cd2 = document.getElementById("countdown-mobile");
-                if (cd1) cd1.innerHTML = "<h2 class='text-white text-2xl'>Festival has started!</h2>";
-                if (cd2) cd2.innerHTML = "<h2 class='text-white text-2xl'>Festival has started!</h2>";
-            }
-        }, 1000);
-    });
-</script>
-@endpush --}}
