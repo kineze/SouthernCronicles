@@ -35,7 +35,7 @@
 
 <section class="w-full block max-w-screen-2xl top-0 mx-auto relative">
             <div class=" bg-gray-200/10 backdrop-blur-xl">
-                <div  class=" relative flex  flex-wrap bg-black z-[1000] bg-opacity-50 backdrop-blur-xl bg-transparent items-start justify-end px-6 lg:px-12 ">
+                <div  class=" relative flex pt-12 flex-wrap bg-black z-[1000] bg-opacity-50 backdrop-blur-xl bg-transparent items-start justify-end px-6 lg:px-12 ">
                     
                     <div class="z-[200] w-full lg:w-6/12 relative">
                         <next-countdown-desktop :next-festival='@json($nextFestival)'>
