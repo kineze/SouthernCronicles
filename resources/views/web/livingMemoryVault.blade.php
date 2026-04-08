@@ -7,14 +7,13 @@
     <div class="w-full rounded-xl bg-cover bg-top">
         <div class="w-full rounded-xl bg-cover  bg-top z-[200] py-8 px-4 lg:pl-5">
         <div class='w-full rounded-xl rounded-bl-none bg-transparent flex bg-cover items-start'>
-            <div class="relative z-30 flex flex-col items-start justify-center pt-12">
-                <h2 class="font-bold text-primary-blue uppercase text-8xl">2026</h2>
-                <h1 class="tracking-[8px] lg:text-5xl text-4xl uppercase font-bold pt-3 text-primary-blue leading-tight">
-                    Vaanam, <br> The Asian <br>Literary Festival
-                </h1>
-                <h2 class="font-semibold tracking-[10px] text-primary-blue uppercase text-3xl">Jaffna</h2>
-                            {{-- <img src="{{ asset('assets/img/sou-logo.webp')}}" alt="" class="w-48 lg:w-72 object-contain"> --}}
-            </div>
+            <div class="relative z-60 flex flex-col items-start justify-center p-3 pt-32 lg:pt-14">
+      <h2 class="font-semibold  text-primary-blue uppercase text-8xl">2026</h2>
+      <h1 class="tracking-[5px] text-primary-blue text-5xl uppercase font-bold  leading-tight">
+        The Asian Literary <br> Festival  <span class="font-semibold tracking-[10px]  text-primary-blue uppercase text-3xl"> - jaffna</span>
+      </h1>
+      
+    </div>
         </div>
     </div>
 
