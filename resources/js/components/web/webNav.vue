@@ -47,7 +47,7 @@
   >
     <div class="flex items-center justify-between">
       <h5 id="drawer-navigation-label" class="text-sm font-semibold text-black uppercase dark:text-gray-400">
-        Odisha Art & Literature Festival
+        THe ALF
       </h5>
 
       <button
