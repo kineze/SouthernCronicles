@@ -5,7 +5,7 @@
     </div>
     <div class="py-8 w-full max-w-screen-2xl flex flex-col">
         <Carousel 
-            :itemsToShow="5"
+            :itemsToShow="4"
             :wrapAround="true"
             :itemsToScroll="1"
             :autoplay="2000"
@@ -15,7 +15,7 @@
             :breakpoints="{
                 0: { itemsToShow: 1 },
                 768: { itemsToShow: 2 },
-                1024: { itemsToShow: 5 }
+                1024: { itemsToShow: 4 }
             }"
 
             v-model="currentSlide"
@@ -24,19 +24,19 @@
             <div class="p-3">
               <a href="/speakers-list">
                 <div
-                  class="relative overflow-visible bg-white border border-black/10 shadow-sm w-full max-w-[280px] mx-auto"
+                  class="relative overflow-hidden bg-white border border-black/10 shadow-sm w-[300px] h-[420px] mx-auto"
                 >
                   <img
                     :src="topShape"
                     alt=""
-                    class="absolute left-1/2 -translate-x-1/2 -top-7 w-24 md:w-28 z-20 pointer-events-none"
+                    class="absolute inset-0 w-full h-full object-fill z-20 pointer-events-none"
                   />
 
                   <!-- Speaker Image -->
                   <img
                     :src="`/storage/${speaker.image}`"
                     :alt="speaker.name"
-                    class="w-full h-[420px] object-cover object-top"
+                    class="w-full h-full object-cover object-top"
                   />
                 </div>
               </a>
@@ -72,4 +72,3 @@ const fetchHomeSpeakers = async () => {
 
 onMounted(fetchHomeSpeakers)
 </script>
-
