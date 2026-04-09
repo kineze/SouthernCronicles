@@ -67,7 +67,7 @@
           <img
             :src="selectedSrc"
             :alt="selectedSpeaker?.name"
-            class="w-40 h-40 lg:w-60 lg:h-60 object-cover rounded-none mx-auto mb-4"
+            class="w-40 h-40 lg:w-60 lg:h-60 object-cover rounded-full mx-auto mb-4"
           />
           <h3 class="text-xl font-bold text-black dark:text-white mb-2">{{ selectedSpeaker?.name }}</h3>
           <p class="text-gray-700 dark:text-gray-300 mb-4">{{ selectedSpeaker?.description }}</p>

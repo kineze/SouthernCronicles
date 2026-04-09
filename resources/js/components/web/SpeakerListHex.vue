@@ -31,8 +31,6 @@
               :card-height="cardHeight"
               :is-horizontal="isHorizontal"
               :card-width="cardWidth"
-              :border-radius-x="200"
-              :border-radius-y="200"
               @click="emitClick(sp)"
             />
           </div>
@@ -45,8 +43,6 @@
               :card-height="cardHeight"
               :is-horizontal="isHorizontal"
               :card-width="cardWidth"
-              :border-radius-x="200"
-              :border-radius-y="200"
               @click="emitClick(sp)"
             />
           </div>
@@ -67,8 +63,6 @@ import {
   h,
   nextTick
 } from 'vue'
-
-const sideimage = '/assets/img/speakers-side-decor.webp'
 
 /**
  * Props:
@@ -213,22 +207,21 @@ const SpeakerCard = defineComponent({
     isHorizontal: { type: Boolean, default: true },
     cardHeight: { type: Number, default: 500 },
     cardWidth: { type: Number, default: 600 },
-    borderRadiusX: { type: Number, default: 200 },
-    borderRadiusY: { type: Number, default: 200 },
   },
   emits: ['click'],
   setup(cardProps, { emit }) {
     const onClick = () => emit('click', cardProps.speaker)
+    const circleSize = () => Math.max(120, Math.min(cardProps.cardHeight, cardProps.cardWidth))
+
     return () =>
       h(
         'div',
         {
           class:
-            'relative overflow-hidden bg-white shadow-md flex justify-center items-center cursor-pointer',
+            'relative overflow-hidden bg-white shadow-md flex justify-center items-center cursor-pointer rounded-full',
           style: {
-            height: `${cardProps.cardHeight}px`,
-            width: cardProps.isHorizontal ? `${cardProps.cardWidth}px` : '5',
-            borderRadius: `${cardProps.borderRadiusX}px / ${cardProps.borderRadiusY}px`,
+            height: `${circleSize()}px`,
+            width: `${circleSize()}px`,
             marginRight: 'var(--gap, 16px)'
           },
           title: 'View speaker',
@@ -240,11 +233,6 @@ const SpeakerCard = defineComponent({
             alt: cardProps.speaker.name,
             class: 'w-full h-full object-cover',
             loading: 'lazy',
-          }),
-          h('img', {
-            src: sideimage,
-            alt: '',
-            class: 'absolute right-0 top-1/2 -translate-y-1/2 translate-x-[65px] h-full pointer-events-none',
           }),
         ]
       )
