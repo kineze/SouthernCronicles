@@ -26,12 +26,6 @@
                 <div
                   class="relative overflow-hidden bg-white border border-black/10 shadow-sm w-[300px] h-[420px] mx-auto"
                 >
-                  <img
-                    :src="topShape"
-                    alt=""
-                    class="absolute inset-0 w-full h-full object-fill z-20 pointer-events-none"
-                  />
-
                   <!-- Speaker Image -->
                   <img
                     :src="`/storage/${speaker.image}`"
@@ -58,8 +52,6 @@ import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import { Carousel, Slide } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
-
-const topShape = '/assets/img/shape_black.svg'
 
 const homeSpeakers = ref([])
 // const carousel = ref(null)
