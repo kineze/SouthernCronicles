@@ -24,21 +24,19 @@
             <div class="p-3">
               <a href="/speakers-list">
                 <div
-                  class="relative overflow-hidden bg-white flex justify-center items-center"
-                  style="border-radius: 200px 200px 200px 200px / 200px 200px 200px 200px;"
+                  class="relative overflow-visible bg-white border border-black/10 shadow-sm w-full max-w-[280px] mx-auto"
                 >
+                  <img
+                    :src="topShape"
+                    alt=""
+                    class="absolute left-1/2 -translate-x-1/2 -top-7 w-24 md:w-28 z-20 pointer-events-none"
+                  />
+
                   <!-- Speaker Image -->
                   <img
                     :src="`/storage/${speaker.image}`"
                     :alt="speaker.name"
-                    class="w-full h-[490px] object-cover"
-                  />
-
-                  <!-- Side image positioned on the right -->
-                  <img
-                    :src="sideimage"
-                    alt=""
-                    class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-24 h-full"
+                    class="w-full h-[420px] object-cover object-top"
                   />
                 </div>
               </a>
@@ -61,7 +59,7 @@ import axios from 'axios'
 import { Carousel, Slide } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
 
-const sideimage = '/assets/img/speakers-side-decor.webp'
+const topShape = '/assets/img/shape_black.svg'
 
 const homeSpeakers = ref([])
 // const carousel = ref(null)
@@ -74,5 +72,4 @@ const fetchHomeSpeakers = async () => {
 
 onMounted(fetchHomeSpeakers)
 </script>
-
 
