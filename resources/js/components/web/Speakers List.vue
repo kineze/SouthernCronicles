@@ -22,38 +22,23 @@
       </div>
     </div>
 
-    <!-- New marquee grid (desktop) -->
-    <div class="mt-10 hidden lg:block">
-      <SpeakerMarqueeGrid
-        :speakers="filteredSpeakers"
-        direction="horizontal"          
-        :columns-desktop="4"
-        :columns-mobile="2"
-        :gap="8"
-        :card-height="310"
-        :card-width="200"               
-        :duration-min="55"
-        :duration-max="60"
-        pause-on-hover
-        @item-click="openModalWith"
-      />
-
-    </div>
-
-    <!-- New marquee grid (mobile) -->
-    <div class="mt-10 lg:hidden">
-      <SpeakerMarqueeGrid
-        :speakers="filteredSpeakers"
-        :columns-desktop="4"
-        :columns-mobile="2"
-        :gap="12"
-        :card-height="360"
-        :duration-min="16"
-        :duration-max="22"
-        pause-on-hover
-        @item-click="openModalWith"
-      />
-      
+    <!-- Speakers grid -->
+    <div class="mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+      <button
+        v-for="sp in filteredSpeakers"
+        :key="sp.id"
+        type="button"
+        class="group relative overflow-hidden bg-white shadow-md flex justify-center items-center rounded-full aspect-square w-full"
+        :title="`View ${sp.name}`"
+        @click="openModalWith(sp)"
+      >
+        <img
+          :src="`/storage/${sp.image}`"
+          :alt="sp.name"
+          class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+          loading="lazy"
+        />
+      </button>
     </div>
 
     <!-- Modal -->
@@ -94,7 +79,6 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import axios from 'axios'
-import SpeakerMarqueeGrid from './SpeakerListHex.vue'
 
 const types = ref([])
 const speakers = ref([])
@@ -131,7 +115,12 @@ async function fetchTypes () {
 }
 async function fetchSpeakers () {
   const { data } = await axios.get('/api/speakers', { params: { ordered: true } })
-  speakers.value = Array.isArray(data) ? data : []
+  const list = Array.isArray(data) ? data : []
+  const uniqueById = new Map()
+  for (const sp of list) {
+    if (sp?.id != null) uniqueById.set(sp.id, sp)
+  }
+  speakers.value = Array.from(uniqueById.values())
 }
 
 onMounted(() => {

@@ -10,17 +10,17 @@
       <div
         v-for="(track, tIdx) in tracksFilled"
         :key="'track-' + tIdx"
-        class="relative overflow-hidden group"
-        :style="{ height: isHorizontal ? cardHeight + 'px' : containerHeight + 'px' }"
+        :class="enableLoop ? 'relative overflow-hidden group' : 'relative group'"
+        :style="{ height: isHorizontal ? (enableLoop ? cardHeight + 'px' : 'auto') : containerHeight + 'px' }"
       >
         <!-- Scroller: two stacks for seamless loop -->
         <div
-          :class="isHorizontal ? 'marquee-stack-h' : 'marquee-stack-v'"
+          :class="enableLoop ? (isHorizontal ? 'marquee-stack-h' : 'marquee-stack-v') : 'marquee-stack-static'"
           :style="{
-            animationDuration: durations[tIdx] + 's',
+            animationDuration: enableLoop ? durations[tIdx] + 's' : '0s',
             '--gap': gap + 'px'
           }"
-          :data-dir="tIdx % 2 === 0 ? 'forward' : 'reverse'"
+          :data-dir="enableLoop ? (tIdx % 2 === 0 ? 'forward' : 'reverse') : null"
         >
           <!-- stack #1 -->
           <div class="stack" :style="{ flexDirection: isHorizontal ? 'row' : 'column' }">
@@ -35,7 +35,7 @@
             />
           </div>
           <!-- stack #2 (rotated clone) -->
-          <div class="stack" :style="{ flexDirection: isHorizontal ? 'row' : 'column' }">
+          <div v-if="enableLoop" class="stack" :style="{ flexDirection: isHorizontal ? 'row' : 'column' }">
             <SpeakerCard
               v-for="(sp, i) in rotatedTracksFilled[tIdx]"
               :key="'s2-' + tIdx + '-' + i + '-' + sp.id"
@@ -86,10 +86,12 @@ const props = defineProps({
   durationMin: { type: Number, default: 18 },
   durationMax: { type: Number, default: 28 },
   mobileBreakpoint: { type: Number, default: 1024 },
+  loop: { type: Boolean, default: true },
 })
 
 const emit = defineEmits(['item-click'])
 const isHorizontal = computed(() => props.direction === 'horizontal')
+const enableLoop = computed(() => props.loop)
 
 /* responsive */
 const isMobile = ref(false)
@@ -167,6 +169,7 @@ function fillTrack(base, need) {
 }
 const tracksFilled = computed(() => {
   if (!isHorizontal.value) return tracksBase.value
+  if (!enableLoop.value) return tracksBase.value
   return tracksBase.value.map((base) => fillTrack(base, minPerStack.value))
 })
 
@@ -292,5 +295,11 @@ const SpeakerCard = defineComponent({
 @keyframes marquee-down {
   from { transform: translateY(-50%); }
   to   { transform: translateY(0); }
+}
+
+.marquee-stack-static {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
 }
 </style>
