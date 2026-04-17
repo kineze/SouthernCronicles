@@ -12,7 +12,6 @@
         <video autoplay muted loop playsinline webkit-playsinline preload="metadata"
             class="absolute mt-80 md:mt-0 inset-0 w-full object-contain">
             <source src="{{ asset('assets/img/video.mp4') }}" type="video/mp4">
-            <source src="{{ asset('assets/img/video.webm') }}" type="video/webm">
             Your browser does not support the video tag.
         </video>
     </div>
