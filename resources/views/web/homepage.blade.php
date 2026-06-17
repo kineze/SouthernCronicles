@@ -26,7 +26,7 @@
       <h1 class="tracking-[5px] text-primary-blue text-3xl lg:text-5xl uppercase font-bold  leading-tight">
         The Asian Literary <br> Festival - Jaffna
       </h1>
-      <h2 class="font-semibold tracking-[10px]  text-primary-blue uppercase text-xl lg:text-3xl">2026</h2>
+      <h2 class="font-semibold tracking-[10px]  text-primary-blue uppercase text-xl lg:text-3xl">2027</h2>
     </div>
 
   </div>
@@ -52,7 +52,7 @@
                         {{-- <h1 class="tracking-[10px] lg:text-2xl text-2xl mt-3 uppercase font-bold text-primary-blue leading-tight">
                             The Asian Literary Festival
                         </h1>
-                        <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl mt-5">Jaffna 2026</h2> --}}
+                        <h2 class="font-semibold tracking-[10px] text-black uppercase text-3xl mt-5">Jaffna 2027</h2> --}}
                         <literature-blurb-slider :enable-language-tabs="false"></literature-blurb-slider>
                     </div>
                 </div>

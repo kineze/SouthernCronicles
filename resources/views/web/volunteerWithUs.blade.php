@@ -14,7 +14,7 @@
       <h1 class="tracking-[5px] text-primary-blue text-3xl lg:text-5xl uppercase font-bold  leading-tight">
         The Asian Literary <br> Festival - Jaffna
       </h1>
-      <h2 class="font-semibold tracking-[10px]  text-primary-blue uppercase text-xl lg:text-3xl">2026</h2>
+      <h2 class="font-semibold tracking-[10px]  text-primary-blue uppercase text-xl lg:text-3xl">2027</h2>
       
     </div>
         </div>

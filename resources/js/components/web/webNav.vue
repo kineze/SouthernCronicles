@@ -103,8 +103,8 @@ const navItems = [
   { id: 'kipenzi-kids', label: 'Kipenzi Kids Stories', href: '/kipenzi-kids-stories', icon: `<i class="fa-solid fa-wand-magic-sparkles text-base"></i>` },
   { id: 'schedule', label: 'Events Schedule', href: '/events-schedule', icon: `<i class='fa-solid fa-calendar-check text-base'></i>` },
   { id: 'volunteerwithus', label: 'Volunteer With Us', href: '/volunteer-with-us', icon: `<i class='fa-solid fa-hand-holding-heart text-base'></i>` },
-  // { id: 'gallery', label: 'Gallery', href: '/oalf-2026-gallery', icon: `<i class='fa-solid fa-photo-film text-base'></i>` },
-  // { id: 'videos', label: 'Videos', href: '/oalf-2026-videos', icon: `<i class='fa-solid fa-video text-base'></i>` },
+  // { id: 'gallery', label: 'Gallery', href: '/oalf-2027-gallery', icon: `<i class='fa-solid fa-photo-film text-base'></i>` },
+  // { id: 'videos', label: 'Videos', href: '/oalf-2027-videos', icon: `<i class='fa-solid fa-video text-base'></i>` },
   // { id: 'archive', label: 'Archive', href: '/all-oalf-festivals', icon: `<i class="fa-solid fa-box-archive text-base"></i>` },
   { id: 'contact', label: 'Contact Us', href: '/contact-us', icon: `<i class='fa-solid fa-phone text-base'></i>` }
 ]
